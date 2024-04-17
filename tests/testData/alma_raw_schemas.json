@@ -1,0 +1,42 @@
+[
+  {
+    "@identifier": "http://www.loc.gov/standards/marcxml/schema/MARC21slim.xsd",
+    "@name": "marcxml",
+    "@sort": "true"
+  },
+  {
+    "@identifier": "info:srw/schema/1/dc-v1.1",
+    "@name": "dc",
+    "@sort": "true"
+  },
+  {
+    "@identifier": "info:srw/schema/1/mods-v3.5",
+    "@name": "mods",
+    "@sort": "true"
+  },
+  {
+    "@identifier": "info:srw/schema/1/dcx-v1.0",
+    "@name": "dcx",
+    "@sort": "true"
+  },
+  {
+    "@identifier": "info:srw/schema/8/unimarcxml-v0.1",
+    "@name": "unimarcxml",
+    "@sort": "true"
+  },
+  {
+    "@identifier": "http://www.nl.go.kr/kormarc/",
+    "@name": "kormarcxml",
+    "@sort": "true"
+  },
+  {
+    "@identifier": "http://www.nlc.cn/",
+    "@name": "cnmarcxml",
+    "@sort": "true"
+  },
+  {
+    "@identifier": "http://www.loc.gov/standards/iso20775/",
+    "@name": "isohold",
+    "@sort": "true"
+  }
+]

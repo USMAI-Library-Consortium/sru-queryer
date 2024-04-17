@@ -1,0 +1,2750 @@
+{
+  "alma": {
+    "accompanying_material": {
+      "id": null,
+      "title": "Accompanying Material",
+      "sort": false,
+      "supported_operations": ["all", "="],
+      "empty_term_supported": true
+    },
+    "additional_physical_form_available_note": {
+      "id": null,
+      "title": "Additional Physical Form Available Note",
+      "sort": false,
+      "supported_operations": ["all", "=", "=="],
+      "empty_term_supported": false
+    },
+    "all_for_ui": {
+      "id": null,
+      "title": "Keywords",
+      "sort": false,
+      "supported_operations": ["all", "="],
+      "empty_term_supported": true
+    },
+    "alternate_complete_edition": {
+      "id": null,
+      "title": "Edition",
+      "sort": false,
+      "supported_operations": ["all", "=", "=="],
+      "empty_term_supported": false
+    },
+    "authority_id": {
+      "id": null,
+      "title": "Authority Id",
+      "sort": false,
+      "supported_operations": ["all", "="],
+      "empty_term_supported": true
+    },
+    "authority_vocabulary": {
+      "id": null,
+      "title": "Authority Vocabulary",
+      "sort": false,
+      "supported_operations": ["all", "="],
+      "empty_term_supported": true
+    },
+    "bib_level": {
+      "id": null,
+      "title": "Bibliographic Level",
+      "sort": false,
+      "supported_operations": ["==", "<>", "=", "all"],
+      "empty_term_supported": true
+    },
+    "carrier_type_code": {
+      "id": null,
+      "title": "Carrier Type Code (Title)",
+      "sort": false,
+      "supported_operations": ["==", "<>", "=", "all"],
+      "empty_term_supported": true
+    },
+    "carrier_type_term": {
+      "id": null,
+      "title": "Carrier Type Term (Title)",
+      "sort": false,
+      "supported_operations": ["==", "<>", "=", "all"],
+      "empty_term_supported": true
+    },
+    "cartographic_mathematical_data": {
+      "id": null,
+      "title": "Cartographic Mathematical Data",
+      "sort": false,
+      "supported_operations": ["all", "="],
+      "empty_term_supported": true
+    },
+    "category_of_material": {
+      "id": null,
+      "title": "Physical Description",
+      "sort": false,
+      "supported_operations": ["==", "<>", "=", "all"],
+      "empty_term_supported": true
+    },
+    "classification_part": {
+      "id": null,
+      "title": "Classification Part",
+      "sort": false,
+      "supported_operations": ["all", "=", "=="],
+      "empty_term_supported": false
+    },
+    "coded_cartographic_mathematical_data": {
+      "id": null,
+      "title": "Coded Cartographic Mathematical Data",
+      "sort": false,
+      "supported_operations": ["all", "="],
+      "empty_term_supported": true
+    },
+    "content_related_data": {
+      "id": null,
+      "title": "Content Related Data",
+      "sort": false,
+      "supported_operations": ["all", "="],
+      "empty_term_supported": true
+    },
+    "content_type_code": {
+      "id": null,
+      "title": "Content Type Code",
+      "sort": false,
+      "supported_operations": ["==", "<>", "=", "all"],
+      "empty_term_supported": true
+    },
+    "content_type_term": {
+      "id": null,
+      "title": "Content Type Term",
+      "sort": false,
+      "supported_operations": ["==", "<>", "=", "all"],
+      "empty_term_supported": true
+    },
+    "copyrights_note": {
+      "id": null,
+      "title": "Copyright Note",
+      "sort": false,
+      "supported_operations": ["all", "="],
+      "empty_term_supported": true
+    },
+    "country_of_publication": {
+      "id": null,
+      "title": "Country of Publication (code)",
+      "sort": false,
+      "supported_operations": ["all", "="],
+      "empty_term_supported": true
+    },
+    "country_of_publication_new": {
+      "id": null,
+      "title": "Country of Publication",
+      "sort": false,
+      "supported_operations": ["==", "<>", "=", "all"],
+      "empty_term_supported": true
+    },
+    "creator": {
+      "id": null,
+      "title": "Creator",
+      "sort": true,
+      "supported_operations": ["all", "=", "=="],
+      "empty_term_supported": false
+    },
+    "date_of_publication": {
+      "id": null,
+      "title": "Additional Publication Year",
+      "sort": false,
+      "supported_operations": ["all", "="],
+      "empty_term_supported": true
+    },
+    "dc_contributor": {
+      "id": null,
+      "title": "dc:contributor",
+      "sort": false,
+      "supported_operations": ["all", "="],
+      "empty_term_supported": true
+    },
+    "dc_coverage": {
+      "id": null,
+      "title": "dc:coverage",
+      "sort": false,
+      "supported_operations": ["all", "="],
+      "empty_term_supported": true
+    },
+    "dc_creator": {
+      "id": null,
+      "title": "dc:creator",
+      "sort": false,
+      "supported_operations": ["all", "="],
+      "empty_term_supported": true
+    },
+    "dc_date": {
+      "id": null,
+      "title": "dc:date",
+      "sort": false,
+      "supported_operations": ["all", "="],
+      "empty_term_supported": true
+    },
+    "dc_description": {
+      "id": null,
+      "title": "dc:description",
+      "sort": false,
+      "supported_operations": ["all", "="],
+      "empty_term_supported": true
+    },
+    "dc_format": {
+      "id": null,
+      "title": "dc:format",
+      "sort": false,
+      "supported_operations": ["all", "="],
+      "empty_term_supported": true
+    },
+    "dc_language": {
+      "id": null,
+      "title": "dc:language",
+      "sort": false,
+      "supported_operations": ["==", "<>", "=", "all"],
+      "empty_term_supported": true
+    },
+    "dc_publisher": {
+      "id": null,
+      "title": "dc:publisher",
+      "sort": false,
+      "supported_operations": ["all", "="],
+      "empty_term_supported": true
+    },
+    "dc_relation": {
+      "id": null,
+      "title": "dc:relation",
+      "sort": false,
+      "supported_operations": ["all", "="],
+      "empty_term_supported": true
+    },
+    "dc_rights": {
+      "id": null,
+      "title": "dc:rights",
+      "sort": false,
+      "supported_operations": ["all", "="],
+      "empty_term_supported": true
+    },
+    "dc_source": {
+      "id": null,
+      "title": "dc:source",
+      "sort": false,
+      "supported_operations": ["all", "="],
+      "empty_term_supported": true
+    },
+    "dc_subject": {
+      "id": null,
+      "title": "dc:subject",
+      "sort": false,
+      "supported_operations": ["all", "="],
+      "empty_term_supported": true
+    },
+    "dc_title": {
+      "id": null,
+      "title": "dc:title",
+      "sort": false,
+      "supported_operations": ["all", "=", "=="],
+      "empty_term_supported": true
+    },
+    "dc_type": {
+      "id": null,
+      "title": "dc:type",
+      "sort": false,
+      "supported_operations": ["==", "<>", "=", "all"],
+      "empty_term_supported": true
+    },
+    "description": {
+      "id": null,
+      "title": "Description",
+      "sort": false,
+      "supported_operations": ["all", "="],
+      "empty_term_supported": true
+    },
+    "dewey_decimal_class_number": {
+      "id": null,
+      "title": "Dewey Decimal Class Number",
+      "sort": false,
+      "supported_operations": ["all", "=", "=="],
+      "empty_term_supported": true
+    },
+    "digital_object_identifier": {
+      "id": null,
+      "title": "DOI - Digital Object Identifier",
+      "sort": false,
+      "supported_operations": ["all", "="],
+      "empty_term_supported": true
+    },
+    "elocation": {
+      "id": null,
+      "title": "Electronic Location And Note",
+      "sort": false,
+      "supported_operations": ["all", "=", "=="],
+      "empty_term_supported": true
+    },
+    "event_date": {
+      "id": null,
+      "title": "Event Date",
+      "sort": false,
+      "supported_operations": ["all", "="],
+      "empty_term_supported": true
+    },
+    "general_note": {
+      "id": null,
+      "title": "Public Note (Title)",
+      "sort": false,
+      "supported_operations": ["all", "=", "=="],
+      "empty_term_supported": false
+    },
+    "genre_form": {
+      "id": null,
+      "title": "Genre Form",
+      "sort": false,
+      "supported_operations": ["all", "="],
+      "empty_term_supported": true
+    },
+    "geographic_area_code": {
+      "id": null,
+      "title": "Geographic Area Code",
+      "sort": false,
+      "supported_operations": ["all", "=", "=="],
+      "empty_term_supported": false
+    },
+    "government_document_number": {
+      "id": null,
+      "title": "Government Document Number",
+      "sort": false,
+      "supported_operations": ["all", "="],
+      "empty_term_supported": true
+    },
+    "granular_resource_type": {
+      "id": null,
+      "title": "Granular Resource Type",
+      "sort": false,
+      "supported_operations": ["all", "="],
+      "empty_term_supported": true
+    },
+    "has_inventory": {
+      "id": null,
+      "title": "Has Inventory",
+      "sort": false,
+      "supported_operations": ["==", "=", "all"],
+      "empty_term_supported": false
+    },
+    "heading_info": {
+      "id": null,
+      "title": "Heading Information",
+      "sort": false,
+      "supported_operations": ["all", "=", "=="],
+      "empty_term_supported": false
+    },
+    "identifier": {
+      "id": null,
+      "title": "dc:identifier",
+      "sort": false,
+      "supported_operations": ["==", "<>", "=", "all"],
+      "empty_term_supported": true
+    },
+    "is_linked": {
+      "id": null,
+      "title": "Is linked",
+      "sort": false,
+      "supported_operations": ["==", "=", "all"],
+      "empty_term_supported": false
+    },
+    "isbn": {
+      "id": null,
+      "title": "ISBN",
+      "sort": false,
+      "supported_operations": ["all", "="],
+      "empty_term_supported": true
+    },
+    "ismn": {
+      "id": null,
+      "title": "Other Standard ID",
+      "sort": false,
+      "supported_operations": ["all", "="],
+      "empty_term_supported": true
+    },
+    "isni_identifier": {
+      "id": null,
+      "title": "ISNI - International Standard Name Identifier",
+      "sort": false,
+      "supported_operations": ["all", "="],
+      "empty_term_supported": true
+    },
+    "isni_real_world_object_uri": {
+      "id": null,
+      "title": "ISNI - Real World Object URI",
+      "sort": false,
+      "supported_operations": ["all", "=", "=="],
+      "empty_term_supported": false
+    },
+    "issn": {
+      "id": null,
+      "title": "ISSN",
+      "sort": false,
+      "supported_operations": ["all", "="],
+      "empty_term_supported": true
+    },
+    "issn_link": {
+      "id": null,
+      "title": "ISSN link",
+      "sort": false,
+      "supported_operations": ["all", "="],
+      "empty_term_supported": true
+    },
+    "language": {
+      "id": null,
+      "title": "Language (Title)",
+      "sort": false,
+      "supported_operations": ["==", "<>", "=", "all"],
+      "empty_term_supported": true
+    },
+    "language_of_cataloging": {
+      "id": null,
+      "title": "Language Of Cataloging",
+      "sort": false,
+      "supported_operations": ["==", "<>", "=", "all"],
+      "empty_term_supported": true
+    },
+    "lc_class_number": {
+      "id": null,
+      "title": "LC Call Number",
+      "sort": false,
+      "supported_operations": ["all", "=", "=="],
+      "empty_term_supported": true
+    },
+    "lccn": {
+      "id": null,
+      "title": "LC Control No.",
+      "sort": false,
+      "supported_operations": ["all", "="],
+      "empty_term_supported": true
+    },
+    "lcsh": {
+      "id": null,
+      "title": "Subjects (LC)",
+      "sort": false,
+      "supported_operations": ["all", "=", "=="],
+      "empty_term_supported": false
+    },
+    "link_inst": {
+      "id": null,
+      "title": "Linked Institution",
+      "sort": false,
+      "supported_operations": ["==", "<>", "=", "all"],
+      "empty_term_supported": true
+    },
+    "local_control_field_009": {
+      "id": null,
+      "title": "Local Control Field 009",
+      "sort": false,
+      "supported_operations": ["all", "=", "=="],
+      "empty_term_supported": true
+    },
+    "local_field_900": {
+      "id": null,
+      "title": "Local field 900",
+      "sort": false,
+      "supported_operations": ["all", "="],
+      "empty_term_supported": true
+    },
+    "local_field_906": {
+      "id": null,
+      "title": "Local field 906",
+      "sort": false,
+      "supported_operations": ["all", "="],
+      "empty_term_supported": true
+    },
+    "local_field_912": {
+      "id": null,
+      "title": "Local field 912",
+      "sort": false,
+      "supported_operations": ["all", "="],
+      "empty_term_supported": true
+    },
+    "local_field_917": {
+      "id": null,
+      "title": "Local field 917",
+      "sort": false,
+      "supported_operations": ["all", "="],
+      "empty_term_supported": true
+    },
+    "local_field_919": {
+      "id": null,
+      "title": "Local field 919",
+      "sort": false,
+      "supported_operations": ["all", "="],
+      "empty_term_supported": true
+    },
+    "local_field_939": {
+      "id": null,
+      "title": "SHK",
+      "sort": false,
+      "supported_operations": ["all", "="],
+      "empty_term_supported": true
+    },
+    "local_field_960": {
+      "id": null,
+      "title": "Local field 960",
+      "sort": false,
+      "supported_operations": ["all", "="],
+      "empty_term_supported": true
+    },
+    "local_field_977": {
+      "id": null,
+      "title": "Local field 977",
+      "sort": false,
+      "supported_operations": ["all", "="],
+      "empty_term_supported": true
+    },
+    "local_field_999": {
+      "id": null,
+      "title": "CR Restricted",
+      "sort": false,
+      "supported_operations": ["all", "="],
+      "empty_term_supported": true
+    },
+    "local_notes": {
+      "id": null,
+      "title": "Local Notes",
+      "sort": false,
+      "supported_operations": ["all", "="],
+      "empty_term_supported": true
+    },
+    "lom_context": {
+      "id": null,
+      "title": "lom-edu:context",
+      "sort": false,
+      "supported_operations": ["all", "="],
+      "empty_term_supported": true
+    },
+    "lom_description": {
+      "id": null,
+      "title": "lom-edu:description",
+      "sort": false,
+      "supported_operations": ["all", "="],
+      "empty_term_supported": true
+    },
+    "lom_difficulty": {
+      "id": null,
+      "title": "lom-edu:difficulty",
+      "sort": false,
+      "supported_operations": ["all", "="],
+      "empty_term_supported": true
+    },
+    "lom_intendedEndUserRole": {
+      "id": null,
+      "title": "lom-edu:intendedEndUserRole",
+      "sort": false,
+      "supported_operations": ["all", "="],
+      "empty_term_supported": true
+    },
+    "lom_interactivityLevel": {
+      "id": null,
+      "title": "lom-edu:interactivityLevel",
+      "sort": false,
+      "supported_operations": ["all", "="],
+      "empty_term_supported": true
+    },
+    "lom_interactivityType": {
+      "id": null,
+      "title": "lom-edu:interactivityType",
+      "sort": false,
+      "supported_operations": ["all", "="],
+      "empty_term_supported": true
+    },
+    "lom_language": {
+      "id": null,
+      "title": "lom-edu:language",
+      "sort": false,
+      "supported_operations": ["all", "="],
+      "empty_term_supported": true
+    },
+    "lom_semanticDensity": {
+      "id": null,
+      "title": "lom-edu:semanticDensity",
+      "sort": false,
+      "supported_operations": ["all", "="],
+      "empty_term_supported": true
+    },
+    "lom_type": {
+      "id": null,
+      "title": "lom-edu:type",
+      "sort": false,
+      "supported_operations": ["all", "="],
+      "empty_term_supported": true
+    },
+    "lom_typicalLearningTime": {
+      "id": null,
+      "title": "lom-edu:typicalLearningTime",
+      "sort": false,
+      "supported_operations": ["all", "="],
+      "empty_term_supported": true
+    },
+    "main_pub_date": {
+      "id": null,
+      "title": "Publication Year",
+      "sort": true,
+      "supported_operations": ["==", ">", ">=", "<", "<=", "<>", "=", "all"],
+      "empty_term_supported": false
+    },
+    "media_type_code": {
+      "id": null,
+      "title": "Media Type Code (Title)",
+      "sort": false,
+      "supported_operations": ["==", "<>", "=", "all"],
+      "empty_term_supported": true
+    },
+    "media_type_term": {
+      "id": null,
+      "title": "Media Type Term (Title)",
+      "sort": false,
+      "supported_operations": ["==", "<>", "=", "all"],
+      "empty_term_supported": true
+    },
+    "medium_type": {
+      "id": null,
+      "title": "Medium Type",
+      "sort": false,
+      "supported_operations": ["==", "<>", "=", "all"],
+      "empty_term_supported": true
+    },
+    "mesh": {
+      "id": null,
+      "title": "Medical Subjects (MeSH)",
+      "sort": false,
+      "supported_operations": ["all", "=", "=="],
+      "empty_term_supported": false
+    },
+    "mms_briefLevel": {
+      "id": null,
+      "title": "Brief Level",
+      "sort": false,
+      "supported_operations": ["all", "=", "==", ">", ">=", "<", "<="],
+      "empty_term_supported": true
+    },
+    "mms_catalogerLevel": {
+      "id": null,
+      "title": "Cataloger Level",
+      "sort": false,
+      "supported_operations": ["all", "=", "==", ">", ">=", "<", "<="],
+      "empty_term_supported": true
+    },
+    "mms_contributedBy": {
+      "id": null,
+      "title": "Contributed By",
+      "sort": false,
+      "supported_operations": ["all", "="],
+      "empty_term_supported": true
+    },
+    "mms_createDate": {
+      "id": null,
+      "title": "MMS Creation Date (Title)",
+      "sort": false,
+      "supported_operations": ["==", "<>", "<", ">", "=", "all"],
+      "empty_term_supported": true
+    },
+    "mms_handle": {
+      "id": null,
+      "title": "Handle Identifier",
+      "sort": false,
+      "supported_operations": ["all", "="],
+      "empty_term_supported": true
+    },
+    "mms_id": {
+      "id": null,
+      "title": "MMS ID",
+      "sort": false,
+      "supported_operations": ["==", ">", ">=", "<", "<=", "<>", "=", "all"],
+      "empty_term_supported": false
+    },
+    "mms_is_handle_registered": {
+      "id": null,
+      "title": "Is Handle Registered",
+      "sort": false,
+      "supported_operations": ["==", "=", "all"],
+      "empty_term_supported": false
+    },
+    "mms_managed_by": {
+      "id": null,
+      "title": "Managed By Provider (Title)",
+      "sort": false,
+      "supported_operations": ["==", "=", "all"],
+      "empty_term_supported": false
+    },
+    "mms_material_type": {
+      "id": null,
+      "title": "Material type",
+      "sort": false,
+      "supported_operations": ["==", "<>", "=", "all"],
+      "empty_term_supported": true
+    },
+    "mms_mdImportModificationHistory": {
+      "id": null,
+      "title": "Md Import modification job id",
+      "sort": false,
+      "supported_operations": ["all", "="],
+      "empty_term_supported": true
+    },
+    "mms_memberOfDeep": {
+      "id": null,
+      "title": "Collection ID",
+      "sort": false,
+      "supported_operations": ["all", "="],
+      "empty_term_supported": true
+    },
+    "mms_modificationDate": {
+      "id": null,
+      "title": "Modification Date (Title)",
+      "sort": false,
+      "supported_operations": ["==", "<>", "<", ">", "=", "all"],
+      "empty_term_supported": true
+    },
+    "mms_originatingSystem": {
+      "id": null,
+      "title": "Originating System",
+      "sort": false,
+      "supported_operations": ["all", "=", "=="],
+      "empty_term_supported": true
+    },
+    "mms_originatingSystemId": {
+      "id": null,
+      "title": "Originating System Id",
+      "sort": false,
+      "supported_operations": ["all", "="],
+      "empty_term_supported": true
+    },
+    "mms_qualityScore": {
+      "id": null,
+      "title": "Bibliographic Rank",
+      "sort": false,
+      "supported_operations": ["==", ">", ">=", "<", "<=", "<>", "=", "all"],
+      "empty_term_supported": false
+    },
+    "mms_resource_type": {
+      "id": null,
+      "title": "Resource Type",
+      "sort": false,
+      "supported_operations": ["==", "<>", "=", "all"],
+      "empty_term_supported": true
+    },
+    "mms_sip_id": {
+      "id": null,
+      "title": "MMS SIP ID",
+      "sort": false,
+      "supported_operations": ["all", "="],
+      "empty_term_supported": true
+    },
+    "mms_tagSuppressed": {
+      "id": null,
+      "title": "Tag Suppressed (Title)",
+      "sort": false,
+      "supported_operations": ["==", "<>", "=", "all"],
+      "empty_term_supported": true
+    },
+    "mms_tagSuppressedExternalSearch": {
+      "id": null,
+      "title": "Tag Suppressed From External Search",
+      "sort": false,
+      "supported_operations": ["==", "<>", "=", "all"],
+      "empty_term_supported": true
+    },
+    "mms_tagSuppressedMetadoor": {
+      "id": null,
+      "title": "Tag Suppressed From MetaDoor",
+      "sort": false,
+      "supported_operations": ["==", "<>", "=", "all"],
+      "empty_term_supported": true
+    },
+    "mms_tagSyncExternalCatalog": {
+      "id": null,
+      "title": "Tag Sync External Catalog",
+      "sort": false,
+      "supported_operations": ["==", "<>", "=", "all"],
+      "empty_term_supported": true
+    },
+    "mms_tagSyncNationalCatalog": {
+      "id": null,
+      "title": "Tag Sync External Catalog",
+      "sort": false,
+      "supported_operations": ["==", "<>", "=", "all"],
+      "empty_term_supported": true
+    },
+    "nal_call_number": {
+      "id": null,
+      "title": "NAL Call Number",
+      "sort": false,
+      "supported_operations": ["all", "=", "=="],
+      "empty_term_supported": true
+    },
+    "name": {
+      "id": null,
+      "title": "Names",
+      "sort": false,
+      "supported_operations": ["all", "=", "=="],
+      "empty_term_supported": true
+    },
+    "national_bibliography_number": {
+      "id": null,
+      "title": "National Bibliography Number",
+      "sort": false,
+      "supported_operations": ["all", "="],
+      "empty_term_supported": true
+    },
+    "nlm_call_number": {
+      "id": null,
+      "title": "NLM-type Call Number",
+      "sort": false,
+      "supported_operations": ["all", "=", "=="],
+      "empty_term_supported": true
+    },
+    "notes": {
+      "id": null,
+      "title": "Notes",
+      "sort": false,
+      "supported_operations": ["all", "="],
+      "empty_term_supported": true
+    },
+    "oclc_control_number_019_a": {
+      "id": null,
+      "title": "OCLC Control Number (019)",
+      "sort": false,
+      "supported_operations": ["all", "=", "=="],
+      "empty_term_supported": true
+    },
+    "oclc_control_number_035_a": {
+      "id": null,
+      "title": "OCLC Control Number (035a)",
+      "sort": false,
+      "supported_operations": ["all", "=", "=="],
+      "empty_term_supported": true
+    },
+    "oclc_control_number_035_az": {
+      "id": null,
+      "title": "OCLC Control Number (035a+z)",
+      "sort": false,
+      "supported_operations": ["all", "=", "=="],
+      "empty_term_supported": true
+    },
+    "oclc_control_number_035_z": {
+      "id": null,
+      "title": "OCLC Control Number (035z)",
+      "sort": false,
+      "supported_operations": ["all", "=", "=="],
+      "empty_term_supported": true
+    },
+    "open_access": {
+      "id": null,
+      "title": "Open Access",
+      "sort": false,
+      "supported_operations": ["==", "<>", "=", "all"],
+      "empty_term_supported": true
+    },
+    "orcid_identifier": {
+      "id": null,
+      "title": "ORCID - Open Researcher and Contributor ID",
+      "sort": false,
+      "supported_operations": ["all", "="],
+      "empty_term_supported": true
+    },
+    "orcid_real_world_object_uri": {
+      "id": null,
+      "title": "ORCID - Real World Object URI",
+      "sort": false,
+      "supported_operations": ["all", "=", "=="],
+      "empty_term_supported": false
+    },
+    "original_cataloging_agency": {
+      "id": null,
+      "title": "Original Cataloging Agency",
+      "sort": false,
+      "supported_operations": ["all", "="],
+      "empty_term_supported": true
+    },
+    "other_class_number": {
+      "id": null,
+      "title": "Other Classification Number",
+      "sort": false,
+      "supported_operations": ["all", "=", "=="],
+      "empty_term_supported": true
+    },
+    "other_physical_details": {
+      "id": null,
+      "title": "Other Physical Details",
+      "sort": false,
+      "supported_operations": ["all", "="],
+      "empty_term_supported": true
+    },
+    "other_standard_identifier": {
+      "id": null,
+      "title": "Other Standard Identifier",
+      "sort": false,
+      "supported_operations": ["all", "="],
+      "empty_term_supported": true
+    },
+    "other_system_number": {
+      "id": null,
+      "title": "Other System Number",
+      "sort": false,
+      "supported_operations": ["all", "=", "=="],
+      "empty_term_supported": true
+    },
+    "peer_reviewed": {
+      "id": null,
+      "title": "Peer Reviewed",
+      "sort": false,
+      "supported_operations": ["==", "<>", "=", "all"],
+      "empty_term_supported": true
+    },
+    "preservation_status": {
+      "id": null,
+      "title": "Preservation Status",
+      "sort": false,
+      "supported_operations": ["==", "=", "all"],
+      "empty_term_supported": true
+    },
+    "publisher": {
+      "id": null,
+      "title": "Publisher",
+      "sort": false,
+      "supported_operations": ["all", "=", "=="],
+      "empty_term_supported": false
+    },
+    "publisher_location": {
+      "id": null,
+      "title": "Publisher Location",
+      "sort": false,
+      "supported_operations": ["all", "="],
+      "empty_term_supported": true
+    },
+    "publisher_number": {
+      "id": null,
+      "title": "Publisher Number",
+      "sort": false,
+      "supported_operations": ["all", "="],
+      "empty_term_supported": true
+    },
+    "real_world_object_uri": {
+      "id": null,
+      "title": "Real World Object URI",
+      "sort": false,
+      "supported_operations": ["all", "=", "=="],
+      "empty_term_supported": false
+    },
+    "registry_id": {
+      "id": null,
+      "title": "Record Format",
+      "sort": false,
+      "supported_operations": ["all", "="],
+      "empty_term_supported": true
+    },
+    "relator": {
+      "id": null,
+      "title": "Relator",
+      "sort": false,
+      "supported_operations": ["all", "="],
+      "empty_term_supported": true
+    },
+    "ruc_class_number": {
+      "id": null,
+      "title": "RUC Classification Number",
+      "sort": false,
+      "supported_operations": ["all", "=", "=="],
+      "empty_term_supported": true
+    },
+    "series": {
+      "id": null,
+      "title": "Series",
+      "sort": false,
+      "supported_operations": ["all", "=", "=="],
+      "empty_term_supported": true
+    },
+    "shelving_location": {
+      "id": null,
+      "title": "Shelving Location",
+      "sort": false,
+      "supported_operations": ["all", "=", "=="],
+      "empty_term_supported": false
+    },
+    "source_record_id": {
+      "id": null,
+      "title": "Source Record Id",
+      "sort": false,
+      "supported_operations": ["all", "="],
+      "empty_term_supported": true
+    },
+    "standard_number": {
+      "id": null,
+      "title": "Standard Number",
+      "sort": false,
+      "supported_operations": ["all", "="],
+      "empty_term_supported": true
+    },
+    "standard_number_source": {
+      "id": null,
+      "title": "Standard Number Source",
+      "sort": false,
+      "supported_operations": ["all", "="],
+      "empty_term_supported": true
+    },
+    "stored_standard_number_024_a_ind1_0": {
+      "id": null,
+      "title": "International Standard Recording Code",
+      "sort": false,
+      "supported_operations": ["all", "=", "=="],
+      "empty_term_supported": false
+    },
+    "stored_standard_number_024_a_ind1_1": {
+      "id": null,
+      "title": "Universal Product Code",
+      "sort": false,
+      "supported_operations": ["all", "=", "=="],
+      "empty_term_supported": false
+    },
+    "stored_standard_number_024_a_ind1_2": {
+      "id": null,
+      "title": "International Standard Music Number",
+      "sort": false,
+      "supported_operations": ["all", "=", "=="],
+      "empty_term_supported": false
+    },
+    "stored_standard_number_024_a_ind1_3": {
+      "id": null,
+      "title": "International Article Number",
+      "sort": false,
+      "supported_operations": ["all", "=", "=="],
+      "empty_term_supported": false
+    },
+    "stored_standard_number_024_a_ind1_4": {
+      "id": null,
+      "title": "Serial Item and Contribution Identifier",
+      "sort": false,
+      "supported_operations": ["all", "=", "=="],
+      "empty_term_supported": false
+    },
+    "subject_category_code": {
+      "id": null,
+      "title": "Subject Category Code",
+      "sort": false,
+      "supported_operations": ["all", "="],
+      "empty_term_supported": true
+    },
+    "subjects": {
+      "id": null,
+      "title": "Subjects",
+      "sort": false,
+      "supported_operations": ["all", "=", "=="],
+      "empty_term_supported": true
+    },
+    "sublocation": {
+      "id": null,
+      "title": "Sublocation",
+      "sort": false,
+      "supported_operations": ["all", "=", "=="],
+      "empty_term_supported": false
+    },
+    "title": {
+      "id": null,
+      "title": "Title",
+      "sort": true,
+      "supported_operations": ["all", "=", "=="],
+      "empty_term_supported": true
+    },
+    "title_committed_to_retain": {
+      "id": null,
+      "title": "(Under construction) Title committed to retain",
+      "sort": false,
+      "supported_operations": ["==", "=", "all"],
+      "empty_term_supported": false
+    },
+    "type_of_date": {
+      "id": null,
+      "title": "Date Type Status",
+      "sort": false,
+      "supported_operations": ["==", "<>", "=", "all"],
+      "empty_term_supported": true
+    },
+    "type_of_record": {
+      "id": null,
+      "title": "Bibliographic Format",
+      "sort": false,
+      "supported_operations": ["==", "<>", "=", "all"],
+      "empty_term_supported": true
+    },
+    "uniform_title": {
+      "id": null,
+      "title": "Uniform Title",
+      "sort": false,
+      "supported_operations": ["all", "=", "=="],
+      "empty_term_supported": false
+    },
+    "unique_serial_title": {
+      "id": null,
+      "title": "Serial Title",
+      "sort": false,
+      "supported_operations": ["all", "=", "=="],
+      "empty_term_supported": false
+    },
+    "universal_decimal_class_number": {
+      "id": null,
+      "title": "UDC",
+      "sort": false,
+      "supported_operations": ["all", "=", "=="],
+      "empty_term_supported": true
+    },
+    "alterCallNumber": {
+      "id": null,
+      "title": "Item call number",
+      "sort": false,
+      "supported_operations": ["all", "="],
+      "empty_term_supported": true
+    },
+    "alternativeCallNumberType": {
+      "id": null,
+      "title": "Item call number type",
+      "sort": false,
+      "supported_operations": ["==", "<>", "=", "all"],
+      "empty_term_supported": true
+    },
+    "arrivalDate": {
+      "id": null,
+      "title": "Receiving date",
+      "sort": false,
+      "supported_operations": ["==", "<>", "<", ">", "=", "all"],
+      "empty_term_supported": true
+    },
+    "barcode": {
+      "id": null,
+      "title": "Barcode",
+      "sort": false,
+      "supported_operations": ["all", "=", "=="],
+      "empty_term_supported": true
+    },
+    "baseStatus": {
+      "id": null,
+      "title": "Base status",
+      "sort": false,
+      "supported_operations": ["==", "<>", "=", "all"],
+      "empty_term_supported": true
+    },
+    "chronologyI": {
+      "id": null,
+      "title": "Chronology I",
+      "sort": false,
+      "supported_operations": ["all", "="],
+      "empty_term_supported": true
+    },
+    "chronologyJ": {
+      "id": null,
+      "title": "Chronology J",
+      "sort": false,
+      "supported_operations": ["all", "="],
+      "empty_term_supported": true
+    },
+    "chronologyK": {
+      "id": null,
+      "title": "Chronology K",
+      "sort": false,
+      "supported_operations": ["all", "="],
+      "empty_term_supported": true
+    },
+    "chronologyL": {
+      "id": null,
+      "title": "Chronology L",
+      "sort": false,
+      "supported_operations": ["all", "="],
+      "empty_term_supported": true
+    },
+    "chronologyM": {
+      "id": null,
+      "title": "Chronology M",
+      "sort": false,
+      "supported_operations": ["all", "="],
+      "empty_term_supported": true
+    },
+    "committedToRetain": {
+      "id": null,
+      "title": "Committed to Retain",
+      "sort": false,
+      "supported_operations": ["==", "=", "all"],
+      "empty_term_supported": true
+    },
+    "current_Library": {
+      "id": null,
+      "title": "c.search.index_names.current_library",
+      "sort": false,
+      "supported_operations": ["==", "<>", "=", "all"],
+      "empty_term_supported": true
+    },
+    "current_Location": {
+      "id": null,
+      "title": "c.search.index_names.current_location",
+      "sort": false,
+      "supported_operations": ["==", "<>", "=", "all"],
+      "empty_term_supported": true
+    },
+    "enumerationA": {
+      "id": null,
+      "title": "Enumeration A",
+      "sort": false,
+      "supported_operations": ["all", "="],
+      "empty_term_supported": true
+    },
+    "enumerationB": {
+      "id": null,
+      "title": "Enumeration B",
+      "sort": false,
+      "supported_operations": ["all", "="],
+      "empty_term_supported": true
+    },
+    "enumerationC": {
+      "id": null,
+      "title": "Enumeration C",
+      "sort": false,
+      "supported_operations": ["all", "="],
+      "empty_term_supported": true
+    },
+    "enumerationD": {
+      "id": null,
+      "title": "Enumeration D",
+      "sort": false,
+      "supported_operations": ["all", "="],
+      "empty_term_supported": true
+    },
+    "enumerationE": {
+      "id": null,
+      "title": "Enumeration E",
+      "sort": false,
+      "supported_operations": ["all", "="],
+      "empty_term_supported": true
+    },
+    "enumerationF": {
+      "id": null,
+      "title": "Enumeration F",
+      "sort": false,
+      "supported_operations": ["all", "="],
+      "empty_term_supported": true
+    },
+    "enumerationG": {
+      "id": null,
+      "title": "Enumeration G",
+      "sort": false,
+      "supported_operations": ["all", "="],
+      "empty_term_supported": true
+    },
+    "enumerationH": {
+      "id": null,
+      "title": "Enumeration H",
+      "sort": false,
+      "supported_operations": ["all", "="],
+      "empty_term_supported": true
+    },
+    "expectedArrivalDate": {
+      "id": null,
+      "title": "Expected receiving date",
+      "sort": false,
+      "supported_operations": ["==", "<>", "<", ">", "=", "all"],
+      "empty_term_supported": true
+    },
+    "expectedReturnFromTempLocation": {
+      "id": null,
+      "title": "Due back from temp location date",
+      "sort": false,
+      "supported_operations": ["==", "<>", "<", ">", "=", "all"],
+      "empty_term_supported": true
+    },
+    "fulfilment_note": {
+      "id": null,
+      "title": "Fulfillment Note",
+      "sort": false,
+      "supported_operations": ["all", "="],
+      "empty_term_supported": true
+    },
+    "inProcessType": {
+      "id": null,
+      "title": "In Process Type",
+      "sort": false,
+      "supported_operations": ["==", "=", "all"],
+      "empty_term_supported": true
+    },
+    "internal_note_1": {
+      "id": null,
+      "title": "Internal note 1",
+      "sort": false,
+      "supported_operations": ["all", "="],
+      "empty_term_supported": true
+    },
+    "internal_note_2": {
+      "id": null,
+      "title": "Internal note 2",
+      "sort": false,
+      "supported_operations": ["all", "="],
+      "empty_term_supported": true
+    },
+    "internal_note_3": {
+      "id": null,
+      "title": "Internal note 3",
+      "sort": false,
+      "supported_operations": ["all", "="],
+      "empty_term_supported": true
+    },
+    "inventoryDate": {
+      "id": null,
+      "title": "Inventory date",
+      "sort": false,
+      "supported_operations": ["==", "<>", "<", ">", "=", "all"],
+      "empty_term_supported": true
+    },
+    "inventoryNumber": {
+      "id": null,
+      "title": "Inventory number",
+      "sort": false,
+      "supported_operations": ["all", "="],
+      "empty_term_supported": true
+    },
+    "isMagnetic": {
+      "id": null,
+      "title": "Is Magnetic",
+      "sort": false,
+      "supported_operations": ["==", "<>", "=", "all"],
+      "empty_term_supported": true
+    },
+    "issueYear": {
+      "id": null,
+      "title": "Issue year",
+      "sort": false,
+      "supported_operations": ["==", ">", ">=", "<", "<=", "<>", "=", "all"],
+      "empty_term_supported": false
+    },
+    "item_createDate": {
+      "id": null,
+      "title": "Creation Date (Physical Item)",
+      "sort": false,
+      "supported_operations": ["==", "<>", "<", ">", "=", "all"],
+      "empty_term_supported": true
+    },
+    "item_description": {
+      "id": null,
+      "title": "Description",
+      "sort": false,
+      "supported_operations": ["all", "="],
+      "empty_term_supported": true
+    },
+    "item_modificationDate": {
+      "id": null,
+      "title": "Modification Date (Physical Item)",
+      "sort": false,
+      "supported_operations": ["==", "<>", "<", ">", "=", "all"],
+      "empty_term_supported": true
+    },
+    "item_pid": {
+      "id": null,
+      "title": "Item PID",
+      "sort": false,
+      "supported_operations": ["==", ">", ">=", "<", "<=", "<>", "=", "all"],
+      "empty_term_supported": false
+    },
+    "itemIssueDate": {
+      "id": null,
+      "title": "Item Issue Date",
+      "sort": false,
+      "supported_operations": ["==", "<>", "<", ">", "=", "all"],
+      "empty_term_supported": true
+    },
+    "itemLibrary": {
+      "id": null,
+      "title": "Library",
+      "sort": false,
+      "supported_operations": ["==", "<>", "=", "all"],
+      "empty_term_supported": true
+    },
+    "itemPhysicalLocation": {
+      "id": null,
+      "title": "Location",
+      "sort": false,
+      "supported_operations": ["==", "<>", "=", "all"],
+      "empty_term_supported": true
+    },
+    "itemPolicy": {
+      "id": null,
+      "title": "Item policy",
+      "sort": false,
+      "supported_operations": ["==", "<>", "=", "all"],
+      "empty_term_supported": true
+    },
+    "itemPOLineID": {
+      "id": null,
+      "title": "PO Line",
+      "sort": false,
+      "supported_operations": ["all", "="],
+      "empty_term_supported": true
+    },
+    "itemSequenceNumber": {
+      "id": null,
+      "title": "Item sequence number",
+      "sort": false,
+      "supported_operations": ["all", "="],
+      "empty_term_supported": true
+    },
+    "materialType": {
+      "id": null,
+      "title": "Material Type (Physical Item)",
+      "sort": false,
+      "supported_operations": ["==", "=", "all"],
+      "empty_term_supported": true
+    },
+    "onShelfDate": {
+      "id": null,
+      "title": "On shelf date",
+      "sort": false,
+      "supported_operations": ["==", "<>", "<", ">", "=", "all"],
+      "empty_term_supported": true
+    },
+    "onShelfSeq": {
+      "id": null,
+      "title": "On shelf seq",
+      "sort": false,
+      "supported_operations": ["all", "="],
+      "empty_term_supported": true
+    },
+    "pages": {
+      "id": null,
+      "title": "Pages",
+      "sort": false,
+      "supported_operations": ["all", "="],
+      "empty_term_supported": true
+    },
+    "permanentCallNumberTypeFacet": {
+      "id": null,
+      "title": "Call Number Type",
+      "sort": false,
+      "supported_operations": ["==", "<>", "=", "all"],
+      "empty_term_supported": true
+    },
+    "physicalCondition": {
+      "id": null,
+      "title": "Physical condition",
+      "sort": false,
+      "supported_operations": ["==", "<>", "=", "all"],
+      "empty_term_supported": true
+    },
+    "pieces": {
+      "id": null,
+      "title": "Pieces",
+      "sort": false,
+      "supported_operations": ["all", "="],
+      "empty_term_supported": true
+    },
+    "processType": {
+      "id": null,
+      "title": "Process type",
+      "sort": false,
+      "supported_operations": ["==", "<>", "=", "all"],
+      "empty_term_supported": true
+    },
+    "provenanceCode": {
+      "id": null,
+      "title": "Provenance Code",
+      "sort": false,
+      "supported_operations": ["==", "<>", "=", "all"],
+      "empty_term_supported": true
+    },
+    "public_note": {
+      "id": null,
+      "title": "Public note (Physical Item)",
+      "sort": false,
+      "supported_operations": ["all", "="],
+      "empty_term_supported": true
+    },
+    "retentionNote": {
+      "id": null,
+      "title": "Retention Note",
+      "sort": false,
+      "supported_operations": ["all", "=", "=="],
+      "empty_term_supported": true
+    },
+    "retentionReason": {
+      "id": null,
+      "title": "Retention Reason",
+      "sort": false,
+      "supported_operations": ["==", "=", "all"],
+      "empty_term_supported": true
+    },
+    "statisticsNote1": {
+      "id": null,
+      "title": "Statistics note 1",
+      "sort": false,
+      "supported_operations": ["all", "=", "=="],
+      "empty_term_supported": true
+    },
+    "statisticsNote2": {
+      "id": null,
+      "title": "Statistics note 2",
+      "sort": false,
+      "supported_operations": ["all", "=", "=="],
+      "empty_term_supported": true
+    },
+    "statisticsNote3": {
+      "id": null,
+      "title": "Statistics note 3",
+      "sort": false,
+      "supported_operations": ["all", "=", "=="],
+      "empty_term_supported": true
+    },
+    "storageLocationID": {
+      "id": null,
+      "title": "Storage Location ID",
+      "sort": false,
+      "supported_operations": ["all", "=", "=="],
+      "empty_term_supported": true
+    },
+    "temporaryCallNumber": {
+      "id": null,
+      "title": "Temporary call number",
+      "sort": false,
+      "supported_operations": ["all", "="],
+      "empty_term_supported": true
+    },
+    "temporaryCallNumberType": {
+      "id": null,
+      "title": "Temporary call number type",
+      "sort": false,
+      "supported_operations": ["==", "<>", "=", "all"],
+      "empty_term_supported": true
+    },
+    "temporaryItemPolicy": {
+      "id": null,
+      "title": "Temporary item policy",
+      "sort": false,
+      "supported_operations": ["==", "<>", "=", "all"],
+      "empty_term_supported": true
+    },
+    "temporaryLibrary": {
+      "id": null,
+      "title": "Temporary library",
+      "sort": false,
+      "supported_operations": ["==", "<>", "=", "all"],
+      "empty_term_supported": true
+    },
+    "temporaryPhysicalLocation": {
+      "id": null,
+      "title": "Temporary physical location",
+      "sort": false,
+      "supported_operations": ["==", "<>", "=", "all"],
+      "empty_term_supported": true
+    },
+    "temporaryPhysicalLocationInUse": {
+      "id": null,
+      "title": "In temporary location",
+      "sort": false,
+      "supported_operations": ["==", ">", ">=", "<", "<=", "<>", "=", "all"],
+      "empty_term_supported": false
+    },
+    "accessionNumber": {
+      "id": null,
+      "title": "Accession Number",
+      "sort": false,
+      "supported_operations": ["all", "=", "==", ">", ">=", "<", "<="],
+      "empty_term_supported": true
+    },
+    "acquisition_note": {
+      "id": null,
+      "title": "Acquisition Note",
+      "sort": false,
+      "supported_operations": ["all", "="],
+      "empty_term_supported": true
+    },
+    "action_note": {
+      "id": null,
+      "title": "Action note",
+      "sort": false,
+      "supported_operations": ["all", "=", "=="],
+      "empty_term_supported": false
+    },
+    "action_note_authorization": {
+      "id": null,
+      "title": "Action note - authorization",
+      "sort": false,
+      "supported_operations": ["all", "=", "=="],
+      "empty_term_supported": true
+    },
+    "action_note_note": {
+      "id": null,
+      "title": "Action note - note",
+      "sort": false,
+      "supported_operations": ["all", "=", "=="],
+      "empty_term_supported": true
+    },
+    "binding_note": {
+      "id": null,
+      "title": "Binding Note",
+      "sort": false,
+      "supported_operations": ["all", "="],
+      "empty_term_supported": true
+    },
+    "callNumberPrefix": {
+      "id": null,
+      "title": "Call number prefix",
+      "sort": false,
+      "supported_operations": ["all", "="],
+      "empty_term_supported": true
+    },
+    "callNumberSuffix": {
+      "id": null,
+      "title": "Call number suffix",
+      "sort": false,
+      "supported_operations": ["all", "="],
+      "empty_term_supported": true
+    },
+    "completeness": {
+      "id": null,
+      "title": "Completeness",
+      "sort": false,
+      "supported_operations": ["==", "=", "all"],
+      "empty_term_supported": true
+    },
+    "encoding_level": {
+      "id": null,
+      "title": "Encoding level",
+      "sort": false,
+      "supported_operations": ["==", "=", "all"],
+      "empty_term_supported": true
+    },
+    "f561a": {
+      "id": null,
+      "title": "Ownership and Custodial History",
+      "sort": false,
+      "supported_operations": ["all", "="],
+      "empty_term_supported": true
+    },
+    "general_retention_policy": {
+      "id": null,
+      "title": "General retention policy",
+      "sort": false,
+      "supported_operations": ["==", "<>", "=", "all"],
+      "empty_term_supported": true
+    },
+    "hol_control_number": {
+      "id": null,
+      "title": "Control number (Holdings)",
+      "sort": false,
+      "supported_operations": ["all", "=", "=="],
+      "empty_term_supported": true
+    },
+    "hol_createDate": {
+      "id": null,
+      "title": "Creation date (physical holdings)",
+      "sort": false,
+      "supported_operations": ["==", "<>", "<", ">", "=", "all"],
+      "empty_term_supported": true
+    },
+    "hol_modificationDate": {
+      "id": null,
+      "title": "Modification date (physical holdings)",
+      "sort": false,
+      "supported_operations": ["==", "<>", "<", ">", "=", "all"],
+      "empty_term_supported": true
+    },
+    "hol_oclc_control_number_035_a": {
+      "id": null,
+      "title": "OCLC Control Number (035a) - Holdings",
+      "sort": false,
+      "supported_operations": ["all", "=", "=="],
+      "empty_term_supported": true
+    },
+    "hol_oclc_control_number_035_az": {
+      "id": null,
+      "title": "OCLC Control Number (035a+z) - Holdings",
+      "sort": false,
+      "supported_operations": ["all", "=", "=="],
+      "empty_term_supported": true
+    },
+    "hol_oclc_control_number_035_z": {
+      "id": null,
+      "title": "OCLC Control Number (035z) - Holdings",
+      "sort": false,
+      "supported_operations": ["all", "=", "=="],
+      "empty_term_supported": true
+    },
+    "hol_other_system_number_035_a": {
+      "id": null,
+      "title": "Other System Number (035a) - Holdings",
+      "sort": false,
+      "supported_operations": ["all", "=", "=="],
+      "empty_term_supported": true
+    },
+    "hol_other_system_number_035_az": {
+      "id": null,
+      "title": "Other System Number (035a+z) - Holdings",
+      "sort": false,
+      "supported_operations": ["all", "=", "=="],
+      "empty_term_supported": true
+    },
+    "hol_other_system_number_035_z": {
+      "id": null,
+      "title": "Other System Number (035z) - Holdings",
+      "sort": false,
+      "supported_operations": ["all", "=", "=="],
+      "empty_term_supported": true
+    },
+    "hol_type_of_record": {
+      "id": null,
+      "title": "Type of record",
+      "sort": false,
+      "supported_operations": ["==", "=", "all"],
+      "empty_term_supported": true
+    },
+    "hol_url": {
+      "id": null,
+      "title": "URL",
+      "sort": false,
+      "supported_operations": ["all", "=", "=="],
+      "empty_term_supported": true
+    },
+    "hol_url_access_status": {
+      "id": null,
+      "title": "URL access status",
+      "sort": false,
+      "supported_operations": ["all", "=", "=="],
+      "empty_term_supported": true
+    },
+    "hol_url_link_text": {
+      "id": null,
+      "title": "URL link text",
+      "sort": false,
+      "supported_operations": ["all", "=", "=="],
+      "empty_term_supported": true
+    },
+    "hol_url_materials_specified": {
+      "id": null,
+      "title": "URL materials specified",
+      "sort": false,
+      "supported_operations": ["all", "=", "=="],
+      "empty_term_supported": true
+    },
+    "hol_url_method": {
+      "id": null,
+      "title": "URL method",
+      "sort": false,
+      "supported_operations": ["all", "=", "=="],
+      "empty_term_supported": true
+    },
+    "hol_url_non_public_note": {
+      "id": null,
+      "title": "URL non public note",
+      "sort": false,
+      "supported_operations": ["all", "=", "=="],
+      "empty_term_supported": true
+    },
+    "hol_url_public_note": {
+      "id": null,
+      "title": "URL public note",
+      "sort": false,
+      "supported_operations": ["all", "=", "=="],
+      "empty_term_supported": true
+    },
+    "holding_carrier_type_code": {
+      "id": null,
+      "title": "Carrier Type Code (Title)",
+      "sort": false,
+      "supported_operations": ["==", "<>", "=", "all"],
+      "empty_term_supported": true
+    },
+    "holding_carrier_type_term": {
+      "id": null,
+      "title": "Carrier Type Term (Title)",
+      "sort": false,
+      "supported_operations": ["==", "<>", "=", "all"],
+      "empty_term_supported": true
+    },
+    "holding_Library": {
+      "id": null,
+      "title": "Library (Holdings)",
+      "sort": false,
+      "supported_operations": ["==", "=", "all"],
+      "empty_term_supported": true
+    },
+    "holding_media_type_code": {
+      "id": null,
+      "title": "Media type code (Holdings)",
+      "sort": false,
+      "supported_operations": ["==", "<>", "=", "all"],
+      "empty_term_supported": true
+    },
+    "holding_media_type_term": {
+      "id": null,
+      "title": "Media type term (Holdings)",
+      "sort": false,
+      "supported_operations": ["==", "<>", "=", "all"],
+      "empty_term_supported": true
+    },
+    "holding_Note": {
+      "id": null,
+      "title": "Holdings note",
+      "sort": false,
+      "supported_operations": ["all", "="],
+      "empty_term_supported": true
+    },
+    "holding_pid": {
+      "id": null,
+      "title": "Holdings PID",
+      "sort": false,
+      "supported_operations": ["==", ">", ">=", "<", "<=", "<>", "=", "all"],
+      "empty_term_supported": false
+    },
+    "holding_tagSuppressed": {
+      "id": null,
+      "title": "Tag Suppressed (Holdings)",
+      "sort": false,
+      "supported_operations": ["==", "<>", "=", "all"],
+      "empty_term_supported": true
+    },
+    "lending_policy": {
+      "id": null,
+      "title": "Lending Policy",
+      "sort": false,
+      "supported_operations": ["==", "<>", "=", "all"],
+      "empty_term_supported": true
+    },
+    "linkage_number": {
+      "id": null,
+      "title": "Linkage number",
+      "sort": false,
+      "supported_operations": ["all", "=", "=="],
+      "empty_term_supported": true
+    },
+    "local_holding_field_935": {
+      "id": null,
+      "title": "LOCAL holding 935",
+      "sort": false,
+      "supported_operations": ["all", "="],
+      "empty_term_supported": true
+    },
+    "local_holding_field_959": {
+      "id": null,
+      "title": "Local holding field 959",
+      "sort": false,
+      "supported_operations": ["all", "="],
+      "empty_term_supported": true
+    },
+    "local_holding_field_991": {
+      "id": null,
+      "title": "Local holding field 991",
+      "sort": false,
+      "supported_operations": ["all", "="],
+      "empty_term_supported": true
+    },
+    "local_holding_field_999": {
+      "id": null,
+      "title": "Local holding field 999",
+      "sort": false,
+      "supported_operations": ["all", "="],
+      "empty_term_supported": true
+    },
+    "method_of_acquisition": {
+      "id": null,
+      "title": "Method of acquisition",
+      "sort": false,
+      "supported_operations": ["==", "=", "all"],
+      "empty_term_supported": true
+    },
+    "p_level_4_id": {
+      "id": null,
+      "title": "c.search.index_names.has_items",
+      "sort": false,
+      "supported_operations": ["==", "=", "all"],
+      "empty_term_supported": false
+    },
+    "pattern_fifth_level_enum": {
+      "id": null,
+      "title": "Pattern 5th level of enumeration",
+      "sort": false,
+      "supported_operations": ["all", "=", "=="],
+      "empty_term_supported": true
+    },
+    "pattern_first_level_enum": {
+      "id": null,
+      "title": "Pattern 1st level of enumeration",
+      "sort": false,
+      "supported_operations": ["all", "=", "=="],
+      "empty_term_supported": true
+    },
+    "pattern_fourth_level_enum": {
+      "id": null,
+      "title": "Pattern 4th level of enumeration",
+      "sort": false,
+      "supported_operations": ["all", "=", "=="],
+      "empty_term_supported": true
+    },
+    "pattern_frequency": {
+      "id": null,
+      "title": "Pattern frequency",
+      "sort": false,
+      "supported_operations": ["all", "=", "=="],
+      "empty_term_supported": true
+    },
+    "pattern_second_level_enum": {
+      "id": null,
+      "title": "Pattern 2nd level of enumeration",
+      "sort": false,
+      "supported_operations": ["all", "=", "=="],
+      "empty_term_supported": true
+    },
+    "pattern_sixth_level_enum": {
+      "id": null,
+      "title": "Pattern 6th level of enumeration",
+      "sort": false,
+      "supported_operations": ["all", "=", "=="],
+      "empty_term_supported": true
+    },
+    "pattern_third_level_enum": {
+      "id": null,
+      "title": "Pattern 3rd level of enumeration",
+      "sort": false,
+      "supported_operations": ["all", "=", "=="],
+      "empty_term_supported": true
+    },
+    "PermanentCallNumber": {
+      "id": null,
+      "title": "Permanent call number",
+      "sort": false,
+      "supported_operations": ["all", "=", "==", ">", ">=", "<", "<="],
+      "empty_term_supported": true
+    },
+    "permanentCallNumberType": {
+      "id": null,
+      "title": "Permanent call number type",
+      "sort": false,
+      "supported_operations": ["==", "<>", "=", "all"],
+      "empty_term_supported": true
+    },
+    "permanentPhysicalLocation": {
+      "id": null,
+      "title": "Permanent physical location",
+      "sort": false,
+      "supported_operations": ["==", "=", "all"],
+      "empty_term_supported": true
+    },
+    "receipt_acq_status": {
+      "id": null,
+      "title": "Receipt, acquisition, or access status",
+      "sort": false,
+      "supported_operations": ["==", "=", "all"],
+      "empty_term_supported": true
+    },
+    "reproduction_policy": {
+      "id": null,
+      "title": "Reproduction Policy",
+      "sort": false,
+      "supported_operations": ["==", "<>", "=", "all"],
+      "empty_term_supported": true
+    },
+    "summaryHolding": {
+      "id": null,
+      "title": "Summary holdings",
+      "sort": false,
+      "supported_operations": ["all", "="],
+      "empty_term_supported": true
+    },
+    "textual_holdings": {
+      "id": null,
+      "title": "Textual holdings",
+      "sort": false,
+      "supported_operations": ["all", "=", "=="],
+      "empty_term_supported": true
+    },
+    "textual_holdings_non_public_note": {
+      "id": null,
+      "title": "Textual holdings nonpublic note",
+      "sort": false,
+      "supported_operations": ["all", "=", "=="],
+      "empty_term_supported": true
+    },
+    "textual_holdings_public_note": {
+      "id": null,
+      "title": "Textual holdings public note",
+      "sort": false,
+      "supported_operations": ["all", "=", "=="],
+      "empty_term_supported": true
+    },
+    "available_for": {
+      "id": null,
+      "title": "Available for",
+      "sort": false,
+      "supported_operations": ["==", "<>", "=", "all"],
+      "empty_term_supported": true
+    },
+    "available_for_group": {
+      "id": null,
+      "title": "Available for group",
+      "sort": false,
+      "supported_operations": ["==", "<>", "=", "all"],
+      "empty_term_supported": true
+    },
+    "available_only_for": {
+      "id": null,
+      "title": "Available for",
+      "sort": false,
+      "supported_operations": ["==", "<>", "=", "all"],
+      "empty_term_supported": true
+    },
+    "available_only_for_group": {
+      "id": null,
+      "title": "Available explicitly for group",
+      "sort": false,
+      "supported_operations": ["==", "<>", "=", "all"],
+      "empty_term_supported": true
+    },
+    "coverageInUse": {
+      "id": null,
+      "title": "Coverage In Use",
+      "sort": false,
+      "supported_operations": ["==", "<>", "=", "all"],
+      "empty_term_supported": true
+    },
+    "generalNote": {
+      "id": null,
+      "title": "Public note (Electronic Portfolio)",
+      "sort": false,
+      "supported_operations": ["all", "=", "=="],
+      "empty_term_supported": true
+    },
+    "is_standalone": {
+      "id": null,
+      "title": "c.search.index_names.isStandalone",
+      "sort": false,
+      "supported_operations": ["==", "=", "all"],
+      "empty_term_supported": false
+    },
+    "portfolio_accessRights": {
+      "id": null,
+      "title": "Access Rights (Electronic Portfolio)",
+      "sort": false,
+      "supported_operations": ["==", "<>", "=", "all"],
+      "empty_term_supported": true
+    },
+    "portfolio_accessType": {
+      "id": null,
+      "title": "Portfolio Access Type",
+      "sort": false,
+      "supported_operations": ["==", "=", "all"],
+      "empty_term_supported": true
+    },
+    "portfolio_activationDate": {
+      "id": null,
+      "title": "Activation Date (Electronic Portfolio)",
+      "sort": false,
+      "supported_operations": ["==", "<>", "<", ">", "=", "all"],
+      "empty_term_supported": true
+    },
+    "portfolio_authenticationNote": {
+      "id": null,
+      "title": "Authentication note (Electronic Portfolio)",
+      "sort": false,
+      "supported_operations": ["all", "=", "=="],
+      "empty_term_supported": true
+    },
+    "portfolio_baseStatus": {
+      "id": null,
+      "title": "Availability (Electronic Portfolio)",
+      "sort": false,
+      "supported_operations": ["==", "<>", "=", "all"],
+      "empty_term_supported": true
+    },
+    "portfolio_contributedBy": {
+      "id": null,
+      "title": "Contributed By (Electronic Portfolio)",
+      "sort": false,
+      "supported_operations": ["all", "="],
+      "empty_term_supported": true
+    },
+    "portfolio_creation_date": {
+      "id": null,
+      "title": "Creation Date (Electronic Portfolio)",
+      "sort": false,
+      "supported_operations": ["==", "<>", "<", ">", "=", "all"],
+      "empty_term_supported": true
+    },
+    "portfolio_ebaId": {
+      "id": null,
+      "title": "Portfolio EBA ID",
+      "sort": false,
+      "supported_operations": ["all", "="],
+      "empty_term_supported": true
+    },
+    "portfolio_has_local_coverage": {
+      "id": null,
+      "title": "Has Local Coverage Information",
+      "sort": false,
+      "supported_operations": ["==", "<>", "=", "all"],
+      "empty_term_supported": true
+    },
+    "portfolio_interfaceName": {
+      "id": null,
+      "title": "Interface Name (Electronic Portfolio)",
+      "sort": false,
+      "supported_operations": ["all", "="],
+      "empty_term_supported": true
+    },
+    "portfolio_internalDescription": {
+      "id": null,
+      "title": "Internal Description (Electronic Portfolio)",
+      "sort": false,
+      "supported_operations": ["all", "=", "=="],
+      "empty_term_supported": true
+    },
+    "portfolio_is_local": {
+      "id": null,
+      "title": "Is Local (Electronic Portfolio)",
+      "sort": false,
+      "supported_operations": ["==", "=", "all"],
+      "empty_term_supported": true
+    },
+    "portfolio_Library": {
+      "id": null,
+      "title": "c.search.index_names.portfolioLibrary",
+      "sort": false,
+      "supported_operations": ["==", "=", "all"],
+      "empty_term_supported": true
+    },
+    "portfolio_license_id": {
+      "id": null,
+      "title": "Portfolio License ID",
+      "sort": false,
+      "supported_operations": ["all", "="],
+      "empty_term_supported": true
+    },
+    "portfolio_managed_by": {
+      "id": null,
+      "title": "Managed by Provider (Electronic Portfolio)",
+      "sort": false,
+      "supported_operations": ["==", "=", "all"],
+      "empty_term_supported": false
+    },
+    "portfolio_materialType": {
+      "id": null,
+      "title": "Material Type (Electronic Portfolio)",
+      "sort": false,
+      "supported_operations": ["==", "<>", "=", "all"],
+      "empty_term_supported": true
+    },
+    "portfolio_modification_date": {
+      "id": null,
+      "title": "Modification Date (Electronic Portfolio)",
+      "sort": false,
+      "supported_operations": ["==", "<>", "<", ">", "=", "all"],
+      "empty_term_supported": true
+    },
+    "portfolio_note_out": {
+      "id": null,
+      "title": "Notes tab",
+      "sort": false,
+      "supported_operations": ["all", "="],
+      "empty_term_supported": true
+    },
+    "portfolio_pdaId": {
+      "id": null,
+      "title": "Portfolio PDA ID",
+      "sort": false,
+      "supported_operations": ["all", "="],
+      "empty_term_supported": true
+    },
+    "portfolio_pid": {
+      "id": null,
+      "title": "Portfolio PID",
+      "sort": false,
+      "supported_operations": ["==", ">", ">=", "<", "<=", "<>", "=", "all"],
+      "empty_term_supported": false
+    },
+    "portfolio_POLineID": {
+      "id": null,
+      "title": "Portfolio PO Line ID",
+      "sort": false,
+      "supported_operations": ["all", "="],
+      "empty_term_supported": true
+    },
+    "portfolioProxyEnabled": {
+      "id": null,
+      "title": "Proxy Enabled (Electronic Portfolio)",
+      "sort": false,
+      "supported_operations": ["==", "=", "all"],
+      "empty_term_supported": true
+    },
+    "proxy": {
+      "id": null,
+      "title": "Proxy name (Electronic Portfolio)",
+      "sort": false,
+      "supported_operations": ["all", "="],
+      "empty_term_supported": true
+    },
+    "publicAccessModel": {
+      "id": null,
+      "title": "Public Access Model",
+      "sort": false,
+      "supported_operations": ["==", "<>", "=", "all"],
+      "empty_term_supported": true
+    },
+    "purchaseModel": {
+      "id": null,
+      "title": "ProQuest purchase model",
+      "sort": false,
+      "supported_operations": ["==", "<>", "=", "all"],
+      "empty_term_supported": true
+    },
+    "url": {
+      "id": null,
+      "title": "URL (Electronic Portfolio)",
+      "sort": false,
+      "supported_operations": ["all", "="],
+      "empty_term_supported": true
+    },
+    "ar_policy": {
+      "id": null,
+      "title": "Access Rights Policy Name",
+      "sort": false,
+      "supported_operations": ["==", "<>", "=", "all"],
+      "empty_term_supported": true
+    },
+    "copyrightsId": {
+      "id": null,
+      "title": "Copyrights Name",
+      "sort": false,
+      "supported_operations": ["==", "<>", "=", "all"],
+      "empty_term_supported": true
+    },
+    "date": {
+      "id": null,
+      "title": "Date",
+      "sort": false,
+      "supported_operations": ["all", "="],
+      "empty_term_supported": true
+    },
+    "deposit_id": {
+      "id": null,
+      "title": "Deposit ID",
+      "sort": false,
+      "supported_operations": ["all", "="],
+      "empty_term_supported": true
+    },
+    "digitization_request_id": {
+      "id": null,
+      "title": "Request ID",
+      "sort": false,
+      "supported_operations": ["all", "="],
+      "empty_term_supported": true
+    },
+    "issue": {
+      "id": null,
+      "title": "Issue",
+      "sort": false,
+      "supported_operations": ["all", "="],
+      "empty_term_supported": true
+    },
+    "number": {
+      "id": null,
+      "title": "Number",
+      "sort": false,
+      "supported_operations": ["all", "="],
+      "empty_term_supported": true
+    },
+    "preservationType": {
+      "id": null,
+      "title": "Usage Type",
+      "sort": false,
+      "supported_operations": ["==", "<>", "=", "all"],
+      "empty_term_supported": true
+    },
+    "remote_representation_integration_system_code": {
+      "id": null,
+      "title": "Remote repository",
+      "sort": false,
+      "supported_operations": ["==", "<>", "=", "all"],
+      "empty_term_supported": true
+    },
+    "remote_representation_linkingparameter1": {
+      "id": null,
+      "title": "Linking Parameter 1",
+      "sort": false,
+      "supported_operations": ["all", "="],
+      "empty_term_supported": true
+    },
+    "remote_representation_linkingparameter2": {
+      "id": null,
+      "title": "Linking Parameter 2",
+      "sort": false,
+      "supported_operations": ["all", "="],
+      "empty_term_supported": true
+    },
+    "remote_representation_linkingparameter3": {
+      "id": null,
+      "title": "Linking Parameter 3",
+      "sort": false,
+      "supported_operations": ["all", "="],
+      "empty_term_supported": true
+    },
+    "remote_representation_linkingparameter4": {
+      "id": null,
+      "title": "Linking Parameter 4",
+      "sort": false,
+      "supported_operations": ["all", "="],
+      "empty_term_supported": true
+    },
+    "remote_representation_linkingparameter5": {
+      "id": null,
+      "title": "Linking Parameter 5",
+      "sort": false,
+      "supported_operations": ["all", "="],
+      "empty_term_supported": true
+    },
+    "remote_representation_originating_system_id": {
+      "id": null,
+      "title": "Originating Record ID",
+      "sort": false,
+      "supported_operations": ["all", "="],
+      "empty_term_supported": true
+    },
+    "rep_Library": {
+      "id": null,
+      "title": "Library",
+      "sort": false,
+      "supported_operations": ["==", "<>", "=", "all"],
+      "empty_term_supported": true
+    },
+    "rep_public_note": {
+      "id": null,
+      "title": "Public note (Physical Item)",
+      "sort": false,
+      "supported_operations": ["all", "="],
+      "empty_term_supported": true
+    },
+    "repCreator": {
+      "id": null,
+      "title": "Creator (Title)",
+      "sort": false,
+      "supported_operations": ["all", "="],
+      "empty_term_supported": true
+    },
+    "repPoLineId": {
+      "id": null,
+      "title": "PO Line",
+      "sort": false,
+      "supported_operations": ["all", "="],
+      "empty_term_supported": true
+    },
+    "representation_has_cdl": {
+      "id": null,
+      "title": "Long Term Digital Loan",
+      "sort": false,
+      "supported_operations": ["==", "=", "all"],
+      "empty_term_supported": false
+    },
+    "representation_label": {
+      "id": null,
+      "title": "Representation Label",
+      "sort": false,
+      "supported_operations": ["all", "="],
+      "empty_term_supported": true
+    },
+    "representation_originating_system_id": {
+      "id": null,
+      "title": "Provenance ID",
+      "sort": false,
+      "supported_operations": ["all", "="],
+      "empty_term_supported": true
+    },
+    "representation_pid": {
+      "id": null,
+      "title": "Representation PID",
+      "sort": false,
+      "supported_operations": ["==", ">", ">=", "<", "<=", "<>", "=", "all"],
+      "empty_term_supported": false
+    },
+    "representationEntityType": {
+      "id": null,
+      "title": "Entity type",
+      "sort": false,
+      "supported_operations": ["==", "<>", "=", "all"],
+      "empty_term_supported": true
+    },
+    "repTitle": {
+      "id": null,
+      "title": "Title",
+      "sort": false,
+      "supported_operations": ["all", "="],
+      "empty_term_supported": true
+    },
+    "tagActive": {
+      "id": null,
+      "title": "Tag Active (Representation)",
+      "sort": false,
+      "supported_operations": ["==", "=", "all"],
+      "empty_term_supported": false
+    },
+    "volume": {
+      "id": null,
+      "title": "Volume",
+      "sort": false,
+      "supported_operations": ["all", "="],
+      "empty_term_supported": true
+    },
+    "activateFrom": {
+      "id": null,
+      "title": "Activate From",
+      "sort": false,
+      "supported_operations": ["==", "<>", "<", ">", "=", "all"],
+      "empty_term_supported": true
+    },
+    "activateTo": {
+      "id": null,
+      "title": "Activate To",
+      "sort": false,
+      "supported_operations": ["==", "<>", "<", ">", "=", "all"],
+      "empty_term_supported": true
+    },
+    "aggregator": {
+      "id": null,
+      "title": "Electronic Collection Type",
+      "sort": false,
+      "supported_operations": ["==", "<>", "=", "all"],
+      "empty_term_supported": true
+    },
+    "category": {
+      "id": null,
+      "title": "Category",
+      "sort": false,
+      "supported_operations": ["all", "="],
+      "empty_term_supported": true
+    },
+    "cdi_delivery": {
+      "id": null,
+      "title": "CDI-only full text activation",
+      "sort": false,
+      "supported_operations": ["==", "=", "all"],
+      "empty_term_supported": false
+    },
+    "coll_available_for_group": {
+      "id": null,
+      "title": "Collection Available for group",
+      "sort": false,
+      "supported_operations": ["==", "<>", "=", "all"],
+      "empty_term_supported": true
+    },
+    "coll_available_only_for_group": {
+      "id": null,
+      "title": "Collection available explicitly for group",
+      "sort": false,
+      "supported_operations": ["==", "<>", "=", "all"],
+      "empty_term_supported": true
+    },
+    "creatorName": {
+      "id": null,
+      "title": "Creator Name (Electronic Collection)",
+      "sort": false,
+      "supported_operations": ["all", "="],
+      "empty_term_supported": true
+    },
+    "crossrefenabled": {
+      "id": null,
+      "title": "Crossref enabled",
+      "sort": false,
+      "supported_operations": ["==", "<>", "=", "all"],
+      "empty_term_supported": true
+    },
+    "db_id": {
+      "id": null,
+      "title": "CDI Collection ID (DB ID)",
+      "sort": false,
+      "supported_operations": ["==", "=", "all"],
+      "empty_term_supported": false
+    },
+    "iepa_accessType": {
+      "id": null,
+      "title": "Collection Access Type",
+      "sort": false,
+      "supported_operations": ["==", "<>", "=", "all"],
+      "empty_term_supported": true
+    },
+    "iepa_activationDate": {
+      "id": null,
+      "title": "Activation Date (Electronic Collection)",
+      "sort": false,
+      "supported_operations": ["==", "<>", "<", ">", "=", "all"],
+      "empty_term_supported": true
+    },
+    "iepa_authenticationNote": {
+      "id": null,
+      "title": "Authentication note (Electronic Collection)",
+      "sort": false,
+      "supported_operations": ["all", "=", "=="],
+      "empty_term_supported": true
+    },
+    "iepa_cdi_fulltext_rights": {
+      "id": null,
+      "title": "CDI Fulltext rights",
+      "sort": false,
+      "supported_operations": ["==", "=", "all"],
+      "empty_term_supported": false
+    },
+    "iepa_cdi_linking": {
+      "id": null,
+      "title": "CDI Fulltext Linking",
+      "sort": false,
+      "supported_operations": ["==", "=", "all"],
+      "empty_term_supported": false
+    },
+    "iepa_cdi_newspaper_search": {
+      "id": null,
+      "title": "CDI Newspapers",
+      "sort": false,
+      "supported_operations": ["==", "=", "all"],
+      "empty_term_supported": false
+    },
+    "iepa_cdi_provider_coverage": {
+      "id": null,
+      "title": "CDI Provider Coverage",
+      "sort": false,
+      "supported_operations": ["==", "=", "all"],
+      "empty_term_supported": false
+    },
+    "iepa_cdi_search_rights": {
+      "id": null,
+      "title": "CDI Search rights",
+      "sort": false,
+      "supported_operations": ["==", "=", "all"],
+      "empty_term_supported": false
+    },
+    "iepa_cdi_type": {
+      "id": null,
+      "title": "CDI Type",
+      "sort": false,
+      "supported_operations": ["==", "=", "all"],
+      "empty_term_supported": false
+    },
+    "iepa_contributedBy": {
+      "id": null,
+      "title": "Contributed By (Electronic Collection)",
+      "sort": false,
+      "supported_operations": ["all", "="],
+      "empty_term_supported": true
+    },
+    "iepa_is_local": {
+      "id": null,
+      "title": "Is Local (Electronic Collection)",
+      "sort": false,
+      "supported_operations": ["==", "=", "all"],
+      "empty_term_supported": true
+    },
+    "iepa_isFree": {
+      "id": null,
+      "title": "Free (Electronic Collection)",
+      "sort": false,
+      "supported_operations": ["==", "=", "all"],
+      "empty_term_supported": true
+    },
+    "iepa_language": {
+      "id": null,
+      "title": "Language (Electronic Collection)",
+      "sort": false,
+      "supported_operations": ["==", "<>", "=", "all"],
+      "empty_term_supported": true
+    },
+    "iepa_Library": {
+      "id": null,
+      "title": "c.search.index_names.iepaLibrary",
+      "sort": false,
+      "supported_operations": ["==", "=", "all"],
+      "empty_term_supported": true
+    },
+    "iepa_managementLevel": {
+      "id": null,
+      "title": "Management level in Community Zone (Electronic Collection)",
+      "sort": false,
+      "supported_operations": ["==", "=", "all"],
+      "empty_term_supported": false
+    },
+    "iepa_pid": {
+      "id": null,
+      "title": "Electronic Collection ID",
+      "sort": false,
+      "supported_operations": ["==", ">", ">=", "<", "<=", "<>", "=", "all"],
+      "empty_term_supported": false
+    },
+    "iepa_POLineID": {
+      "id": null,
+      "title": "Collection PO Line ID",
+      "sort": false,
+      "supported_operations": ["all", "="],
+      "empty_term_supported": true
+    },
+    "iepa_proxyEnabled": {
+      "id": null,
+      "title": "Proxy Enabled (Electronic Collection)",
+      "sort": false,
+      "supported_operations": ["==", "=", "all"],
+      "empty_term_supported": true
+    },
+    "iepa_selectiveIndication": {
+      "id": null,
+      "title": "We subscribe only to some titles in this collection",
+      "sort": false,
+      "supported_operations": ["==", "=", "all"],
+      "empty_term_supported": false
+    },
+    "iepa_suppressFromCdi": {
+      "id": null,
+      "title": "CDI Suppress Full Text",
+      "sort": false,
+      "supported_operations": ["==", "=", "all"],
+      "empty_term_supported": false
+    },
+    "interfaceName": {
+      "id": null,
+      "title": "Interface Name (Electronic Collection)",
+      "sort": false,
+      "supported_operations": ["all", "="],
+      "empty_term_supported": true
+    },
+    "internalDescription": {
+      "id": null,
+      "title": "Internal Description (Electronic Collection)",
+      "sort": false,
+      "supported_operations": ["all", "=", "=="],
+      "empty_term_supported": true
+    },
+    "isFree": {
+      "id": null,
+      "title": "Free (Service)",
+      "sort": false,
+      "supported_operations": ["==", "=", "all"],
+      "empty_term_supported": true
+    },
+    "linkingLevel": {
+      "id": null,
+      "title": "Linking Level",
+      "sort": false,
+      "supported_operations": ["==", "<>", "=", "all"],
+      "empty_term_supported": true
+    },
+    "linkResolverPlugin": {
+      "id": null,
+      "title": "Link Resolver Plugin",
+      "sort": false,
+      "supported_operations": ["==", "<>", "=", "all"],
+      "empty_term_supported": true
+    },
+    "package_available_for": {
+      "id": null,
+      "title": "Available for",
+      "sort": false,
+      "supported_operations": ["==", "<>", "=", "all"],
+      "empty_term_supported": true
+    },
+    "package_available_only_for": {
+      "id": null,
+      "title": "Available for",
+      "sort": false,
+      "supported_operations": ["==", "<>", "=", "all"],
+      "empty_term_supported": true
+    },
+    "package_creation_date": {
+      "id": null,
+      "title": "Creation Date (Electronic Collection)",
+      "sort": false,
+      "supported_operations": ["==", "<>", "<", ">", "=", "all"],
+      "empty_term_supported": true
+    },
+    "package_license_id": {
+      "id": null,
+      "title": "Service Authentication Note",
+      "sort": false,
+      "supported_operations": ["all", "="],
+      "empty_term_supported": true
+    },
+    "package_modification_date": {
+      "id": null,
+      "title": "Modification Date (Electronic Collection)",
+      "sort": false,
+      "supported_operations": ["==", "<>", "<", ">", "=", "all"],
+      "empty_term_supported": true
+    },
+    "package_nativeInterfaceUrl": {
+      "id": null,
+      "title": "URL (Electronic Collection)",
+      "sort": false,
+      "supported_operations": ["all", "="],
+      "empty_term_supported": true
+    },
+    "packageName": {
+      "id": null,
+      "title": "Electronic Collection Name",
+      "sort": false,
+      "supported_operations": ["all", "=", "=="],
+      "empty_term_supported": true
+    },
+    "packageType": {
+      "id": null,
+      "title": "Electronic Collection Content Type",
+      "sort": false,
+      "supported_operations": ["==", "<>", "=", "all"],
+      "empty_term_supported": true
+    },
+    "pps_authenticationNote": {
+      "id": null,
+      "title": "Service Authentication Note",
+      "sort": false,
+      "supported_operations": ["all", "=", "=="],
+      "empty_term_supported": true
+    },
+    "pps_baseStatus": {
+      "id": null,
+      "title": "Availability (Electronic Collection)",
+      "sort": false,
+      "supported_operations": ["==", "<>", "=", "all"],
+      "empty_term_supported": true
+    },
+    "proxySelected": {
+      "id": null,
+      "title": "Proxy name (Electronic Collection)",
+      "sort": false,
+      "supported_operations": ["all", "="],
+      "empty_term_supported": true
+    },
+    "publicNote": {
+      "id": null,
+      "title": "Public note (Electronic Collection)",
+      "sort": false,
+      "supported_operations": ["all", "=", "=="],
+      "empty_term_supported": true
+    },
+    "service_pid": {
+      "id": null,
+      "title": "Title Service PID",
+      "sort": false,
+      "supported_operations": ["==", ">", ">=", "<", "<=", "<>", "=", "all"],
+      "empty_term_supported": false
+    },
+    "service_proxyEnabled": {
+      "id": null,
+      "title": "Proxy Enabled (Service)",
+      "sort": false,
+      "supported_operations": ["==", "=", "all"],
+      "empty_term_supported": true
+    },
+    "serviceType": {
+      "id": null,
+      "title": "Service Type",
+      "sort": false,
+      "supported_operations": ["==", "<>", "=", "all"],
+      "empty_term_supported": true
+    },
+    "tps_managed_by": {
+      "id": null,
+      "title": "Managed by Provider (Electronic Collection)",
+      "sort": false,
+      "supported_operations": ["==", "=", "all"],
+      "empty_term_supported": false
+    }
+  },
+  "rec": {
+    "id": {
+      "id": null,
+      "title": "Record Identifier (MMS ID)",
+      "sort": false,
+      "supported_operations": ["==", ">", ">=", "<", "<=", "<>", "=", "all"],
+      "empty_term_supported": false
+    }
+  }
+}

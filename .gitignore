@@ -1,0 +1,16 @@
+# System
+.vscode
+*.DS_Store
+
+# Python
+*__pycache__
+.venv
+
+# Packaging
+dist
+src/*.egg-info
+
+# Scratch files
+available_indexes.txt
+response.xml
+explain_response_error.xml

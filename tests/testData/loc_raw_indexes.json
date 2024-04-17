@@ -1,0 +1,70 @@
+[
+  {
+    "@id": "1016",
+    "title": "Keyword Anywhere",
+    "map": { "name": { "@set": "cql", "#text": "anywhere" } }
+  },
+  {
+    "@id": "4",
+    "title": "Title",
+    "map": { "name": { "@set": "dc", "#text": "title" } }
+  },
+  {
+    "@id": "1003",
+    "title": "Creator",
+    "map": [
+      { "name": { "@set": "dc", "#text": "creator" } },
+      { "name": { "@set": "dc", "#text": "author" } }
+    ]
+  },
+  {
+    "@id": "21",
+    "title": "Subject",
+    "map": { "name": { "@set": "dc", "#text": "subject" } }
+  },
+  {
+    "@id": "1002",
+    "title": "Name",
+    "map": { "name": { "@set": "bath", "#text": "name" } }
+  },
+  {
+    "@id": "1",
+    "title": "Personal Name",
+    "map": { "name": { "@set": "bath", "#text": "personalName" } }
+  },
+  {
+    "@id": "2",
+    "title": "Corporate Name",
+    "map": { "name": { "@set": "bath", "#text": "corporateName" } }
+  },
+  {
+    "@id": "3",
+    "title": "Conference Name",
+    "map": { "name": { "@set": "bath", "#text": "conferenceName" } }
+  },
+  {
+    "@id": "58",
+    "title": "Geographic Name",
+    "map": { "name": { "@set": "bath", "#text": "geographicName" } }
+  },
+  {
+    "@id": "7",
+    "title": "ISBN",
+    "map": { "name": { "@set": "bath", "#text": "isbn" } }
+  },
+  {
+    "@id": "8",
+    "title": "ISSN",
+    "map": { "name": { "@set": "bath", "#text": "issn" } }
+  },
+  {
+    "@id": "9",
+    "title": "LC Control Number",
+    "map": { "name": { "@set": "bath", "#text": "lccn" } }
+  },
+  {
+    "@id": "1007",
+    "title": "Standard Identifier",
+    "map": { "name": { "@set": "bath", "#text": "standardIdentifier" } }
+  }
+]

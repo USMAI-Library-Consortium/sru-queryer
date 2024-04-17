@@ -1,0 +1,428 @@
+{
+  "eg": {
+    "after": {
+      "id": "eg.after",
+      "title": "after",
+      "sort": null,
+      "supported_operations": [],
+      "empty_term_supported": null
+    },
+    "ascending": {
+      "id": "eg.ascending",
+      "title": "ascending",
+      "sort": null,
+      "supported_operations": [],
+      "empty_term_supported": null
+    },
+    "au": {
+      "id": "eg.au",
+      "title": "au",
+      "sort": null,
+      "supported_operations": [],
+      "empty_term_supported": null
+    },
+    "author": {
+      "id": "eg.author",
+      "title": "author",
+      "sort": null,
+      "supported_operations": [],
+      "empty_term_supported": null
+    },
+    "available": {
+      "id": "eg.available",
+      "title": "Filter to available (true|false)",
+      "sort": null,
+      "supported_operations": [],
+      "empty_term_supported": null
+    },
+    "before": {
+      "id": "eg.before",
+      "title": "before",
+      "sort": null,
+      "supported_operations": [],
+      "empty_term_supported": null
+    },
+    "bibid": {
+      "id": "eg.bibid",
+      "title": "bibid",
+      "sort": null,
+      "supported_operations": [],
+      "empty_term_supported": null
+    },
+    "callnumber": {
+      "id": "eg.callnumber",
+      "title": "callnumber",
+      "sort": null,
+      "supported_operations": [],
+      "empty_term_supported": null
+    },
+    "creator": {
+      "id": "eg.creator",
+      "title": "creator",
+      "sort": null,
+      "supported_operations": [],
+      "empty_term_supported": null
+    },
+    "depth": {
+      "id": "eg.depth",
+      "title": "depth",
+      "sort": null,
+      "supported_operations": [],
+      "empty_term_supported": null
+    },
+    "descending": {
+      "id": "eg.descending",
+      "title": "descending",
+      "sort": null,
+      "supported_operations": [],
+      "empty_term_supported": null
+    },
+    "format": {
+      "id": "eg.format",
+      "title": "format",
+      "sort": null,
+      "supported_operations": [],
+      "empty_term_supported": null
+    },
+    "id": {
+      "id": "eg.id",
+      "title": "id",
+      "sort": null,
+      "supported_operations": [],
+      "empty_term_supported": null
+    },
+    "isbn": {
+      "id": "eg.isbn",
+      "title": "isbn",
+      "sort": null,
+      "supported_operations": [],
+      "empty_term_supported": null
+    },
+    "issn": {
+      "id": "eg.issn",
+      "title": "issn",
+      "sort": null,
+      "supported_operations": [],
+      "empty_term_supported": null
+    },
+    "keyword": {
+      "id": "eg.keyword",
+      "title": "keyword",
+      "sort": null,
+      "supported_operations": [],
+      "empty_term_supported": null
+    },
+    "kw": {
+      "id": "eg.kw",
+      "title": "kw",
+      "sort": null,
+      "supported_operations": [],
+      "empty_term_supported": null
+    },
+    "lasso": {
+      "id": "eg.lasso",
+      "title": "lasso",
+      "sort": null,
+      "supported_operations": [],
+      "empty_term_supported": null
+    },
+    "limit": {
+      "id": "eg.limit",
+      "title": "limit",
+      "sort": null,
+      "supported_operations": [],
+      "empty_term_supported": null
+    },
+    "locations": {
+      "id": "eg.locations",
+      "title": "locations",
+      "sort": null,
+      "supported_operations": [],
+      "empty_term_supported": null
+    },
+    "name": {
+      "id": "eg.name",
+      "title": "name",
+      "sort": null,
+      "supported_operations": [],
+      "empty_term_supported": null
+    },
+    "offset": {
+      "id": "eg.offset",
+      "title": "offset",
+      "sort": null,
+      "supported_operations": [],
+      "empty_term_supported": null
+    },
+    "preferred_language": {
+      "id": "eg.preferred_language",
+      "title": "preferred_language",
+      "sort": null,
+      "supported_operations": [],
+      "empty_term_supported": null
+    },
+    "preferred_language_multiplier": {
+      "id": "eg.preferred_language_multiplier",
+      "title": "preferred_language_multiplier",
+      "sort": null,
+      "supported_operations": [],
+      "empty_term_supported": null
+    },
+    "preferred_language_weight": {
+      "id": "eg.preferred_language_weight",
+      "title": "preferred_language_weight",
+      "sort": null,
+      "supported_operations": [],
+      "empty_term_supported": null
+    },
+    "se": {
+      "id": "eg.se",
+      "title": "se",
+      "sort": null,
+      "supported_operations": [],
+      "empty_term_supported": null
+    },
+    "series": {
+      "id": "eg.series",
+      "title": "series",
+      "sort": null,
+      "supported_operations": [],
+      "empty_term_supported": null
+    },
+    "site": {
+      "id": "eg.site",
+      "title": "Evergreen Site Code (shortname)",
+      "sort": null,
+      "supported_operations": [],
+      "empty_term_supported": null
+    },
+    "sort": {
+      "id": "eg.sort",
+      "title": "Sort on relevance, title, author, pubdate, create_date or edit_date",
+      "sort": null,
+      "supported_operations": [],
+      "empty_term_supported": null
+    },
+    "statuses": {
+      "id": "eg.statuses",
+      "title": "statuses",
+      "sort": null,
+      "supported_operations": [],
+      "empty_term_supported": null
+    },
+    "su": {
+      "id": "eg.su",
+      "title": "su",
+      "sort": null,
+      "supported_operations": [],
+      "empty_term_supported": null
+    },
+    "subject": {
+      "id": "eg.subject",
+      "title": "subject",
+      "sort": null,
+      "supported_operations": [],
+      "empty_term_supported": null
+    },
+    "tcn": {
+      "id": "eg.tcn",
+      "title": "tcn",
+      "sort": null,
+      "supported_operations": [],
+      "empty_term_supported": null
+    },
+    "ti": {
+      "id": "eg.ti",
+      "title": "ti",
+      "sort": null,
+      "supported_operations": [],
+      "empty_term_supported": null
+    },
+    "title": {
+      "id": "eg.title",
+      "title": "title",
+      "sort": null,
+      "supported_operations": [],
+      "empty_term_supported": null
+    },
+    "upc": {
+      "id": "eg.upc",
+      "title": "upc",
+      "sort": null,
+      "supported_operations": [],
+      "empty_term_supported": null
+    }
+  },
+  "dc": {
+    "contributor": {
+      "id": "dc.contributor",
+      "title": "contributor",
+      "sort": null,
+      "supported_operations": [],
+      "empty_term_supported": null
+    },
+    "creator": {
+      "id": "dc.creator",
+      "title": "creator",
+      "sort": null,
+      "supported_operations": [],
+      "empty_term_supported": null
+    },
+    "identifier": {
+      "id": "dc.identifier",
+      "title": "identifier",
+      "sort": null,
+      "supported_operations": [],
+      "empty_term_supported": null
+    },
+    "publisher": {
+      "id": "dc.publisher",
+      "title": "publisher",
+      "sort": null,
+      "supported_operations": [],
+      "empty_term_supported": null
+    },
+    "subject": {
+      "id": "dc.subject",
+      "title": "subject",
+      "sort": null,
+      "supported_operations": [],
+      "empty_term_supported": null
+    },
+    "title": {
+      "id": "dc.title",
+      "title": "title",
+      "sort": null,
+      "supported_operations": [],
+      "empty_term_supported": null
+    }
+  },
+  "bib": {
+    "edition": {
+      "id": "bib.edition",
+      "title": "edition",
+      "sort": null,
+      "supported_operations": [],
+      "empty_term_supported": null
+    },
+    "genre": {
+      "id": "bib.genre",
+      "title": "genre",
+      "sort": null,
+      "supported_operations": [],
+      "empty_term_supported": null
+    },
+    "name": {
+      "id": "bib.name",
+      "title": "name",
+      "sort": null,
+      "supported_operations": [],
+      "empty_term_supported": null
+    },
+    "nameconference": {
+      "id": "bib.nameconference",
+      "title": "nameconference",
+      "sort": null,
+      "supported_operations": [],
+      "empty_term_supported": null
+    },
+    "namecorporate": {
+      "id": "bib.namecorporate",
+      "title": "namecorporate",
+      "sort": null,
+      "supported_operations": [],
+      "empty_term_supported": null
+    },
+    "namepersonal": {
+      "id": "bib.namepersonal",
+      "title": "namepersonal",
+      "sort": null,
+      "supported_operations": [],
+      "empty_term_supported": null
+    },
+    "namepersonalfamily": {
+      "id": "bib.namepersonalfamily",
+      "title": "namepersonalfamily",
+      "sort": null,
+      "supported_operations": [],
+      "empty_term_supported": null
+    },
+    "namepersonalgiven": {
+      "id": "bib.namepersonalgiven",
+      "title": "namepersonalgiven",
+      "sort": null,
+      "supported_operations": [],
+      "empty_term_supported": null
+    },
+    "subjectname": {
+      "id": "bib.subjectname",
+      "title": "subjectname",
+      "sort": null,
+      "supported_operations": [],
+      "empty_term_supported": null
+    },
+    "subjectoccupation": {
+      "id": "bib.subjectoccupation",
+      "title": "subjectoccupation",
+      "sort": null,
+      "supported_operations": [],
+      "empty_term_supported": null
+    },
+    "subjectplace": {
+      "id": "bib.subjectplace",
+      "title": "subjectplace",
+      "sort": null,
+      "supported_operations": [],
+      "empty_term_supported": null
+    },
+    "subjecttitle": {
+      "id": "bib.subjecttitle",
+      "title": "subjecttitle",
+      "sort": null,
+      "supported_operations": [],
+      "empty_term_supported": null
+    },
+    "title": {
+      "id": "bib.title",
+      "title": "title",
+      "sort": null,
+      "supported_operations": [],
+      "empty_term_supported": null
+    },
+    "titleabbreviated": {
+      "id": "bib.titleabbreviated",
+      "title": "titleabbreviated",
+      "sort": null,
+      "supported_operations": [],
+      "empty_term_supported": null
+    },
+    "titlealternative": {
+      "id": "bib.titlealternative",
+      "title": "titlealternative",
+      "sort": null,
+      "supported_operations": [],
+      "empty_term_supported": null
+    },
+    "titleseries": {
+      "id": "bib.titleseries",
+      "title": "titleseries",
+      "sort": null,
+      "supported_operations": [],
+      "empty_term_supported": null
+    },
+    "titletranslated": {
+      "id": "bib.titletranslated",
+      "title": "titletranslated",
+      "sort": null,
+      "supported_operations": [],
+      "empty_term_supported": null
+    },
+    "titleuniform": {
+      "id": "bib.titleuniform",
+      "title": "titleuniform",
+      "sort": null,
+      "supported_operations": [],
+      "empty_term_supported": null
+    }
+  }
+}

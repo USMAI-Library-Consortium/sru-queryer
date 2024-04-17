@@ -1,0 +1,4854 @@
+[
+  {
+    "ns:title": "Accompanying Material",
+    "map": { "name": { "@set": "alma", "#text": "accompanying_material" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Additional Physical Form Available Note",
+    "map": {
+      "name": {
+        "@set": "alma",
+        "#text": "additional_physical_form_available_note"
+      }
+    },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "==" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Keywords",
+    "map": { "name": { "@set": "alma", "#text": "all_for_ui" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Edition",
+    "map": {
+      "name": { "@set": "alma", "#text": "alternate_complete_edition" }
+    },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "==" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Authority Id",
+    "map": { "name": { "@set": "alma", "#text": "authority_id" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Authority Vocabulary",
+    "map": { "name": { "@set": "alma", "#text": "authority_vocabulary" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Bibliographic Level",
+    "map": { "name": { "@set": "alma", "#text": "bib_level" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "relation", "#text": "<>" },
+        { "@type": "emptyTerm" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Carrier Type Code (Title)",
+    "map": { "name": { "@set": "alma", "#text": "carrier_type_code" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "relation", "#text": "<>" },
+        { "@type": "emptyTerm" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Carrier Type Term (Title)",
+    "map": { "name": { "@set": "alma", "#text": "carrier_type_term" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "relation", "#text": "<>" },
+        { "@type": "emptyTerm" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Cartographic Mathematical Data",
+    "map": {
+      "name": { "@set": "alma", "#text": "cartographic_mathematical_data" }
+    },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Physical Description",
+    "map": { "name": { "@set": "alma", "#text": "category_of_material" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "relation", "#text": "<>" },
+        { "@type": "emptyTerm" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Classification Part",
+    "map": { "name": { "@set": "alma", "#text": "classification_part" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "==" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Coded Cartographic Mathematical Data",
+    "map": {
+      "name": {
+        "@set": "alma",
+        "#text": "coded_cartographic_mathematical_data"
+      }
+    },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Content Related Data",
+    "map": { "name": { "@set": "alma", "#text": "content_related_data" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Content Type Code",
+    "map": { "name": { "@set": "alma", "#text": "content_type_code" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "relation", "#text": "<>" },
+        { "@type": "emptyTerm" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Content Type Term",
+    "map": { "name": { "@set": "alma", "#text": "content_type_term" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "relation", "#text": "<>" },
+        { "@type": "emptyTerm" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Copyright Note",
+    "map": { "name": { "@set": "alma", "#text": "copyrights_note" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Country of Publication (code)",
+    "map": { "name": { "@set": "alma", "#text": "country_of_publication" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Country of Publication",
+    "map": {
+      "name": { "@set": "alma", "#text": "country_of_publication_new" }
+    },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "relation", "#text": "<>" },
+        { "@type": "emptyTerm" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  },
+  {
+    "@sort": "true",
+    "ns:title": "Creator",
+    "map": { "name": { "@set": "alma", "#text": "creator" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "==" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Additional Publication Year",
+    "map": { "name": { "@set": "alma", "#text": "date_of_publication" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "dc:contributor",
+    "map": { "name": { "@set": "alma", "#text": "dc_contributor" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "dc:coverage",
+    "map": { "name": { "@set": "alma", "#text": "dc_coverage" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "dc:creator",
+    "map": { "name": { "@set": "alma", "#text": "dc_creator" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "dc:date",
+    "map": { "name": { "@set": "alma", "#text": "dc_date" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "dc:description",
+    "map": { "name": { "@set": "alma", "#text": "dc_description" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "dc:format",
+    "map": { "name": { "@set": "alma", "#text": "dc_format" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "dc:language",
+    "map": { "name": { "@set": "alma", "#text": "dc_language" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "relation", "#text": "<>" },
+        { "@type": "emptyTerm" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  },
+  {
+    "ns:title": "dc:publisher",
+    "map": { "name": { "@set": "alma", "#text": "dc_publisher" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "dc:relation",
+    "map": { "name": { "@set": "alma", "#text": "dc_relation" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "dc:rights",
+    "map": { "name": { "@set": "alma", "#text": "dc_rights" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "dc:source",
+    "map": { "name": { "@set": "alma", "#text": "dc_source" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "dc:subject",
+    "map": { "name": { "@set": "alma", "#text": "dc_subject" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "dc:title",
+    "map": { "name": { "@set": "alma", "#text": "dc_title" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "==" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "dc:type",
+    "map": { "name": { "@set": "alma", "#text": "dc_type" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "relation", "#text": "<>" },
+        { "@type": "emptyTerm" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Description",
+    "map": { "name": { "@set": "alma", "#text": "description" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Dewey Decimal Class Number",
+    "map": {
+      "name": { "@set": "alma", "#text": "dewey_decimal_class_number" }
+    },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "==" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "DOI - Digital Object Identifier",
+    "map": { "name": { "@set": "alma", "#text": "digital_object_identifier" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Electronic Location And Note",
+    "map": { "name": { "@set": "alma", "#text": "elocation" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "==" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Event Date",
+    "map": { "name": { "@set": "alma", "#text": "event_date" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Public Note (Title)",
+    "map": { "name": { "@set": "alma", "#text": "general_note" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "==" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Genre Form",
+    "map": { "name": { "@set": "alma", "#text": "genre_form" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Geographic Area Code",
+    "map": { "name": { "@set": "alma", "#text": "geographic_area_code" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "==" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Government Document Number",
+    "map": {
+      "name": { "@set": "alma", "#text": "government_document_number" }
+    },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Granular Resource Type",
+    "map": { "name": { "@set": "alma", "#text": "granular_resource_type" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Has Inventory",
+    "map": { "name": { "@set": "alma", "#text": "has_inventory" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Heading Information",
+    "map": { "name": { "@set": "alma", "#text": "heading_info" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "==" }
+      ]
+    }
+  },
+  {
+    "ns:title": "dc:identifier",
+    "map": { "name": { "@set": "alma", "#text": "identifier" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "relation", "#text": "<>" },
+        { "@type": "emptyTerm" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Is linked",
+    "map": { "name": { "@set": "alma", "#text": "is_linked" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  },
+  {
+    "ns:title": "ISBN",
+    "map": { "name": { "@set": "alma", "#text": "isbn" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Other Standard ID",
+    "map": { "name": { "@set": "alma", "#text": "ismn" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "ISNI - International Standard Name Identifier",
+    "map": { "name": { "@set": "alma", "#text": "isni_identifier" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "ISNI - Real World Object URI",
+    "map": {
+      "name": { "@set": "alma", "#text": "isni_real_world_object_uri" }
+    },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "==" }
+      ]
+    }
+  },
+  {
+    "ns:title": "ISSN",
+    "map": { "name": { "@set": "alma", "#text": "issn" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "ISSN link",
+    "map": { "name": { "@set": "alma", "#text": "issn_link" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Language (Title)",
+    "map": { "name": { "@set": "alma", "#text": "language" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "relation", "#text": "<>" },
+        { "@type": "emptyTerm" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Language Of Cataloging",
+    "map": { "name": { "@set": "alma", "#text": "language_of_cataloging" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "relation", "#text": "<>" },
+        { "@type": "emptyTerm" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  },
+  {
+    "ns:title": "LC Call Number",
+    "map": { "name": { "@set": "alma", "#text": "lc_class_number" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "==" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "LC Control No.",
+    "map": { "name": { "@set": "alma", "#text": "lccn" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Subjects (LC)",
+    "map": { "name": { "@set": "alma", "#text": "lcsh" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "==" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Linked Institution",
+    "map": { "name": { "@set": "alma", "#text": "link_inst" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "relation", "#text": "<>" },
+        { "@type": "emptyTerm" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Local Control Field 009",
+    "map": { "name": { "@set": "alma", "#text": "local_control_field_009" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "==" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Local field 900",
+    "map": { "name": { "@set": "alma", "#text": "local_field_900" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Local field 906",
+    "map": { "name": { "@set": "alma", "#text": "local_field_906" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Local field 912",
+    "map": { "name": { "@set": "alma", "#text": "local_field_912" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Local field 917",
+    "map": { "name": { "@set": "alma", "#text": "local_field_917" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Local field 919",
+    "map": { "name": { "@set": "alma", "#text": "local_field_919" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "SHK",
+    "map": { "name": { "@set": "alma", "#text": "local_field_939" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Local field 960",
+    "map": { "name": { "@set": "alma", "#text": "local_field_960" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Local field 977",
+    "map": { "name": { "@set": "alma", "#text": "local_field_977" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "CR Restricted",
+    "map": { "name": { "@set": "alma", "#text": "local_field_999" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Local Notes",
+    "map": { "name": { "@set": "alma", "#text": "local_notes" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "lom-edu:context",
+    "map": { "name": { "@set": "alma", "#text": "lom_context" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "lom-edu:description",
+    "map": { "name": { "@set": "alma", "#text": "lom_description" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "lom-edu:difficulty",
+    "map": { "name": { "@set": "alma", "#text": "lom_difficulty" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "lom-edu:intendedEndUserRole",
+    "map": { "name": { "@set": "alma", "#text": "lom_intendedEndUserRole" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "lom-edu:interactivityLevel",
+    "map": { "name": { "@set": "alma", "#text": "lom_interactivityLevel" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "lom-edu:interactivityType",
+    "map": { "name": { "@set": "alma", "#text": "lom_interactivityType" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "lom-edu:language",
+    "map": { "name": { "@set": "alma", "#text": "lom_language" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "lom-edu:semanticDensity",
+    "map": { "name": { "@set": "alma", "#text": "lom_semanticDensity" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "lom-edu:type",
+    "map": { "name": { "@set": "alma", "#text": "lom_type" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "lom-edu:typicalLearningTime",
+    "map": { "name": { "@set": "alma", "#text": "lom_typicalLearningTime" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "@sort": "true",
+    "ns:title": "Publication Year",
+    "map": { "name": { "@set": "alma", "#text": "main_pub_date" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "relation", "#text": ">" },
+        { "@type": "relation", "#text": ">=" },
+        { "@type": "relation", "#text": "<" },
+        { "@type": "relation", "#text": "<=" },
+        { "@type": "relation", "#text": "<>" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Media Type Code (Title)",
+    "map": { "name": { "@set": "alma", "#text": "media_type_code" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "relation", "#text": "<>" },
+        { "@type": "emptyTerm" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Media Type Term (Title)",
+    "map": { "name": { "@set": "alma", "#text": "media_type_term" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "relation", "#text": "<>" },
+        { "@type": "emptyTerm" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Medium Type",
+    "map": { "name": { "@set": "alma", "#text": "medium_type" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "relation", "#text": "<>" },
+        { "@type": "emptyTerm" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Medical Subjects (MeSH)",
+    "map": { "name": { "@set": "alma", "#text": "mesh" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "==" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Brief Level",
+    "map": { "name": { "@set": "alma", "#text": "mms_briefLevel" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "==" },
+        { "@type": "relation", "#text": ">" },
+        { "@type": "relation", "#text": ">=" },
+        { "@type": "relation", "#text": "<" },
+        { "@type": "relation", "#text": "<=" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Cataloger Level",
+    "map": { "name": { "@set": "alma", "#text": "mms_catalogerLevel" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "==" },
+        { "@type": "relation", "#text": ">" },
+        { "@type": "relation", "#text": ">=" },
+        { "@type": "relation", "#text": "<" },
+        { "@type": "relation", "#text": "<=" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Contributed By",
+    "map": { "name": { "@set": "alma", "#text": "mms_contributedBy" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "MMS Creation Date (Title)",
+    "map": { "name": { "@set": "alma", "#text": "mms_createDate" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "relation", "#text": "<>" },
+        { "@type": "relation", "#text": "<" },
+        { "@type": "relation", "#text": ">" },
+        { "@type": "emptyTerm" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Handle Identifier",
+    "map": { "name": { "@set": "alma", "#text": "mms_handle" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "MMS ID",
+    "map": { "name": { "@set": "alma", "#text": "mms_id" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "relation", "#text": ">" },
+        { "@type": "relation", "#text": ">=" },
+        { "@type": "relation", "#text": "<" },
+        { "@type": "relation", "#text": "<=" },
+        { "@type": "relation", "#text": "<>" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Is Handle Registered",
+    "map": { "name": { "@set": "alma", "#text": "mms_is_handle_registered" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Managed By Provider (Title)",
+    "map": { "name": { "@set": "alma", "#text": "mms_managed_by" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Material type",
+    "map": { "name": { "@set": "alma", "#text": "mms_material_type" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "relation", "#text": "<>" },
+        { "@type": "emptyTerm" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Md Import modification job id",
+    "map": {
+      "name": { "@set": "alma", "#text": "mms_mdImportModificationHistory" }
+    },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Collection ID",
+    "map": { "name": { "@set": "alma", "#text": "mms_memberOfDeep" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Modification Date (Title)",
+    "map": { "name": { "@set": "alma", "#text": "mms_modificationDate" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "relation", "#text": "<>" },
+        { "@type": "relation", "#text": "<" },
+        { "@type": "relation", "#text": ">" },
+        { "@type": "emptyTerm" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Originating System",
+    "map": { "name": { "@set": "alma", "#text": "mms_originatingSystem" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "==" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Originating System Id",
+    "map": { "name": { "@set": "alma", "#text": "mms_originatingSystemId" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Bibliographic Rank",
+    "map": { "name": { "@set": "alma", "#text": "mms_qualityScore" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "relation", "#text": ">" },
+        { "@type": "relation", "#text": ">=" },
+        { "@type": "relation", "#text": "<" },
+        { "@type": "relation", "#text": "<=" },
+        { "@type": "relation", "#text": "<>" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Resource Type",
+    "map": { "name": { "@set": "alma", "#text": "mms_resource_type" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "relation", "#text": "<>" },
+        { "@type": "emptyTerm" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  },
+  {
+    "ns:title": "MMS SIP ID",
+    "map": { "name": { "@set": "alma", "#text": "mms_sip_id" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Tag Suppressed (Title)",
+    "map": { "name": { "@set": "alma", "#text": "mms_tagSuppressed" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "relation", "#text": "<>" },
+        { "@type": "emptyTerm" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Tag Suppressed From External Search",
+    "map": {
+      "name": { "@set": "alma", "#text": "mms_tagSuppressedExternalSearch" }
+    },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "relation", "#text": "<>" },
+        { "@type": "emptyTerm" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Tag Suppressed From MetaDoor",
+    "map": { "name": { "@set": "alma", "#text": "mms_tagSuppressedMetadoor" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "relation", "#text": "<>" },
+        { "@type": "emptyTerm" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Tag Sync External Catalog",
+    "map": {
+      "name": { "@set": "alma", "#text": "mms_tagSyncExternalCatalog" }
+    },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "relation", "#text": "<>" },
+        { "@type": "emptyTerm" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Tag Sync External Catalog",
+    "map": {
+      "name": { "@set": "alma", "#text": "mms_tagSyncNationalCatalog" }
+    },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "relation", "#text": "<>" },
+        { "@type": "emptyTerm" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  },
+  {
+    "ns:title": "NAL Call Number",
+    "map": { "name": { "@set": "alma", "#text": "nal_call_number" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "==" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Names",
+    "map": { "name": { "@set": "alma", "#text": "name" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "==" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "National Bibliography Number",
+    "map": {
+      "name": { "@set": "alma", "#text": "national_bibliography_number" }
+    },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "NLM-type Call Number",
+    "map": { "name": { "@set": "alma", "#text": "nlm_call_number" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "==" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Notes",
+    "map": { "name": { "@set": "alma", "#text": "notes" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "OCLC Control Number (019)",
+    "map": { "name": { "@set": "alma", "#text": "oclc_control_number_019_a" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "==" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "OCLC Control Number (035a)",
+    "map": { "name": { "@set": "alma", "#text": "oclc_control_number_035_a" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "==" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "OCLC Control Number (035a+z)",
+    "map": {
+      "name": { "@set": "alma", "#text": "oclc_control_number_035_az" }
+    },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "==" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "OCLC Control Number (035z)",
+    "map": { "name": { "@set": "alma", "#text": "oclc_control_number_035_z" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "==" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Open Access",
+    "map": { "name": { "@set": "alma", "#text": "open_access" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "relation", "#text": "<>" },
+        { "@type": "emptyTerm" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  },
+  {
+    "ns:title": "ORCID - Open Researcher and Contributor ID",
+    "map": { "name": { "@set": "alma", "#text": "orcid_identifier" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "ORCID - Real World Object URI",
+    "map": {
+      "name": { "@set": "alma", "#text": "orcid_real_world_object_uri" }
+    },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "==" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Original Cataloging Agency",
+    "map": {
+      "name": { "@set": "alma", "#text": "original_cataloging_agency" }
+    },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Other Classification Number",
+    "map": { "name": { "@set": "alma", "#text": "other_class_number" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "==" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Other Physical Details",
+    "map": { "name": { "@set": "alma", "#text": "other_physical_details" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Other Standard Identifier",
+    "map": { "name": { "@set": "alma", "#text": "other_standard_identifier" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Other System Number",
+    "map": { "name": { "@set": "alma", "#text": "other_system_number" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "==" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Peer Reviewed",
+    "map": { "name": { "@set": "alma", "#text": "peer_reviewed" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "relation", "#text": "<>" },
+        { "@type": "emptyTerm" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Preservation Status",
+    "map": { "name": { "@set": "alma", "#text": "preservation_status" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "emptyTerm" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Publisher",
+    "map": { "name": { "@set": "alma", "#text": "publisher" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "==" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Publisher Location",
+    "map": { "name": { "@set": "alma", "#text": "publisher_location" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Publisher Number",
+    "map": { "name": { "@set": "alma", "#text": "publisher_number" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Real World Object URI",
+    "map": { "name": { "@set": "alma", "#text": "real_world_object_uri" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "==" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Record Format",
+    "map": { "name": { "@set": "alma", "#text": "registry_id" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Relator",
+    "map": { "name": { "@set": "alma", "#text": "relator" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "RUC Classification Number",
+    "map": { "name": { "@set": "alma", "#text": "ruc_class_number" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "==" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Series",
+    "map": { "name": { "@set": "alma", "#text": "series" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "==" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Shelving Location",
+    "map": { "name": { "@set": "alma", "#text": "shelving_location" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "==" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Source Record Id",
+    "map": { "name": { "@set": "alma", "#text": "source_record_id" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Standard Number",
+    "map": { "name": { "@set": "alma", "#text": "standard_number" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Standard Number Source",
+    "map": { "name": { "@set": "alma", "#text": "standard_number_source" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "International Standard Recording Code",
+    "map": {
+      "name": { "@set": "alma", "#text": "stored_standard_number_024_a_ind1_0" }
+    },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "==" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Universal Product Code",
+    "map": {
+      "name": { "@set": "alma", "#text": "stored_standard_number_024_a_ind1_1" }
+    },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "==" }
+      ]
+    }
+  },
+  {
+    "ns:title": "International Standard Music Number",
+    "map": {
+      "name": { "@set": "alma", "#text": "stored_standard_number_024_a_ind1_2" }
+    },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "==" }
+      ]
+    }
+  },
+  {
+    "ns:title": "International Article Number",
+    "map": {
+      "name": { "@set": "alma", "#text": "stored_standard_number_024_a_ind1_3" }
+    },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "==" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Serial Item and Contribution Identifier",
+    "map": {
+      "name": { "@set": "alma", "#text": "stored_standard_number_024_a_ind1_4" }
+    },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "==" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Subject Category Code",
+    "map": { "name": { "@set": "alma", "#text": "subject_category_code" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Subjects",
+    "map": { "name": { "@set": "alma", "#text": "subjects" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "==" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Sublocation",
+    "map": { "name": { "@set": "alma", "#text": "sublocation" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "==" }
+      ]
+    }
+  },
+  {
+    "@sort": "true",
+    "ns:title": "Title",
+    "map": { "name": { "@set": "alma", "#text": "title" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "==" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "(Under construction) Title committed to retain",
+    "map": { "name": { "@set": "alma", "#text": "title_committed_to_retain" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Date Type Status",
+    "map": { "name": { "@set": "alma", "#text": "type_of_date" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "relation", "#text": "<>" },
+        { "@type": "emptyTerm" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Bibliographic Format",
+    "map": { "name": { "@set": "alma", "#text": "type_of_record" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "relation", "#text": "<>" },
+        { "@type": "emptyTerm" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Uniform Title",
+    "map": { "name": { "@set": "alma", "#text": "uniform_title" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "==" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Serial Title",
+    "map": { "name": { "@set": "alma", "#text": "unique_serial_title" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "==" }
+      ]
+    }
+  },
+  {
+    "ns:title": "UDC",
+    "map": {
+      "name": { "@set": "alma", "#text": "universal_decimal_class_number" }
+    },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "==" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Item call number",
+    "map": { "name": { "@set": "alma", "#text": "alterCallNumber" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Item call number type",
+    "map": { "name": { "@set": "alma", "#text": "alternativeCallNumberType" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "relation", "#text": "<>" },
+        { "@type": "emptyTerm" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Receiving date",
+    "map": { "name": { "@set": "alma", "#text": "arrivalDate" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "relation", "#text": "<>" },
+        { "@type": "relation", "#text": "<" },
+        { "@type": "relation", "#text": ">" },
+        { "@type": "emptyTerm" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Barcode",
+    "map": { "name": { "@set": "alma", "#text": "barcode" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "==" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Base status",
+    "map": { "name": { "@set": "alma", "#text": "baseStatus" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "relation", "#text": "<>" },
+        { "@type": "emptyTerm" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Chronology I",
+    "map": { "name": { "@set": "alma", "#text": "chronologyI" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Chronology J",
+    "map": { "name": { "@set": "alma", "#text": "chronologyJ" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Chronology K",
+    "map": { "name": { "@set": "alma", "#text": "chronologyK" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Chronology L",
+    "map": { "name": { "@set": "alma", "#text": "chronologyL" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Chronology M",
+    "map": { "name": { "@set": "alma", "#text": "chronologyM" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Committed to Retain",
+    "map": { "name": { "@set": "alma", "#text": "committedToRetain" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "emptyTerm" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  },
+  {
+    "ns:title": "c.search.index_names.current_library",
+    "map": { "name": { "@set": "alma", "#text": "current_Library" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "relation", "#text": "<>" },
+        { "@type": "emptyTerm" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  },
+  {
+    "ns:title": "c.search.index_names.current_location",
+    "map": { "name": { "@set": "alma", "#text": "current_Location" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "relation", "#text": "<>" },
+        { "@type": "emptyTerm" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Enumeration A",
+    "map": { "name": { "@set": "alma", "#text": "enumerationA" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Enumeration B",
+    "map": { "name": { "@set": "alma", "#text": "enumerationB" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Enumeration C",
+    "map": { "name": { "@set": "alma", "#text": "enumerationC" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Enumeration D",
+    "map": { "name": { "@set": "alma", "#text": "enumerationD" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Enumeration E",
+    "map": { "name": { "@set": "alma", "#text": "enumerationE" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Enumeration F",
+    "map": { "name": { "@set": "alma", "#text": "enumerationF" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Enumeration G",
+    "map": { "name": { "@set": "alma", "#text": "enumerationG" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Enumeration H",
+    "map": { "name": { "@set": "alma", "#text": "enumerationH" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Expected receiving date",
+    "map": { "name": { "@set": "alma", "#text": "expectedArrivalDate" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "relation", "#text": "<>" },
+        { "@type": "relation", "#text": "<" },
+        { "@type": "relation", "#text": ">" },
+        { "@type": "emptyTerm" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Due back from temp location date",
+    "map": {
+      "name": { "@set": "alma", "#text": "expectedReturnFromTempLocation" }
+    },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "relation", "#text": "<>" },
+        { "@type": "relation", "#text": "<" },
+        { "@type": "relation", "#text": ">" },
+        { "@type": "emptyTerm" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Fulfillment Note",
+    "map": { "name": { "@set": "alma", "#text": "fulfilment_note" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "In Process Type",
+    "map": { "name": { "@set": "alma", "#text": "inProcessType" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "emptyTerm" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Internal note 1",
+    "map": { "name": { "@set": "alma", "#text": "internal_note_1" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Internal note 2",
+    "map": { "name": { "@set": "alma", "#text": "internal_note_2" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Internal note 3",
+    "map": { "name": { "@set": "alma", "#text": "internal_note_3" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Inventory date",
+    "map": { "name": { "@set": "alma", "#text": "inventoryDate" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "relation", "#text": "<>" },
+        { "@type": "relation", "#text": "<" },
+        { "@type": "relation", "#text": ">" },
+        { "@type": "emptyTerm" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Inventory number",
+    "map": { "name": { "@set": "alma", "#text": "inventoryNumber" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Is Magnetic",
+    "map": { "name": { "@set": "alma", "#text": "isMagnetic" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "relation", "#text": "<>" },
+        { "@type": "emptyTerm" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Issue year",
+    "map": { "name": { "@set": "alma", "#text": "issueYear" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "relation", "#text": ">" },
+        { "@type": "relation", "#text": ">=" },
+        { "@type": "relation", "#text": "<" },
+        { "@type": "relation", "#text": "<=" },
+        { "@type": "relation", "#text": "<>" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Creation Date (Physical Item)",
+    "map": { "name": { "@set": "alma", "#text": "item_createDate" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "relation", "#text": "<>" },
+        { "@type": "relation", "#text": "<" },
+        { "@type": "relation", "#text": ">" },
+        { "@type": "emptyTerm" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Description",
+    "map": { "name": { "@set": "alma", "#text": "item_description" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Modification Date (Physical Item)",
+    "map": { "name": { "@set": "alma", "#text": "item_modificationDate" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "relation", "#text": "<>" },
+        { "@type": "relation", "#text": "<" },
+        { "@type": "relation", "#text": ">" },
+        { "@type": "emptyTerm" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Item PID",
+    "map": { "name": { "@set": "alma", "#text": "item_pid" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "relation", "#text": ">" },
+        { "@type": "relation", "#text": ">=" },
+        { "@type": "relation", "#text": "<" },
+        { "@type": "relation", "#text": "<=" },
+        { "@type": "relation", "#text": "<>" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Item Issue Date",
+    "map": { "name": { "@set": "alma", "#text": "itemIssueDate" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "relation", "#text": "<>" },
+        { "@type": "relation", "#text": "<" },
+        { "@type": "relation", "#text": ">" },
+        { "@type": "emptyTerm" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Library",
+    "map": { "name": { "@set": "alma", "#text": "itemLibrary" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "relation", "#text": "<>" },
+        { "@type": "emptyTerm" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Location",
+    "map": { "name": { "@set": "alma", "#text": "itemPhysicalLocation" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "relation", "#text": "<>" },
+        { "@type": "emptyTerm" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Item policy",
+    "map": { "name": { "@set": "alma", "#text": "itemPolicy" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "relation", "#text": "<>" },
+        { "@type": "emptyTerm" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  },
+  {
+    "ns:title": "PO Line",
+    "map": { "name": { "@set": "alma", "#text": "itemPOLineID" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Item sequence number",
+    "map": { "name": { "@set": "alma", "#text": "itemSequenceNumber" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Material Type (Physical Item)",
+    "map": { "name": { "@set": "alma", "#text": "materialType" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "emptyTerm" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  },
+  {
+    "ns:title": "On shelf date",
+    "map": { "name": { "@set": "alma", "#text": "onShelfDate" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "relation", "#text": "<>" },
+        { "@type": "relation", "#text": "<" },
+        { "@type": "relation", "#text": ">" },
+        { "@type": "emptyTerm" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  },
+  {
+    "ns:title": "On shelf seq",
+    "map": { "name": { "@set": "alma", "#text": "onShelfSeq" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Pages",
+    "map": { "name": { "@set": "alma", "#text": "pages" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Call Number Type",
+    "map": {
+      "name": { "@set": "alma", "#text": "permanentCallNumberTypeFacet" }
+    },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "relation", "#text": "<>" },
+        { "@type": "emptyTerm" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Physical condition",
+    "map": { "name": { "@set": "alma", "#text": "physicalCondition" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "relation", "#text": "<>" },
+        { "@type": "emptyTerm" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Pieces",
+    "map": { "name": { "@set": "alma", "#text": "pieces" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Process type",
+    "map": { "name": { "@set": "alma", "#text": "processType" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "relation", "#text": "<>" },
+        { "@type": "emptyTerm" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Provenance Code",
+    "map": { "name": { "@set": "alma", "#text": "provenanceCode" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "relation", "#text": "<>" },
+        { "@type": "emptyTerm" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Public note (Physical Item)",
+    "map": { "name": { "@set": "alma", "#text": "public_note" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Retention Note",
+    "map": { "name": { "@set": "alma", "#text": "retentionNote" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "==" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Retention Reason",
+    "map": { "name": { "@set": "alma", "#text": "retentionReason" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "emptyTerm" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Statistics note 1",
+    "map": { "name": { "@set": "alma", "#text": "statisticsNote1" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "==" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Statistics note 2",
+    "map": { "name": { "@set": "alma", "#text": "statisticsNote2" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "==" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Statistics note 3",
+    "map": { "name": { "@set": "alma", "#text": "statisticsNote3" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "==" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Storage Location ID",
+    "map": { "name": { "@set": "alma", "#text": "storageLocationID" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "==" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Temporary call number",
+    "map": { "name": { "@set": "alma", "#text": "temporaryCallNumber" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Temporary call number type",
+    "map": { "name": { "@set": "alma", "#text": "temporaryCallNumberType" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "relation", "#text": "<>" },
+        { "@type": "emptyTerm" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Temporary item policy",
+    "map": { "name": { "@set": "alma", "#text": "temporaryItemPolicy" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "relation", "#text": "<>" },
+        { "@type": "emptyTerm" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Temporary library",
+    "map": { "name": { "@set": "alma", "#text": "temporaryLibrary" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "relation", "#text": "<>" },
+        { "@type": "emptyTerm" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Temporary physical location",
+    "map": { "name": { "@set": "alma", "#text": "temporaryPhysicalLocation" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "relation", "#text": "<>" },
+        { "@type": "emptyTerm" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  },
+  {
+    "ns:title": "In temporary location",
+    "map": {
+      "name": { "@set": "alma", "#text": "temporaryPhysicalLocationInUse" }
+    },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "relation", "#text": ">" },
+        { "@type": "relation", "#text": ">=" },
+        { "@type": "relation", "#text": "<" },
+        { "@type": "relation", "#text": "<=" },
+        { "@type": "relation", "#text": "<>" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Accession Number",
+    "map": { "name": { "@set": "alma", "#text": "accessionNumber" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "==" },
+        { "@type": "relation", "#text": ">" },
+        { "@type": "relation", "#text": ">=" },
+        { "@type": "relation", "#text": "<" },
+        { "@type": "relation", "#text": "<=" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Acquisition Note",
+    "map": { "name": { "@set": "alma", "#text": "acquisition_note" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Action note",
+    "map": { "name": { "@set": "alma", "#text": "action_note" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "==" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Action note - authorization",
+    "map": { "name": { "@set": "alma", "#text": "action_note_authorization" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "==" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Action note - note",
+    "map": { "name": { "@set": "alma", "#text": "action_note_note" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "==" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Binding Note",
+    "map": { "name": { "@set": "alma", "#text": "binding_note" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Call number prefix",
+    "map": { "name": { "@set": "alma", "#text": "callNumberPrefix" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Call number suffix",
+    "map": { "name": { "@set": "alma", "#text": "callNumberSuffix" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Completeness",
+    "map": { "name": { "@set": "alma", "#text": "completeness" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "emptyTerm" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Encoding level",
+    "map": { "name": { "@set": "alma", "#text": "encoding_level" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "emptyTerm" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Ownership and Custodial History",
+    "map": { "name": { "@set": "alma", "#text": "f561a" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "General retention policy",
+    "map": { "name": { "@set": "alma", "#text": "general_retention_policy" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "relation", "#text": "<>" },
+        { "@type": "emptyTerm" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Control number (Holdings)",
+    "map": { "name": { "@set": "alma", "#text": "hol_control_number" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "==" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Creation date (physical holdings)",
+    "map": { "name": { "@set": "alma", "#text": "hol_createDate" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "relation", "#text": "<>" },
+        { "@type": "relation", "#text": "<" },
+        { "@type": "relation", "#text": ">" },
+        { "@type": "emptyTerm" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Modification date (physical holdings)",
+    "map": { "name": { "@set": "alma", "#text": "hol_modificationDate" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "relation", "#text": "<>" },
+        { "@type": "relation", "#text": "<" },
+        { "@type": "relation", "#text": ">" },
+        { "@type": "emptyTerm" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  },
+  {
+    "ns:title": "OCLC Control Number (035a) - Holdings",
+    "map": {
+      "name": { "@set": "alma", "#text": "hol_oclc_control_number_035_a" }
+    },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "==" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "OCLC Control Number (035a+z) - Holdings",
+    "map": {
+      "name": { "@set": "alma", "#text": "hol_oclc_control_number_035_az" }
+    },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "==" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "OCLC Control Number (035z) - Holdings",
+    "map": {
+      "name": { "@set": "alma", "#text": "hol_oclc_control_number_035_z" }
+    },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "==" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Other System Number (035a) - Holdings",
+    "map": {
+      "name": { "@set": "alma", "#text": "hol_other_system_number_035_a" }
+    },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "==" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Other System Number (035a+z) - Holdings",
+    "map": {
+      "name": { "@set": "alma", "#text": "hol_other_system_number_035_az" }
+    },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "==" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Other System Number (035z) - Holdings",
+    "map": {
+      "name": { "@set": "alma", "#text": "hol_other_system_number_035_z" }
+    },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "==" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Type of record",
+    "map": { "name": { "@set": "alma", "#text": "hol_type_of_record" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "emptyTerm" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  },
+  {
+    "ns:title": "URL",
+    "map": { "name": { "@set": "alma", "#text": "hol_url" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "==" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "URL access status",
+    "map": { "name": { "@set": "alma", "#text": "hol_url_access_status" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "==" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "URL link text",
+    "map": { "name": { "@set": "alma", "#text": "hol_url_link_text" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "==" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "URL materials specified",
+    "map": {
+      "name": { "@set": "alma", "#text": "hol_url_materials_specified" }
+    },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "==" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "URL method",
+    "map": { "name": { "@set": "alma", "#text": "hol_url_method" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "==" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "URL non public note",
+    "map": { "name": { "@set": "alma", "#text": "hol_url_non_public_note" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "==" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "URL public note",
+    "map": { "name": { "@set": "alma", "#text": "hol_url_public_note" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "==" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Carrier Type Code (Title)",
+    "map": { "name": { "@set": "alma", "#text": "holding_carrier_type_code" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "relation", "#text": "<>" },
+        { "@type": "emptyTerm" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Carrier Type Term (Title)",
+    "map": { "name": { "@set": "alma", "#text": "holding_carrier_type_term" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "relation", "#text": "<>" },
+        { "@type": "emptyTerm" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Library (Holdings)",
+    "map": { "name": { "@set": "alma", "#text": "holding_Library" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "emptyTerm" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Media type code (Holdings)",
+    "map": { "name": { "@set": "alma", "#text": "holding_media_type_code" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "relation", "#text": "<>" },
+        { "@type": "emptyTerm" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Media type term (Holdings)",
+    "map": { "name": { "@set": "alma", "#text": "holding_media_type_term" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "relation", "#text": "<>" },
+        { "@type": "emptyTerm" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Holdings note",
+    "map": { "name": { "@set": "alma", "#text": "holding_Note" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Holdings PID",
+    "map": { "name": { "@set": "alma", "#text": "holding_pid" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "relation", "#text": ">" },
+        { "@type": "relation", "#text": ">=" },
+        { "@type": "relation", "#text": "<" },
+        { "@type": "relation", "#text": "<=" },
+        { "@type": "relation", "#text": "<>" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Tag Suppressed (Holdings)",
+    "map": { "name": { "@set": "alma", "#text": "holding_tagSuppressed" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "relation", "#text": "<>" },
+        { "@type": "emptyTerm" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Lending Policy",
+    "map": { "name": { "@set": "alma", "#text": "lending_policy" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "relation", "#text": "<>" },
+        { "@type": "emptyTerm" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Linkage number",
+    "map": { "name": { "@set": "alma", "#text": "linkage_number" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "==" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "LOCAL holding 935",
+    "map": { "name": { "@set": "alma", "#text": "local_holding_field_935" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Local holding field 959",
+    "map": { "name": { "@set": "alma", "#text": "local_holding_field_959" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Local holding field 991",
+    "map": { "name": { "@set": "alma", "#text": "local_holding_field_991" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Local holding field 999",
+    "map": { "name": { "@set": "alma", "#text": "local_holding_field_999" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Method of acquisition",
+    "map": { "name": { "@set": "alma", "#text": "method_of_acquisition" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "emptyTerm" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  },
+  {
+    "ns:title": "c.search.index_names.has_items",
+    "map": { "name": { "@set": "alma", "#text": "p_level_4_id" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Pattern 5th level of enumeration",
+    "map": { "name": { "@set": "alma", "#text": "pattern_fifth_level_enum" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "==" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Pattern 1st level of enumeration",
+    "map": { "name": { "@set": "alma", "#text": "pattern_first_level_enum" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "==" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Pattern 4th level of enumeration",
+    "map": { "name": { "@set": "alma", "#text": "pattern_fourth_level_enum" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "==" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Pattern frequency",
+    "map": { "name": { "@set": "alma", "#text": "pattern_frequency" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "==" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Pattern 2nd level of enumeration",
+    "map": { "name": { "@set": "alma", "#text": "pattern_second_level_enum" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "==" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Pattern 6th level of enumeration",
+    "map": { "name": { "@set": "alma", "#text": "pattern_sixth_level_enum" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "==" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Pattern 3rd level of enumeration",
+    "map": { "name": { "@set": "alma", "#text": "pattern_third_level_enum" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "==" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Permanent call number",
+    "map": { "name": { "@set": "alma", "#text": "PermanentCallNumber" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "==" },
+        { "@type": "relation", "#text": ">" },
+        { "@type": "relation", "#text": ">=" },
+        { "@type": "relation", "#text": "<" },
+        { "@type": "relation", "#text": "<=" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Permanent call number type",
+    "map": { "name": { "@set": "alma", "#text": "permanentCallNumberType" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "relation", "#text": "<>" },
+        { "@type": "emptyTerm" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Permanent physical location",
+    "map": { "name": { "@set": "alma", "#text": "permanentPhysicalLocation" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "emptyTerm" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Receipt, acquisition, or access status",
+    "map": { "name": { "@set": "alma", "#text": "receipt_acq_status" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "emptyTerm" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Reproduction Policy",
+    "map": { "name": { "@set": "alma", "#text": "reproduction_policy" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "relation", "#text": "<>" },
+        { "@type": "emptyTerm" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Summary holdings",
+    "map": { "name": { "@set": "alma", "#text": "summaryHolding" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Textual holdings",
+    "map": { "name": { "@set": "alma", "#text": "textual_holdings" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "==" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Textual holdings nonpublic note",
+    "map": {
+      "name": { "@set": "alma", "#text": "textual_holdings_non_public_note" }
+    },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "==" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Textual holdings public note",
+    "map": {
+      "name": { "@set": "alma", "#text": "textual_holdings_public_note" }
+    },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "==" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Available for",
+    "map": { "name": { "@set": "alma", "#text": "available_for" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "relation", "#text": "<>" },
+        { "@type": "emptyTerm" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Available for group",
+    "map": { "name": { "@set": "alma", "#text": "available_for_group" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "relation", "#text": "<>" },
+        { "@type": "emptyTerm" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Available for",
+    "map": { "name": { "@set": "alma", "#text": "available_only_for" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "relation", "#text": "<>" },
+        { "@type": "emptyTerm" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Available explicitly for group",
+    "map": { "name": { "@set": "alma", "#text": "available_only_for_group" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "relation", "#text": "<>" },
+        { "@type": "emptyTerm" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Coverage In Use",
+    "map": { "name": { "@set": "alma", "#text": "coverageInUse" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "relation", "#text": "<>" },
+        { "@type": "emptyTerm" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Public note (Electronic Portfolio)",
+    "map": { "name": { "@set": "alma", "#text": "generalNote" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "==" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "c.search.index_names.isStandalone",
+    "map": { "name": { "@set": "alma", "#text": "is_standalone" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Access Rights (Electronic Portfolio)",
+    "map": { "name": { "@set": "alma", "#text": "portfolio_accessRights" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "relation", "#text": "<>" },
+        { "@type": "emptyTerm" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Portfolio Access Type",
+    "map": { "name": { "@set": "alma", "#text": "portfolio_accessType" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "emptyTerm" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Activation Date (Electronic Portfolio)",
+    "map": { "name": { "@set": "alma", "#text": "portfolio_activationDate" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "relation", "#text": "<>" },
+        { "@type": "relation", "#text": "<" },
+        { "@type": "relation", "#text": ">" },
+        { "@type": "emptyTerm" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Authentication note (Electronic Portfolio)",
+    "map": {
+      "name": { "@set": "alma", "#text": "portfolio_authenticationNote" }
+    },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "==" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Availability (Electronic Portfolio)",
+    "map": { "name": { "@set": "alma", "#text": "portfolio_baseStatus" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "relation", "#text": "<>" },
+        { "@type": "emptyTerm" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Contributed By (Electronic Portfolio)",
+    "map": { "name": { "@set": "alma", "#text": "portfolio_contributedBy" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Creation Date (Electronic Portfolio)",
+    "map": { "name": { "@set": "alma", "#text": "portfolio_creation_date" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "relation", "#text": "<>" },
+        { "@type": "relation", "#text": "<" },
+        { "@type": "relation", "#text": ">" },
+        { "@type": "emptyTerm" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Portfolio EBA ID",
+    "map": { "name": { "@set": "alma", "#text": "portfolio_ebaId" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Has Local Coverage Information",
+    "map": {
+      "name": { "@set": "alma", "#text": "portfolio_has_local_coverage" }
+    },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "relation", "#text": "<>" },
+        { "@type": "emptyTerm" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Interface Name (Electronic Portfolio)",
+    "map": { "name": { "@set": "alma", "#text": "portfolio_interfaceName" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Internal Description (Electronic Portfolio)",
+    "map": {
+      "name": { "@set": "alma", "#text": "portfolio_internalDescription" }
+    },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "==" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Is Local (Electronic Portfolio)",
+    "map": { "name": { "@set": "alma", "#text": "portfolio_is_local" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "emptyTerm" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  },
+  {
+    "ns:title": "c.search.index_names.portfolioLibrary",
+    "map": { "name": { "@set": "alma", "#text": "portfolio_Library" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "emptyTerm" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Portfolio License ID",
+    "map": { "name": { "@set": "alma", "#text": "portfolio_license_id" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Managed by Provider (Electronic Portfolio)",
+    "map": { "name": { "@set": "alma", "#text": "portfolio_managed_by" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Material Type (Electronic Portfolio)",
+    "map": { "name": { "@set": "alma", "#text": "portfolio_materialType" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "relation", "#text": "<>" },
+        { "@type": "emptyTerm" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Modification Date (Electronic Portfolio)",
+    "map": {
+      "name": { "@set": "alma", "#text": "portfolio_modification_date" }
+    },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "relation", "#text": "<>" },
+        { "@type": "relation", "#text": "<" },
+        { "@type": "relation", "#text": ">" },
+        { "@type": "emptyTerm" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Notes tab",
+    "map": { "name": { "@set": "alma", "#text": "portfolio_note_out" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Portfolio PDA ID",
+    "map": { "name": { "@set": "alma", "#text": "portfolio_pdaId" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Portfolio PID",
+    "map": { "name": { "@set": "alma", "#text": "portfolio_pid" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "relation", "#text": ">" },
+        { "@type": "relation", "#text": ">=" },
+        { "@type": "relation", "#text": "<" },
+        { "@type": "relation", "#text": "<=" },
+        { "@type": "relation", "#text": "<>" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Portfolio PO Line ID",
+    "map": { "name": { "@set": "alma", "#text": "portfolio_POLineID" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Proxy Enabled (Electronic Portfolio)",
+    "map": { "name": { "@set": "alma", "#text": "portfolioProxyEnabled" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "emptyTerm" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Proxy name (Electronic Portfolio)",
+    "map": { "name": { "@set": "alma", "#text": "proxy" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Public Access Model",
+    "map": { "name": { "@set": "alma", "#text": "publicAccessModel" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "relation", "#text": "<>" },
+        { "@type": "emptyTerm" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  },
+  {
+    "ns:title": "ProQuest purchase model",
+    "map": { "name": { "@set": "alma", "#text": "purchaseModel" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "relation", "#text": "<>" },
+        { "@type": "emptyTerm" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  },
+  {
+    "ns:title": "URL (Electronic Portfolio)",
+    "map": { "name": { "@set": "alma", "#text": "url" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Access Rights Policy Name",
+    "map": { "name": { "@set": "alma", "#text": "ar_policy" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "relation", "#text": "<>" },
+        { "@type": "emptyTerm" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Copyrights Name",
+    "map": { "name": { "@set": "alma", "#text": "copyrightsId" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "relation", "#text": "<>" },
+        { "@type": "emptyTerm" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Date",
+    "map": { "name": { "@set": "alma", "#text": "date" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Deposit ID",
+    "map": { "name": { "@set": "alma", "#text": "deposit_id" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Request ID",
+    "map": { "name": { "@set": "alma", "#text": "digitization_request_id" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Issue",
+    "map": { "name": { "@set": "alma", "#text": "issue" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Number",
+    "map": { "name": { "@set": "alma", "#text": "number" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Usage Type",
+    "map": { "name": { "@set": "alma", "#text": "preservationType" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "relation", "#text": "<>" },
+        { "@type": "emptyTerm" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Remote repository",
+    "map": {
+      "name": {
+        "@set": "alma",
+        "#text": "remote_representation_integration_system_code"
+      }
+    },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "relation", "#text": "<>" },
+        { "@type": "emptyTerm" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Linking Parameter 1",
+    "map": {
+      "name": {
+        "@set": "alma",
+        "#text": "remote_representation_linkingparameter1"
+      }
+    },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Linking Parameter 2",
+    "map": {
+      "name": {
+        "@set": "alma",
+        "#text": "remote_representation_linkingparameter2"
+      }
+    },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Linking Parameter 3",
+    "map": {
+      "name": {
+        "@set": "alma",
+        "#text": "remote_representation_linkingparameter3"
+      }
+    },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Linking Parameter 4",
+    "map": {
+      "name": {
+        "@set": "alma",
+        "#text": "remote_representation_linkingparameter4"
+      }
+    },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Linking Parameter 5",
+    "map": {
+      "name": {
+        "@set": "alma",
+        "#text": "remote_representation_linkingparameter5"
+      }
+    },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Originating Record ID",
+    "map": {
+      "name": {
+        "@set": "alma",
+        "#text": "remote_representation_originating_system_id"
+      }
+    },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Library",
+    "map": { "name": { "@set": "alma", "#text": "rep_Library" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "relation", "#text": "<>" },
+        { "@type": "emptyTerm" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Public note (Physical Item)",
+    "map": { "name": { "@set": "alma", "#text": "rep_public_note" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Creator (Title)",
+    "map": { "name": { "@set": "alma", "#text": "repCreator" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "PO Line",
+    "map": { "name": { "@set": "alma", "#text": "repPoLineId" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Long Term Digital Loan",
+    "map": { "name": { "@set": "alma", "#text": "representation_has_cdl" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Representation Label",
+    "map": { "name": { "@set": "alma", "#text": "representation_label" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Provenance ID",
+    "map": {
+      "name": {
+        "@set": "alma",
+        "#text": "representation_originating_system_id"
+      }
+    },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Representation PID",
+    "map": { "name": { "@set": "alma", "#text": "representation_pid" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "relation", "#text": ">" },
+        { "@type": "relation", "#text": ">=" },
+        { "@type": "relation", "#text": "<" },
+        { "@type": "relation", "#text": "<=" },
+        { "@type": "relation", "#text": "<>" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Entity type",
+    "map": { "name": { "@set": "alma", "#text": "representationEntityType" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "relation", "#text": "<>" },
+        { "@type": "emptyTerm" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Title",
+    "map": { "name": { "@set": "alma", "#text": "repTitle" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Tag Active (Representation)",
+    "map": { "name": { "@set": "alma", "#text": "tagActive" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Volume",
+    "map": { "name": { "@set": "alma", "#text": "volume" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Activate From",
+    "map": { "name": { "@set": "alma", "#text": "activateFrom" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "relation", "#text": "<>" },
+        { "@type": "relation", "#text": "<" },
+        { "@type": "relation", "#text": ">" },
+        { "@type": "emptyTerm" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Activate To",
+    "map": { "name": { "@set": "alma", "#text": "activateTo" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "relation", "#text": "<>" },
+        { "@type": "relation", "#text": "<" },
+        { "@type": "relation", "#text": ">" },
+        { "@type": "emptyTerm" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Electronic Collection Type",
+    "map": { "name": { "@set": "alma", "#text": "aggregator" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "relation", "#text": "<>" },
+        { "@type": "emptyTerm" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Category",
+    "map": { "name": { "@set": "alma", "#text": "category" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "CDI-only full text activation",
+    "map": { "name": { "@set": "alma", "#text": "cdi_delivery" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Collection Available for group",
+    "map": { "name": { "@set": "alma", "#text": "coll_available_for_group" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "relation", "#text": "<>" },
+        { "@type": "emptyTerm" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Collection available explicitly for group",
+    "map": {
+      "name": { "@set": "alma", "#text": "coll_available_only_for_group" }
+    },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "relation", "#text": "<>" },
+        { "@type": "emptyTerm" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Creator Name (Electronic Collection)",
+    "map": { "name": { "@set": "alma", "#text": "creatorName" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Crossref enabled",
+    "map": { "name": { "@set": "alma", "#text": "crossrefenabled" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "relation", "#text": "<>" },
+        { "@type": "emptyTerm" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  },
+  {
+    "ns:title": "CDI Collection ID (DB ID)",
+    "map": { "name": { "@set": "alma", "#text": "db_id" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Collection Access Type",
+    "map": { "name": { "@set": "alma", "#text": "iepa_accessType" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "relation", "#text": "<>" },
+        { "@type": "emptyTerm" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Activation Date (Electronic Collection)",
+    "map": { "name": { "@set": "alma", "#text": "iepa_activationDate" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "relation", "#text": "<>" },
+        { "@type": "relation", "#text": "<" },
+        { "@type": "relation", "#text": ">" },
+        { "@type": "emptyTerm" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Authentication note (Electronic Collection)",
+    "map": { "name": { "@set": "alma", "#text": "iepa_authenticationNote" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "==" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "CDI Fulltext rights",
+    "map": { "name": { "@set": "alma", "#text": "iepa_cdi_fulltext_rights" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  },
+  {
+    "ns:title": "CDI Fulltext Linking",
+    "map": { "name": { "@set": "alma", "#text": "iepa_cdi_linking" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  },
+  {
+    "ns:title": "CDI Newspapers",
+    "map": { "name": { "@set": "alma", "#text": "iepa_cdi_newspaper_search" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  },
+  {
+    "ns:title": "CDI Provider Coverage",
+    "map": {
+      "name": { "@set": "alma", "#text": "iepa_cdi_provider_coverage" }
+    },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  },
+  {
+    "ns:title": "CDI Search rights",
+    "map": { "name": { "@set": "alma", "#text": "iepa_cdi_search_rights" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  },
+  {
+    "ns:title": "CDI Type",
+    "map": { "name": { "@set": "alma", "#text": "iepa_cdi_type" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Contributed By (Electronic Collection)",
+    "map": { "name": { "@set": "alma", "#text": "iepa_contributedBy" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Is Local (Electronic Collection)",
+    "map": { "name": { "@set": "alma", "#text": "iepa_is_local" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "emptyTerm" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Free (Electronic Collection)",
+    "map": { "name": { "@set": "alma", "#text": "iepa_isFree" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "emptyTerm" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Language (Electronic Collection)",
+    "map": { "name": { "@set": "alma", "#text": "iepa_language" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "relation", "#text": "<>" },
+        { "@type": "emptyTerm" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  },
+  {
+    "ns:title": "c.search.index_names.iepaLibrary",
+    "map": { "name": { "@set": "alma", "#text": "iepa_Library" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "emptyTerm" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Management level in Community Zone (Electronic Collection)",
+    "map": { "name": { "@set": "alma", "#text": "iepa_managementLevel" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Electronic Collection ID",
+    "map": { "name": { "@set": "alma", "#text": "iepa_pid" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "relation", "#text": ">" },
+        { "@type": "relation", "#text": ">=" },
+        { "@type": "relation", "#text": "<" },
+        { "@type": "relation", "#text": "<=" },
+        { "@type": "relation", "#text": "<>" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Collection PO Line ID",
+    "map": { "name": { "@set": "alma", "#text": "iepa_POLineID" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Proxy Enabled (Electronic Collection)",
+    "map": { "name": { "@set": "alma", "#text": "iepa_proxyEnabled" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "emptyTerm" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  },
+  {
+    "ns:title": "We subscribe only to some titles in this collection",
+    "map": { "name": { "@set": "alma", "#text": "iepa_selectiveIndication" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  },
+  {
+    "ns:title": "CDI Suppress Full Text",
+    "map": { "name": { "@set": "alma", "#text": "iepa_suppressFromCdi" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Interface Name (Electronic Collection)",
+    "map": { "name": { "@set": "alma", "#text": "interfaceName" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Internal Description (Electronic Collection)",
+    "map": { "name": { "@set": "alma", "#text": "internalDescription" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "==" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Free (Service)",
+    "map": { "name": { "@set": "alma", "#text": "isFree" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "emptyTerm" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Linking Level",
+    "map": { "name": { "@set": "alma", "#text": "linkingLevel" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "relation", "#text": "<>" },
+        { "@type": "emptyTerm" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Link Resolver Plugin",
+    "map": { "name": { "@set": "alma", "#text": "linkResolverPlugin" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "relation", "#text": "<>" },
+        { "@type": "emptyTerm" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Available for",
+    "map": { "name": { "@set": "alma", "#text": "package_available_for" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "relation", "#text": "<>" },
+        { "@type": "emptyTerm" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Available for",
+    "map": {
+      "name": { "@set": "alma", "#text": "package_available_only_for" }
+    },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "relation", "#text": "<>" },
+        { "@type": "emptyTerm" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Creation Date (Electronic Collection)",
+    "map": { "name": { "@set": "alma", "#text": "package_creation_date" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "relation", "#text": "<>" },
+        { "@type": "relation", "#text": "<" },
+        { "@type": "relation", "#text": ">" },
+        { "@type": "emptyTerm" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Service Authentication Note",
+    "map": { "name": { "@set": "alma", "#text": "package_license_id" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Modification Date (Electronic Collection)",
+    "map": { "name": { "@set": "alma", "#text": "package_modification_date" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "relation", "#text": "<>" },
+        { "@type": "relation", "#text": "<" },
+        { "@type": "relation", "#text": ">" },
+        { "@type": "emptyTerm" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  },
+  {
+    "ns:title": "URL (Electronic Collection)",
+    "map": {
+      "name": { "@set": "alma", "#text": "package_nativeInterfaceUrl" }
+    },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Electronic Collection Name",
+    "map": { "name": { "@set": "alma", "#text": "packageName" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "==" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Electronic Collection Content Type",
+    "map": { "name": { "@set": "alma", "#text": "packageType" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "relation", "#text": "<>" },
+        { "@type": "emptyTerm" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Service Authentication Note",
+    "map": { "name": { "@set": "alma", "#text": "pps_authenticationNote" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "==" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Availability (Electronic Collection)",
+    "map": { "name": { "@set": "alma", "#text": "pps_baseStatus" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "relation", "#text": "<>" },
+        { "@type": "emptyTerm" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Proxy name (Electronic Collection)",
+    "map": { "name": { "@set": "alma", "#text": "proxySelected" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Public note (Electronic Collection)",
+    "map": { "name": { "@set": "alma", "#text": "publicNote" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "all" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "==" },
+        { "@type": "emptyTerm" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Title Service PID",
+    "map": { "name": { "@set": "alma", "#text": "service_pid" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "relation", "#text": ">" },
+        { "@type": "relation", "#text": ">=" },
+        { "@type": "relation", "#text": "<" },
+        { "@type": "relation", "#text": "<=" },
+        { "@type": "relation", "#text": "<>" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Proxy Enabled (Service)",
+    "map": { "name": { "@set": "alma", "#text": "service_proxyEnabled" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "emptyTerm" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Service Type",
+    "map": { "name": { "@set": "alma", "#text": "serviceType" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "relation", "#text": "<>" },
+        { "@type": "emptyTerm" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Managed by Provider (Electronic Collection)",
+    "map": { "name": { "@set": "alma", "#text": "tps_managed_by" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  },
+  {
+    "ns:title": "Record Identifier (MMS ID)",
+    "map": { "name": { "@set": "rec", "#text": "id" } },
+    "configInfo": {
+      "supports": [
+        { "@type": "relation", "#text": "==" },
+        { "@type": "relation", "#text": ">" },
+        { "@type": "relation", "#text": ">=" },
+        { "@type": "relation", "#text": "<" },
+        { "@type": "relation", "#text": "<=" },
+        { "@type": "relation", "#text": "<>" },
+        { "@type": "relation", "#text": "=" },
+        { "@type": "relation", "#text": "all" }
+      ]
+    }
+  }
+]

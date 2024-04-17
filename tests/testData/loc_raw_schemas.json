@@ -1,0 +1,26 @@
+[
+  {
+    "@identifier": "http://www.loc.gov/MARC21/slim",
+    "@sort": "false",
+    "@name": "marcxml",
+    "title": "MARCXML v 1.1"
+  },
+  {
+    "@identifier": "http://purl.org/dc/elements/1.1/",
+    "@sort": "false",
+    "@name": "dc",
+    "title": "Dublin Core v 1.1"
+  },
+  {
+    "@identifier": "http://www.loc.gov/standards/mods/v3",
+    "@sort": "false",
+    "@name": "mods",
+    "title": "MODS v 3.8"
+  },
+  {
+    "@identifier": "http://id.loc.gov/ontologies/bibframe/",
+    "@sort": "false",
+    "@name": "bibframe",
+    "title": "BIBFRAME v 2.2.3"
+  }
+]

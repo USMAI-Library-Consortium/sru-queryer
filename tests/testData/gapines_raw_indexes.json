@@ -1,0 +1,304 @@
+[
+  {
+    "@id": "eg.after",
+    "title": "after",
+    "map": { "name": { "@set": "eg", "#text": "after" } }
+  },
+  {
+    "@id": "eg.ascending",
+    "title": "ascending",
+    "map": { "name": { "@set": "eg", "#text": "ascending" } }
+  },
+  {
+    "@id": "eg.au",
+    "title": "au",
+    "map": { "name": { "@set": "eg", "#text": "au" } }
+  },
+  {
+    "@id": "eg.author",
+    "title": "author",
+    "map": { "name": { "@set": "eg", "#text": "eg.author" } }
+  },
+  {
+    "@id": "eg.available",
+    "title": "Filter to available (true|false)",
+    "map": { "name": { "@set": "eg", "#text": "available" } }
+  },
+  {
+    "@id": "eg.before",
+    "title": "before",
+    "map": { "name": { "@set": "eg", "#text": "before" } }
+  },
+  {
+    "@id": "eg.bibid",
+    "title": "bibid",
+    "map": { "name": { "@set": "eg", "#text": "eg.bibid" } }
+  },
+  {
+    "@id": "eg.callnumber",
+    "title": "callnumber",
+    "map": { "name": { "@set": "eg", "#text": "eg.callnumber" } }
+  },
+  {
+    "@id": "eg.creator",
+    "title": "creator",
+    "map": { "name": { "@set": "eg", "#text": "creator" } }
+  },
+  {
+    "@id": "eg.depth",
+    "title": "depth",
+    "map": { "name": { "@set": "eg", "#text": "depth" } }
+  },
+  {
+    "@id": "eg.descending",
+    "title": "descending",
+    "map": { "name": { "@set": "eg", "#text": "descending" } }
+  },
+  {
+    "@id": "eg.format",
+    "title": "format",
+    "map": { "name": { "@set": "eg", "#text": "format" } }
+  },
+  {
+    "@id": "eg.id",
+    "title": "id",
+    "map": { "name": { "@set": "eg", "#text": "id" } }
+  },
+  {
+    "@id": "eg.isbn",
+    "title": "isbn",
+    "map": { "name": { "@set": "eg", "#text": "eg.isbn" } }
+  },
+  {
+    "@id": "eg.issn",
+    "title": "issn",
+    "map": { "name": { "@set": "eg", "#text": "eg.issn" } }
+  },
+  {
+    "@id": "eg.keyword",
+    "title": "keyword",
+    "map": { "name": { "@set": "eg", "#text": "eg.keyword" } }
+  },
+  {
+    "@id": "eg.kw",
+    "title": "kw",
+    "map": { "name": { "@set": "eg", "#text": "kw" } }
+  },
+  {
+    "@id": "eg.lasso",
+    "title": "lasso",
+    "map": { "name": { "@set": "eg", "#text": "lasso" } }
+  },
+  {
+    "@id": "eg.limit",
+    "title": "limit",
+    "map": { "name": { "@set": "eg", "#text": "limit" } }
+  },
+  {
+    "@id": "eg.locations",
+    "title": "locations",
+    "map": { "name": { "@set": "eg", "#text": "locations" } }
+  },
+  {
+    "@id": "eg.name",
+    "title": "name",
+    "map": { "name": { "@set": "eg", "#text": "eg.name" } }
+  },
+  {
+    "@id": "eg.offset",
+    "title": "offset",
+    "map": { "name": { "@set": "eg", "#text": "offset" } }
+  },
+  {
+    "@id": "eg.preferred_language",
+    "title": "preferred_language",
+    "map": { "name": { "@set": "eg", "#text": "preferred_language" } }
+  },
+  {
+    "@id": "eg.preferred_language_multiplier",
+    "title": "preferred_language_multiplier",
+    "map": {
+      "name": { "@set": "eg", "#text": "preferred_language_multiplier" }
+    }
+  },
+  {
+    "@id": "eg.preferred_language_weight",
+    "title": "preferred_language_weight",
+    "map": { "name": { "@set": "eg", "#text": "preferred_language_weight" } }
+  },
+  {
+    "@id": "eg.se",
+    "title": "se",
+    "map": { "name": { "@set": "eg", "#text": "se" } }
+  },
+  {
+    "@id": "eg.series",
+    "title": "series",
+    "map": { "name": { "@set": "eg", "#text": "eg.series" } }
+  },
+  {
+    "@id": "eg.site",
+    "title": "Evergreen Site Code (shortname)",
+    "map": { "name": { "@set": "eg", "#text": "site" } }
+  },
+  {
+    "@id": "eg.sort",
+    "title": "Sort on relevance, title, author, pubdate, create_date or edit_date",
+    "map": { "name": { "@set": "eg", "#text": "sort" } }
+  },
+  {
+    "@id": "eg.statuses",
+    "title": "statuses",
+    "map": { "name": { "@set": "eg", "#text": "statuses" } }
+  },
+  {
+    "@id": "eg.su",
+    "title": "su",
+    "map": { "name": { "@set": "eg", "#text": "su" } }
+  },
+  {
+    "@id": "eg.subject",
+    "title": "subject",
+    "map": { "name": { "@set": "eg", "#text": "eg.subject" } }
+  },
+  {
+    "@id": "eg.tcn",
+    "title": "tcn",
+    "map": { "name": { "@set": "eg", "#text": "eg.tcn" } }
+  },
+  {
+    "@id": "eg.ti",
+    "title": "ti",
+    "map": { "name": { "@set": "eg", "#text": "ti" } }
+  },
+  {
+    "@id": "eg.title",
+    "title": "title",
+    "map": { "name": { "@set": "eg", "#text": "eg.title" } }
+  },
+  {
+    "@id": "eg.upc",
+    "title": "upc",
+    "map": { "name": { "@set": "eg", "#text": "eg.upc" } }
+  },
+  {
+    "@id": "dc.contributor",
+    "title": "contributor",
+    "map": { "name": { "@set": "dc", "#text": "dc.contributor" } }
+  },
+  {
+    "@id": "dc.creator",
+    "title": "creator",
+    "map": { "name": { "@set": "dc", "#text": "dc.creator" } }
+  },
+  {
+    "@id": "dc.identifier",
+    "title": "identifier",
+    "map": { "name": { "@set": "dc", "#text": "dc.identifier" } }
+  },
+  {
+    "@id": "dc.publisher",
+    "title": "publisher",
+    "map": { "name": { "@set": "dc", "#text": "dc.publisher" } }
+  },
+  {
+    "@id": "dc.subject",
+    "title": "subject",
+    "map": { "name": { "@set": "dc", "#text": "dc.subject" } }
+  },
+  {
+    "@id": "dc.title",
+    "title": "title",
+    "map": { "name": { "@set": "dc", "#text": "dc.title" } }
+  },
+  {
+    "@id": "bib.edition",
+    "title": "edition",
+    "map": { "name": { "@set": "bib", "#text": "bib.edition" } }
+  },
+  {
+    "@id": "bib.genre",
+    "title": "genre",
+    "map": { "name": { "@set": "bib", "#text": "bib.genre" } }
+  },
+  {
+    "@id": "bib.name",
+    "title": "name",
+    "map": { "name": { "@set": "bib", "#text": "bib.name" } }
+  },
+  {
+    "@id": "bib.nameconference",
+    "title": "nameconference",
+    "map": { "name": { "@set": "bib", "#text": "bib.nameconference" } }
+  },
+  {
+    "@id": "bib.namecorporate",
+    "title": "namecorporate",
+    "map": { "name": { "@set": "bib", "#text": "bib.namecorporate" } }
+  },
+  {
+    "@id": "bib.namepersonal",
+    "title": "namepersonal",
+    "map": { "name": { "@set": "bib", "#text": "bib.namepersonal" } }
+  },
+  {
+    "@id": "bib.namepersonalfamily",
+    "title": "namepersonalfamily",
+    "map": { "name": { "@set": "bib", "#text": "bib.namepersonalfamily" } }
+  },
+  {
+    "@id": "bib.namepersonalgiven",
+    "title": "namepersonalgiven",
+    "map": { "name": { "@set": "bib", "#text": "bib.namepersonalgiven" } }
+  },
+  {
+    "@id": "bib.subjectname",
+    "title": "subjectname",
+    "map": { "name": { "@set": "bib", "#text": "bib.subjectname" } }
+  },
+  {
+    "@id": "bib.subjectoccupation",
+    "title": "subjectoccupation",
+    "map": { "name": { "@set": "bib", "#text": "bib.subjectoccupation" } }
+  },
+  {
+    "@id": "bib.subjectplace",
+    "title": "subjectplace",
+    "map": { "name": { "@set": "bib", "#text": "bib.subjectplace" } }
+  },
+  {
+    "@id": "bib.subjecttitle",
+    "title": "subjecttitle",
+    "map": { "name": { "@set": "bib", "#text": "bib.subjecttitle" } }
+  },
+  {
+    "@id": "bib.title",
+    "title": "title",
+    "map": { "name": { "@set": "bib", "#text": "bib.title" } }
+  },
+  {
+    "@id": "bib.titleabbreviated",
+    "title": "titleabbreviated",
+    "map": { "name": { "@set": "bib", "#text": "bib.titleabbreviated" } }
+  },
+  {
+    "@id": "bib.titlealternative",
+    "title": "titlealternative",
+    "map": { "name": { "@set": "bib", "#text": "bib.titlealternative" } }
+  },
+  {
+    "@id": "bib.titleseries",
+    "title": "titleseries",
+    "map": { "name": { "@set": "bib", "#text": "bib.titleseries" } }
+  },
+  {
+    "@id": "bib.titletranslated",
+    "title": "titletranslated",
+    "map": { "name": { "@set": "bib", "#text": "bib.titletranslated" } }
+  },
+  {
+    "@id": "bib.titleuniform",
+    "title": "titleuniform",
+    "map": { "name": { "@set": "bib", "#text": "bib.titleuniform" } }
+  }
+]

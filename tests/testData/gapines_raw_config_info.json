@@ -1,0 +1,17 @@
+{
+  "default": [
+    { "@type": "numberOfRecords", "#text": "10" },
+    { "@type": "contextSet", "#text": "eg" },
+    { "@type": "index", "#text": "keyword" },
+    { "@type": "relation", "#text": "all" },
+    { "@type": "sortSchema", "#text": "marcxml" },
+    { "@type": "retrieveSchema", "#text": "marcxml" }
+  ],
+  "setting": { "@type": "maximumRecords", "#text": "50" },
+  "supports": [
+    { "@type": "relationModifier", "#text": "relevant" },
+    { "@type": "relationModifier", "#text": "stem" },
+    { "@type": "relationModifier", "#text": "fuzzy" },
+    { "@type": "relationModifier", "#text": "word" }
+  ]
+}

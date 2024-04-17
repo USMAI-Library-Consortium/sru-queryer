@@ -1,0 +1,15 @@
+{
+  "ns:default": { "@type": "numberOfRecords", "#text": "10" },
+  "ns:setting": { "@type": "maximumRecords", "#text": "50" },
+  "ns:supports": [
+    { "@type": "relation", "#text": "=" },
+    { "@type": "relation", "#text": "all" },
+    { "@type": "relation", "#text": "==" },
+    { "@type": "relation", "#text": ">" },
+    { "@type": "relation", "#text": "<" },
+    { "@type": "relation", "#text": ">=" },
+    { "@type": "relation", "#text": "<=" },
+    { "@type": "relation", "#text": "<>" },
+    { "@type": "emptyTerm" }
+  ]
+}
