@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 class LITERAL():
 
     def __init__(self, literal_string: str, add_padding=False):

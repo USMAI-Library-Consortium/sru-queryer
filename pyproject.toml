@@ -1,9 +1,9 @@
 [project]
 name = "sru-queryer"
-version = "1.0.0"
+version = "1.0.1"
 description = "A utility for integrating SRU queries into your applications."
 readme = "readme.md"
-requires-python = ">=3.8"
+requires-python = ">=3.7.17"
 keywords = ["sru", "library", "api"]
 
 authors = [
@@ -16,4 +16,4 @@ maintainers = [
 
 classifiers = ["Programming Language :: Python :: 3", "Development Status :: 5 - Production/Stable"]
 
-dependencies = ["requests==2.31.0", "xmltodict==0.13.0", "urllib3==2.0.7"]
+dependencies = ["requests==2.27.1", "xmltodict>=0.13.0"]

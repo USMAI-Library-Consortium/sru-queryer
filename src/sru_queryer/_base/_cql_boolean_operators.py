@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from ._search_index_config import IndexQuery
 from ._cql_literal import LITERAL
 from ._cql_modifiers import AndOrNotModifier, CQLModifierBase

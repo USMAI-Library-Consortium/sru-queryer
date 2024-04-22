@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from ._sru_configuration import SRUConfiguration
 from ._sru_validator import SRUValidator
 from ._cql_modifiers import CQLModifierBase, RelationModifier

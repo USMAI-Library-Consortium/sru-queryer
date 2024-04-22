@@ -1,3 +1,4 @@
+from __future__ import annotations
 from requests import Request, PreparedRequest
 
 from ._search_index_config import IndexQuery

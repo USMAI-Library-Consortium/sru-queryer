@@ -1,3 +1,4 @@
+from __future__ import annotations
 
 class SortKey:
     """ONLY FOR SRU VERSION 1.1

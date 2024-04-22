@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 # I know this is bad coupling, but it would take too refactoring work to fix.
 from ._sru_validator import SRUValidator
 
