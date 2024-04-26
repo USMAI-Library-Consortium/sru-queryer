@@ -124,14 +124,9 @@ class SRUValidator(SRUValidatorAbstract):
         if start_record and start_record < 1:
             raise ValueError("Start record must be greater than 0.")
 
-        if maximum_record:
-            if start_record:
-                if maximum_record < start_record:
-                    raise ValueError("Maximum record must be greater than start record.")
-            
-            if sru_configuration.max_records_supported:
-                if maximum_record > sru_configuration.max_records_supported:
-                    raise ValueError(f"Maximum records returned must be less than {str(sru_configuration.max_records_supported)}.") 
+        if maximum_record and sru_configuration.max_records_supported:
+            if maximum_record > sru_configuration.max_records_supported:
+                raise ValueError(f"Maximum records returned must be less than {str(sru_configuration.max_records_supported)}.") 
         
         if record_schema:
             if record_schema not in sru_configuration.available_record_schemas:
