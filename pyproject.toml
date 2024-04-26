@@ -16,4 +16,4 @@ maintainers = [
 
 classifiers = ["Programming Language :: Python :: 3", "Development Status :: 5 - Production/Stable"]
 
-dependencies = ["requests==2.27.1", "xmltodict>=0.13.0"]
+dependencies = ["requests>=2.27.1", "xmltodict>=0.13.0"]
