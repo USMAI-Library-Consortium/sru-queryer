@@ -15,7 +15,7 @@ class TestSRUQuery(unittest.TestCase):
 
     def test_construct_request(self):
         sru_configuration = get_alma_sru_configuration()
-        sru_configuration.search_retrieve_url = "https://example.com"
+        sru_configuration.server_url = "https://example.com"
         sru_configuration.sru_version = "1.2"
         sru_configuration.default_records_returned = None
 
@@ -33,7 +33,7 @@ class TestSRUQuery(unittest.TestCase):
 
     def test_construct_request_complex(self):
         sru_configuration = get_alma_sru_configuration()
-        sru_configuration.search_retrieve_url = "https://example.com"
+        sru_configuration.server_url = "https://example.com"
         sru_configuration.sru_version = "1.2"
         sru_configuration.default_records_returned = None
         sru_configuration.default_record_schema = "marcxml"
@@ -55,7 +55,7 @@ class TestSRUQuery(unittest.TestCase):
 
     def test_construct_request_with_credentials(self):
         sru_configuration = get_alma_sru_configuration()
-        sru_configuration.search_retrieve_url = "https://example.com"
+        sru_configuration.server_url = "https://example.com"
         sru_configuration.sru_version = "1.2"
         sru_configuration.default_records_returned = None
         sru_configuration.username = "test_user"
@@ -81,7 +81,7 @@ class TestSRUQuery(unittest.TestCase):
 
     def test_construct_request_with_sort_by(self):
         sru_configuration = get_alma_sru_configuration()
-        sru_configuration.search_retrieve_url = "https://example.com"
+        sru_configuration.server_url = "https://example.com"
         sru_configuration.sru_version = "1.2"
         sru_configuration.default_records_returned = None
 
@@ -100,7 +100,7 @@ class TestSRUQuery(unittest.TestCase):
 
     def test_validate_query_with_base_query_error(self):
         sru_configuration = get_alma_sru_configuration()
-        sru_configuration.search_retrieve_url = "https://example.com"
+        sru_configuration.server_url = "https://example.com"
         sru_configuration.sru_version = "1.2"
         sru_configuration.default_records_returned = None
 
@@ -113,7 +113,7 @@ class TestSRUQuery(unittest.TestCase):
     def test_validate_query_with_index_error_raises_error_query(self):
         """Integration Test"""
         sru_configuration = get_alma_sru_configuration()
-        sru_configuration.search_retrieve_url = "https://example.com"
+        sru_configuration.server_url = "https://example.com"
         sru_configuration.sru_version = "1.2"
         sru_configuration.default_records_returned = None
 
@@ -131,7 +131,7 @@ class TestQueryWithXMLData(unittest.TestCase):
             mock_get.return_value.content = f.read()
 
             # Initialize the gapines configuration
-            sru_configuration = SRUUtil.create_configuration_for_server("https://example.com", "https://example.com", sru_version="1.1", driver=gapines_driver)
+            sru_configuration = SRUUtil.create_configuration_for_server("https://example.com", sru_version="1.1", driver=gapines_driver)
 
             constructed_search_retrieve_request = Query(sru_configuration, IndexQuery("alma", "bib_holding_count", "==", "10")).construct_request()
 
@@ -147,7 +147,7 @@ class TestQueryWithXMLData(unittest.TestCase):
             mock_get.return_value.content = f.read()
 
             with self.assertRaises(ValueError) as ve:
-                sru_configuration = SRUUtil.create_configuration_for_server("https://example.com", "https://example.com", sru_version="1.2", driver=gapines_driver)
+                sru_configuration = SRUUtil.create_configuration_for_server("https://example.com", sru_version="1.2", driver=gapines_driver)
                 Query(sru_configuration, IndexQuery(value="dummyval"), record_schema="marcxml", sort_queries=[SortKey("example_xpath")])
 
             self.assertIn("SortKeys", ve.exception.__str__())
@@ -159,7 +159,7 @@ class TestQueryWithXMLData(unittest.TestCase):
             mock_get.return_value.content = f.read()
 
             with self.assertRaises(ValueError) as ve:
-                sru_configuration = SRUUtil.create_configuration_for_server("https://example.com", "https://example.com", sru_version="1.1", driver=gapines_driver)
+                sru_configuration = SRUUtil.create_configuration_for_server("https://example.com", sru_version="1.1", driver=gapines_driver)
                 Query(sru_configuration, IndexQuery(value="dummyval"), sort_queries=[{"index_set": "alma", "index_name": "bib_holding_count", "sort_order": "ascending"}])
             
             self.assertIn("SortKeys", ve.exception.__str__())
@@ -171,7 +171,7 @@ class TestQueryWithXMLData(unittest.TestCase):
         with open(TestFiles.explain_response_loc, "rb") as f:
             mock_get.return_value.content = f.read()
 
-            sru_configuration = SRUUtil.create_configuration_for_server("https://example.com", "https://example2.com", sru_version="1.1", driver=loc_driver)
+            sru_configuration = SRUUtil.create_configuration_for_server("https://example.com", sru_version="1.1", driver=loc_driver)
 
             Query(sru_configuration, LITERAL("pass")).validate()
     
@@ -181,6 +181,6 @@ class TestQueryWithXMLData(unittest.TestCase):
         with open(TestFiles.explain_response_gapines, "rb") as f:
             mock_get.return_value.content = f.read() 
 
-            sru_configuration = SRUUtil.create_configuration_for_server("https://example.com", "https://example2.com", sru_version="1.1", driver=gapines_driver)
+            sru_configuration = SRUUtil.create_configuration_for_server("https://example.com", sru_version="1.1", driver=gapines_driver)
 
             Query(sru_configuration, LITERAL("pass"))

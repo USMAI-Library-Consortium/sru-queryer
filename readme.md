@@ -40,7 +40,7 @@ Here's just a basic usage example:
 
 ```
 # Create a configuration object for the SRU server, allowing you to validate and send queries.
-sru_configuration = SRUUtil.create_configuration_for_server("https://path-to-sru-server-base", "https://path-to-sru-server-base", "1.2")
+sru_configuration = SRUUtil.create_configuration_for_server("https://path-to-sru-server-base", "1.2")
 
 # Configure a query - in this case, find records where the creator includes Abraham, sorted alphabetically & ascending.
 query_obj = Query(sru_configuration, IndexQuery(
@@ -80,7 +80,7 @@ An instance is created through the SRUUtil.create_configuration_for_server() fun
 
 ```
 from sru_queryer.drivers import alma_driver
-sru_configuration = SRUUtil.create_configuration_for_server("https://path-to-sru-server-base", "https://path-to-sru-server-base", "1.2", driver=alma_driver)
+sru_configuration = SRUUtil.create_configuration_for_server("https://path-to-sru-server-base", "1.2", driver=alma_driver)
 ```
 
 This is the most basic way to create a configuration object. The first argument is the SRU explain URL, the second is the searchRetrieve URL, the third is the SRU version, and the final one is the driver. This function takes many other optional arguments, which can do things like configure the default record schemas, default context sets, change validation settings, etc.
@@ -199,15 +199,10 @@ There are two functions that the general user would want to use:
 
 Arguments for create_configuration_for_server:
 
-`explain_url`
+`server_url`
 | Mandatory | Data Type | Description |
 | ---------- | --------- | ------------------------------------------------------------------------------------------------------------------------------- |
-| Yes | url string | The base URL for the explainResponse. This must not include any query params - they will be added by the utility. |
-
-`search_retrieve_url`
-| Mandatory | Data Type | Description |
-| ---------- | --------- | ------------------------------------------------------------------------------------------------------------------------------- |
-| Yes | url string | The base URL for the searchRetrieve query. This must not include any query params - they will be added by the utility. |
+| Yes | url string | The base URL for the server. This must not include any query params - they will be added by the utility. |
 
 `sru_version`
 | Mandatory | Data Type | Description |

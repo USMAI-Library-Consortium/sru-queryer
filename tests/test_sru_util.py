@@ -11,22 +11,21 @@ class TestSRUUtilCreateConfiguration(unittest.TestCase):
     def test_merge_config_and_user_settings_urls_set_correctly(self, mock_parse_explain_response, *args):
         mock_parse_explain_response.return_value = get_alma_sru_configuration()
 
-        updated_config = SRUUtil.create_configuration_for_server("testurl2.com", "testurl.com")
+        updated_config = SRUUtil.create_configuration_for_server("testurl2.com")
 
-        self.assertEqual(updated_config.explain_url, "testurl2.com")
-        self.assertEqual(updated_config.search_retrieve_url, "testurl.com")
+        self.assertEqual(updated_config.server_url, "testurl2.com")
 
     def test_merge_config_and_user_settings_version_set_correctly(self, mock_parse_explain_response, *args):
         mock_parse_explain_response.return_value = get_alma_sru_configuration()
 
-        updated_config = SRUUtil.create_configuration_for_server("testurl2.com", "testurl.com", sru_version="1.1")
+        updated_config = SRUUtil.create_configuration_for_server("testurl2.com", sru_version="1.1")
 
         self.assertEqual(updated_config.sru_version, "1.1")
 
     def test_merge_config_and_user_settings_set_record_numbers_returned_correctly(self, mock_parse_explain_response, *args):
         mock_parse_explain_response.return_value = get_alma_sru_configuration()
 
-        updated_config = SRUUtil.create_configuration_for_server("testurl2.com", "testurl.com", default_records_returned=15, max_records_supported=40)
+        updated_config = SRUUtil.create_configuration_for_server("testurl2.com", default_records_returned=15, max_records_supported=40)
 
         self.assertEqual(updated_config.default_records_returned, 15)
         self.assertEqual(updated_config.max_records_supported, 40)
@@ -34,7 +33,7 @@ class TestSRUUtilCreateConfiguration(unittest.TestCase):
     def test_merge_config_and_user_settings_set_username_password_returned_correctly(self, mock_parse_explain_response, *args):
         mock_parse_explain_response.return_value = get_alma_sru_configuration()
 
-        updated_config = SRUUtil.create_configuration_for_server("testurl2.com", "testurl.com", username="testusername", password="testpassword")
+        updated_config = SRUUtil.create_configuration_for_server("testurl2.com", username="testusername", password="testpassword")
 
         self.assertEqual(updated_config.username, "testusername")
         self.assertEqual(updated_config.password, "testpassword")
@@ -42,7 +41,7 @@ class TestSRUUtilCreateConfiguration(unittest.TestCase):
     def test_merge_config_and_user_settings_set_cql_defaults_returned_correctly(self, mock_parse_explain_response, *args):
         mock_parse_explain_response.return_value = get_alma_sru_configuration()
 
-        updated_config = SRUUtil.create_configuration_for_server("testurl2.com", "testurl.com", default_cql_context_set="alma", default_cql_index="all_for_ui", default_cql_relation="all")
+        updated_config = SRUUtil.create_configuration_for_server("testurl2.com", default_cql_context_set="alma", default_cql_index="all_for_ui", default_cql_relation="all")
 
         self.assertEqual(updated_config.default_context_set, "alma")
         self.assertEqual(updated_config.default_index, "all_for_ui")
@@ -51,7 +50,7 @@ class TestSRUUtilCreateConfiguration(unittest.TestCase):
     def test_merge_config_and_user_settings_set_default_schemas_returned_correctly(self, mock_parse_explain_response, *args):
         mock_parse_explain_response.return_value = get_alma_sru_configuration()
 
-        updated_config = SRUUtil.create_configuration_for_server("testurl2.com", "testurl.com", default_record_schema="marcxml", default_sort_schema="marcxml")
+        updated_config = SRUUtil.create_configuration_for_server("testurl2.com", default_record_schema="marcxml", default_sort_schema="marcxml")
 
         self.assertEqual(updated_config.default_record_schema, "marcxml")
         self.assertEqual(updated_config.default_sort_schema, "marcxml")
@@ -59,7 +58,7 @@ class TestSRUUtilCreateConfiguration(unittest.TestCase):
     def test_merge_config_and_user_settings_set_disable_validation_for_cql_defaults_returned_correctly(self, mock_parse_explain_response, *args):
         mock_parse_explain_response.return_value = get_alma_sru_configuration()
 
-        updated_config = SRUUtil.create_configuration_for_server("testurl2.com", "testurl.com", disable_validation_for_cql_defaults=True)
+        updated_config = SRUUtil.create_configuration_for_server("testurl2.com", disable_validation_for_cql_defaults=True)
 
         self.assertEqual(updated_config.disable_validation_for_cql_defaults, True)
 
@@ -67,7 +66,7 @@ class TestSRUUtilCreateConfiguration(unittest.TestCase):
         configuration_parsed_from_explain_response = get_gapines_sru_configuration()
         mock_parse_explain_response.return_value = configuration_parsed_from_explain_response
 
-        updated_config = SRUUtil.create_configuration_for_server("testurl2.com", "testurl.com")
+        updated_config = SRUUtil.create_configuration_for_server("testurl2.com")
 
         self.assertEqual(updated_config.disable_validation_for_cql_defaults, False)
         self.assertEqual(updated_config.default_context_set, "eg")

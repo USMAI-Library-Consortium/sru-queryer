@@ -22,8 +22,7 @@ class SRUConfiguration():
         self.available_record_packing_values = ["string", "xml"]
 
         # Values set by user
-        self.explain_url: str = None
-        self.search_retrieve_url: str = None
+        self.server_url: str = None
         self.sru_version: str = None
         self.username: str | None = None
         self.password: str | None = None
