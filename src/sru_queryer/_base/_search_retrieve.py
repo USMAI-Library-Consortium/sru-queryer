@@ -9,7 +9,7 @@ from ._sru_validator import SRUValidator
 from ._sru_aux_formatter import SRUAuxiliaryFormatter
 from ._sort_key import SortKey
 
-class Query:
+class SearchRetrieve:
 
     def __init__(self, sru_configuration: SRUConfiguration, cql_query: IndexQuery | CQLBooleanOperatorBase | LITERAL, start_record: int | None = None, maximum_records: int | None = None, record_schema: str | None = None, sort_queries: list[dict] | list[SortKey] | None = None, record_packing: str | None = None):
         self.sru_configuration = sru_configuration
@@ -28,8 +28,8 @@ class Query:
         self.sort_queries = sort_queries
 
     def validate(self):
-        """Validates the query. 
-        Keep in mind that not all facets of the query are validated."""
+        """Validates the searchRetrieve request. 
+        Keep in mind that not all facets of the request are validated."""
 
         SRUValidator.validate_base_query(self.sru_configuration,
             self.start_record, self.maximum_records, self.record_schema, self.record_packing)

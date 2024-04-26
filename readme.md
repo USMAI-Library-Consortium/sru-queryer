@@ -16,13 +16,13 @@ Using this utility has a few big benefits, such as:
    1. [Initializing SRU Functionality](#initializing-sru-functionality)
    2. [Basic Query Component](#basic-query-component-indexquery)
    3. [Configuration Service](#configuration-service-sruutil)
-   4. [Query class](#creating-queries---the-query-class)
+   4. [SearchRetreive class](#creating-queries---the-searchretrieve-class)
    5. [Boolean Operators for Queries](#constructing-more-advanced-queries-boolean-operators)
 4. [Full Overview of Different Components](#full-overview-of-different-components)
    1. [IndexQuery](#basic-query-component-indexquery-1)
    2. [SRUUtil](#sruutil)
    3. [Boolean Operators (AND, OR, NOT, PROX)](#constructing-more-advanced-queries-boolean-operators-1)
-   4. [Query](#query-class)
+   4. [SearchRetrieve](#searchretrieve-class)
    5. [LITERAL](#custom-queries-literal)
    6. [Modifiers](#modifiying-operators---modifiers)
    7. [Sorting in v1.2](#sorting-in-12-sortby-clauses)
@@ -67,7 +67,7 @@ You can also create a query with boolean conditions:
 
 ```
 # Find records where the creator includes Abraham AND the material type is 'book'
-query_obj = Query(sru_configuration, AND(IndexQuery("alma", "creator", "=", "Abraham"), IndexQuery("alma", "materialType", "==", "BOOK")))
+query_obj = SearchRetreive(sru_configuration, AND(IndexQuery("alma", "creator", "=", "Abraham"), IndexQuery("alma", "materialType", "==", "BOOK")))
 ```
 
 ## Quick Overview of Important Components:
@@ -96,15 +96,15 @@ A standard CQL search clause looks like: `alma.title="Harry Potter"`. This same 
 
 https://www.loc.gov/standards/sru/cql/spec.html
 
-### Creating queries - the Query class
+### Creating queries - the SearchRetrieve class
 
-`from sru_queryer import Query`
+`from sru_queryer import SearchRetrieve`
 
-Use the Query class to actually construct and validate a query.\
+Use the SearchRetrieve class to actually construct and validate a query.\
 This class takes the SRU configuration as an argument, followed by the actual CQL query made up of boolean operators, Literals, and IndexQueries. You can also set certain values that you might want to change between queries while keeping the same SRUConfiguration - record format, start record, maximum records, etc. It also takes sort queries.
 
 ```
-query_obj = Query(sru_configuration, IndexQuery(
+query_obj = SearchRetrieve(sru_configuration, IndexQuery(
         "alma", "creator", "=", "Abraham"), sort_queries=[{
             "index_set": "alma",
             "index_name": "creator",
@@ -158,7 +158,7 @@ Keep in mind, if a context_set or index_name is not provided, the defaults must 
 
 #### AVAILABLE FUNCTIONS
 
-You don't need to use any functions on an IndexQuery as a general user. For instance, the Query.validate() function will also run the validate() function for all included IndexQueries.
+You don't need to use any functions on an IndexQuery as a general user. For instance, the SearchRetrieve.validate() function will also run the validate() function for all included IndexQueries.
 
 #### INITIALIZATION OPTIONS
 
@@ -310,28 +310,28 @@ Any options not marked as MANDATORY are optional. It is not recommended to chang
 
 Note: Literals may work in place of modifiers, however, this has not been tested.
 
-### Query class
+### SearchRetrieve class
 
-`from sru_queryer import Query`
+`from sru_queryer import SearchRetrieve`
 
-Now, for the class which you'll likely use the most - the Query class. Whereas SRUUtil deals with configuration, Query only deals with one specific query. It takes an instance of SRUUtil for the purposes of validation.
+Now, for the class which you'll likely use the most - the SearchRetrieve class. Whereas SRUUtil deals with configuration, SearchRetrieve only deals with one specific query. It takes an instance of SRUUtil for the purposes of validation.
 
 #### USAGE
 
-Use the Query class to construct your request.
+Use the SearchRetrieve class to construct your request.
 Instantiate the SRUUtil class:
 `configuration = SRUUtil.construct_configuration_for_server(...)`
 Create the query class with the desired request:
-`query_util = Query(configuration, OR(IndexQuery("alma", "title", "=", "Harry"), IndexQuery("alma", "title", "=", "Potter")), record_schema="marcxml")`
+`search_retrieve_request = SearchRetrieve(configuration, OR(IndexQuery("alma", "title", "=", "Harry"), IndexQuery("alma", "title", "=", "Potter")), record_schema="marcxml")`
 
 There are additional options to you can set to modify the request. They will be discussed below.
 
 You can then validate the request with the validate() function, which will throw an error for the first issue it finds:
-`query_util.validate()`
+`search_retrieve_request.validate()`
 
 After this, you can get a PreparedRequest and send it:
 `from requests import Session`
-`request_to_send = query_util.construct_request()`
+`request_to_send = search_retrieve_request.construct_request()`
 `s = Session()`
 `response = s.send(request_to_send)`
 
@@ -455,7 +455,7 @@ Which will be formatted to:
 
 All values are required. The sort_order can either be "ascending" or "descending."
 
-You should add all desired sortBy clauses to the Query object in an array with the keyword argument 'sort_queries='
+You should add all desired sortBy clauses to the SearchRetrieve object in an array with the keyword argument 'sort_queries='
 
 ### Sorting in 1.1: SortKey
 
@@ -467,7 +467,7 @@ Note that this isn't imported from CQL. It's actually not part of the CQL query 
 
 #### USAGE
 
-Simply include a list of SortKeys in the 'sort_queries' parameter of your Query object. They will be automatically validated and formatted.
+Simply include a list of SortKeys in the 'sort_queries' parameter of your SearchRetrieve object. They will be automatically validated and formatted.
 
 #### AVAILABLE FUNCTIONS
 
