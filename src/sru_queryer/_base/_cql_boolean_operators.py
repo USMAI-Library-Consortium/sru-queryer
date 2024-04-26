@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from ._search_index_config import IndexQuery
+from ._search_clause import SearchClause
 from ._cql_literal import LITERAL
 from ._cql_modifiers import AndOrNotModifier, CQLModifierBase
 
@@ -13,7 +13,7 @@ class CQLBooleanOperatorBase:
         self.conditions = []
 
         for condition in args:
-            if isinstance(condition, IndexQuery) or isinstance(condition, CQLBooleanOperatorBase) or isinstance(condition, LITERAL):
+            if isinstance(condition, SearchClause) or isinstance(condition, CQLBooleanOperatorBase) or isinstance(condition, LITERAL):
                 self.conditions.append(condition)
             else:
                 raise ValueError(
@@ -51,7 +51,7 @@ class CQLBooleanOperatorBase:
             condition_is_operator = isinstance(
                 operator_index_or_literal, CQLBooleanOperatorBase)
             condition_is_index_or_literal = isinstance(
-                operator_index_or_literal, IndexQuery) or isinstance(operator_index_or_literal, LITERAL)
+                operator_index_or_literal, SearchClause) or isinstance(operator_index_or_literal, LITERAL)
 
             if condition_is_operator:
                 operator = operator_index_or_literal
