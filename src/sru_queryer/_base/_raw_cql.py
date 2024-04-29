@@ -1,9 +1,9 @@
 from __future__ import annotations
 
-class LITERAL():
+class RawCQL():
 
-    def __init__(self, literal_string: str, add_padding=False):
-        self.literal_string = literal_string
+    def __init__(self, raw_cql_string: str, add_padding=False):
+        self.raw_cql_string = raw_cql_string
         self.add_padding = add_padding
 
     def format(self):
@@ -11,9 +11,9 @@ class LITERAL():
 
     def _format(self, **kwargs):
         if self.add_padding:
-            return f"%20{self.literal_string}%20"
+            return f"%20{self.raw_cql_string}%20"
         else:
-            return self.literal_string
+            return self.raw_cql_string
 
     def validate(self, _):
         return

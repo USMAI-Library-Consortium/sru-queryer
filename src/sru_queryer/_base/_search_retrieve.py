@@ -2,7 +2,7 @@ from __future__ import annotations
 from requests import Request, PreparedRequest
 
 from ._search_clause import SearchClause
-from ._cql_literal import LITERAL
+from ._raw_cql import RawCQL
 from ._cql_boolean_operators import CQLBooleanOperatorBase
 from ._sru_configuration import SRUConfiguration
 from ._sru_validator import SRUValidator
@@ -11,7 +11,7 @@ from ._sort_key import SortKey
 
 class SearchRetrieve:
 
-    def __init__(self, sru_configuration: SRUConfiguration, cql_query: SearchClause | CQLBooleanOperatorBase | LITERAL, start_record: int | None = None, maximum_records: int | None = None, record_schema: str | None = None, sort_queries: list[dict] | list[SortKey] | None = None, record_packing: str | None = None):
+    def __init__(self, sru_configuration: SRUConfiguration, cql_query: SearchClause | CQLBooleanOperatorBase | RawCQL, start_record: int | None = None, maximum_records: int | None = None, record_schema: str | None = None, sort_queries: list[dict] | list[SortKey] | None = None, record_packing: str | None = None):
         self.sru_configuration = sru_configuration
         self.cql_query = cql_query
         self.start_record = start_record

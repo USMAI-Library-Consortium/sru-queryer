@@ -5,7 +5,7 @@ from requests import Request
 from src.sru_queryer import SearchRetrieve
 from src.sru_queryer.sru import SRUUtil
 from src.sru_queryer.cql import SearchClause
-from src.sru_queryer.cql import AND, OR, LITERAL
+from src.sru_queryer.cql import AND, OR, RawCQL
 from src.sru_queryer.sru import SortKey
 from tests.testData.test_data import TestFiles, get_alma_sru_configuration
 from src.sru_queryer.drivers import gapines_driver, alma_driver, loc_driver
@@ -173,7 +173,7 @@ class TestQueryWithXMLData(unittest.TestCase):
 
             sru_configuration = SRUUtil.create_configuration_for_server("https://example.com", sru_version="1.1", driver=loc_driver)
 
-            SearchRetrieve(sru_configuration, LITERAL("pass")).validate()
+            SearchRetrieve(sru_configuration, RawCQL("pass")).validate()
     
     @patch('src.sru_queryer._base._sru_util.requests.get')
     def test_initialize_query_default_schema_raises_no_error(self, mock_get):
@@ -183,4 +183,4 @@ class TestQueryWithXMLData(unittest.TestCase):
 
             sru_configuration = SRUUtil.create_configuration_for_server("https://example.com", sru_version="1.1", driver=gapines_driver)
 
-            SearchRetrieve(sru_configuration, LITERAL("pass"))
+            SearchRetrieve(sru_configuration, RawCQL("pass"))

@@ -23,7 +23,7 @@ Using this utility has a few big benefits, such as:
    2. [SRUUtil](#sruutil)
    3. [Boolean Operators (AND, OR, NOT, PROX)](#constructing-more-advanced-queries-boolean-operators-1)
    4. [SearchRetrieve](#searchretrieve-class)
-   5. [LITERAL](#custom-queries-literal)
+   5. [RawCQL](#custom-queries-rawcql)
    6. [Modifiers](#modifiying-operators---modifiers)
    7. [Sorting in v1.2](#sorting-in-12-sortby-clauses)
    8. [Sorting in v1.1](#sorting-in-11-SortKey)
@@ -101,7 +101,7 @@ https://www.loc.gov/standards/sru/cql/spec.html
 `from sru_queryer import SearchRetrieve`
 
 Use the SearchRetrieve class to actually construct and validate a query.\
-This class takes the SRU configuration as an argument, followed by the actual CQL query made up of boolean operators, Literals, and/or SearchClauses. You can also set certain values that you might want to change between queries while keeping the same SRUConfiguration - record format, start record, maximum records, etc. It also takes sort queries.
+This class takes the SRU configuration as an argument, followed by the actual CQL query made up of boolean operators, RawCQL classes, and/or SearchClauses. You can also set certain values that you might want to change between queries while keeping the same SRUConfiguration - record format, start record, maximum records, etc. It also takes sort queries.
 
 ```
 query_obj = SearchRetrieve(sru_configuration, SearchClause(
@@ -141,8 +141,8 @@ The four components of this query are the context_set (`alma`), the index (`titl
 
 #### USAGE
 
-All of the options for initializing an SearchClause are keyword arguments, but are listed in an order that's the same as a standard index query (aside from modifiers).
-This means you can initialize an SearchClause in a human-readable way without including any keywords:
+All of the options for initializing a SearchClause are keyword arguments, but are listed in an order that's the same as a standard index query (aside from modifiers).
+This means you can initialize a SearchClause in a human-readable way without including any keywords:
 `SearchClause("alma", "title", "=", "Harry Potter")`
 which looks like the formatted query:
 `alma.title="Harry Potter"`.
@@ -158,7 +158,7 @@ Keep in mind, if a context_set or index_name is not provided, the defaults must 
 
 #### AVAILABLE FUNCTIONS
 
-You don't need to use any functions on an SearchClause as a general user. For instance, the search_retrieve.validate() function will also run the validate() function for all included SearchClauses.
+You don't need to use any functions on a SearchClause as a general user. For instance, the search_retrieve.validate() function will also run the validate() function for all included SearchClauses.
 
 #### INITIALIZATION OPTIONS
 
@@ -232,12 +232,12 @@ Arguments for create_configuration_for_server:
 `default_cql_index`
 | Mandatory | Data Type | Description |
 | ---------- | --------- | ------------------------------------------------------------------------------------------------------------------------------- |
-| No | string |The default index for an SearchClause if only a value is provided. If you have a default_cql_index, you must also have a default_cql_context_set. For example, if the default context set is 'alma' and the default index is 'title', the query `"Harry Potter"` will be validated as `alma.title "Harry Potter"`. |
+| No | string |The default index for a SearchClause if only a value is provided. If you have a default_cql_index, you must also have a default_cql_context_set. For example, if the default context set is 'alma' and the default index is 'title', the query `"Harry Potter"` will be validated as `alma.title "Harry Potter"`. |
 
 `default_cql_relation`
 | Mandatory | Data Type | Description |
 | ---------- | --------- | ------------------------------------------------------------------------------------------------------------------------------- |
-| No | string |The default relation for an SearchClause if only a value is provided. If you have a default_cql_relation, you must also have a default_cql_context_set and index. For example, if the default context set is 'alma' and the default index is 'title', the query `"Harry Potter"` will be validated as `alma.title="Harry Potter"`. Not all SRU servers list valid relations for SearchClauses, so this is ONLY NECCESARY when validating defaults for servers that do. If you server does not, you can safely ignore this even if you don't disable validation for cql defaults.|
+| No | string |The default relation for a SearchClause if only a value is provided. If you have a default_cql_relation, you must also have a default_cql_context_set and index. For example, if the default context set is 'alma' and the default index is 'title', the query `"Harry Potter"` will be validated as `alma.title="Harry Potter"`. Not all SRU servers list valid relations for SearchClauses, so this is ONLY NECCESARY when validating defaults for servers that do. If you server does not, you can safely ignore this even if you don't disable validation for cql defaults.|
 
 `disable_validation_for_cql_defaults`
 | Mandatory | Data Type | Description |
@@ -272,7 +272,7 @@ Boolean Operators are used to construct queries with one or more SearchClauses. 
 
 #### USAGE
 
-Each operator takes an unlimited quantity of arguments, each of which represents a logical condition. Each condition can be an SearchClause, a Literal (discussed below), or another nested Boolean Operator.
+Each operator takes an unlimited quantity of arguments, each of which represents a logical condition. Each condition can be a SearchClause, a RawCQL class (discussed below), or another nested Boolean Operator.
 
 For example, the query:
 `OR(SearchClause("alma", "title", "=", "Harry"), SearchClause("alma", "title", "=", "Potter"))`
@@ -303,12 +303,12 @@ As with the SearchClause, the functions on the CQL Boolean Operators are not ind
 
 Any options not marked as MANDATORY are optional. It is not recommended to change any options manually after initializing a CQL Boolean Operator, as this will bypass some validation. It's easy to create a new instance of CQL Boolean Operator if you need different options.
 
-| Option                   | Data Type                                                        | Mandatory | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
-| ------------------------ | ---------------------------------------------------------------- | --------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Positional arguments 1-n | SearchClause, class extending CQLBooleanOperatorBase, or LITERAL | Yes       | Search clauses, which will be joined by the boolean operator. Must have at least one, or two if it is the outermost condition or first condition in a parent operator.                                                                                                                                                                                                                                                                                                                                                                                                                  |
-| modifiers                | list[Class extending CQLModifierBase]                            | No        | A list of modifiers for the boolean operator, which will be tacked on to the end of the operator. Keep in mind that modifiers will be added to each instance of the formatted operator - if there's 3 conditions in the operator, leading to two 'and' conditions, this list will be included for both 'and's. To get around this, you may use a nested Boolean Operator with one condition and add the modifiers to that operator. In this case, it will replace the parent's operator with its own, which has the modifiers. The rest of the parent's operators will not be affected. |
+| Option                   | Data Type                                                       | Mandatory | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| ------------------------ | --------------------------------------------------------------- | --------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Positional arguments 1-n | SearchClause, class extending CQLBooleanOperatorBase, or RawCQL | Yes       | Search clauses, which will be joined by the boolean operator. Must have at least one, or two if it is the outermost condition or first condition in a parent operator.                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| modifiers                | list[Class extending CQLModifierBase]                           | No        | A list of modifiers for the boolean operator, which will be tacked on to the end of the operator. Keep in mind that modifiers will be added to each instance of the formatted operator - if there's 3 conditions in the operator, leading to two 'and' conditions, this list will be included for both 'and's. To get around this, you may use a nested Boolean Operator with one condition and add the modifiers to that operator. In this case, it will replace the parent's operator with its own, which has the modifiers. The rest of the parent's operators will not be affected. |
 
-Note: Literals may work in place of modifiers, however, this has not been tested.
+Note: RawCQL classes may work in place of modifiers, however, this has not been tested.
 
 ### SearchRetrieve class
 
@@ -347,40 +347,40 @@ construct_request: Uses all components of the query to construct a searchRetriev
 
 Unlike many other classes, it is safe to modify variables after instantiating. This is because no validation occurs in the constructor. If you do change something, you'd just have to remember to run validate() again.
 
-| Option            | Data Type                                                        | Mandatory | Description                                                                                                                                                                                                                                                           |
-| ----------------- | ---------------------------------------------------------------- | --------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| sru_configuration | SRUConfiguration                                                 | Yes       | The configuration of the SRU server, which is used to construct and validate queries. Create a configuration with SRUUtil's create_configuration_for_server()                                                                                                         |
-| cql_query         | SearchClause, class extending CQLBooleanOperatorBase, or LITERAL | Yes       | The CQL query you wish to execute.                                                                                                                                                                                                                                    |
-| start_record      | int                                                              | No        | An offset - Every search produces a set on the server, but not all will be returned. This determines the first record in that set that will be returned (offset).                                                                                                     |
-| maximum_records   | int                                                              | No        | Set maximum amount of records that will be returned. The default for this, if not included, can be set through SRUUtil.create_configuration_for_server, by the explainResponse, or is set to 5.                                                                       |
-| record_schema     | string                                                           | No        | The format in which the searchRetrieveRessponse will return records. Default is 'marcxml.' Any value set here will be validated against the available record schemas listed in the explainResponse. REQUIRED if the default is not returned with the explainResponse. |
-| sort_queries      | list[dict] or list[SortKey]                                      | No        | A list of sortBy dictionaries, which add sort clauses to the dictionary. See below for more information.                                                                                                                                                              |
-| record_packing    | string                                                           | No        | The record packing that the record will be returned in (either xml or string)                                                                                                                                                                                         |
+| Option            | Data Type                                                       | Mandatory | Description                                                                                                                                                                                                                                                           |
+| ----------------- | --------------------------------------------------------------- | --------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| sru_configuration | SRUConfiguration                                                | Yes       | The configuration of the SRU server, which is used to construct and validate queries. Create a configuration with SRUUtil's create_configuration_for_server()                                                                                                         |
+| cql_query         | SearchClause, class extending CQLBooleanOperatorBase, or RawCQL | Yes       | The CQL query you wish to execute.                                                                                                                                                                                                                                    |
+| start_record      | int                                                             | No        | An offset - Every search produces a set on the server, but not all will be returned. This determines the first record in that set that will be returned (offset).                                                                                                     |
+| maximum_records   | int                                                             | No        | Set maximum amount of records that will be returned. The default for this, if not included, can be set through SRUUtil.create_configuration_for_server, by the explainResponse, or is set to 5.                                                                       |
+| record_schema     | string                                                          | No        | The format in which the searchRetrieveRessponse will return records. Default is 'marcxml.' Any value set here will be validated against the available record schemas listed in the explainResponse. REQUIRED if the default is not returned with the explainResponse. |
+| sort_queries      | list[dict] or list[SortKey]                                     | No        | A list of sortBy dictionaries, which add sort clauses to the dictionary. See below for more information.                                                                                                                                                              |
+| record_packing    | string                                                          | No        | The record packing that the record will be returned in (either xml or string)                                                                                                                                                                                         |
 
-### Custom queries: LITERAL
+### Custom queries: RawCQL
 
-`from sru_queryer.cql import LITERAL`
+`from sru_queryer.cql import RawCQL`
 
-USE ONLY WHEN NEEDED! The LITERAL class allows you to pass a string directly to the SRU query. THE STRING WILL NOT BE VALIDATED.
+USE ONLY WHEN NEEDED! The RawCQL class allows you to pass a string directly to the CQL query. THE STRING WILL NOT BE VALIDATED.
 
-Literals are intended for cases in which this library does not support a certain SRU feature OR to bypass a bugged output format.
+RawCQL is intended for cases in which this library does not support a certain SRU feature OR to bypass a bugged output format.
 
-Using a literal allows you to insert whatever search condition you need, while still validating the rest of the query. You can use a literal to replace the entire search query, replace a boolean conditional, or replace an SearchClause.
+Using raw cql allows you to insert whatever search condition you need, while still validating the rest of the query. You can use a RawCQL class to replace the entire search query, replace a boolean conditional, or replace a SearchClause.
 
 You don't have to worry about creating the string in exact URL notation (e.g., replacing ' ' with %20 or '"' with %22). Characters will be encoded automatically by Query.construct_request().
 
 #### USAGE
 
-Use a literal in place of an SearchClause or class extending CQLBooleanOperatorBase (AND, OR, NOT, PROX).
+Use a RawCQL class in place of a SearchClause or class extending CQLBooleanOperatorBase (AND, OR, NOT, PROX).
 
-Here's an example of a literal being used instead of an SearchClause in an AND boolean operator:
-`AND(SearchClause("alma", "title", "=", "Maryland"), LITERAL("alma.materialType==BOOK"))`
+Here's an example of a RawCQL class being used instead of a SearchClause in an AND boolean operator:
+`AND(SearchClause("alma", "title", "=", "Maryland"), RawCQL("alma.materialType==BOOK"))`
 
-Here's an example of a literal replacing a CQLBooleanOperator and its SearchClauses:
-`LITERAL('alma.title="Maryland" and (alma.materialType=="BOOK" or alma.materialType=="DVD")')`
+Here's an example of a RawCQL class replacing a CQLBooleanOperator and its SearchClauses:
+`RawCQL('alma.title="Maryland" and (alma.materialType=="BOOK" or alma.materialType=="DVD")')`
 
-You can't pass an SearchClause or a CQLBooleanOperator to a literal and have them be nested inside of it, in the way you can nest CQLBooleanOperators/SearchClauses inside CQLBooleanOperators. You COULD format them in when constructing the literal using string formatting:
-`LITERAL(f'{search_clause_1.format()} and {cql_boolean_operator.format()}')`
+You can't pass a SearchClause or a CQLBooleanOperator to a RawCQL class and have them be nested inside of it, in the way you can nest CQLBooleanOperators/SearchClauses inside CQLBooleanOperators. You COULD format them in when constructing the RawCQL class using string formatting:
+`RawCQL(f'{search_clause_1.format()} and {cql_boolean_operator.format()}')`
 ...where search_clause_1 and cql_boolean_operator are instantiated SearchClause and CQLBooleanOperatorBase objects.
 
 However, keep in mind that this will disable validation for those inner objects.
@@ -391,10 +391,10 @@ There's nothing here that you would want to use. This class is essentially a wra
 
 #### INITIALIZATION OPTIONS
 
-| Option         | Data Type              | Mandatory | Description                                                                                                                                                                                                                           |
-| -------------- | ---------------------- | --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| literal_string | string (should be CQL) | Yes       | The string that you want to be executed. Again, you don't have to provide it in a url-exact format, spaces and other special characters will be replaced by their compability characters later on if you're using the provided tools. |
-| add_padding    | boolean                | No        | Whether or not to add a space (%20) before and after the string upon formatting. Set to false by default.                                                                                                                             |
+| Option         | Data Type              | Mandatory | Description                                                                                                                                                                                                           |
+| -------------- | ---------------------- | --------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| raw_cql_string | string (should be CQL) | Yes       | A CQL query as a string. Again, you don't have to provide it in a url-exact format, spaces and other special characters will be replaced by their compability characters later on if you're using the provided tools. |
+| add_padding    | boolean                | No        | Whether or not to add a space (%20) before and after the string upon formatting. Set to false by default.                                                                                                             |
 
 ### Modifiying operators - Modifiers
 
@@ -403,9 +403,9 @@ Modifiers are conditions which modify the search query operators (AND, "all", OR
 Each modifier is preceeded by a '/' and optional spacing. One or many modifiers may be included. Modifiers must include a base_name, but MAY include a context_set, operator, and value.
 
 From the LOC website, a modifier on a Boolean Operator looks like: `dc.title any fish or/rel.combine=sum dc.creator any sanderson`.
-A modifier on an SearchClause looks like `any /relevant /cql.string`
+A modifier on a SearchClause looks like `any /relevant /cql.string`
 
-One thought of interest - it may be possible to include a LITERAL instead of a modifier for custom modifiers / modifier formats not available through this program. I've not tested it, but it's likely to work.
+One thought of interest - it may be possible to include a RawCQL instead of a modifier for custom modifiers / modifier formats not available through this program. I've not tested it, but it's likely to work.
 
 #### USAGE
 
@@ -417,7 +417,7 @@ This program will NOT validate modifiers in relation to one another - e.g., even
 
 Example prox modifier:
 `ProxModifier('unit', "=", "sentence", context_set="cql")`
-\*Using the keyword for context set here is optional. I'm just showing it to make the order clear - it's rearranged slightly as compared to an SearchClause.
+\*Using the keyword for context set here is optional. I'm just showing it to make the order clear - it's rearranged slightly as compared to a SearchClause.
 
 The RelationModifier works in the same way.
 
