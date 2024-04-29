@@ -40,10 +40,10 @@ Here's just a basic usage example:
 
 ```
 # Create a configuration object for the SRU server, allowing you to validate and send queries.
-sru_configuration = SRUUtil.create_configuration_for_server("https://path-to-sru-server-base", "1.2")
+sru_configuration = SRUUtil.create_configuration_for_server("https://path-to-sru-server-base")
 
-# Configure a query - in this case, find records where the creator includes Abraham, sorted alphabetically & ascending.
-query_obj = Query(sru_configuration, SearchClause(
+# Configure a SearchRetrieve query - in this case, find records where the creator includes Abraham, sorted alphabetically & ascending.
+query_obj = SearchRetrieve(sru_configuration, SearchClause(
         "alma", "creator", "=", "Abraham"), sort_queries=[{
             "index_set": "alma",
             "index_name": "creator",
@@ -83,15 +83,15 @@ from sru_queryer.drivers import alma_driver
 sru_configuration = SRUUtil.create_configuration_for_server("https://path-to-sru-server-base", "1.2", driver=alma_driver)
 ```
 
-This is the most basic way to create a configuration object. The first argument is the SRU explain URL, the second is the searchRetrieve URL, the third is the SRU version, and the final one is the driver. This function takes many other optional arguments, which can do things like configure the default record schemas, default context sets, change validation settings, etc.
+This is the most basic way to create a configuration object. The first argument is the SRU server URL, the second is the SRU version, and the last one is the driver. This function takes many other optional arguments, which can do things like configure the default record schemas, default context sets, change validation settings, etc.
 
-A very important argument is 'driver'. This takes a dict which tells the program how to parse explainResponses. This program already includes drivers for ExLibris Alma, LOC, and gapines SRU servers. The default is set to 'alma' (ExLibris Alma), which is why you won't see it in some examples. The drivers are straightforward - you can follow the template of the included drivers to create one for your own server. Drivers serve to tell the program where to find the information it needs in the SRU explainResponse and which information is available.
+A very important argument is 'driver'. This takes a dict which tells the program how to parse explainResponses. This program already includes drivers for ExLibris Alma, LOC, and gapines SRU servers. The default is set to 'alma' (ExLibris Alma), which is why you won't see it in some examples. The drivers are straightforward - you can follow the template of the included drivers to create one for your own server. Drivers tell the program where to find the information it needs in the SRU explainResponse and which information is available.
 
 ### Basic Query Component: SearchClause
 
 `from sru_queryer.cql import SearchClause`
 
-This is officially known as a 'CQL search clause': https://www.loc.gov/standards/sru/cql/spec.html.\
+This is officially known as a 'CQL search clause': https://www.loc.gov/standards/sru/cql/spec.html <br>
 A standard CQL search clause looks like: `alma.title="Harry Potter"`. This same query with the SearchClause class would look like: `SearchClause("alma", "title", "=", "Harry Potter")`
 
 https://www.loc.gov/standards/sru/cql/spec.html
@@ -101,7 +101,7 @@ https://www.loc.gov/standards/sru/cql/spec.html
 `from sru_queryer import SearchRetrieve`
 
 Use the SearchRetrieve class to actually construct and validate a query.\
-This class takes the SRU configuration as an argument, followed by the actual CQL query made up of boolean operators, Literals, and SearchClauses. You can also set certain values that you might want to change between queries while keeping the same SRUConfiguration - record format, start record, maximum records, etc. It also takes sort queries.
+This class takes the SRU configuration as an argument, followed by the actual CQL query made up of boolean operators, Literals, and/or SearchClauses. You can also set certain values that you might want to change between queries while keeping the same SRUConfiguration - record format, start record, maximum records, etc. It also takes sort queries.
 
 ```
 query_obj = SearchRetrieve(sru_configuration, SearchClause(
@@ -158,7 +158,7 @@ Keep in mind, if a context_set or index_name is not provided, the defaults must 
 
 #### AVAILABLE FUNCTIONS
 
-You don't need to use any functions on an SearchClause as a general user. For instance, the SearchRetrieve.validate() function will also run the validate() function for all included SearchClauses.
+You don't need to use any functions on an SearchClause as a general user. For instance, the search_retrieve.validate() function will also run the validate() function for all included SearchClauses.
 
 #### INITIALIZATION OPTIONS
 
@@ -314,7 +314,7 @@ Note: Literals may work in place of modifiers, however, this has not been tested
 
 `from sru_queryer import SearchRetrieve`
 
-Now, for the class which you'll likely use the most - the SearchRetrieve class. Whereas SRUUtil deals with configuration, SearchRetrieve only deals with one specific query. It takes an instance of SRUUtil for the purposes of validation.
+Now, for the class which you'll likely use the most - the SearchRetrieve class. Whereas SRUUtil deals with configuration, SearchRetrieve only deals with one specific query. It takes an instance of SRUConfiguration for the purposes of validation.
 
 #### USAGE
 
