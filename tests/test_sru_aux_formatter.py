@@ -1,4 +1,5 @@
 import unittest
+import logging
 
 from tests.testData.test_data import get_gapines_sru_configuration, get_alma_sru_configuration
 from src.sru_queryer._base._sru_aux_formatter import SRUAuxiliaryFormatter
@@ -39,6 +40,14 @@ class TestSRUAuxiliaryFormatter(unittest.TestCase):
         expected_url = f"{base_url}?version=1.1&operation=explain"
 
         actual_url = SRUAuxiliaryFormatter.format_base_explain_query(base_url, "1.1")
+
+        self.assertEqual(expected_url, actual_url)
+
+    def test_format_search_explain_url_no_version(self):
+        base_url =  "https://example.com"
+        expected_url = f"{base_url}?operation=explain"
+
+        actual_url = SRUAuxiliaryFormatter.format_base_explain_query(base_url)
 
         self.assertEqual(expected_url, actual_url)
 

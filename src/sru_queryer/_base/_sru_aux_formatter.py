@@ -15,7 +15,7 @@ class SRUAuxiliaryFormatterAbstract(ABC):
 
     @staticmethod
     @abstractmethod
-    def format_base_explain_query(base_server_url: str, version: str) -> str:
+    def format_base_explain_query(base_server_url: str, version: str = None) -> str:
         pass
     
     @staticmethod
@@ -69,8 +69,12 @@ class SRUAuxiliaryFormatter(SRUAuxiliaryFormatterAbstract):
                 f.write(formatted_string)
 
     @staticmethod
-    def format_base_explain_query(server_url: str, version: str) -> str:
-        return f'{server_url}?version={str(version)}&operation=explain'
+    def format_base_explain_query(server_url: str, version: str = None) -> str:
+        url = f'{server_url}?'
+        if version: url += f'version={str(version)}&'
+        url += 'operation=explain'
+
+        return url
     
     @staticmethod
     def format_base_search_retrieve_query(sru_configuration: SRUConfiguration, start_record: int | None = None, maximum_records: int | None = None, record_schema: str | None = None, record_packing: str | None = None) -> str:

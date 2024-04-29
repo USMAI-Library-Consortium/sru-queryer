@@ -3,6 +3,10 @@
 
 loc_driver = {
     "name": "LOC driver",
+    "version": {
+        "versionLocation": ["zs:explainResponse", "zs:version"],
+        "supportsVersionlessExplainResponse": True
+    },
     "indexInfo": {
         'indexInfoLocation': ['zs:explainResponse', 'zs:record', 'zs:recordData', 'explain', 'indexInfo', 'index'],
         # Relative to the index info location above
@@ -29,6 +33,10 @@ loc_driver = {
 
 alma_driver = {
     "name": "Alma Driver",
+    "version": {
+        "versionLocation": ["explainResponse", "version"],
+        "supportsVersionlessExplainResponse": False
+    },
     "indexInfo": {
         'indexInfoLocation': ["explainResponse", "record", "recordData", "explain", "indexInfo", "index"],
         # Relative to the index info location above
@@ -54,6 +62,10 @@ alma_driver = {
 
 gapines_driver = {
     "name": "Gapines Driver",
+    "version": {
+        "versionLocation": ["explainResponse", "version"],
+        "supportsVersionlessExplainResponse": True
+    },
     "indexInfo": {
         'indexInfoLocation': ['explainResponse', 'record', 'recordData', 'explain', 'indexInfo', 'index'],
         # Relative to the index info location above

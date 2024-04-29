@@ -236,6 +236,7 @@ def get_alma_sru_configuration() -> SRUConfiguration:
     sru_configuration.default_index = None
     sru_configuration.max_records_supported = 50
     sru_configuration.default_records_returned = 10
+    sru_configuration.sru_version = "1.2"
 
     return sru_configuration
 
@@ -254,6 +255,7 @@ def get_gapines_sru_configuration() -> SRUConfiguration:
     sru_configuration.default_index = "keyword"
     sru_configuration.max_records_supported = 50
     sru_configuration.default_records_returned = 10
+    sru_configuration.sru_version = "1.1"
 
     return sru_configuration
 
@@ -272,6 +274,7 @@ def get_test_sru_configuration_no_sort_or_supported_operations_or_config() -> SR
     sru_configuration.default_index = None
     sru_configuration.max_records_supported = None
     sru_configuration.default_records_returned = None
+    sru_configuration.sru_version = "1.1"
 
     return sru_configuration
 

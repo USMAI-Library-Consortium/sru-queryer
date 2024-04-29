@@ -14,3 +14,4 @@ src/*.egg-info
 available_indexes.txt
 response.xml
 explain_response_error.xml
+example_use.py

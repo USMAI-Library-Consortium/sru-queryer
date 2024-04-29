@@ -5,7 +5,7 @@ import sys
 
 from ._sru_configuration import SRUConfiguration
 
-class SRUExplainXMLParserAbstract(ABC):
+class SRUExplainDictParserAbstract(ABC):
 
     def __init__(self, sru_explain_dict: dict, driver: dict):
         self.sru_explain_dict = sru_explain_dict
@@ -15,7 +15,7 @@ class SRUExplainXMLParserAbstract(ABC):
     def get_sru_configuration_from_explain_response(self) -> SRUConfiguration:
         pass
 
-class SRUExplainXMLParser(SRUExplainXMLParserAbstract):
+class SRUExplainDictParser(SRUExplainDictParserAbstract):
 
     def __init__(self, sru_explain_dict: dict, driver: dict):
         self.sru_explain_dict = sru_explain_dict
@@ -24,14 +24,16 @@ class SRUExplainXMLParser(SRUExplainXMLParserAbstract):
     def get_sru_configuration_from_explain_response(self) -> SRUConfiguration:
         sru_configuration = SRUConfiguration()
 
-        raw_index_info = self._parse_raw_index_info_from_xml()
+        raw_index_info = self._parse_raw_index_info_from_dict()
         sru_configuration.available_context_sets_and_indexes = self._parse_available_context_sets_and_index_info(raw_index_info)
         
-        raw_schema_info = self._parse_raw_schema_info_from_xml()
+        raw_schema_info = self._parse_raw_schema_info_from_dict()
         sru_configuration.available_record_schemas = self._parse_schema_info(raw_schema_info)
 
-        raw_config_info = self._parse_raw_config_info_from_xml()
+        raw_config_info = self._parse_raw_config_info_from_dict()
         config_info = self._parse_config_info(raw_config_info)
+
+        sru_configuration.sru_version = self._parse_sru_version_from_dict()
 
         if config_info:
             sru_configuration.supported_relation_modifiers = config_info["supported_relation_modifiers"]
@@ -45,17 +47,22 @@ class SRUExplainXMLParser(SRUExplainXMLParserAbstract):
 
         return sru_configuration
 
-    def _parse_raw_index_info_from_xml(self) -> list[dict] | None:
+    def _parse_sru_version_from_dict(self) -> str:
+        path_to_sru_version = self.driver["version"]["versionLocation"]
+
+        return self._pull_data_from_dict(self.sru_explain_dict, path_to_sru_version)
+
+    def _parse_raw_index_info_from_dict(self) -> list[dict] | None:
         path_to_index_info = self.driver["indexInfo"]["indexInfoLocation"]
         
         return self._pull_data_from_dict(self.sru_explain_dict, path_to_index_info)
     
-    def _parse_raw_schema_info_from_xml(self) -> list[dict] | None:
+    def _parse_raw_schema_info_from_dict(self) -> list[dict] | None:
         path_to_schema_info = self.driver["schemaInfo"]["schemaInfoLocation"]
         
         return self._pull_data_from_dict(self.sru_explain_dict, path_to_schema_info)
 
-    def _parse_raw_config_info_from_xml(self) -> dict | None:
+    def _parse_raw_config_info_from_dict(self) -> dict | None:
         path_to_config_info = self.driver["configInfo"]["configInfoLocation"]
 
         return self._pull_data_from_dict(self.sru_explain_dict, path_to_config_info)
@@ -223,7 +230,7 @@ class SRUExplainXMLParser(SRUExplainXMLParserAbstract):
         the index cannot be sorted. Else, we will include 'None,' which indicates that the information is not available.
         
         We also, of course, need to convert the string 'true' to Python's boolean 'True'"""
-        sort = SRUExplainXMLParser._pull_data_from_dict(raw_index, path_to_sort, throw_error_if_not_found=False)
+        sort = SRUExplainDictParser._pull_data_from_dict(raw_index, path_to_sort, throw_error_if_not_found=False)
         if sort is None and sort_information_included_in_index_info:
             sort = False
         elif sort == "true":
@@ -235,7 +242,7 @@ class SRUExplainXMLParser(SRUExplainXMLParserAbstract):
     def _evaluate_if_sort_info_included_in_index_info(raw_index_info, path_to_sort) -> bool:
         sort_information_included_in_index_info = False
         for index in raw_index_info:
-            sort_info = SRUExplainXMLParser._pull_data_from_dict(index, path_to_sort, throw_error_if_not_found=False)
+            sort_info = SRUExplainDictParser._pull_data_from_dict(index, path_to_sort, throw_error_if_not_found=False)
             if sort_info != None:
                 sort_information_included_in_index_info = True
                 break

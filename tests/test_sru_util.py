@@ -15,12 +15,12 @@ class TestSRUUtilCreateConfiguration(unittest.TestCase):
 
         self.assertEqual(updated_config.server_url, "testurl2.com")
 
-    def test_merge_config_and_user_settings_version_set_correctly(self, mock_parse_explain_response, *args):
+    def test_merge_config_and_user_settings_version_updates_based_on_explain(self, mock_parse_explain_response, *args):
         mock_parse_explain_response.return_value = get_alma_sru_configuration()
 
         updated_config = SRUUtil.create_configuration_for_server("testurl2.com", sru_version="1.1")
 
-        self.assertEqual(updated_config.sru_version, "1.1")
+        self.assertEqual(updated_config.sru_version, "1.2")
 
     def test_merge_config_and_user_settings_set_record_numbers_returned_correctly(self, mock_parse_explain_response, *args):
         mock_parse_explain_response.return_value = get_alma_sru_configuration()
@@ -76,6 +76,7 @@ class TestSRUUtilCreateConfiguration(unittest.TestCase):
         self.assertEqual(updated_config.default_sort_schema, "marcxml")
         self.assertEqual(updated_config.default_records_returned, 10)
         self.assertEqual(updated_config.max_records_supported, 50)
+        self.assertEqual(updated_config.sru_version, "1.1")
 
     @staticmethod
     def create_index_config(title, id, sort, supported_operations, empty_term_supported) -> dict:
