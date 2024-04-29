@@ -1,7 +1,7 @@
 from __future__ import annotations
 
-from ._search_index_config import IndexQuery
-from ._cql_literal import LITERAL
+from ._search_clause import SearchClause
+from ._raw_cql import RawCQL
 from ._cql_modifiers import AndOrNotModifier, CQLModifierBase
 
 
@@ -13,7 +13,7 @@ class CQLBooleanOperatorBase:
         self.conditions = []
 
         for condition in args:
-            if isinstance(condition, IndexQuery) or isinstance(condition, CQLBooleanOperatorBase) or isinstance(condition, LITERAL):
+            if isinstance(condition, SearchClause) or isinstance(condition, CQLBooleanOperatorBase) or isinstance(condition, RawCQL):
                 self.conditions.append(condition)
             else:
                 raise ValueError(
@@ -36,7 +36,7 @@ class CQLBooleanOperatorBase:
 
         formatted_conditional = ""
         is_first_condition_of_conditions = True
-        for operator_index_or_literal in self.conditions:
+        for operator_is_index_or_raw_cql in self.conditions:
 
             parent_is_first_condition_of_parent = is_first_condition_of_parent
             # For clarity, I've set this variable name here. This means,
@@ -49,12 +49,12 @@ class CQLBooleanOperatorBase:
             # the loop, which is 'self'
 
             condition_is_operator = isinstance(
-                operator_index_or_literal, CQLBooleanOperatorBase)
-            condition_is_index_or_literal = isinstance(
-                operator_index_or_literal, IndexQuery) or isinstance(operator_index_or_literal, LITERAL)
+                operator_is_index_or_raw_cql, CQLBooleanOperatorBase)
+            condition_is_index_or_raw_cql = isinstance(
+                operator_is_index_or_raw_cql, SearchClause) or isinstance(operator_is_index_or_raw_cql, RawCQL)
 
             if condition_is_operator:
-                operator = operator_index_or_literal
+                operator = operator_is_index_or_raw_cql
                 # Renaming to operator because we checked above whether it's an operator.
 
                 condition_is_unary_operator = len(
@@ -78,7 +78,7 @@ class CQLBooleanOperatorBase:
                 if operator_is_unary_and_parent_is_not_first_condition or operator_has_multiple_conditions_and_is_not_first_condition_of_conditions:
                     formatted_conditional += self.format_operator()
 
-            elif condition_is_index_or_literal:
+            elif condition_is_index_or_raw_cql:
                 # Now we check whether we should append self's operator given the condition is an index
 
                 is_first_condition_and_parent_is_unary_operator_and_parent_not_first_condition = (
@@ -87,7 +87,7 @@ class CQLBooleanOperatorBase:
                 if not is_first_condition_of_conditions or is_first_condition_and_parent_is_unary_operator_and_parent_not_first_condition:
                     formatted_conditional += self.format_operator()
 
-            formatted_conditional += f"{operator_index_or_literal._format(nested_condition=True, is_first_condition_of_parent=is_first_condition_of_conditions)}"
+            formatted_conditional += f"{operator_is_index_or_raw_cql._format(nested_condition=True, is_first_condition_of_parent=is_first_condition_of_conditions)}"
             is_first_condition_of_conditions = False
 
         if nested_condition and not is_unary_operator:

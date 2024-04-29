@@ -15,7 +15,7 @@ class SRUUtilAbstract(ABC):
 
     @staticmethod
     @abstractmethod
-    def create_configuration_for_server(explain_url: str, search_retrieve_url: str, sru_version: str = "1.2", driver: str = "alma", username: str | None = None, password: str | None = None, default_cql_context_set: str | None = None, default_cql_index: str | None = None, default_cql_relation: str | None = None, disable_validation_for_cql_defaults: bool = False, max_records_supported: int | None = None, default_records_returned: int | None = None, default_record_schema: str | None = None, default_sort_schema: str | None = None) -> SRUConfiguration:
+    def create_configuration_for_server(server_url: str, sru_version: str = "1.2", driver: str = "alma", username: str | None = None, password: str | None = None, default_cql_context_set: str | None = None, default_cql_index: str | None = None, default_cql_relation: str | None = None, disable_validation_for_cql_defaults: bool = False, max_records_supported: int | None = None, default_records_returned: int | None = None, default_record_schema: str | None = None, default_sort_schema: str | None = None) -> SRUConfiguration:
         pass
 
     @staticmethod
@@ -27,14 +27,13 @@ class SRUUtilAbstract(ABC):
 class SRUUtil(SRUUtilAbstract):
 
     @staticmethod
-    def create_configuration_for_server(explain_url: str, search_retrieve_url: str, sru_version: str = "1.2", driver: dict = alma_driver, username: str | None = None, password: str | None = None, default_cql_context_set: str | None = None, default_cql_index: str | None = None, default_cql_relation: str | None = None, disable_validation_for_cql_defaults: bool = False, max_records_supported: int | None = None, default_records_returned: int | None = None , default_record_schema: str | None = None, default_sort_schema: str | None = None) -> SRUConfiguration:
-        formatted_explain_query = SRUAuxiliaryFormatter.format_base_explain_query(explain_url, sru_version)
+    def create_configuration_for_server(server_url: str, sru_version: str = "1.2", driver: dict = alma_driver, username: str | None = None, password: str | None = None, default_cql_context_set: str | None = None, default_cql_index: str | None = None, default_cql_relation: str | None = None, disable_validation_for_cql_defaults: bool = False, max_records_supported: int | None = None, default_records_returned: int | None = None , default_record_schema: str | None = None, default_sort_schema: str | None = None) -> SRUConfiguration:
+        formatted_explain_query = SRUAuxiliaryFormatter.format_base_explain_query(server_url, sru_version)
         explain_response_xml = SRUUtil._retrieve_explain_response_xml(formatted_explain_query, username, password)
         configuration = SRUUtil._parse_explain_response_configuration(explain_response_xml, driver)
 
         # Add user-defined values
-        configuration.explain_url = explain_url
-        configuration.search_retrieve_url = search_retrieve_url
+        configuration.server_url = server_url
         configuration.sru_version = sru_version
         configuration.username = username
         configuration.password = password
@@ -95,8 +94,8 @@ class SRUUtil(SRUUtilAbstract):
         return new_dict
 
     @staticmethod
-    def _retrieve_explain_response_xml(sru_explain_url: str, username: str | None, password: str | None) -> dict:
-        response_content = SRUUtil._get_request_contents(sru_explain_url, username, password)
+    def _retrieve_explain_response_xml(server_url: str, username: str | None, password: str | None) -> dict:
+        response_content = SRUUtil._get_request_contents(server_url, username, password)
         return xmltodict.parse(response_content)
 
     @staticmethod

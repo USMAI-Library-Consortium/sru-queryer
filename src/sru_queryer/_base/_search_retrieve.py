@@ -1,19 +1,19 @@
 from __future__ import annotations
 from requests import Request, PreparedRequest
 
-from ._search_index_config import IndexQuery
-from ._cql_literal import LITERAL
+from ._search_clause import SearchClause
+from ._raw_cql import RawCQL
 from ._cql_boolean_operators import CQLBooleanOperatorBase
 from ._sru_configuration import SRUConfiguration
 from ._sru_validator import SRUValidator
 from ._sru_aux_formatter import SRUAuxiliaryFormatter
 from ._sort_key import SortKey
 
-class Query:
+class SearchRetrieve:
 
-    def __init__(self, sru_configuration: SRUConfiguration, index_search: IndexQuery | CQLBooleanOperatorBase | LITERAL, start_record: int | None = None, maximum_records: int | None = None, record_schema: str | None = None, sort_queries: list[dict] | list[SortKey] | None = None, record_packing: str | None = None):
+    def __init__(self, sru_configuration: SRUConfiguration, cql_query: SearchClause | CQLBooleanOperatorBase | RawCQL, start_record: int | None = None, maximum_records: int | None = None, record_schema: str | None = None, sort_queries: list[dict] | list[SortKey] | None = None, record_packing: str | None = None):
         self.sru_configuration = sru_configuration
-        self.index_search = index_search
+        self.cql_query = cql_query
         self.start_record = start_record
         self.maximum_records = maximum_records
         self.record_schema = record_schema
@@ -28,13 +28,13 @@ class Query:
         self.sort_queries = sort_queries
 
     def validate(self):
-        """Validates the query. 
-        Keep in mind that not all facets of the query are validated."""
+        """Validates the searchRetrieve request. 
+        Keep in mind that not all facets of the request are validated."""
 
         SRUValidator.validate_base_query(self.sru_configuration,
             self.start_record, self.maximum_records, self.record_schema, self.record_packing)
 
-        self.index_search.validate(self.sru_configuration)
+        self.cql_query.validate(self.sru_configuration)
 
         SRUValidator.validate_sort(self.sru_configuration, self.sort_queries, self.record_schema)
 
@@ -52,10 +52,10 @@ class Query:
         search_retrieve_query = SRUAuxiliaryFormatter.format_base_search_retrieve_query(self.sru_configuration,
             self.start_record, self.maximum_records, self.record_schema, self.record_packing)
 
-        if isinstance(self.index_search, IndexQuery) and not (self.index_search.get_index_name() and self.index_search.get_operation()):
+        if isinstance(self.cql_query, SearchClause) and not (self.cql_query.get_index_name() and self.cql_query.get_operation()):
             # If it's just a single value (search term) as the query, without anything else, append an equals sign.
             search_retrieve_query += "="
-        search_retrieve_query += self.index_search.format()
+        search_retrieve_query += self.cql_query.format()
 
         search_retrieve_query += SRUAuxiliaryFormatter.format_sort_query(self.sort_queries)
 

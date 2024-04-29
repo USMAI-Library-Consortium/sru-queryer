@@ -4,13 +4,13 @@ from ._sru_configuration import SRUConfiguration
 from ._sru_validator import SRUValidator
 from ._cql_modifiers import CQLModifierBase, RelationModifier
 
-class IndexQuery:
-    """A query of an index.
+class SearchClause:
+    """A CQL clause.
 
     Supports validation of context set, index_name, operation, and whether 
     or not an empty string is allowed as a value for a particular index.
 
-    To create a valid query, you must use:\n
+    To create a valid search clause, you must use:\n
         a value,\n
         index_name + operation + value,\n
         OR context_set + index_name + operation + value.\n
@@ -71,22 +71,22 @@ class IndexQuery:
         return formatted_operation
 
     def _format(self, **kwargs):
-        formatted_index_query = ""
+        formatted_search_clause = ""
 
         if self._context_set:
-            formatted_index_query += f'{self._context_set}.'
+            formatted_search_clause += f'{self._context_set}.'
 
         if self._index_name:
-            formatted_index_query += f'{self._index_name}{self._format_operation()}'
+            formatted_search_clause += f'{self._index_name}{self._format_operation()}'
 
         # Format the modifiers
-        formatted_index_query += CQLModifierBase.format_modifier_array(
+        formatted_search_clause += CQLModifierBase.format_modifier_array(
             self._modifiers)
 
         # The index value will always be added
-        formatted_index_query += f'"{self._value}"'
+        formatted_search_clause += f'"{self._value}"'
 
-        return formatted_index_query
+        return formatted_search_clause
 
     def validate(self, sru_configuration: SRUConfiguration):
         SRUValidator.validate_cql(sru_configuration, self._context_set,

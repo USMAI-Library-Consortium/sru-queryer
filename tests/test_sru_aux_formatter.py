@@ -44,7 +44,7 @@ class TestSRUAuxiliaryFormatter(unittest.TestCase):
 
     def test_format_search_retrieve_query_start_record_not_default(self):
         sru_configuration = get_gapines_sru_configuration()
-        sru_configuration.search_retrieve_url = "https://example.com"
+        sru_configuration.server_url = "https://example.com"
         sru_configuration.sru_version = "1.2"
 
         actual_query = SRUAuxiliaryFormatter.format_base_search_retrieve_query(sru_configuration,
@@ -56,7 +56,7 @@ class TestSRUAuxiliaryFormatter(unittest.TestCase):
 
     def test_format_search_retrieve_query_maximum_records_not_default(self):
         sru_configuration = get_gapines_sru_configuration()
-        sru_configuration.search_retrieve_url = "https://example.com"
+        sru_configuration.server_url = "https://example.com"
         sru_configuration.sru_version = "1.2"
 
         actual_query = SRUAuxiliaryFormatter.format_base_search_retrieve_query(sru_configuration,
@@ -68,7 +68,7 @@ class TestSRUAuxiliaryFormatter(unittest.TestCase):
 
     def test_format_search_retrieve_query_version_1_1(self):
         sru_configuration = get_gapines_sru_configuration()
-        sru_configuration.search_retrieve_url = "https://example.com"
+        sru_configuration.server_url = "https://example.com"
         sru_configuration.sru_version = "1.1"
 
         actual_query = SRUAuxiliaryFormatter.format_base_search_retrieve_query(sru_configuration,
@@ -80,7 +80,7 @@ class TestSRUAuxiliaryFormatter(unittest.TestCase):
 
     def test_format_search_retrieve_query_default_record_schema(self):
         sru_configuration = get_gapines_sru_configuration()
-        sru_configuration.search_retrieve_url = "https://example.com"
+        sru_configuration.server_url = "https://example.com"
         sru_configuration.sru_version = "1.1"
 
         actual_query = SRUAuxiliaryFormatter.format_base_search_retrieve_query(sru_configuration,
@@ -92,7 +92,7 @@ class TestSRUAuxiliaryFormatter(unittest.TestCase):
 
     def test_format_search_retrieve_query_no_default_record_schema_or_user_defined_record_schema(self):
         sru_configuration = get_gapines_sru_configuration()
-        sru_configuration.search_retrieve_url = "https://example.com"
+        sru_configuration.server_url = "https://example.com"
         sru_configuration.sru_version = "1.1"
         sru_configuration.default_record_schema = None
 
@@ -105,7 +105,7 @@ class TestSRUAuxiliaryFormatter(unittest.TestCase):
 
     def test_format_search_retrieve_query_no_user_defined_start_record(self):
         sru_configuration = get_gapines_sru_configuration()
-        sru_configuration.search_retrieve_url = "https://example.com"
+        sru_configuration.server_url = "https://example.com"
         sru_configuration.sru_version = "1.1"
 
         actual_query = SRUAuxiliaryFormatter.format_base_search_retrieve_query(sru_configuration, maximum_records=10)
@@ -116,7 +116,7 @@ class TestSRUAuxiliaryFormatter(unittest.TestCase):
 
     def test_format_search_retrieve_query_no_user_defined_maximum_record_default_maximum_record(self):
         sru_configuration = get_gapines_sru_configuration()
-        sru_configuration.search_retrieve_url = "https://example.com"
+        sru_configuration.server_url = "https://example.com"
         sru_configuration.sru_version = "1.1"
 
         actual_query = SRUAuxiliaryFormatter.format_base_search_retrieve_query(sru_configuration)
@@ -127,7 +127,7 @@ class TestSRUAuxiliaryFormatter(unittest.TestCase):
 
     def test_format_search_retrieve_query_no_user_defined_maximum_record_no_default_maximum_record(self):
         sru_configuration = get_gapines_sru_configuration()
-        sru_configuration.search_retrieve_url = "https://example.com"
+        sru_configuration.server_url = "https://example.com"
         sru_configuration.sru_version = "1.1"
         sru_configuration.default_records_returned = None
 
@@ -139,7 +139,7 @@ class TestSRUAuxiliaryFormatter(unittest.TestCase):
 
     def test_format_search_retrieve_query_record_packing(self):
         sru_configuration = get_alma_sru_configuration()
-        sru_configuration.search_retrieve_url = "https://example.com"
+        sru_configuration.server_url = "https://example.com"
         sru_configuration.sru_version = "1.1"
         sru_configuration.default_records_returned = None
 
