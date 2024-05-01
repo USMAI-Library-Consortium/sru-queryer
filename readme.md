@@ -150,7 +150,7 @@ which looks like the formatted query:
 
 For SearchClauses without all options, you have to include the option name for each option OR include 'None' where the option would be.
 SearchClause with only a search term:
-`SearchClause(search)term="Harry Potter")` or `SearchClause(None, None, None, "Harry Potter")`
+`SearchClause(search_term="Harry Potter")` or `SearchClause(None, None, None, "Harry Potter")`
 SearchClause without a context_set:
 `SearchClause(index_name="title", operation="=", search_term="Harry Potter")` or
 `SearchClause(None, "title", "=", "Harry Potter")`
