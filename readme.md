@@ -417,12 +417,13 @@ There's nothing here that you would want to use. This class is essentially a wra
 
 ### Modifiying operators - Modifiers
 
-Modifiers are conditions which modify the search query operators (AND, "all", OR, etc). As indicated above, in version 1.2, they can either modify SearchClause operators or Boolean Operators.
+Modifiers are conditions which modify the search query operators (AND, "all", OR, etc). As indicated above, in version 1.2, they can either modify SearchClause relations or Boolean Operators.
 
 Each modifier is preceeded by a '/' and optional spacing. One or many modifiers may be included. Modifiers must include a base_name, but MAY include a context_set, comparison symbol, and value.
 
-From the LOC website, a modifier on a Boolean Operator looks like: `dc.title any fish or/rel.combine=sum dc.creator any sanderson`.
-A modifier on a SearchClause relation looks like `any /relevant /cql.string`
+From the LOC website, a modifier on a Boolean Operator looks like: <br>
+`dc.title=fish or[/rel.combine=sum] dc.creator=sanderson`.<br>
+A modifier on a SearchClause relation looks like:<br> `any /relevant /cql.string`
 
 One thought of interest - it may be possible to include a RawCQL instead of a modifier if you want to create custom modifiers or modifier formats not available through this program. I've not tested it, but it's likely to work.
 
@@ -432,7 +433,7 @@ This utility comes with 3 standard modifiers - AndOrNotModifier (for CQL Boolean
 
 These modifiers differ mainly in validation. The ProxModifier limits the base_name to either 'unit' or 'distance', as these are the base names used by prox, and limits the values for the 'unit' base name in the CQL context set to the values specified in the LOC documentation. Upon validation, an error will be raised if these values are not correct.
 
-This program will NOT validate modifiers in relation to one another - e.g., even though a prox must have one 'unit' and one 'distance' modifier, this is not enforced through validation. You could extend the CQLBooleanOperatorBase or PROX class to create this custom validation, if desired.
+This program will NOT validate combinations of modifiers - e.g., even though a 'PROX' boolean operator must have one 'unit' and one 'distance' modifier, this is not enforced through validation. You could extend the CQLBooleanOperatorBase or PROX class to create this custom validation, if desired.
 
 Example prox modifier:
 `ProxModifier('unit', "=", "sentence", context_set="cql")`
