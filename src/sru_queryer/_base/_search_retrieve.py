@@ -1,5 +1,5 @@
 from __future__ import annotations
-from requests import Request, PreparedRequest
+from requests import Request
 
 from ._search_clause import SearchClause
 from ._raw_cql import RawCQL
@@ -38,15 +38,16 @@ class SearchRetrieve:
 
         SRUValidator.validate_sort(self.sru_configuration, self.sort_queries, self.record_schema)
 
-    def construct_request(self) -> PreparedRequest:
+    def construct_request(self) -> Request:
         """Constructs the searchRetrieve request.
 
         Constructs the searchRetrieve request, including the base request, CQL query, and sortBy.
 
-        If you added a username and password when initializing the SRUUtil, it will be added to the
+        If you added a username and password when initializing SRUQueryer, it will be added to the
         headers of the request using the 'Basic access authentication' protocol.
 
-        Returns a PreparedRequest object. You can execute it using an instance of requests.Session:\n
+        Returns a Request object. You can execute it using an instance of requests.Session:\n
+            request = request.prepare()\n
             s = requests.Session()\n
             response = s.send(request)\n"""
         search_retrieve_query = SRUAuxiliaryFormatter.format_base_search_retrieve_query(self.sru_configuration,
@@ -63,7 +64,5 @@ class SearchRetrieve:
         request = Request("GET", search_retrieve_query)
         if self.sru_configuration.username and self.sru_configuration.password:
             request.headers["Authorization"] = SRUAuxiliaryFormatter.format_basic_access_authentication_header_payload(self.sru_configuration.username, self.sru_configuration.password)
-
-        request = request.prepare()
 
         return request

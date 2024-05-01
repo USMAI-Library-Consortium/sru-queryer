@@ -181,7 +181,6 @@ class TestCQLBooleanOperatorClasses(unittest.TestCase):
     @patch("src.sru_queryer._base._sru_validator.SRUValidator.validate_cql")
     def test_validate_operator_pair_with_valid_index_called_twice(self, mock_validate_index_info):
 
-        # Initialize the SRUUtil class
         sru_configuration = get_alma_sru_configuration()
 
         AND(SearchClause("alma", "valid_index", "==", "10"), SearchClause(
