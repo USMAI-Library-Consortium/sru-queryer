@@ -6,7 +6,7 @@ Using this utility has a few big benefits, such as:
 
 1. It handles validating much of the searchRetrieve request. This is particularly helpful because many SRU servers don't have good error messages.
 2. It handles formatting the searchRetrieve request for you. This makes queries much less prone to human mistakes.
-3. Programmatically the capabilities of the SRU server in your program.
+3. Programmatically access the capabilities of the SRU server in your program.
 
 ## TABLE OF CONTENTS
 
