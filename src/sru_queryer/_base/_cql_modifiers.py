@@ -5,7 +5,7 @@ from ._sru_validator import SRUValidator
 
 class CQLModifierBase:
     # Pulled from Library of Congress docs.
-    supported_operators = ["=", "<", "<=", ">", ">=", "<>"]
+    supported_comparison_symbols = ["=", "<", "<=", ">", ">=", "<>"]
 
     # Functions as whitelist. The string "any" will allow any value
     supported_base_names: str | list[str] = "any"
@@ -17,25 +17,25 @@ class CQLModifierBase:
     # Will probably be the same for all modifiers. But override if you want.
     default_context_set_for_modifier = "cql"
 
-    def __init__(self, base_name: str, operator: str | None = None, value: str | None = None, context_set: str | None = None):
+    def __init__(self, base_name: str, comparison_symbol: str | None = None, value: str | None = None, context_set: str | None = None):
         self.base_name = base_name
         self.context_set = context_set
 
-        if operator and not value:
+        if comparison_symbol and not value:
             raise ValueError(
-                "If you include an operator, you must include a value.")
-        if value and not operator:
+                "If you include an comparison_symbol, you must include a value.")
+        if value and not comparison_symbol:
             raise ValueError(
-                "If you include a value, you must include an operator.")
-        if operator and operator not in self.supported_operators:
-            raise ValueError(f"Operator '{operator}' is not supported.")
-        self.operator = operator
+                "If you include a value, you must include an comparison_symbol.")
+        if comparison_symbol and comparison_symbol not in self.supported_comparison_symbols:
+            raise ValueError(f"Operator '{comparison_symbol}' is not supported.")
+        self.comparison_symbol = comparison_symbol
         self.value = value
 
         self._validate_base_name(
             base_name, self.supported_base_names, self.modifier_type)
-        if operator != None:
-            self._validate_operator(operator, self.supported_operators)
+        if comparison_symbol != None:
+            self._validate_comparison_symbol(comparison_symbol, self.supported_comparison_symbols)
 
     def format(self):
         return self._format()
@@ -47,8 +47,8 @@ class CQLModifierBase:
 
         formatted_modifier += f'{self.base_name}'
 
-        if self.operator and self.value:
-            formatted_modifier += f'{self.operator}"{self.value}"'
+        if self.comparison_symbol and self.value:
+            formatted_modifier += f'{self.comparison_symbol}"{self.value}"'
 
         return formatted_modifier
 
@@ -57,8 +57,8 @@ class CQLModifierBase:
         """Returns formatted modifiers."""
         formatted_modifiers = ''
         if modifiers:
-            for boolean_operator_modifier in modifiers:
-                formatted_modifiers += f'{boolean_operator_modifier.format()}%20'
+            for boolean_comparison_symbol_modifier in modifiers:
+                formatted_modifiers += f'{boolean_comparison_symbol_modifier.format()}%20'
         return formatted_modifiers
 
     def validate(self, sru_configuration):
@@ -79,9 +79,9 @@ class CQLModifierBase:
                 context_set_to_check, self.base_name, self.value, self.base_name_value_limitations_per_context)
 
     @staticmethod
-    def _validate_operator(operator, supported_operators):
-        if operator not in supported_operators:
-            raise ValueError(f"Operator '{operator}' is not supported.")
+    def _validate_comparison_symbol(comparison_symbol, supported_comparison_symbols):
+        if comparison_symbol not in supported_comparison_symbols:
+            raise ValueError(f"Operator '{comparison_symbol}' is not supported.")
 
     @staticmethod
     def _validate_base_name(base_name: str, supported_base_names: str | list[str], modifier_type):
