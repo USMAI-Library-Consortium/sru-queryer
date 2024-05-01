@@ -148,11 +148,11 @@ This means you can initialize a SearchClause in a human-readable way without inc
 which looks like the formatted query:
 `alma.title="Harry Potter"`.
 
-For SearchClauses without all options, you have to include the option name for each option OR include 'None' where the option would be.
-SearchClause with only a search term:
-`SearchClause(search_term="Harry Potter")` or `SearchClause(None, None, None, "Harry Potter")`
-SearchClause without a context_set:
-`SearchClause(index_name="title", operation="=", search_term="Harry Potter")` or
+For SearchClauses without all options, you have to include the option name for each option OR include 'None' where the option would be.<br>
+SearchClause with only a search term:<br>
+`SearchClause(search_term="Harry Potter")` or `SearchClause(None, None, None, "Harry Potter")`<br>
+SearchClause without a context_set:<br>
+`SearchClause(index_name="title", operation="=", search_term="Harry Potter")` or <br>
 `SearchClause(None, "title", "=", "Harry Potter")`
 
 Keep in mind, if a context_set or index_name is not provided, the defaults must be set manually during initialization of SRUQueryer for validation to work. This is because the explainResponse does not always include the default context set or index. If you do not know them, there are options to disable validation for SearchClauses that use defaults.
