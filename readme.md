@@ -138,7 +138,7 @@ A SRU query, written in CQL, is made up of one or more search clauses. Formatted
 
 `alma.title="Harry Potter"`
 
-The four components of this query are the context_set (`alma`), the index (`title`), the operation(`=`, called 'relation' officially), and the search term (`Harry Potter`). For more information, please see https://www.loc.gov/standards/sru/cql/spec.html. I won't explain the nuances of SRU/CQL here, just my implementation of it.
+The four components of this query are the context_set (`alma`), the index (`title`), the relation(`=`), and the search term (`Harry Potter`). For more information, please see https://www.loc.gov/standards/sru/cql/spec.html. I won't explain the nuances of SRU/CQL here, just my implementation of it.
 
 #### USAGE
 
@@ -152,7 +152,7 @@ For SearchClauses without all options, you have to include the option name for e
 SearchClause with only a search term:<br>
 `SearchClause(search_term="Harry Potter")` or `SearchClause(None, None, None, "Harry Potter")`<br>
 SearchClause without a context_set:<br>
-`SearchClause(index_name="title", operation="=", search_term="Harry Potter")` or <br>
+`SearchClause(index_name="title", relation="=", search_term="Harry Potter")` or <br>
 `SearchClause(None, "title", "=", "Harry Potter")`
 
 Keep in mind, if a context_set or index_name is not provided, the defaults must be set manually during initialization of SRUQueryer for validation to work. This is because the explainResponse does not always include the default context set or index. If you do not know them, there are options to disable validation for SearchClauses that use defaults.
@@ -165,22 +165,22 @@ You don't need to use any functions on a SearchClause as a general user. For ins
 
 Internal variables are private once initialized - if you change them, you will bypass some validation and likely cause errors. It's easy to create a new instance of SearchClause if you need different options, so do that instead of modifying an existing one.
 
-| Option      | Data Type                 | Mandatory | Description                                                                          |
-| ----------- | ------------------------- | --------- | ------------------------------------------------------------------------------------ |
-| context_set | string / None             | No        | The context set to search in.                                                        |
-| index_name  | string / None             | No        | The index you want to search.                                                        |
-| operation   | string / None             | No        | The operator ("=", ">", etc) you want to search with.                                |
-| search_term | string                    | Yes       | The value you're looking for.                                                        |
-| modifiers   | list of RelationModifiers | No        | A list of relation modifiers for the operation. More information on modifiers below. |
+| Option      | Data Type                 | Mandatory | Description                                                                         |
+| ----------- | ------------------------- | --------- | ----------------------------------------------------------------------------------- |
+| context_set | string / None             | No        | The context set to search in.                                                       |
+| index_name  | string / None             | No        | The index you want to search.                                                       |
+| relation    | string / None             | No        | The operator ("=", ">", etc) you want to search with.                               |
+| search_term | string                    | Yes       | The value you're looking for.                                                       |
+| modifiers   | list of RelationModifiers | No        | A list of relation modifiers for the relation. More information on modifiers below. |
 
 COMBINATIONS OF INITIALIZATION PROPERTIES (according to LOC standards):<br>
 You MUST include either:
 
 1. a search term,
-2. an index_name, operation, and search term,
-3. a context_set, index_name, operation, and search term.
+2. an index_name, relation, and search term,
+3. a context_set, index_name, relation, and search term.
 
-- RelationModifiers can be set for all combinations, but will only added to the final query on combinations with an operation.
+- RelationModifiers can be set for all combinations, but will only added to the final query on combinations with an relation.
 
 <br>
 <br>
@@ -462,8 +462,8 @@ You MUST include either:
 
 1. a base_name,
 2. a context_set, base_name
-3. a base_name, operation, and value,
-4. a context_set, base_name, operation, and value.
+3. a base_name, operator, and value,
+4. a context_set, base_name, operator, and value.
 
 <br>
 <br>

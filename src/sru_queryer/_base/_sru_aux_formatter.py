@@ -29,8 +29,8 @@ class SRUAuxiliaryFormatter():
                 formatted_string += f"     Index Set:              | {context_set}\n"
                 formatted_string += f"     Index Code:             | {index_code}\n"
 
-                if index_data["supported_operations"]:
-                    formatted_string += f"     Supported Operations:   | {index_data['supported_operations'].__str__()}\n"
+                if index_data["supported_relations"]:
+                    formatted_string += f"     Supported Operations:   | {index_data['supported_relations'].__str__()}\n"
 
                 sort = index_data['sort']
                 if sort != None:

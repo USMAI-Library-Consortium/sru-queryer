@@ -10,10 +10,10 @@ from tests.testData.test_data import get_alma_sru_configuration
 def mock_search_clause_format(self, **kwargs):
     """Mock the SearchClause '_format' method so the tests will pass even if 
     I want to change how the formatting looks"""
-    if self._operation in ["all"]:
-        return f'{self._context_set}.{self._index_name}%20{self._operation}%20"{self._search_term}"'
+    if self._relation in ["all"]:
+        return f'{self._context_set}.{self._index_name}%20{self._relation}%20"{self._search_term}"'
     else:
-        return f'{self._context_set}.{self._index_name}{self._operation}"{self._search_term}"'
+        return f'{self._context_set}.{self._index_name}{self._relation}"{self._search_term}"'
 
 
 test_search_clause_1 = SearchClause("alma", "inventory_count", "=", "100")

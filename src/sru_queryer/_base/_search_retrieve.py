@@ -53,7 +53,7 @@ class SearchRetrieve:
         search_retrieve_query = SRUAuxiliaryFormatter.format_base_search_retrieve_query(self.sru_configuration,
             self.start_record, self.maximum_records, self.record_schema, self.record_packing)
 
-        if isinstance(self.cql_query, SearchClause) and not (self.cql_query.get_index_name() and self.cql_query.get_operation()):
+        if isinstance(self.cql_query, SearchClause) and not (self.cql_query.get_index_name() and self.cql_query.get_relation()):
             # If it's just a single value (search term) as the query, without anything else, append an equals sign.
             search_retrieve_query += "="
         search_retrieve_query += self.cql_query.format()

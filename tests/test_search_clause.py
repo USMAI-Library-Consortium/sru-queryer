@@ -21,7 +21,7 @@ class TestSearchClause(unittest.TestCase):
 
     def test_create_search_clause_operator_no_index_throws_error(self):
         with self.assertRaises(ValueError):
-            SearchClause(search_term="", operation="=", context_set="alma")
+            SearchClause(search_term="", relation="=", context_set="alma")
 
     def test_create_search_clause_context_set_no_index_name_throws_error(self):
         with self.assertRaises(ValueError):
@@ -30,11 +30,11 @@ class TestSearchClause(unittest.TestCase):
     def test_create_search_clause_no_search_term_throws_error(self):
         with self.assertRaises(ValueError):
             SearchClause(search_term=None, index_name="test_attribute",
-                       operation="all", context_set="alma")
+                       relation="all", context_set="alma")
 
     def test_format_with_all_query_2(self):
         search_index_config = SearchClause(
-            context_set="alma", index_name="test_attribute", operation="all", search_term="hello*")
+            context_set="alma", index_name="test_attribute", relation="all", search_term="hello*")
 
         formatted_search_clause = search_index_config.format()
 
@@ -43,7 +43,7 @@ class TestSearchClause(unittest.TestCase):
 
     def test_format_with_default_context(self):
         search_index_config = SearchClause(
-            search_term="10", index_name="bib_count", operation="==")
+            search_term="10", index_name="bib_count", relation="==")
 
         formatted_search_clause = search_index_config.format()
 
@@ -70,7 +70,7 @@ class TestSearchClause(unittest.TestCase):
         with self.assertRaises(ValueError) as ve:
             SearchClause("alma", "bib_count", "==", "10").validate(sru_configuration)
             
-    def test_validate_unsupported_operation(self):
+    def test_validate_unsupported_relation(self):
         sru_configuration = get_alma_sru_configuration()
 
         with self.assertRaises(ValueError) as ve:

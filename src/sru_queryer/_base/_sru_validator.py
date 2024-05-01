@@ -77,7 +77,7 @@ class SRUValidator():
             return
         
         # Evaluate the relation, if specified
-        relation_info_included_in_index = index_info["supported_operations"]
+        relation_info_included_in_index = index_info["supported_relations"]
         if relation_info_included_in_index and no_relation_info:
             raise ValueError("Cannot validate relation 'None'; ensure you have set a default relation or have disabled validation for cql defaults.")
             
@@ -137,10 +137,10 @@ class SRUValidator():
     @staticmethod
     def _validate_relation(relation: str | None, index_info: dict) -> bool:
         if relation != None:
-            relation_information_included_in_index = index_info["supported_operations"]
+            relation_information_included_in_index = index_info["supported_relations"]
             
             if relation_information_included_in_index:
-                if relation not in index_info["supported_operations"]:
+                if relation not in index_info["supported_relations"]:
                     return False
         return True
     

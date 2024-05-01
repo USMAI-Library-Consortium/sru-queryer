@@ -4,7 +4,7 @@
       "id": "1016",
       "title": "Keyword Anywhere",
       "sort": null,
-      "supported_operations": [],
+      "supported_relations": [],
       "empty_term_supported": null
     }
   },
@@ -13,28 +13,28 @@
       "id": "4",
       "title": "Title",
       "sort": null,
-      "supported_operations": [],
+      "supported_relations": [],
       "empty_term_supported": null
     },
     "creator": {
       "id": "1003",
       "title": "Creator",
       "sort": null,
-      "supported_operations": [],
+      "supported_relations": [],
       "empty_term_supported": null
     },
     "author": {
       "id": "1003",
       "title": "Creator",
       "sort": null,
-      "supported_operations": [],
+      "supported_relations": [],
       "empty_term_supported": null
     },
     "subject": {
       "id": "21",
       "title": "Subject",
       "sort": null,
-      "supported_operations": [],
+      "supported_relations": [],
       "empty_term_supported": null
     }
   },
@@ -43,63 +43,63 @@
       "id": "1002",
       "title": "Name",
       "sort": null,
-      "supported_operations": [],
+      "supported_relations": [],
       "empty_term_supported": null
     },
     "personalName": {
       "id": "1",
       "title": "Personal Name",
       "sort": null,
-      "supported_operations": [],
+      "supported_relations": [],
       "empty_term_supported": null
     },
     "corporateName": {
       "id": "2",
       "title": "Corporate Name",
       "sort": null,
-      "supported_operations": [],
+      "supported_relations": [],
       "empty_term_supported": null
     },
     "conferenceName": {
       "id": "3",
       "title": "Conference Name",
       "sort": null,
-      "supported_operations": [],
+      "supported_relations": [],
       "empty_term_supported": null
     },
     "geographicName": {
       "id": "58",
       "title": "Geographic Name",
       "sort": null,
-      "supported_operations": [],
+      "supported_relations": [],
       "empty_term_supported": null
     },
     "isbn": {
       "id": "7",
       "title": "ISBN",
       "sort": null,
-      "supported_operations": [],
+      "supported_relations": [],
       "empty_term_supported": null
     },
     "issn": {
       "id": "8",
       "title": "ISSN",
       "sort": null,
-      "supported_operations": [],
+      "supported_relations": [],
       "empty_term_supported": null
     },
     "lccn": {
       "id": "9",
       "title": "LC Control Number",
       "sort": null,
-      "supported_operations": [],
+      "supported_relations": [],
       "empty_term_supported": null
     },
     "standardIdentifier": {
       "id": "1007",
       "title": "Standard Identifier",
       "sort": null,
-      "supported_operations": [],
+      "supported_relations": [],
       "empty_term_supported": null
     }
   }

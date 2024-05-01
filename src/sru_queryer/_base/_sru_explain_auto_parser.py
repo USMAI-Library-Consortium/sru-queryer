@@ -14,7 +14,7 @@ generic_driver = {
         "sortLocation": ["@sort"],
         "idLocation": ["@id"], 
         "titleLocation": ["title"],
-        "supportedOperationsLocation": ["configInfo", "supports"],
+        "supportedRelationsLocation": ["configInfo", "supports"],
         # Below is relative to map location (hard-coded to ...index["map"])
         "nameLocation": ["name", "#text"],
         "setLocation": ["name", "@set"]
@@ -64,7 +64,7 @@ class SRUExplainAutoParser():
         for index in index_information:
             id = self._find_property_value(index, generic_driver["index"]["idLocation"])
             title = self._find_property_value(index, generic_driver["index"]["titleLocation"])
-            empty_term_supported, supported_operations = self._get_supported_operations_for_index(index)
+            empty_term_supported, supported_relations = self._get_supported_relations_for_index(index)
 
             # Get the sort information
             sortable = None
@@ -93,7 +93,7 @@ class SRUExplainAutoParser():
                     self.sru_config.available_context_sets_and_indexes[set] = {}
 
                 # Add the index to its set.
-                index_config = self._generate_index_config(title, id=id, sort=sortable, supported_operations=supported_operations, empty_term_supported=empty_term_supported)
+                index_config = self._generate_index_config(title, id=id, sort=sortable, supported_relations=supported_relations, empty_term_supported=empty_term_supported)
                 self.sru_config.available_context_sets_and_indexes[set][name] = index_config
 
     def _parse_config_info(self):
@@ -226,35 +226,35 @@ class SRUExplainAutoParser():
         return sort_information_included_in_index_info
         
 
-    def _get_supported_operations_for_index(self, index) -> tuple[bool, list[str]]:
-        """Get the operations supported by a CQL index.
+    def _get_supported_relations_for_index(self, index) -> tuple[bool, list[str]]:
+        """Get the relations supported by a CQL index.
         
         This takes a CQL index from the explainResponse after being parsed from xmltodict,
         and returns whether empty terms are supported and the other terms that are supported"""
-        raw_supported_operations = self._find_property_value(index, generic_driver["index"]["supportedOperationsLocation"])
+        raw_supported_relations = self._find_property_value(index, generic_driver["index"]["supportedRelationsLocation"])
 
-        if not raw_supported_operations:
+        if not raw_supported_relations:
             return None, None
         
-        supported_operations: dict = []
+        supported_relations: dict = []
         empty_term_supported = False
-        for operation in raw_supported_operations:
-            if operation["@type"] == "emptyTerm":
+        for relation in raw_supported_relations:
+            if relation["@type"] == "emptyTerm":
                 empty_term_supported = True
-            elif operation["@type"] == "relation":
-                supported_operations.append(operation["#text"])
+            elif relation["@type"] == "relation":
+                supported_relations.append(relation["#text"])
 
-        return empty_term_supported, supported_operations
+        return empty_term_supported, supported_relations
     
     @staticmethod
-    def _generate_index_config(title: str, id: str | None = None, sort: bool | None = None, supported_operations: list[str] = None, empty_term_supported: bool | None = None) -> dict:
-        if supported_operations is None: 
-            supported_operations = []
+    def _generate_index_config(title: str, id: str | None = None, sort: bool | None = None, supported_relations: list[str] = None, empty_term_supported: bool | None = None) -> dict:
+        if supported_relations is None: 
+            supported_relations = []
         index_config_dict = {
             "id": id,
             "title": title,
             "sort": sort,
-            "supported_operations": supported_operations,
+            "supported_relations": supported_relations,
             "empty_term_supported": empty_term_supported
         }
 
