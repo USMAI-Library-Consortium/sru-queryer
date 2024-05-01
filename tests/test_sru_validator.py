@@ -48,11 +48,11 @@ class TestSRUValidator(unittest.TestCase):
 
         self.assertIn("***", ve.exception.__str__())
 
-    def test_validate_index_invalid_value_raises_error(self):
+    def test_validate_index_invalid_search_term_raises_error(self):
         sru_configuration = get_alma_sru_configuration()
 
         with self.assertRaises(ValueError) as ve:
-            SRUValidator.validate_cql(sru_configuration, "alma", "alternate_complete_edition", "=", value="")
+            SRUValidator.validate_cql(sru_configuration, "alma", "alternate_complete_edition", "=", search_term="")
 
         self.assertIn("empty", ve.exception.__str__())
 
@@ -65,7 +65,7 @@ class TestSRUValidator(unittest.TestCase):
 
         self.assertIn("sort", ve.exception.__str__())
 
-    def test_validate_index_no_value_sort_or_supported_operations_info(self):
+    def test_validate_index_no_search_term_sort_or_supported_operations_info(self):
         sru_configuration = get_test_sru_configuration_no_sort_or_supported_operations_or_config()
 
         SRUValidator.validate_cql(sru_configuration, "dc", "title", "all", "", evaluate_can_sort=True)
@@ -92,22 +92,22 @@ class TestSRUValidator(unittest.TestCase):
 
         self.assertIn("ensure", ve.exception.__str__())
 
-    def test_validate_value_with_all_defaults_set_no_error(self):
+    def test_validate_search_term_with_all_defaults_set_no_error(self):
         sru_configuration = get_alma_sru_configuration()
         sru_configuration.default_context_set = "alma"
         sru_configuration.default_index = "all_for_ui"
         sru_configuration.default_relation = "=="
 
-        SRUValidator.validate_cql(sru_configuration, value="hello")
+        SRUValidator.validate_cql(sru_configuration, search_term="hello")
 
-    def test_validate_invalid_value_with_all_defaults_set_throws_error(self):
+    def test_validate_invalid_search_term_with_all_defaults_set_throws_error(self):
         sru_configuration = get_alma_sru_configuration()
         sru_configuration.default_context_set = "alma"
         sru_configuration.default_index = "alternate_complete_edition"
         sru_configuration.default_relation = "=="
 
         with self.assertRaises(ValueError) as ve:
-            SRUValidator.validate_cql(sru_configuration, value="")
+            SRUValidator.validate_cql(sru_configuration, search_term="")
 
         self.assertIn("empty", ve.exception.__str__())
 

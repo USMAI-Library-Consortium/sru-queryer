@@ -138,7 +138,7 @@ A SRU query, written in CQL, is made up of one or more search clauses. Formatted
 
 `alma.title="Harry Potter"`
 
-The four components of this query are the context_set (`alma`), the index (`title`), the operation(`=`, called 'relation' officially), and the value (`Harry Potter`, called 'search term' officially). For more information, please see https://www.loc.gov/standards/sru/cql/spec.html. I won't explain the nuances of SRU/CQL here, just my implementation of it.
+The four components of this query are the context_set (`alma`), the index (`title`), the operation(`=`, called 'relation' officially), and the search term (`Harry Potter`). For more information, please see https://www.loc.gov/standards/sru/cql/spec.html. I won't explain the nuances of SRU/CQL here, just my implementation of it.
 
 #### USAGE
 
@@ -148,11 +148,11 @@ This means you can initialize a SearchClause in a human-readable way without inc
 which looks like the formatted query:
 `alma.title="Harry Potter"`.
 
-For SearchClauses without all options, you have to include the option name for each option OR include 'None' where the option would be.
-SearchClause with only a value:
-`SearchClause(value="Harry Potter")` or `SearchClause(None, None, None, "Harry Potter")`
-SearchClause without a context_set:
-`SearchClause(index_name="title", operation="=", value="Harry Potter")` or
+For SearchClauses without all options, you have to include the option name for each option OR include 'None' where the option would be.<br>
+SearchClause with only a search term:<br>
+`SearchClause(search_term="Harry Potter")` or `SearchClause(None, None, None, "Harry Potter")`<br>
+SearchClause without a context_set:<br>
+`SearchClause(index_name="title", operation="=", search_term="Harry Potter")` or <br>
 `SearchClause(None, "title", "=", "Harry Potter")`
 
 Keep in mind, if a context_set or index_name is not provided, the defaults must be set manually during initialization of SRUQueryer for validation to work. This is because the explainResponse does not always include the default context set or index. If you do not know them, there are options to disable validation for SearchClauses that use defaults.
@@ -170,15 +170,15 @@ Internal variables are private once initialized - if you change them, you will b
 | context_set | string / None             | No        | The context set to search in.                                                        |
 | index_name  | string / None             | No        | The index you want to search.                                                        |
 | operation   | string / None             | No        | The operator ("=", ">", etc) you want to search with.                                |
-| value       | string                    | Yes       | The value you're looking for.                                                        |
+| search_term | string                    | Yes       | The value you're looking for.                                                        |
 | modifiers   | list of RelationModifiers | No        | A list of relation modifiers for the operation. More information on modifiers below. |
 
 COMBINATIONS OF INITIALIZATION PROPERTIES (according to LOC standards):<br>
 You MUST include either:
 
-1. a value,
-2. an index_name, operation, and value,
-3. a context_set, index_name, operation, and value.
+1. a search term,
+2. an index_name, operation, and search term,
+3. a context_set, index_name, operation, and search term.
 
 - RelationModifiers can be set for all combinations, but will only added to the final query on combinations with an operation.
 
@@ -231,17 +231,17 @@ If the SRU server returns a different SRU version than you the one you specify, 
 `default_cql_index`
 | Mandatory | Data Type | Description |
 | ---------- | --------- | ------------------------------------------------------------------------------------------------------------------------------- |
-| No | string |The default index for a SearchClause if only a value is provided. If you have a default_cql_index, you must also have a default_cql_context_set. For example, if the default context set is 'alma' and the default index is 'title', the query `"Harry Potter"` will be validated as `alma.title "Harry Potter"`. |
+| No | string |The default index for a SearchClause if only a search term is provided. If you have a default_cql_index, you must also have a default_cql_context_set. For example, if the default context set is 'alma' and the default index is 'title', the query `"Harry Potter"` will be validated as `alma.title "Harry Potter"`. |
 
 `default_cql_relation`
 | Mandatory | Data Type | Description |
 | ---------- | --------- | ------------------------------------------------------------------------------------------------------------------------------- |
-| No | string |The default relation for a SearchClause if only a value is provided. If you have a default_cql_relation, you must also have a default_cql_context_set and index. For example, if the default context set is 'alma' and the default index is 'title', the query `"Harry Potter"` will be validated as `alma.title="Harry Potter"`. Not all SRU servers list valid relations for SearchClauses, so this is ONLY NECCESARY when validating defaults for servers that do. If you server does not, you can safely ignore this even if you don't disable validation for cql defaults.|
+| No | string |The default relation for a SearchClause if only a search term is provided. If you have a default_cql_relation, you must also have a default_cql_context_set and index. For example, if the default context set is 'alma' and the default index is 'title', the query `"Harry Potter"` will be validated as `alma.title="Harry Potter"`. Not all SRU servers list valid relations for SearchClauses, so this is ONLY NECCESARY when validating defaults for servers that do. If you server does not, you can safely ignore this even if you don't disable validation for cql defaults.|
 
 `disable_validation_for_cql_defaults`
 | Mandatory | Data Type | Description |
 | ---------- | --------- | ------------------------------------------------------------------------------------------------------------------------------- |
-| No | boolean | If you don't know the default context set, index, and relation (if relation information for indexes is specified) for your SRU server, yet you still want to send SearchClauses with default values, this setting will allow for that. It will disable any validation for SearchClause defaults, but allow validation for non-defaults. |
+| No | boolean | If you don't know the default context set, index, and relation (if relation information for indexes is specified) for your SRU server, yet you still want to send SearchClauses with defaults, this setting will allow for that. It will disable any validation for SearchClause defaults, but allow validation for non-defaults. |
 
 `max_records_supported`
 | Mandatory | Data Type | Description |

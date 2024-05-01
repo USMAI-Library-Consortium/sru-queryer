@@ -8,26 +8,26 @@ class SearchClause:
     """A CQL clause.
 
     Supports validation of context set, index_name, operation, and whether 
-    or not an empty string is allowed as a value for a particular index.
+    or not an empty string is allowed as a search_term for a particular index.
 
     To create a valid search clause, you must use:\n
-        a value,\n
-        index_name + operation + value,\n
-        OR context_set + index_name + operation + value.\n
+        a search_term,\n
+        index_name + operation + search_term,\n
+        OR context_set + index_name + operation + search_term.\n
 
     Modifiers will only be included if there's an operation.
         """
 
-    def __init__(self, context_set: str | None = None, index_name: str | None = None, operation: str | None = None, value: str | None = None, modifiers: list[RelationModifier] | None = None):
+    def __init__(self, context_set: str | None = None, index_name: str | None = None, operation: str | None = None, search_term: str | None = None, modifiers: list[RelationModifier] | None = None):
         self._context_set: str = context_set
         self._index_name: str = index_name
         self._operation: str = operation
-        self._value: str = value
+        self._search_term: str = search_term
         self._modifiers = modifiers
 
-        value_exists = value != None
-        if not value_exists:
-            raise ValueError("You must provide a search term (value)")
+        search_term_exists = search_term != None
+        if not search_term_exists:
+            raise ValueError("You must provide a search term (search_term)")
 
         if index_name and not operation:
             raise ValueError(
@@ -83,14 +83,14 @@ class SearchClause:
         formatted_search_clause += CQLModifierBase.format_modifier_array(
             self._modifiers)
 
-        # The index value will always be added
-        formatted_search_clause += f'"{self._value}"'
+        # The index search_term will always be added
+        formatted_search_clause += f'"{self._search_term}"'
 
         return formatted_search_clause
 
     def validate(self, sru_configuration: SRUConfiguration):
         SRUValidator.validate_cql(sru_configuration, self._context_set,
-            self._index_name, self._operation, self._value)
+            self._index_name, self._operation, self._search_term)
 
         if self._modifiers:
             for modifier in self._modifiers:
