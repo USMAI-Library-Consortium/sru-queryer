@@ -6,7 +6,7 @@ Using this utility has a few big benefits, such as:
 
 1. It handles validating much of the searchRetrieve request. This is particularly helpful because many SRU servers don't have good error messages.
 2. It handles formatting the searchRetrieve request for you. This makes queries much less prone to human mistakes.
-3. It provides functions to see which indexes are available to search in the SRU server.
+3. Programmatically the capabilities of the SRU server in your program.
 
 ## TABLE OF CONTENTS
 
@@ -15,18 +15,16 @@ Using this utility has a few big benefits, such as:
 3. [Quick Overview of Important Components](#quick-overview-of-important-components)
    1. [Initializing SRU Functionality](#initializing-sru-functionality)
    2. [Basic Query Component](#basic-query-component-searchclause)
-   3. [Configuration Service](#configuration-service-sruutil)
-   4. [SearchRetreive class](#creating-queries---the-searchretrieve-class)
-   5. [Boolean Operators for Queries](#constructing-more-advanced-queries-boolean-operators)
+   3. [Searching using SRUQueryer](#searching-using-sruqueryer)
+   4. [Boolean Operators for Queries](#constructing-more-advanced-queries-boolean-operators)
 4. [Full Overview of Different Components](#full-overview-of-different-components)
    1. [SearchClause](#basic-query-component-searchclause-1)
-   2. [SRUUtil](#sruutil)
-   3. [Boolean Operators (AND, OR, NOT, PROX)](#constructing-more-advanced-queries-boolean-operators-1)
-   4. [SearchRetrieve](#searchretrieve-class)
-   5. [RawCQL](#custom-queries-rawcql)
-   6. [Modifiers](#modifiying-operators---modifiers)
-   7. [Sorting in v1.2](#sorting-in-12-sortby-clauses)
-   8. [Sorting in v1.1](#sorting-in-11-SortKey)
+   2. [SRUQueryer](#sruqueryer)
+   3. [Boolean Operators (AND, OR, NOT, PROX)](#boolean-operators)
+   4. [RawCQL](#custom-queries-rawcql)
+   5. [Modifiers](#modifiying-operators---modifiers)
+   6. [Sorting in v1.2](#sorting-in-12-sortby-clauses)
+   7. [Sorting in v1.1](#sorting-in-11-SortKey)
 
 ## Setting Up The Environment
 
@@ -40,24 +38,15 @@ Here's just a basic usage example:
 
 ```
 # Create a configuration object for the SRU server, allowing you to validate and send queries.
-sru_configuration = SRUUtil.create_configuration_for_server("https://path-to-sru-server-base")
+queryer = SRUQueryer("https://path-to-sru-server-base")
 
 # Configure a SearchRetrieve query - in this case, find records where the creator includes Abraham, sorted alphabetically & ascending.
-query_obj = SearchRetrieve(sru_configuration, SearchClause(
-        "alma", "creator", "=", "Abraham"), sort_queries=[{
-            "index_set": "alma",
-            "index_name": "creator",
-            "sort_order": "ascending"
-        }])
-
-# Validate the query to see whether it's valid
-query_obj.validate()
-
-# Construct the request (just a python PreparedRequest object)
-request = query_obj.construct_request()
-
-s = Session()
-response = s.send(request)
+response_content = queryer.search_retrieve(SearchClause("alma", "creator", "=", "Abraham"),
+                     sort_queries=[{
+                           "index_set": "alma",
+                           "index_name": "creator",
+                           "sort_order": "ascending"
+                     }])
 ```
 
 This code will send the following query:
@@ -67,47 +56,57 @@ You can also create a query with boolean conditions:
 
 ```
 # Find records where the creator includes Abraham AND the material type is 'book'
-query_obj = SearchRetreive(sru_configuration, AND(SearchClause("alma", "creator", "=", "Abraham"), SearchClause("alma", "materialType", "==", "BOOK")))
+queryer.search_retrieve(sru_configuration, AND(SearchClause("alma", "creator", "=", "Abraham"), SearchClause("alma", "materialType", "==", "BOOK")))
 ```
 
 ## Quick Overview of Important Components:
 
 ### Initializing SRU functionality
 
-Before you can validate or send searchRetrieve requests, you must create an SRU configuration for your server. The configuration of this server will be in the form of an SRUConfiguration class.
-
-An instance is created through the SRUUtil.create_configuration_for_server() function, and all you have to do is to pass the created instance to the functions that need it. You can read information from it if you want to integrate SRU querying more deeply into your application.
+Before you can validate or send searchRetrieve requests, you must create a queryer. Upon initialization, the queryer will contact your SRU server and set up everything it needs to validate and format your SRU queries.
 
 ```
-sru_configuration = SRUUtil.create_configuration_for_server("https://path-to-sru-server-base")
+queryer = SRUQueryer("https://path-to-sru-server-base")
 ```
 
-This is the most basic way to create a configuration object. This function takes many other optional arguments, which can do things like configure the default record schemas, default context sets, change validation settings, etc.
+This is the most basic way to create a queryer. This function takes many other optional arguments, which can do things like configure the default record schemas, default context sets, change validation settings, etc.
 
 ### Basic Query Component: SearchClause
 
 `from sru_queryer.cql import SearchClause`
 
 This is officially known as a 'CQL search clause': https://www.loc.gov/standards/sru/cql/spec.html <br>
-A standard CQL search clause looks like: `alma.title="Harry Potter"`. This same query with the SearchClause class would look like: `SearchClause("alma", "title", "=", "Harry Potter")`
+A standard CQL search clause looks like: `alma.title="Harry Potter"`. This same query with the SearchClause class would look like: `SearchClause("alma", "title", "=", "Harry Potter")`. Pretty straightforward! See more in the extended SearchClause section below - there's rules for which of these arguments are required.
 
-https://www.loc.gov/standards/sru/cql/spec.html
+### Searching using SRUQueryer
 
-### Creating queries - the SearchRetrieve class
+`from sru_queryer import SRUQueryer`
 
-`from sru_queryer import SearchRetrieve`
+There's two options for conducting searchRetrieve requests with the SRUQueryer class. <br>
 
-Use the SearchRetrieve class to actually construct and validate a query.\
-This class takes the SRU configuration as an argument, followed by the actual CQL query made up of boolean operators, RawCQL classes, and/or SearchClauses. You can also set certain values that you might want to change between queries while keeping the same SRUConfiguration - record format, start record, maximum records, etc. It also takes sort queries.
+First, you can have the queryer send the request for you and return the content. Once the querier is initialized, you can do so in this way (this is only an example search, it doesn't have to look exactly like this):
 
 ```
-query_obj = SearchRetrieve(sru_configuration, SearchClause(
+response_content = queryer.search_retrieve(SearchClause("alma", "creator", "=", "Abraham"),
+         sort_queries=[{
+            "index_set": "alma",
+            "index_name": "creator",
+            "sort_order": "ascending"
+        }])
+```
+
+Alternately, you can construct a requests.Request object that you can then send yourself. This allows for a bit more flexibility, like adding a custom authentication header:
+
+```
+request = queryer.construct_search_retrieve_request(SearchClause(
         "alma", "creator", "=", "Abraham"), sort_queries=[{
             "index_set": "alma",
             "index_name": "creator",
             "sort_order": "ascending"
         }])
 ```
+
+Both of these options take the same arguments. The first is the CQL query made up of boolean operators, RawCQL classes, and/or SearchClauses. You can also set certain values that you might want to change between queries while keeping the same queryer - record format, start record, maximum records, etc. It also takes sort queries.
 
 ### Constructing more advanced queries: Boolean Operators
 
@@ -120,11 +119,16 @@ For example, the query:
 will produce the following string, when formatted:
 `alma.title="Harry" or alma.title="Potter"` (except spaces will be replaced with '%20')
 
+<br>
+<br>
+
 ---
 
 ## Full Overview of Different Components
 
 This section will give a deep dive on each different component in sru_queryer. Check here if you can't figure something out!
+
+<br>
 
 ### Basic Query Component: SearchClause
 
@@ -138,24 +142,24 @@ The four components of this query are the context_set (`alma`), the index (`titl
 
 #### USAGE
 
-All of the options for initializing a SearchClause are keyword arguments, but are listed in an order that's the same as a standard index query (aside from modifiers).
+All of the options for initializing a SearchClause are keyword arguments, but are listed in order.
 This means you can initialize a SearchClause in a human-readable way without including any keywords:
 `SearchClause("alma", "title", "=", "Harry Potter")`
 which looks like the formatted query:
 `alma.title="Harry Potter"`.
 
-For queries without all options, you have to include the option name for each option OR include 'None' where the option would be.
-Query with only a value:
+For SearchClauses without all options, you have to include the option name for each option OR include 'None' where the option would be.
+SearchClause with only a value:
 `SearchClause(value="Harry Potter")` or `SearchClause(None, None, None, "Harry Potter")`
-Query without a context_set:
+SearchClause without a context_set:
 `SearchClause(index_name="title", operation="=", value="Harry Potter")` or
 `SearchClause(None, "title", "=", "Harry Potter")`
 
-Keep in mind, if a context_set or index_name is not provided, the defaults must be set manually though create_configuration_for_server for validation to work. This is because the explainResponse does not always include the default context set or index. If you do not know them, there are options to disable validation for SearchClauses that use defaults.
+Keep in mind, if a context_set or index_name is not provided, the defaults must be set manually during initialization of SRUQueryer for validation to work. This is because the explainResponse does not always include the default context set or index. If you do not know them, there are options to disable validation for SearchClauses that use defaults.
 
 #### AVAILABLE FUNCTIONS
 
-You don't need to use any functions on a SearchClause as a general user. For instance, the search_retrieve.validate() function will also run the validate() function for all included SearchClauses.
+You don't need to use any functions on a SearchClause as a general user. For instance, SRUQueryer will run the validate() function for all included SearchClauses.
 
 #### INITIALIZATION OPTIONS
 
@@ -169,7 +173,7 @@ Internal variables are private once initialized - if you change them, you will b
 | value       | string                    | Yes       | The value you're looking for.                                                        |
 | modifiers   | list of RelationModifiers | No        | A list of relation modifiers for the operation. More information on modifiers below. |
 
-COMBINATIONS OF INITIALIZATION PROPERTIES (according to LOC standards):
+COMBINATIONS OF INITIALIZATION PROPERTIES (according to LOC standards):<br>
 You MUST include either:
 
 1. a value,
@@ -178,23 +182,26 @@ You MUST include either:
 
 - RelationModifiers can be set for all combinations, but will only added to the final query on combinations with an operation.
 
-### SRUUtil
+<br>
+<br>
 
-`from sru_queryer import SRUUtil`
+### SRUQueryer
 
-The SRUUtil static class handles core configuration for this utility, as well as providing an interface for reading the configuration information.
+`from sru_queryer import SRUQueryer`
 
-#### AVAILABLE FUNCTIONS:
+The SRUQueryer is the most important class of this library, as it handles configuring the utility as well as constructing, validating, and sending requests.
 
-There are two functions that the general user would want to use:
+The SRUQueryer stores all its configuration information in an SRUConfiguration object in the property sru_configuration. If you want your program to know the capabilites of the SRU server, it can read the properties of queryer.sru_configuration. For instance, you can access the available record schemas with:<br>
 
-1. `format_available_indexes` - This function nicely formats all the indexes availabe for an SRU server, as well as their information. It then prints this information to the console, to a text file, or both. It only prints to the console by default. You can filter the indexes based on their human-readable title.
+`queryer.sru_configuration.available_record_schemas`<br>
 
-`format_available_indexes(sru_configuration, filename: str | None = None, print_to_console: bool = True, title_filter: str | None = None)`
+It is HIGHLY recommended not to change any of these values.
 
-2. `create_configuration_for_server` - This function creates an SRUConfiguration object by reading you provide as arguments to the function, pulling values found by contacting the SRU server, and reconciling them. Many arguments are optional and are used for improved validation of the SRU queries. Be aware that any option you specify manually will override the corresponding value returned by the explainResponse, if the explainResponse contains this value.
+#### INITIALIZATION OPTIONS
 
-Arguments for create_configuration_for_server:
+This function configures settings (stored in an SRUConfiguration object) by reading the arguments you provide, pulling values from the SRU server, and reconciling them. Many arguments are optional and are used for improved validation of the SRU queries. Be aware that any option you specify manually will override the corresponding value returned by the explainResponse, if the explainResponse contains this value.
+
+If the SRU server returns a different SRU version than you the one you specify, the library will use that version. If you do not provide a version, it will default to version 1.2 or whatever the server is capable of.
 
 `server_url`
 | Mandatory | Data Type | Description |
@@ -204,7 +211,7 @@ Arguments for create_configuration_for_server:
 `sru_version`
 | Mandatory | Data Type | Description |
 | ---------- | --------- | ------------------------------------------------------------------------------------------------------------------------------- |
-| Yes, but defaults to 1.2 | string | The SRU version to use.|
+| No - defaults to 1.2 | string | The SRU version to use. If the SRU server returns a different SRU version than you specify, the tool will use that version. If you do not provide a version, it will default to version 1.2. |
 
 `username`
 | Mandatory | Data Type | Description |
@@ -244,7 +251,7 @@ Arguments for create_configuration_for_server:
 `default_records_returned`
 | Mandatory | Data Type | Description |
 | ---------- | --------- | ------------------------------------------------------------------------------------------------------------------------------- |
-| No | int | This indicates the default maximum number of records that the searchRetrieve will return. It must be equal to or less than the max_records_supported. If set, every query will return a maximum of this number of records. By default, it is set to whatever SRUUtil finds in the explainResponse OR, if not specified in the explainResponse, will not be included. |
+| No | int | This indicates the default maximum number of records that the searchRetrieve will return. It must be equal to or less than the max_records_supported. If set, every query will return a maximum of this number of records. By default, it is set to whatever is in the explainResponse OR, if not specified in the explainResponse, will not be included. |
 
 `default_record_schema`
 | Mandatory | Data Type | Description |
@@ -256,7 +263,68 @@ Arguments for create_configuration_for_server:
 | ---------- | --------- | ------------------------------------------------------------------------------------------------------------------------------- |
 | No | string | The default schema that sort operations are run on. I don't know too much about this. I use it for validating sortKeys, which are only for version 1.1. If the sort schema is not included in a sort key, this value will be used to validate the sort key (not all schemas can sort).|
 
-### Constructing more advanced queries: Boolean Operators
+#### AVAILABLE FUNCTIONS:
+
+There are three functions that the general user would want to use:
+
+##### `search_retrieve`
+
+This function sends a search retrieve request, using the values you provide and the information parsed from the SRU ExplainResponse.
+
+##### USAGE
+
+After initializing your SRUQueryer class: <br>
+`response_content = queryer.search_retrieve(OR(SearchClause("alma", "title", "=", "Harry"), SearchClause("alma", "title", "=", "Potter")), record_schema="marcxml")`
+
+There are additional options to you can set to modify the request. They will be discussed below.
+
+This will validate and send the request. You will receive whatever content the SRU server sends back - it may be a searchRetrieveResponse, or it might be an error. This library does not currently validate or parse the response.
+
+##### INPUT PARAMETERS
+
+| Option          | Data Type                                                       | Mandatory | Description                                                                                                                                                                                                                                                           |
+| --------------- | --------------------------------------------------------------- | --------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| cql_query       | SearchClause, class extending CQLBooleanOperatorBase, or RawCQL | Yes       | The CQL query you wish to execute.                                                                                                                                                                                                                                    |
+| start_record    | int                                                             | No        | An offset - Every search produces a set on the server, but not all will be returned. This determines the first record in that set that will be returned (offset).                                                                                                     |
+| maximum_records | int                                                             | No        | Set maximum amount of records that will be returned. The default for this, if not included, can be set through SRUQueryer initialization.create_configuration_for_server, by the explainResponse, or is set to 5.                                                     |
+| record_schema   | string                                                          | No        | The format in which the searchRetrieveRessponse will return records. Default is 'marcxml.' Any value set here will be validated against the available record schemas listed in the explainResponse. REQUIRED if the default is not returned with the explainResponse. |
+| sort_queries    | list[dict] or list[SortKey]                                     | No        | A list of sortBy dictionaries, which add sort clauses to the dictionary. See below for more information.                                                                                                                                                              |
+| record_packing  | string                                                          | No        | The record packing that the record will be returned in (either xml or string)                                                                                                                                                                                         |
+
+<br>
+
+##### `construct_search_retrieve_request`
+
+This does the same thing as the previous function, however instead of running request.prepare() and sending the request, it returns the requests.Request object. This allows you to be more flexible by modifying the request - for instance, if you want to use a shared requests.Session between multiple requests, or add a custom authentication header.
+
+##### USAGE
+
+After initializing your SRUQueryer class: <br>
+`request = queryer.construct_search_retrieve_request(OR(SearchClause("alma", "title", "=", "Harry"), SearchClause("alma", "title", "=", "Potter")), record_schema="marcxml")`
+
+This will validate the request and return a requests.Request object.
+
+##### INPUT PARAMETERS
+
+| Option          | Data Type                                                       | Mandatory | Description                                                                                                                                                                                                                                                           |
+| --------------- | --------------------------------------------------------------- | --------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| cql_query       | SearchClause, class extending CQLBooleanOperatorBase, or RawCQL | Yes       | The CQL query you wish to execute.                                                                                                                                                                                                                                    |
+| start_record    | int                                                             | No        | An offset - Every search produces a set on the server, but not all will be returned. This determines the first record in that set that will be returned (offset).                                                                                                     |
+| maximum_records | int                                                             | No        | Set maximum amount of records that will be returned. The default for this, if not included, can be set through SRUQueryer initialization.create_configuration_for_server, by the explainResponse, or is set to 5.                                                     |
+| record_schema   | string                                                          | No        | The format in which the searchRetrieveRessponse will return records. Default is 'marcxml.' Any value set here will be validated against the available record schemas listed in the explainResponse. REQUIRED if the default is not returned with the explainResponse. |
+| sort_queries    | list[dict] or list[SortKey]                                     | No        | A list of sortBy dictionaries, which add sort clauses to the dictionary. See below for more information.                                                                                                                                                              |
+| record_packing  | string                                                          | No        | The record packing that the record will be returned in (either xml or string)                                                                                                                                                                                         |
+
+##### `format_available_indexes`
+
+This function nicely formats all the indexes availabe for an SRU server, as well as their information. It then prints this information to the console, to a text file, or both. It only prints to the console by default. You can filter the indexes based on their human-readable title.
+
+`format_available_indexes(sru_configuration, filename: str | None = None, print_to_console: bool = True, title_filter: str | None = None)`
+
+<br>
+<br>
+
+### Boolean Operators
 
 `from sru_queryer.cql import AND, OR, NOT, PROX`
 
@@ -289,7 +357,7 @@ You may add modifiers to the Boolean Operator with the 'modifiers' keyword argum
 
 #### AVAILABLE FUNCTIONS
 
-As with the SearchClause, the functions on the CQL Boolean Operators are not indended to be used by the general person. For example, Query.construct_request() will call format() for all boolean operators.
+As with the SearchClause, the functions on the CQL Boolean Operators are not indended to be used by the general person. For example, SRUQueryer.search_retrieve will call format() for all boolean operators.
 
 #### INITIALIZATION OPTIONS
 
@@ -302,52 +370,8 @@ Any options not marked as MANDATORY are optional. It is not recommended to chang
 
 Note: RawCQL classes may work in place of modifiers, however, this has not been tested.
 
-### SearchRetrieve class
-
-`from sru_queryer import SearchRetrieve`
-
-Now, for the class which you'll likely use the most - the SearchRetrieve class. Whereas SRUUtil deals with configuration, SearchRetrieve only deals with one specific query. It takes an instance of SRUConfiguration for the purposes of validation.
-
-#### USAGE
-
-Use the SearchRetrieve class to construct your request.
-Instantiate the SRUUtil class:
-`configuration = SRUUtil.construct_configuration_for_server(...)`
-Create the query class with the desired request:
-`search_retrieve_request = SearchRetrieve(configuration, OR(SearchClause("alma", "title", "=", "Harry"), SearchClause("alma", "title", "=", "Potter")), record_schema="marcxml")`
-
-There are additional options to you can set to modify the request. They will be discussed below.
-
-You can then validate the request with the validate() function, which will throw an error for the first issue it finds:
-`search_retrieve_request.validate()`
-
-After this, you can get a PreparedRequest and send it:
-`from requests import Session`
-`request_to_send = search_retrieve_request.construct_request()`
-`s = Session()`
-`response = s.send(request_to_send)`
-
-This will return an XML response, which might be a searchRetrieve response, or might be an error.
-
-#### AVAILABLE FUNCTIONS
-
-validate: Validates all components of the searchRetrieve request that can be validated. For the query itself, this is a recursive function that validates all CQLBooleanOperators / SearchClauses and their children. It will throw a ValueError an error for the first issue it finds. It returns nothing when successful.
-
-construct_request: Uses all components of the query to construct a searchRetrieve request. It pulls some of the information from the SRUConfiguration, including the base URL, username, password, and version, as well as other defaults that have been specified. Returns a requests.PreparedRequest object.
-
-#### INITIALIZATION OPTIONS
-
-Unlike many other classes, it is safe to modify variables after instantiating. This is because no validation occurs in the constructor. If you do change something, you'd just have to remember to run validate() again.
-
-| Option            | Data Type                                                       | Mandatory | Description                                                                                                                                                                                                                                                           |
-| ----------------- | --------------------------------------------------------------- | --------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| sru_configuration | SRUConfiguration                                                | Yes       | The configuration of the SRU server, which is used to construct and validate queries. Create a configuration with SRUUtil's create_configuration_for_server()                                                                                                         |
-| cql_query         | SearchClause, class extending CQLBooleanOperatorBase, or RawCQL | Yes       | The CQL query you wish to execute.                                                                                                                                                                                                                                    |
-| start_record      | int                                                             | No        | An offset - Every search produces a set on the server, but not all will be returned. This determines the first record in that set that will be returned (offset).                                                                                                     |
-| maximum_records   | int                                                             | No        | Set maximum amount of records that will be returned. The default for this, if not included, can be set through SRUUtil.create_configuration_for_server, by the explainResponse, or is set to 5.                                                                       |
-| record_schema     | string                                                          | No        | The format in which the searchRetrieveRessponse will return records. Default is 'marcxml.' Any value set here will be validated against the available record schemas listed in the explainResponse. REQUIRED if the default is not returned with the explainResponse. |
-| sort_queries      | list[dict] or list[SortKey]                                     | No        | A list of sortBy dictionaries, which add sort clauses to the dictionary. See below for more information.                                                                                                                                                              |
-| record_packing    | string                                                          | No        | The record packing that the record will be returned in (either xml or string)                                                                                                                                                                                         |
+<br>
+<br>
 
 ### Custom queries: RawCQL
 
@@ -359,7 +383,7 @@ RawCQL is intended for cases in which this library does not support a certain SR
 
 Using raw cql allows you to insert whatever search condition you need, while still validating the rest of the query. You can use a RawCQL class to replace the entire search query, replace a boolean conditional, or replace a SearchClause.
 
-You don't have to worry about creating the string in exact URL notation (e.g., replacing ' ' with %20 or '"' with %22). Characters will be encoded automatically by Query.construct_request().
+You don't have to worry about creating the string in exact URL notation (e.g., replacing ' ' with %20 or '"' with %22). Characters will be encoded automatically by SRUQueryer.search_retrieve().
 
 #### USAGE
 
@@ -388,6 +412,9 @@ There's nothing here that you would want to use. This class is essentially a wra
 | raw_cql_string | string (should be CQL) | Yes       | A CQL query as a string. Again, you don't have to provide it in a url-exact format, spaces and other special characters will be replaced by their compability characters later on if you're using the provided tools. |
 | add_padding    | boolean                | No        | Whether or not to add a space (%20) before and after the string upon formatting. Set to false by default.                                                                                                             |
 
+<br>
+<br>
+
 ### Modifiying operators - Modifiers
 
 Modifiers are conditions which modify the search query operators (AND, "all", OR, etc). As indicated above, in version 1.2, they can either modify SearchClause operators or Boolean Operators.
@@ -395,9 +422,9 @@ Modifiers are conditions which modify the search query operators (AND, "all", OR
 Each modifier is preceeded by a '/' and optional spacing. One or many modifiers may be included. Modifiers must include a base_name, but MAY include a context_set, operator, and value.
 
 From the LOC website, a modifier on a Boolean Operator looks like: `dc.title any fish or/rel.combine=sum dc.creator any sanderson`.
-A modifier on a SearchClause looks like `any /relevant /cql.string`
+A modifier on a SearchClause relation looks like `any /relevant /cql.string`
 
-One thought of interest - it may be possible to include a RawCQL instead of a modifier for custom modifiers / modifier formats not available through this program. I've not tested it, but it's likely to work.
+One thought of interest - it may be possible to include a RawCQL instead of a modifier if you want to create custom modifiers or modifier formats not available through this program. I've not tested it, but it's likely to work.
 
 #### USAGE
 
@@ -430,13 +457,16 @@ It is not recommended to change any options manually after initializing a Modifi
 | value       | string or None | No        | The value used in the modifier condition.                                                                               |
 | context_set | string or None | No        | The context set that the base_name should be pulled from.                                                               |
 
-COMBINATIONS OF INITIALIZATION PROPERTIES (implied from LOC standards):
+COMBINATIONS OF INITIALIZATION PROPERTIES (implied from LOC standards):<br>
 You MUST include either:
 
 1. a base_name,
 2. a context_set, base_name
 3. a base_name, operation, and value,
 4. a context_set, base_name, operation, and value.
+
+<br>
+<br>
 
 ### Sorting in 1.2: SortBy clauses
 
@@ -447,15 +477,18 @@ Which will be formatted to:
 
 All values are required. The sort_order can either be "ascending" or "descending."
 
-You should add all desired sortBy clauses to the SearchRetrieve object in an array with the keyword argument 'sort_queries='
+You should add all desired sortBy clauses to the SRUQueryer.search_retrieve or SRUQueryer.construct_search_retrieve_request in an array with the keyword argument 'sort_queries='
+
+<br>
+<br>
 
 ### Sorting in 1.1: SortKey
 
 `from sru_queryer.sru import SortKey`
 
-SortKeys are used to sort results returned by a searchRetrieve request ins SRU version 1.1. SRU 1.1 doesn't specify whether sorting is allow per-index like 1.2 does; rather, it specifies this per record schema.
+SortKeys are used to sort results returned by a searchRetrieve request in SRU version 1.1. SRU 1.1 doesn't specify whether sorting is allow per-index like 1.2 does; rather, it specifies this per record schema.
 
-Note that this isn't imported from CQL. It's actually not part of the CQL query - it's another URL query string parameter.
+Note that this isn't imported from sru_queryer.cql but rather sru_queryer.sru. This is because it's actually not part of the CQL query.
 
 #### USAGE
 
@@ -463,7 +496,7 @@ Simply include a list of SortKeys in the 'sort_queries' parameter of your Search
 
 #### AVAILABLE FUNCTIONS
 
-There's nothing here that you would need to use; the built-in functions are used by other parts of the SRUUtil program.
+There's nothing here that you would need to use; the built-in functions are used by other parts of the sru_queryer library.
 
 #### INITIALIZATION OPTIONS
 

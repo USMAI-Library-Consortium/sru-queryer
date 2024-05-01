@@ -1,33 +1,37 @@
 from __future__ import annotations
-import logging
 
+import logging
 import xmltodict
 import requests
+from requests import Request
 
-from ._sru_explain_auto_parser import SRUExplainAutoParser
-from ._sru_configuration import SRUConfiguration
 from ._sru_aux_formatter import SRUAuxiliaryFormatter
 from ._exceptions import NoExplainResponseException, ExplainResponseContentTypeException, ExplainResponseParserException
+from ._sru_explain_auto_parser import SRUExplainAutoParser
+from ._sru_configuration import SRUConfiguration
+from ._search_clause import SearchClause
+from ._raw_cql import RawCQL
+from ._cql_boolean_operators import CQLBooleanOperatorBase
+from ._sort_key import SortKey
+from ._search_retrieve import SearchRetrieve
 
-
-class SRUUtil():
+class SRUQueryer():
     supported_sru_versions = ["1.2", "1.1"]
-
-    @staticmethod
-    def create_configuration_for_server(server_url: str, sru_version: str = None, username: str | None = None, password: str | None = None, default_cql_context_set: str | None = None, default_cql_index: str | None = None, default_cql_relation: str | None = None, disable_validation_for_cql_defaults: bool = False, max_records_supported: int | None = None, default_records_returned: int | None = None , default_record_schema: str | None = None, default_sort_schema: str | None = None) -> SRUConfiguration:
+    
+    def __init__(self, server_url: str, sru_version: str = None, username: str | None = None, password: str | None = None, default_cql_context_set: str | None = None, default_cql_index: str | None = None, default_cql_relation: str | None = None, disable_validation_for_cql_defaults: bool = False, max_records_supported: int | None = None, default_records_returned: int | None = None , default_record_schema: str | None = None, default_sort_schema: str | None = None):
         """Raises ExplainResponseContentTypeException, NoExplainResponseException, ExplainResponseParserException, or PermissionError"""
         sru_version_to_use = sru_version
         if not sru_version_to_use:
             sru_version_to_use = "1.2"
-        elif sru_version_to_use not in SRUUtil.supported_sru_versions:
+        elif sru_version_to_use not in self.supported_sru_versions:
             logging.warning(f"SRU version {sru_version_to_use} is not supported. Defaulting to version 1.2...")
             sru_version_to_use = "1.2"
 
         formatted_explain_query = SRUAuxiliaryFormatter.format_base_explain_query(server_url, sru_version_to_use)
 
         try:
-            explain_response_xml = SRUUtil._retrieve_explain_response_xml(formatted_explain_query, username, password)
-            configuration = SRUUtil._parse_explain_response_configuration(explain_response_xml)
+            explain_response_xml = self._retrieve_explain_response_xml(formatted_explain_query, username, password)
+            configuration = self._parse_explain_response_configuration(explain_response_xml)
         except NoExplainResponseException as be:
             logging.exception(be.message)
             raise be
@@ -87,17 +91,39 @@ class SRUUtil():
             if configuration.default_sort_schema and (configuration.default_sort_schema != default_sort_schema): logging.warning(f"Overriding default sort schema (Set {default_sort_schema}, server specified {configuration.default_sort_schema}).")
             configuration.default_sort_schema = default_sort_schema
 
-        return configuration
+        self.sru_configuration = configuration
+
+    def search_retrieve(self, cql_query: SearchClause | CQLBooleanOperatorBase | RawCQL, start_record: int | None = None, maximum_records: int | None = None, record_schema: str | None = None, sort_queries: list[dict] | list[SortKey] | None = None, record_packing: str | None = None) -> bytes:
+        """Conducts a searchRetrieve request and returns the response.
+
+        This will throw ValueErrors for any incorrect portion of the query. 
+        
+        This function does not handle any errors in the searchRetrieveResponse."""
+        query = SearchRetrieve(self.sru_configuration, cql_query, start_record, maximum_records, record_schema, sort_queries, record_packing)
+        query.validate()
+        request = query.construct_request()
+        request = request.prepare()
+        s = requests.Session()
+        response = s.send(request)
+        return response.content
     
-    @staticmethod
-    def format_available_indexes(sru_configuration, filename: str | None = None, print_to_console: bool = True, title_filter: str | None = None):
+    def construct_search_retrieve_request(self, cql_query: SearchClause | CQLBooleanOperatorBase | RawCQL, start_record: int | None = None, maximum_records: int | None = None, record_schema: str | None = None, sort_queries: list[dict] | list[SortKey] | None = None, record_packing: str | None = None) -> Request:
+        """Construct a requests.Request object, which you can then prepare and use.
+        
+        This is helpful (as compared to search_retrieve) when you want to create a request, and perhaps modify it
+        or use it with your own session mechanism."""
+        query = SearchRetrieve(self.sru_configuration, cql_query, start_record, maximum_records, record_schema, sort_queries, record_packing)
+        query.validate()
+        return query.construct_request()
+    
+    def format_available_indexes(self, filename: str | None = None, print_to_console: bool = True, title_filter: str | None = None):
         """Formats available indexes, and prints to the console by default.
 
         Can also print to a file and disable printing to the console."""
-        available_context_sets_and_indexes = sru_configuration.available_context_sets_and_indexes
+        available_context_sets_and_indexes = self.sru_configuration.available_context_sets_and_indexes
 
         if title_filter:
-            available_context_sets_and_indexes = SRUUtil._filter_available_context_sets_and_indexes(
+            available_context_sets_and_indexes = self._filter_available_context_sets_and_indexes(
                 available_context_sets_and_indexes, title_filter)
 
         SRUAuxiliaryFormatter.format_available_indexes(available_context_sets_and_indexes, filename, print_to_console)
@@ -121,7 +147,7 @@ class SRUUtil():
 
     @staticmethod
     def _retrieve_explain_response_xml(server_url: str, username: str | None, password: str | None) -> dict:
-        response_content = SRUUtil._get_request_contents(server_url, username, password)
+        response_content = SRUQueryer._get_request_contents(server_url, username, password)
         try:
             content = xmltodict.parse(response_content)
         except Exception as e:
