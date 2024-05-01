@@ -451,7 +451,7 @@ It is not recommended to change any options manually after initializing a Modifi
 | value       | string or None | No        | The value used in the modifier condition.                                                                               |
 | context_set | string or None | No        | The context set that the base_name should be pulled from.                                                               |
 
-COMBINATIONS OF INITIALIZATION PROPERTIES (implied from LOC standards):
+COMBINATIONS OF INITIALIZATION PROPERTIES (implied from LOC standards):<br>
 You MUST include either:
 
 1. a base_name,
