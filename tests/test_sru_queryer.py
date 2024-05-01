@@ -80,12 +80,12 @@ class TestSRUQueryerInitialization(unittest.TestCase):
         self.assertEqual(updated_config.sru_version, "1.1")
 
     @staticmethod
-    def create_index_config(title, id, sort, supported_operations, empty_term_supported) -> dict:
+    def create_index_config(title, id, sort, supported_relations, empty_term_supported) -> dict:
         return {
                 "id": id,
                 "title": title,
                 "sort": sort,
-                "supported_operations": supported_operations,
+                "supported_relations": supported_relations,
                 "empty_term_supported": empty_term_supported
     }
 
@@ -93,7 +93,7 @@ class TestSRUQueryerInitialization(unittest.TestCase):
         self.assertEqual(index["title"], expected_index["title"], "Title Incorrect!")
         self.assertEqual(index["id"], expected_index["id"], "ID Incorrect! ")
         self.assertEqual(index["sort"], expected_index["sort"], "Sort Incorrect!")
-        self.assertListEqual(index["supported_operations"], expected_index["supported_operations"], "Supported Operations incorrect!")
+        self.assertListEqual(index["supported_relations"], expected_index["supported_relations"], "Supported Operations incorrect!")
         self.assertEqual(index["empty_term_supported"], expected_index["empty_term_supported"], "Empty Term Supported Incorrect!")
 
 
@@ -107,14 +107,14 @@ class TestSRUQueryerInitialization(unittest.TestCase):
                     "id": None,
                     "title": "Library Code",
                     "sort": False,
-                    "supported_operations": ["==", "all"],
+                    "supported_relations": ["==", "all"],
                     "empty_term_supported": True
                 },
                 "library_status": {
                     "id": None,
                     "title": "Library Status",
                     "sort": False,
-                    "supported_operations": ["==", "all"],
+                    "supported_relations": ["==", "all"],
                     "empty_term_supported": True
                 },
             },
@@ -139,7 +139,7 @@ class TestSRUQueryerInitialization(unittest.TestCase):
                     "id": None,
                     "title": "Bib Holding Count (Alma)",
                     "sort": True,
-                    "supported_operations": [">", ">=", "==", "<", "<="],
+                    "supported_relations": [">", ">=", "==", "<", "<="],
                     "empty_term_supported": True
                 },
             },
@@ -148,7 +148,7 @@ class TestSRUQueryerInitialization(unittest.TestCase):
                     "id": None,
                     "title": "Bib MMS ID",
                     "sort": False,
-                    "supported_operations": ["==", "all"],
+                    "supported_relations": ["==", "all"],
                     "empty_term_supported": True
                 },
             },

@@ -7,21 +7,21 @@ from ._cql_modifiers import CQLModifierBase, RelationModifier
 class SearchClause:
     """A CQL clause.
 
-    Supports validation of context set, index_name, operation, and whether 
+    Supports validation of context set, index_name, relation, and whether 
     or not an empty string is allowed as a search_term for a particular index.
 
     To create a valid search clause, you must use:\n
         a search_term,\n
-        index_name + operation + search_term,\n
-        OR context_set + index_name + operation + search_term.\n
+        index_name + relation + search_term,\n
+        OR context_set + index_name + relation + search_term.\n
 
-    Modifiers will only be included if there's an operation.
+    Modifiers will only be included if there's an relation.
         """
 
-    def __init__(self, context_set: str | None = None, index_name: str | None = None, operation: str | None = None, search_term: str | None = None, modifiers: list[RelationModifier] | None = None):
+    def __init__(self, context_set: str | None = None, index_name: str | None = None, relation: str | None = None, search_term: str | None = None, modifiers: list[RelationModifier] | None = None):
         self._context_set: str = context_set
         self._index_name: str = index_name
-        self._operation: str = operation
+        self._relation: str = relation
         self._search_term: str = search_term
         self._modifiers = modifiers
 
@@ -29,12 +29,12 @@ class SearchClause:
         if not search_term_exists:
             raise ValueError("You must provide a search term (search_term)")
 
-        if index_name and not operation:
+        if index_name and not relation:
             raise ValueError(
-                "If you include an index, you must include an operation")
-        if operation and not index_name:
+                "If you include an index, you must include an relation")
+        if relation and not index_name:
             raise ValueError(
-                "If you include an operation, you must include an index")
+                "If you include an relation, you must include an index")
         if context_set and not index_name:
             raise ValueError(
                 "If you have a context set, you must include an index.")
@@ -42,14 +42,14 @@ class SearchClause:
     def get_index_name(self):
         return self._index_name
 
-    def get_operation(self):
-        return self._operation
+    def get_relation(self):
+        return self._relation
 
     def format(self):
         return self._format()
 
-    def _format_operation(self) -> str:
-        """Formats the relational operation
+    def _format_relation(self) -> str:
+        """Formats the relational relation
 
         For non-word relational operators (==, >, <>, etc), there should be no spacing, E.G.:\n
             ==\n
@@ -57,18 +57,18 @@ class SearchClause:
             %20any%20 (no modifiers)\n
             %20and    (with modifiers)\n
         """
-        formatted_operation = ""
+        formatted_relation = ""
 
-        if self._operation:
-            formatted_operation = self._operation
-            if formatted_operation in ["all"]:
-                formatted_operation = f'%20{formatted_operation}'
+        if self._relation:
+            formatted_relation = self._relation
+            if formatted_relation in ["all"]:
+                formatted_relation = f'%20{formatted_relation}'
 
-                # add padding for the operations that are words
+                # add padding for the relations that are words
                 if not self._modifiers:
-                    formatted_operation += "%20"
+                    formatted_relation += "%20"
 
-        return formatted_operation
+        return formatted_relation
 
     def _format(self, **kwargs):
         formatted_search_clause = ""
@@ -77,7 +77,7 @@ class SearchClause:
             formatted_search_clause += f'{self._context_set}.'
 
         if self._index_name:
-            formatted_search_clause += f'{self._index_name}{self._format_operation()}'
+            formatted_search_clause += f'{self._index_name}{self._format_relation()}'
 
         # Format the modifiers
         formatted_search_clause += CQLModifierBase.format_modifier_array(
@@ -90,7 +90,7 @@ class SearchClause:
 
     def validate(self, sru_configuration: SRUConfiguration):
         SRUValidator.validate_cql(sru_configuration, self._context_set,
-            self._index_name, self._operation, self._search_term)
+            self._index_name, self._relation, self._search_term)
 
         if self._modifiers:
             for modifier in self._modifiers:

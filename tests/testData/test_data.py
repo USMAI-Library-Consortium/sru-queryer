@@ -9,7 +9,7 @@ mock_searchable_indexes_and_descriptions_loc_data = {
       "id": "1016",
       "title": "Keyword Anywhere",
       "sort": None,
-      "supported_operations": [],
+      "supported_relations": [],
       "empty_term_supported": None
     }
   },
@@ -18,28 +18,28 @@ mock_searchable_indexes_and_descriptions_loc_data = {
       "id": "4",
       "title": "Title",
       "sort": None,
-      "supported_operations": [],
+      "supported_relations": [],
       "empty_term_supported": None
     },
     "creator": {
       "id": "1003",
       "title": "Creator",
       "sort": None,
-      "supported_operations": [],
+      "supported_relations": [],
       "empty_term_supported": None
     },
     "author": {
       "id": "1003",
       "title": "Creator",
       "sort": None,
-      "supported_operations": [],
+      "supported_relations": [],
       "empty_term_supported": None
     },
     "subject": {
       "id": "21",
       "title": "Subject",
       "sort": None,
-      "supported_operations": [],
+      "supported_relations": [],
       "empty_term_supported": None
     }
   },
@@ -48,63 +48,63 @@ mock_searchable_indexes_and_descriptions_loc_data = {
       "id": "1002",
       "title": "Name",
       "sort": None,
-      "supported_operations": [],
+      "supported_relations": [],
       "empty_term_supported": None
     },
     "personalName": {
       "id": "1",
       "title": "Personal Name",
       "sort": None,
-      "supported_operations": [],
+      "supported_relations": [],
       "empty_term_supported": None
     },
     "corporateName": {
       "id": "2",
       "title": "Corporate Name",
       "sort": None,
-      "supported_operations": [],
+      "supported_relations": [],
       "empty_term_supported": None
     },
     "conferenceName": {
       "id": "3",
       "title": "Conference Name",
       "sort": None,
-      "supported_operations": [],
+      "supported_relations": [],
       "empty_term_supported": None
     },
     "geographicName": {
       "id": "58",
       "title": "Geographic Name",
       "sort": None,
-      "supported_operations": [],
+      "supported_relations": [],
       "empty_term_supported": None
     },
     "isbn": {
       "id": "7",
       "title": "ISBN",
       "sort": None,
-      "supported_operations": [],
+      "supported_relations": [],
       "empty_term_supported": None
     },
     "issn": {
       "id": "8",
       "title": "ISSN",
       "sort": None,
-      "supported_operations": [],
+      "supported_relations": [],
       "empty_term_supported": None
     },
     "lccn": {
       "id": "9",
       "title": "LC Control Number",
       "sort": None,
-      "supported_operations": [],
+      "supported_relations": [],
       "empty_term_supported": None
     },
     "standardIdentifier": {
       "id": "1007",
       "title": "Standard Identifier",
       "sort": None,
-      "supported_operations": [],
+      "supported_relations": [],
       "empty_term_supported": None
     }
   }
@@ -156,42 +156,42 @@ mock_searchable_indexes_and_descriptions = {
             "id": None,
             "title": "Bib Holding Count (Alma)",
             "sort": True,
-            "supported_operations": [">", ">=", "==", "<", "<="],
+            "supported_relations": [">", ">=", "==", "<", "<="],
             "empty_term_supported": True
         },
         "general_note": {
             "id": None,
             "title": "Public Note (Title)",
             "sort": False,
-            "supported_operations": ["all", "=", "=="],
+            "supported_relations": ["all", "=", "=="],
             "empty_term_supported": False
         },
         "library": {
             "id": None,
             "title": "Library Code",
             "sort": False,
-            "supported_operations": ["==", "all"],
+            "supported_relations": ["==", "all"],
             "empty_term_supported": True
         },
         "library_status": {
             "id": None,
             "title": "Library Status",
             "sort": False,
-            "supported_operations": ["==", "all"],
+            "supported_relations": ["==", "all"],
             "empty_term_supported": True
         },
         "unique_serial_title": {
             "id": None,
             "title": "Serial Title",
             "sort": False,
-            "supported_operations": ["all", "=", "=="],
+            "supported_relations": ["all", "=", "=="],
             "empty_term_supported": False
         },
         "title": {
             "id": None,
             "title": "Title",
             "sort": True,
-            "supported_operations": ["all", "=", "=="],
+            "supported_relations": ["all", "=", "=="],
             "empty_term_supported": True
         },
     },
@@ -200,7 +200,7 @@ mock_searchable_indexes_and_descriptions = {
                 "id": None,
                 "title": "Bib MMS ID",
                 "sort": False,
-                "supported_operations": ["==", "all"],
+                "supported_relations": ["==", "all"],
                 "empty_term_supported": True
             }
         }
@@ -259,7 +259,7 @@ def get_gapines_sru_configuration() -> SRUConfiguration:
 
     return sru_configuration
 
-def get_test_sru_configuration_no_sort_or_supported_operations_or_config() -> SRUConfiguration:
+def get_test_sru_configuration_no_sort_or_supported_relations_or_config() -> SRUConfiguration:
     sru_configuration = SRUConfiguration()
 
     with open (TestFiles.loc_available_context_sets_and_indexes, "r") as f:  
