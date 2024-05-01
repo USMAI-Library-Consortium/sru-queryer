@@ -51,7 +51,7 @@ class TestCQLModifiers(unittest.TestCase):
 
     def test_invalid_operator_raises_error(self):
         with self.assertRaises(ValueError) as ve:
-            CQLModifierBase._validate_operator(
+            CQLModifierBase._validate_comparison_symbol(
                 "++", [">", "=="])
 
         self.assertEqual(ve.exception.__str__(),

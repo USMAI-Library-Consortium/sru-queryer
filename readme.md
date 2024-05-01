@@ -419,7 +419,7 @@ There's nothing here that you would want to use. This class is essentially a wra
 
 Modifiers are conditions which modify the search query operators (AND, "all", OR, etc). As indicated above, in version 1.2, they can either modify SearchClause operators or Boolean Operators.
 
-Each modifier is preceeded by a '/' and optional spacing. One or many modifiers may be included. Modifiers must include a base_name, but MAY include a context_set, operator, and value.
+Each modifier is preceeded by a '/' and optional spacing. One or many modifiers may be included. Modifiers must include a base_name, but MAY include a context_set, comparison symbol, and value.
 
 From the LOC website, a modifier on a Boolean Operator looks like: `dc.title any fish or/rel.combine=sum dc.creator any sanderson`.
 A modifier on a SearchClause relation looks like `any /relevant /cql.string`
@@ -450,20 +450,20 @@ There are no functions here that the general user should need to use.
 
 It is not recommended to change any options manually after initializing a Modifier, as this will bypass some validation. It's easy and not resource intensive to create a new instance of a modifier if you need different options.
 
-| Option      | Data Type      | Mandatory | Description                                                                                                             |
-| ----------- | -------------- | --------- | ----------------------------------------------------------------------------------------------------------------------- |
-| base_name   | string         | Yes       | The base name of the modifier (e.g, 'relevant' in `/relevant`). Validated against the whitelist 'supported_base_names'. |
-| operator    | string or None | No        | The operator used in the modifier condition.                                                                            |
-| value       | string or None | No        | The value used in the modifier condition.                                                                               |
-| context_set | string or None | No        | The context set that the base_name should be pulled from.                                                               |
+| Option            | Data Type      | Mandatory | Description                                                                                                             |
+| ----------------- | -------------- | --------- | ----------------------------------------------------------------------------------------------------------------------- |
+| base_name         | string         | Yes       | The base name of the modifier (e.g, 'relevant' in `/relevant`). Validated against the whitelist 'supported_base_names'. |
+| comparison_symbol | string or None | No        | The comparison symbol used in the modifier condition.                                                                   |
+| value             | string or None | No        | The value used in the modifier condition.                                                                               |
+| context_set       | string or None | No        | The context set that the base_name should be pulled from.                                                               |
 
 COMBINATIONS OF INITIALIZATION PROPERTIES (implied from LOC standards):<br>
 You MUST include either:
 
 1. a base_name,
-2. a context_set, base_name
-3. a base_name, operator, and value,
-4. a context_set, base_name, operator, and value.
+2. a context_set and base_name
+3. a base_name, comparison_symbol, and value,
+4. a context_set, base_name, comparison_symbol, and value.
 
 <br>
 <br>
