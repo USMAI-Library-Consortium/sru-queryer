@@ -5,10 +5,9 @@ from requests import Request
 from src.sru_queryer import SearchRetrieve
 from src.sru_queryer.sru import SRUUtil
 from src.sru_queryer.cql import SearchClause
-from src.sru_queryer.cql import AND, OR, RawCQL
+from src.sru_queryer.cql import AND, RawCQL
 from src.sru_queryer.sru import SortKey
 from tests.testData.test_data import TestFiles, get_alma_sru_configuration
-from src.sru_queryer.drivers import gapines_driver, alma_driver, loc_driver
 
 
 class TestSRUQuery(unittest.TestCase):
@@ -131,7 +130,7 @@ class TestQueryWithXMLData(unittest.TestCase):
             mock_get.return_value.content = f.read()
 
             # Initialize the gapines configuration
-            sru_configuration = SRUUtil.create_configuration_for_server("https://example.com", driver=gapines_driver)
+            sru_configuration = SRUUtil.create_configuration_for_server("https://example.com")
 
             constructed_search_retrieve_request = SearchRetrieve(sru_configuration, SearchClause("alma", "bib_holding_count", "==", "10")).construct_request()
 
@@ -147,7 +146,7 @@ class TestQueryWithXMLData(unittest.TestCase):
             mock_get.return_value.content = f.read()
 
             with self.assertRaises(ValueError) as ve:
-                sru_configuration = SRUUtil.create_configuration_for_server("https://example.com", driver=alma_driver)
+                sru_configuration = SRUUtil.create_configuration_for_server("https://example.com")
                 SearchRetrieve(sru_configuration, SearchClause(value="dummyval"), record_schema="marcxml", sort_queries=[SortKey("example_xpath")])
 
             self.assertIn("SortKeys", ve.exception.__str__())
@@ -159,7 +158,7 @@ class TestQueryWithXMLData(unittest.TestCase):
             mock_get.return_value.content = f.read()
 
             with self.assertRaises(ValueError) as ve:
-                sru_configuration = SRUUtil.create_configuration_for_server("https://example.com", driver=gapines_driver)
+                sru_configuration = SRUUtil.create_configuration_for_server("https://example.com")
                 SearchRetrieve(sru_configuration, SearchClause(value="dummyval"), sort_queries=[{"index_set": "alma", "index_name": "bib_holding_count", "sort_order": "ascending"}])
             
             self.assertIn("SortKeys", ve.exception.__str__())
@@ -171,7 +170,7 @@ class TestQueryWithXMLData(unittest.TestCase):
         with open(TestFiles.explain_response_loc, "rb") as f:
             mock_get.return_value.content = f.read()
 
-            sru_configuration = SRUUtil.create_configuration_for_server("https://example.com", driver=loc_driver)
+            sru_configuration = SRUUtil.create_configuration_for_server("https://example.com")
 
             SearchRetrieve(sru_configuration, RawCQL("pass")).validate()
     
@@ -181,6 +180,6 @@ class TestQueryWithXMLData(unittest.TestCase):
         with open(TestFiles.explain_response_gapines, "rb") as f:
             mock_get.return_value.content = f.read() 
 
-            sru_configuration = SRUUtil.create_configuration_for_server("https://example.com", driver=gapines_driver)
+            sru_configuration = SRUUtil.create_configuration_for_server("https://example.com")
 
             SearchRetrieve(sru_configuration, RawCQL("pass"))

@@ -79,13 +79,10 @@ Before you can validate or send searchRetrieve requests, you must create an SRU 
 An instance is created through the SRUUtil.create_configuration_for_server() function, and all you have to do is to pass the created instance to the functions that need it. You can read information from it if you want to integrate SRU querying more deeply into your application.
 
 ```
-from sru_queryer.drivers import alma_driver
-sru_configuration = SRUUtil.create_configuration_for_server("https://path-to-sru-server-base", "1.2", driver=alma_driver)
+sru_configuration = SRUUtil.create_configuration_for_server("https://path-to-sru-server-base")
 ```
 
-This is the most basic way to create a configuration object. The first argument is the SRU server URL, the second is the SRU version, and the last one is the driver. This function takes many other optional arguments, which can do things like configure the default record schemas, default context sets, change validation settings, etc.
-
-A very important argument is 'driver'. This takes a dict which tells the program how to parse explainResponses. This program already includes drivers for ExLibris Alma, LOC, and gapines SRU servers. The default is set to 'alma' (ExLibris Alma), which is why you won't see it in some examples. The drivers are straightforward - you can follow the template of the included drivers to create one for your own server. Drivers tell the program where to find the information it needs in the SRU explainResponse and which information is available.
+This is the most basic way to create a configuration object. This function takes many other optional arguments, which can do things like configure the default record schemas, default context sets, change validation settings, etc.
 
 ### Basic Query Component: SearchClause
 
@@ -208,11 +205,6 @@ Arguments for create_configuration_for_server:
 | Mandatory | Data Type | Description |
 | ---------- | --------- | ------------------------------------------------------------------------------------------------------------------------------- |
 | Yes, but defaults to 1.2 | string | The SRU version to use.|
-
-`driver`
-| Mandatory | Data Type | Description |
-| --- | --- | --- |
-| Yes, but defaults to Alma driver | dict | The driver for parsing the xml explainResponse. This is needed because different SRU servers have their data located in different XML paths. The driver tells the program where to look. The drivers are arrays of strings, each string representing a key in a higherarchical dictionary. The drivers will be run on the explainResponse AFTER it's been parsed by the xmltodict library. Additional drivers can be imported from `sru_queryer.drivers` |
 
 `username`
 | Mandatory | Data Type | Description |

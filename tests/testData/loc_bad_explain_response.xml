@@ -1,0 +1,14 @@
+<zs:searchRetrieveResponse xmlns:zs="http://docs.oasis-open.org/ns/search-ws/sruResponse">
+    <zs:echoedSearchRetrieveRequest>
+        <zs:version>2.0</zs:version>
+        <zs:query>sdf./sd</zs:query>
+        <zs:recordXMLEscaping>xml</zs:recordXMLEscaping>
+    </zs:echoedSearchRetrieveRequest>
+    <zs:diagnostics xmlns:diag="http://docs.oasis-open.org/ns/search-ws/diagnostic">
+        <diag:diagnostic>
+            <diag:uri>info:srw/diagnostic/1/10</diag:uri>
+            <diag:details>query_transform::query_transform:cql_parser_string failed: sdf./sd</diag:details>
+            <diag:message>Query syntax error</diag:message>
+        </diag:diagnostic>
+    </zs:diagnostics>
+</zs:searchRetrieveResponse>

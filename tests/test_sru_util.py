@@ -2,7 +2,8 @@ import unittest
 from unittest.mock import patch
 
 from src.sru_queryer.sru import SRUUtil
-from tests.testData.test_data import get_alma_sru_configuration, get_gapines_sru_configuration, mock_searchable_indexes_and_descriptions
+from src.sru_queryer._base._exceptions import ExplainResponseContentTypeException
+from tests.testData.test_data import get_alma_sru_configuration, get_gapines_sru_configuration, mock_searchable_indexes_and_descriptions, TestFiles
 
 @patch("src.sru_queryer.sru.SRUUtil._retrieve_explain_response_xml")
 @patch("src.sru_queryer.sru.SRUUtil._parse_explain_response_configuration")
@@ -153,3 +154,14 @@ class TestSRUUtilCreateConfiguration(unittest.TestCase):
             },
         })
 
+class TestSRUUtilExplainResponseXMLParse(unittest.TestCase):
+
+    @patch("src.sru_queryer.sru.SRUUtil._get_request_contents")
+    def test_parse_html_raises_parser_failure_exception(self, mock_request_contents):
+        with open(TestFiles.gapines_html_response, "rb") as f:
+            mock_request_contents.return_value = f.read()
+
+        with self.assertRaises(ExplainResponseContentTypeException) as pe:
+            SRUUtil._retrieve_explain_response_xml("blahblah", None, None)
+        
+        print(pe.exception)

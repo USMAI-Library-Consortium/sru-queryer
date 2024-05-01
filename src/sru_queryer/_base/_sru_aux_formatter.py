@@ -1,40 +1,16 @@
 from __future__ import annotations
 
-from abc import ABC, abstractmethod
 from base64 import b64encode
 
 from ._sru_configuration import SRUConfiguration
 from ._sort_key import SortKey
 
-class SRUAuxiliaryFormatterAbstract(ABC):
 
-    @staticmethod
-    @abstractmethod
-    def format_available_indexes(available_context_sets_and_indexes: dict, filename: str | None = None, print_to_console: bool = True):
-        pass
-
-    @staticmethod
-    @abstractmethod
-    def format_base_explain_query(base_server_url: str, version: str = None) -> str:
-        pass
-    
-    @staticmethod
-    @abstractmethod
-    def format_base_search_retrieve_query(sru_configuration: SRUConfiguration, start_record: int | None = None, maximum_records: int | None = None, record_schema: str | None = None, record_packing: str |  None = None) -> str:
-        pass
-
-    @staticmethod
-    @abstractmethod
-    def format_sort_query(sort_queries: list[dict] | list[SortKey] | None) -> str:
-        pass
-
-    @staticmethod
-    @abstractmethod
-    def format_basic_access_authentication_header_payload(username: str, password: str):
-        pass
-
-
-class SRUAuxiliaryFormatter(SRUAuxiliaryFormatterAbstract):
+class SRUAuxiliaryFormatter():
+    """
+    This class handles formatting that isn't handled by Objects. For example, the SortKeys abstraction is a class and can
+    self-format, while sort queries are not their own class. So, this class will format them. 
+    """
 
     @staticmethod
     def format_available_indexes(available_context_sets_and_indexes: dict, filename: str | None = None, print_to_console: bool = True):
@@ -69,11 +45,8 @@ class SRUAuxiliaryFormatter(SRUAuxiliaryFormatterAbstract):
                 f.write(formatted_string)
 
     @staticmethod
-    def format_base_explain_query(server_url: str, version: str = None) -> str:
-        url = f'{server_url}?'
-        if version: url += f'version={str(version)}&'
-        url += 'operation=explain'
-
+    def format_base_explain_query(server_url: str, version: str) -> str:
+        url = f'{server_url}?version={str(version)}&operation=explain'
         return url
     
     @staticmethod

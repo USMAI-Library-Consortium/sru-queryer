@@ -43,14 +43,6 @@ class TestSRUAuxiliaryFormatter(unittest.TestCase):
 
         self.assertEqual(expected_url, actual_url)
 
-    def test_format_search_explain_url_no_version(self):
-        base_url =  "https://example.com"
-        expected_url = f"{base_url}?operation=explain"
-
-        actual_url = SRUAuxiliaryFormatter.format_base_explain_query(base_url)
-
-        self.assertEqual(expected_url, actual_url)
-
     def test_format_search_retrieve_query_start_record_not_default(self):
         sru_configuration = get_gapines_sru_configuration()
         sru_configuration.server_url = "https://example.com"

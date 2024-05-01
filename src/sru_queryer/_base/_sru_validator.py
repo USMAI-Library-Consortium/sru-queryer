@@ -1,37 +1,10 @@
 from __future__ import annotations
 
-from abc import ABC, abstractmethod
-
 from ._sru_configuration import SRUConfiguration
 from ._sort_key import SortKey
 
-class SRUValidatorAbstract(ABC):
-    @staticmethod
-    @abstractmethod
-    def validate_defaults(sru_configuration: SRUConfiguration, default_context_set: str | None, default_index: str | None, default_relation: str | None, default_record_schema: str | None, default_sort_schema: str | None):
-        pass
-
-    @staticmethod
-    @abstractmethod
-    def validate_cql(sru_configuration: SRUConfiguration, context_set: str | None = None, index_name: str | None = None, relation: str | None = None, value: str | None = None, evaluate_can_sort: bool = False) -> None:
-        pass
-
-    @staticmethod
-    @abstractmethod
-    def validate_base_query(sru_configuration: SRUConfiguration, start_record: str | None, maximum_record: str | None, record_schema: str | None, record_packing: str | None) -> None:
-        pass 
-
-    @staticmethod
-    @abstractmethod
-    def validate_context_set(sru_configuration: SRUConfiguration, context_set: str) -> None:
-        pass
-
-    @staticmethod
-    @abstractmethod
-    def validate_sort(sru_configuration: SRUConfiguration, sort_queries: list[dict] | list[SortKey], record_schema: str | None = None) -> None:
-        pass
-
-class SRUValidator(SRUValidatorAbstract):
+class SRUValidator():
+    """Handles most validation tasks. Some things are validated when they are initialized, however."""
 
     @staticmethod
     def validate_defaults(sru_configuration: SRUConfiguration):

@@ -1,0 +1,10 @@
+<searchRetrieveResponse xmlns="http://www.loc.gov/zing/srw/" xmlns:diag="http://www.loc.gov/zing/srw/diagnostic/">
+    <version>1.2</version>
+    <diagnostics>
+        <diag:diagnostic>
+            <diag:uri>200832</diag:uri>
+            <diag:details/>
+            <diag:message>Mandatory parameter version was not provided</diag:message>
+        </diag:diagnostic>
+    </diagnostics>
+</searchRetrieveResponse>

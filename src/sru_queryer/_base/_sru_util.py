@@ -1,50 +1,58 @@
 from __future__ import annotations
 import logging
 
-from abc import ABC, abstractmethod
 import xmltodict
 import requests
 
-from ._drivers import alma_driver
-
-from ._sru_explain_dict_parser import SRUExplainDictParser
+from ._sru_explain_auto_parser import SRUExplainAutoParser
 from ._sru_configuration import SRUConfiguration
 from ._sru_aux_formatter import SRUAuxiliaryFormatter
+from ._exceptions import NoExplainResponseException, ExplainResponseContentTypeException, ExplainResponseParserException
 
 
-class SRUUtilAbstract(ABC):
-
-    @staticmethod
-    @abstractmethod
-    def create_configuration_for_server(server_url: str, driver: dict = alma_driver, sru_version: str = None, username: str | None = None, password: str | None = None, default_cql_context_set: str | None = None, default_cql_index: str | None = None, default_cql_relation: str | None = None, disable_validation_for_cql_defaults: bool = False, max_records_supported: int | None = None, default_records_returned: int | None = None, default_record_schema: str | None = None, default_sort_schema: str | None = None) -> SRUConfiguration:
-        pass
+class SRUUtil():
+    supported_sru_versions = ["1.2", "1.1"]
 
     @staticmethod
-    @abstractmethod
-    def format_available_indexes(sru_configuration: SRUConfiguration, filename: str | None = None, print_to_console: bool = False, title_filter: str | None = None):
-        pass
+    def create_configuration_for_server(server_url: str, sru_version: str = None, username: str | None = None, password: str | None = None, default_cql_context_set: str | None = None, default_cql_index: str | None = None, default_cql_relation: str | None = None, disable_validation_for_cql_defaults: bool = False, max_records_supported: int | None = None, default_records_returned: int | None = None , default_record_schema: str | None = None, default_sort_schema: str | None = None) -> SRUConfiguration:
+        """Raises ExplainResponseContentTypeException, NoExplainResponseException, ExplainResponseParserException, or PermissionError"""
+        sru_version_to_use = sru_version
+        if not sru_version_to_use:
+            sru_version_to_use = "1.2"
+        elif sru_version_to_use not in SRUUtil.supported_sru_versions:
+            logging.warning(f"SRU version {sru_version_to_use} is not supported. Defaulting to version 1.2...")
+            sru_version_to_use = "1.2"
 
+        formatted_explain_query = SRUAuxiliaryFormatter.format_base_explain_query(server_url, sru_version_to_use)
 
-class SRUUtil(SRUUtilAbstract):
+        try:
+            explain_response_xml = SRUUtil._retrieve_explain_response_xml(formatted_explain_query, username, password)
+            configuration = SRUUtil._parse_explain_response_configuration(explain_response_xml)
+        except NoExplainResponseException as be:
+            logging.exception(be.message)
+            raise be
+        except PermissionError as pe:
+            raise pe
+        except ExplainResponseContentTypeException as pf: 
+            raise pf
+        except Exception as e:
+            logging.exception(e.message)
+            raise ExplainResponseParserException(e.__str__(), xmltodict.parse(explain_response_xml))
+                
 
-    @staticmethod
-    def create_configuration_for_server(server_url: str, driver: dict = alma_driver, sru_version: str = None, username: str | None = None, password: str | None = None, default_cql_context_set: str | None = None, default_cql_index: str | None = None, default_cql_relation: str | None = None, disable_validation_for_cql_defaults: bool = False, max_records_supported: int | None = None, default_records_returned: int | None = None , default_record_schema: str | None = None, default_sort_schema: str | None = None) -> SRUConfiguration:
+        # If the server has sent back a different SRU version than what the explainResponse requested...
+        if sru_version_to_use != configuration.sru_version:
+            # If the SRU version that the user requested is being used, warn them that the server isn't using this version
+            if sru_version == sru_version_to_use:
+                logging.warning(f"Server ExplainResponse returned a different SRU version than that which was requested (Returned {configuration.sru_version}, requested {sru_version}). Using version {configuration.sru_version}...")
+            else:
+                # If the program has overridden the SRU version
+                logging.debug(f"Server ExplainResponse returned a different SRU version than that which was requested (Returned {configuration.sru_version}, requested {sru_version}). Using version {configuration.sru_version}...")
+            
+        # If the user did not request an SRU version, notify themn of which one is being used.
+        if not sru_version:
+            logging.info(f"Using SRU version {configuration.sru_version}")
 
-        if sru_version not in ["1.2", "1.1"]:
-            sru_version = None
-
-        supports_versionless_explain_response = driver["version"]["supportsVersionlessExplainResponse"]
-        if not supports_versionless_explain_response and not sru_version:
-            logging.warning("This server requires that you specify an SRU version. This tool will continue by assuming version 1.2...")
-            sru_version = "1.2"
-
-        formatted_explain_query = SRUAuxiliaryFormatter.format_base_explain_query(server_url, sru_version)
-        explain_response_xml = SRUUtil._retrieve_explain_response_xml(formatted_explain_query, username, password)
-        configuration = SRUUtil._parse_explain_response_configuration(explain_response_xml, driver)
-
-        # Add user-defined values
-        if sru_version and sru_version != configuration.sru_version:
-            logging.warning(f"Server ExplainResponse returned a different SRU version than that which was requested (Returned {configuration.sru_version}, requested {sru_version}). Using version {configuration.sru_version}...")
         configuration.server_url = server_url
         configuration.username = username
         configuration.password = password
@@ -114,12 +122,16 @@ class SRUUtil(SRUUtilAbstract):
     @staticmethod
     def _retrieve_explain_response_xml(server_url: str, username: str | None, password: str | None) -> dict:
         response_content = SRUUtil._get_request_contents(server_url, username, password)
-        content = xmltodict.parse(response_content)
+        try:
+            content = xmltodict.parse(response_content)
+        except Exception as e:
+            raise ExplainResponseContentTypeException(f'Couldn\'t convert the explainResponse to a dict: "{e.__str__()}". This is most likely due to receiving a format other than XML.', response_content)
         return content
 
     @staticmethod
-    def _parse_explain_response_configuration(sru_explain_dict: dict, driver: str) -> SRUConfiguration:
-        sru_dict_parser = SRUExplainDictParser(sru_explain_dict, driver)
+    def _parse_explain_response_configuration(sru_explain_dict: dict) -> SRUConfiguration:
+        """This function seems dumb, but is here for mocking purposes."""
+        sru_dict_parser = SRUExplainAutoParser(sru_explain_dict)
         return sru_dict_parser.get_sru_configuration_from_explain_response()
     
     @staticmethod
@@ -133,12 +145,9 @@ class SRUUtil(SRUUtilAbstract):
         else:
             response = requests.get(url)
 
-        if response.status_code == 500:
-            print(response.content)
-            raise RuntimeError("SRU Explain request failed.")
-        if response.status_code == 401:
-            print(response.content)
+        if response.status_code == 401 or response.status_code == 403:
+            logging.exception(f"You are not authorized to access this SRU Explain server ({url})")
             raise PermissionError(
-                "You are not authorized to access this SRU Explain URL")
+                "You are not authorized to access this SRU Explain server")
 
         return response.content
