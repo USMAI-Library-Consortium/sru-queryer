@@ -6,7 +6,7 @@ Using this utility has a few big benefits, such as:
 
 1. It handles validating much of the searchRetrieve request. This is particularly helpful because many SRU servers don't have good error messages.
 2. It handles formatting the searchRetrieve request for you. This makes queries much less prone to human mistakes.
-3. See the capabilities of the SRU server.
+3. Programmatically the capabilities of the SRU server in your program.
 
 ## TABLE OF CONTENTS
 
@@ -190,6 +190,12 @@ You MUST include either:
 `from sru_queryer import SRUQueryer`
 
 The SRUQueryer is the most important class of this library, as it handles configuring the utility as well as constructing, validating, and sending requests.
+
+The SRUQueryer stores all its configuration information in an SRUConfiguration object in the property sru_configuration. If you want your program to know the capabilites of the SRU server, it can read the properties of queryer.sru_configuration. For instance, you can access the available record schemas with:<br>
+
+`queryer.sru_configuration.available_record_schemas`<br>
+
+It is HIGHLY recommended not to change any of these values.
 
 #### INITIALIZATION OPTIONS
 
