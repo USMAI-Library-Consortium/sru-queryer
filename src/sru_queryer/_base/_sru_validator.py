@@ -31,7 +31,7 @@ class SRUValidator():
 
     
     @staticmethod
-    def validate_cql(sru_configuration: SRUConfiguration, context_set: str | None = None, index_name: str | None = None, relation: str | None = None, value: str | None = None, evaluate_can_sort: bool = False) -> None:
+    def validate_cql(sru_configuration: SRUConfiguration, context_set: str | None = None, index_name: str | None = None, relation: str | None = None, search_term: str | None = None, evaluate_can_sort: bool = False) -> None:
         no_context_set = context_set is None
         no_index = index_name is None
         no_relation = relation is None
@@ -85,10 +85,10 @@ class SRUValidator():
         if not relation_is_valid:
             raise ValueError(f"Relation '{relation_to_evaluate}' is not supported on index '{index_to_evaluate}' in context set '{context_set_to_evaluate}'")
             
-        # Evaluate the value. This checks for 'empty term supported'. So if the value is an empty 
+        # Evaluate the search_term. This checks for 'empty term supported'. So if the search_term is an empty 
         # string and empty term is not supported, this will raise an error. 
-        value_is_valid = SRUValidator._validate_value(value, index_info)
-        if not value_is_valid:
+        search_term_is_valid = SRUValidator._validate_search_term(search_term, index_info)
+        if not search_term_is_valid:
             raise ValueError(f"Index '{index_to_evaluate}' in context set '{context_set_to_evaluate}' does not support empty terms.")
                 
             
@@ -145,12 +145,12 @@ class SRUValidator():
         return True
     
     @staticmethod
-    def _validate_value(value: str | None, index_info: dict) -> bool:
-        if value != None:
-            index_info_contains_value_info = index_info["empty_term_supported"] != None
+    def _validate_search_term(search_term: str | None, index_info: dict) -> bool:
+        if search_term != None:
+            index_info_contains_search_term_info = index_info["empty_term_supported"] != None
 
-            if index_info_contains_value_info:
-                if value == "" and index_info["empty_term_supported"] is False:
+            if index_info_contains_search_term_info:
+                if search_term == "" and index_info["empty_term_supported"] is False:
                     return False
         
         return True

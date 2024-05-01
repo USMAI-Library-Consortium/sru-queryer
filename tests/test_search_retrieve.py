@@ -147,7 +147,7 @@ class TestQueryWithXMLData(unittest.TestCase):
 
             with self.assertRaises(ValueError) as ve:
                 sru_configuration = SRUQueryer("https://example.com").sru_configuration
-                SearchRetrieve(sru_configuration, SearchClause(value="dummyval"), record_schema="marcxml", sort_queries=[SortKey("example_xpath")])
+                SearchRetrieve(sru_configuration, SearchClause(search_term="dummyval"), record_schema="marcxml", sort_queries=[SortKey("example_xpath")])
 
             self.assertIn("SortKeys", ve.exception.__str__())
             self.assertIn("1.2", ve.exception.__str__())
@@ -159,7 +159,7 @@ class TestQueryWithXMLData(unittest.TestCase):
 
             with self.assertRaises(ValueError) as ve:
                 sru_configuration = SRUQueryer("https://example.com").sru_configuration
-                SearchRetrieve(sru_configuration, SearchClause(value="dummyval"), sort_queries=[{"index_set": "alma", "index_name": "bib_holding_count", "sort_order": "ascending"}])
+                SearchRetrieve(sru_configuration, SearchClause(search_term="dummyval"), sort_queries=[{"index_set": "alma", "index_name": "bib_holding_count", "sort_order": "ascending"}])
             
             self.assertIn("SortKeys", ve.exception.__str__())
             self.assertIn("1.1", ve.exception.__str__())

@@ -16,25 +16,25 @@ class TestSearchClause(unittest.TestCase):
 
     def test_create_search_clause_index_no_operator_throws_error(self):
         with self.assertRaises(ValueError):
-            SearchClause(value="", index_name="test_attribute",
+            SearchClause(search_term="", index_name="test_attribute",
                        context_set="alma")
 
     def test_create_search_clause_operator_no_index_throws_error(self):
         with self.assertRaises(ValueError):
-            SearchClause(value="", operation="=", context_set="alma")
+            SearchClause(search_term="", operation="=", context_set="alma")
 
     def test_create_search_clause_context_set_no_index_name_throws_error(self):
         with self.assertRaises(ValueError):
-            SearchClause(value="", context_set="alma")
+            SearchClause(search_term="", context_set="alma")
 
-    def test_create_search_clause_value_none_throws_error(self):
+    def test_create_search_clause_no_search_term_throws_error(self):
         with self.assertRaises(ValueError):
-            SearchClause(value=None, index_name="test_attribute",
+            SearchClause(search_term=None, index_name="test_attribute",
                        operation="all", context_set="alma")
 
     def test_format_with_all_query_2(self):
         search_index_config = SearchClause(
-            context_set="alma", index_name="test_attribute", operation="all", value="hello*")
+            context_set="alma", index_name="test_attribute", operation="all", search_term="hello*")
 
         formatted_search_clause = search_index_config.format()
 
@@ -43,14 +43,14 @@ class TestSearchClause(unittest.TestCase):
 
     def test_format_with_default_context(self):
         search_index_config = SearchClause(
-            value="10", index_name="bib_count", operation="==")
+            search_term="10", index_name="bib_count", operation="==")
 
         formatted_search_clause = search_index_config.format()
 
         self.assertEqual(formatted_search_clause, 'bib_count=="10"')
 
-    def test_format_with_only_value(self):
-        search_index_config = SearchClause(value="10")
+    def test_format_with_only_search_term(self):
+        search_index_config = SearchClause(search_term="10")
 
         formatted_search_clause = search_index_config.format()
 
