@@ -6,7 +6,7 @@ Using this utility has a few big benefits, such as:
 
 1. It handles validating much of the searchRetrieve request. This is particularly helpful because many SRU servers don't have good error messages.
 2. It handles formatting the searchRetrieve request for you. This makes queries much less prone to human mistakes.
-3. It provides functions to see which indexes are available to search in the SRU server.
+3. See the capabilities of the SRU server.
 
 ## TABLE OF CONTENTS
 
@@ -20,12 +20,11 @@ Using this utility has a few big benefits, such as:
 4. [Full Overview of Different Components](#full-overview-of-different-components)
    1. [SearchClause](#basic-query-component-searchclause-1)
    2. [SRUQueryer](#sruqueryer)
-   3. [Boolean Operators (AND, OR, NOT, PROX)](#constructing-more-advanced-queries-boolean-operators-1)
-   4. [SearchRetrieve](#searchretrieve-class)
-   5. [RawCQL](#custom-queries-rawcql)
-   6. [Modifiers](#modifiying-operators---modifiers)
-   7. [Sorting in v1.2](#sorting-in-12-sortby-clauses)
-   8. [Sorting in v1.1](#sorting-in-11-SortKey)
+   3. [Boolean Operators (AND, OR, NOT, PROX)](#boolean-operators)
+   4. [RawCQL](#custom-queries-rawcql)
+   5. [Modifiers](#modifiying-operators---modifiers)
+   6. [Sorting in v1.2](#sorting-in-12-sortby-clauses)
+   7. [Sorting in v1.1](#sorting-in-11-SortKey)
 
 ## Setting Up The Environment
 
@@ -67,7 +66,7 @@ queryer.search_retrieve(sru_configuration, AND(SearchClause("alma", "creator", "
 Before you can validate or send searchRetrieve requests, you must create a queryer. Upon initialization, the queryer will contact your SRU server and set up everything it needs to validate and format your SRU queries.
 
 ```
-SRUQueryer("https://path-to-sru-server-base")
+queryer = SRUQueryer("https://path-to-sru-server-base")
 ```
 
 This is the most basic way to create a queryer. This function takes many other optional arguments, which can do things like configure the default record schemas, default context sets, change validation settings, etc.
@@ -77,13 +76,13 @@ This is the most basic way to create a queryer. This function takes many other o
 `from sru_queryer.cql import SearchClause`
 
 This is officially known as a 'CQL search clause': https://www.loc.gov/standards/sru/cql/spec.html <br>
-A standard CQL search clause looks like: `alma.title="Harry Potter"`. This same query with the SearchClause class would look like: `SearchClause("alma", "title", "=", "Harry Potter")`. Pretty straightforward! See more in the extended SearchClause section below - there's rules for while of these arguments are required or not.
+A standard CQL search clause looks like: `alma.title="Harry Potter"`. This same query with the SearchClause class would look like: `SearchClause("alma", "title", "=", "Harry Potter")`. Pretty straightforward! See more in the extended SearchClause section below - there's rules for which of these arguments are required.
 
 ### Searching using SRUQueryer
 
 `from sru_queryer import SRUQueryer`
 
-There's two options for conducting searchRetrieve requests with the SRUQueryer class. \
+There's two options for conducting searchRetrieve requests with the SRUQueryer class. <br>
 
 First, you can have the queryer send the request for you and return the content. Once the querier is initialized, you can do so in this way (this is only an example search, it doesn't have to look exactly like this):
 
@@ -96,7 +95,7 @@ response_content = queryer.search_retrieve(SearchClause("alma", "creator", "=", 
         }])
 ```
 
-Alternately, you can construct a requests.Request query that you can then send yourself. This allows for a bit more flexibility, like modifying the created requests if they don't quite fit your needs:
+Alternately, you can construct a requests.Request object that you can then send yourself. This allows for a bit more flexibility, like adding a custom authentication header:
 
 ```
 request = queryer.construct_search_retrieve_request(SearchClause(
@@ -174,7 +173,7 @@ Internal variables are private once initialized - if you change them, you will b
 | value       | string                    | Yes       | The value you're looking for.                                                        |
 | modifiers   | list of RelationModifiers | No        | A list of relation modifiers for the operation. More information on modifiers below. |
 
-COMBINATIONS OF INITIALIZATION PROPERTIES (according to LOC standards):
+COMBINATIONS OF INITIALIZATION PROPERTIES (according to LOC standards):<br>
 You MUST include either:
 
 1. a value,
@@ -190,13 +189,13 @@ You MUST include either:
 
 `from sru_queryer import SRUQueryer`
 
-The SRUQueryer is the most important class of this library, as it handles configuring the utitlity as well as constricting, validating, and sending requests.
+The SRUQueryer is the most important class of this library, as it handles configuring the utility as well as constructing, validating, and sending requests.
 
 #### INITIALIZATION OPTIONS
 
 This function configures settings (stored in an SRUConfiguration object) by reading the arguments you provide, pulling values from the SRU server, and reconciling them. Many arguments are optional and are used for improved validation of the SRU queries. Be aware that any option you specify manually will override the corresponding value returned by the explainResponse, if the explainResponse contains this value.
 
-If the SRU server returns a different SRU version than you specify, the tool will use that version. If you do not provide a version, it will default to version 1.2.
+If the SRU server returns a different SRU version than you the one you specify, the library will use that version. If you do not provide a version, it will default to version 1.2 or whatever the server is capable of.
 
 `server_url`
 | Mandatory | Data Type | Description |
@@ -262,9 +261,9 @@ If the SRU server returns a different SRU version than you specify, the tool wil
 
 There are three functions that the general user would want to use:
 
-##### `search_retrieve` - This function sends a search retrieve request, using the values you provide and the information parsed from the SRU ExplainResponse.
+##### `search_retrieve`
 
-SearchRetrieve only deals with one specific query. It takes an instance of SRUConfiguration for the purposes of validation.
+This function sends a search retrieve request, using the values you provide and the information parsed from the SRU ExplainResponse.
 
 ##### USAGE
 
@@ -288,7 +287,9 @@ This will validate and send the request. You will receive whatever content the S
 
 <br>
 
-##### `construct_search_retrieve_request` - This does the same thing as the previous function, however instead of running request.prepare() and sending the request, it returns the request. This allows you to be more flexible - for instance, if you want to use a shared requests.Session between multiple requests, or add a custom authentication header.
+##### `construct_search_retrieve_request`
+
+This does the same thing as the previous function, however instead of running request.prepare() and sending the request, it returns the requests.Request object. This allows you to be more flexible by modifying the request - for instance, if you want to use a shared requests.Session between multiple requests, or add a custom authentication header.
 
 ##### USAGE
 
@@ -317,7 +318,7 @@ This function nicely formats all the indexes availabe for an SRU server, as well
 <br>
 <br>
 
-### Constructing more advanced queries: Boolean Operators
+### Boolean Operators
 
 `from sru_queryer.cql import AND, OR, NOT, PROX`
 
