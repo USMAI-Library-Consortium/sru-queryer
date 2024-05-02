@@ -290,6 +290,7 @@ This will validate and send the request. You will receive whatever content the S
 | record_schema   | string                                                          | No        | The format in which the searchRetrieveRessponse will return records. Default is 'marcxml.' Any value set here will be validated against the available record schemas listed in the explainResponse. REQUIRED if the default is not returned with the explainResponse. |
 | sort_queries    | list[dict] or list[SortKey]                                     | No        | A list of sortBy dictionaries, which add sort clauses to the dictionary. See below for more information.                                                                                                                                                              |
 | record_packing  | string                                                          | No        | The record packing that the record will be returned in (either xml or string)                                                                                                                                                                                         |
+| validate        | boolean (default True)                                          | No        | Whether or not to validate the query before sending it. You can disable validation if you think the library is falsely failing a query.                                                                                                                               |
 
 <br>
 
@@ -314,6 +315,7 @@ This will validate the request and return a requests.Request object.
 | record_schema   | string                                                          | No        | The format in which the searchRetrieveRessponse will return records. Default is 'marcxml.' Any value set here will be validated against the available record schemas listed in the explainResponse. REQUIRED if the default is not returned with the explainResponse. |
 | sort_queries    | list[dict] or list[SortKey]                                     | No        | A list of sortBy dictionaries, which add sort clauses to the dictionary. See below for more information.                                                                                                                                                              |
 | record_packing  | string                                                          | No        | The record packing that the record will be returned in (either xml or string)                                                                                                                                                                                         |
+| validate        | boolean (default True)                                          | No        | Whether or not to validate the query before returning the requests.Request object. You can disable validation if you think the library is falsely failing a query.                                                                                                    |
 
 ##### `format_available_indexes`
 
