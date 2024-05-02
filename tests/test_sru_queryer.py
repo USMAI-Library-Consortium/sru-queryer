@@ -3,6 +3,7 @@ from unittest.mock import patch
 
 from src.sru_queryer import SRUQueryer
 from src.sru_queryer._base._exceptions import ExplainResponseContentTypeException
+from src.sru_queryer.cql import SearchClause
 from tests.testData.test_data import get_alma_sru_configuration, get_gapines_sru_configuration, mock_searchable_indexes_and_descriptions, TestFiles
 
 @patch("src.sru_queryer.SRUQueryer._retrieve_explain_response_xml")
@@ -80,7 +81,7 @@ class TestSRUQueryerInitialization(unittest.TestCase):
         self.assertEqual(updated_config.sru_version, "1.1")
 
     @staticmethod
-    def create_index_config(title, id, sort, supported_relations, empty_term_supported) -> dict:
+    def create_index_info(title, id, sort, supported_relations, empty_term_supported) -> dict:
         return {
                 "id": id,
                 "title": title,
@@ -124,7 +125,7 @@ class TestSRUQueryerInitialization(unittest.TestCase):
         filtered_dict = SRUQueryer._filter_available_context_sets_and_indexes(
             mock_searchable_indexes_and_descriptions, title="mms")
         
-        expected_index = self.create_index_config("Bib MMS ID", None, False, ["==", "all"], True)
+        expected_index = self.create_index_info("Bib MMS ID", None, False, ["==", "all"], True)
 
         self.verify_index_config_info(filtered_dict["rec"]["mms_id"], expected_index)
 
@@ -165,3 +166,21 @@ class TestSRUQUeryerExplainResponseXMLParse(unittest.TestCase):
             SRUQueryer._retrieve_explain_response_xml("blahblah", None, None)
         
         print(pe.exception)
+
+class TestInitializeSRUQueryerIntegration(unittest.TestCase):
+    @patch("src.sru_queryer.SRUQueryer._get_request_contents")
+    def test_construct_search_retrieve_request_not_validated_no_error(self, mock_request_contents):
+        with open(TestFiles.explain_response_alma, "rb") as f:
+            mock_request_contents.return_value = f.read()
+
+        sc = SRUQueryer("https://server.com")
+        request = sc.construct_search_retrieve_request(SearchClause("fakecontextset", "bib", "=", "Radeon"), validate=False)
+
+    @patch("src.sru_queryer._base._sru_queryer.requests.Session.send")
+    @patch("src.sru_queryer.SRUQueryer._get_request_contents")
+    def test_search_retrieve_not_validated_no_error(self, mock_request_contents, *args):
+        with open(TestFiles.explain_response_alma, "rb") as f:
+            mock_request_contents.return_value = f.read()
+
+        sc = SRUQueryer("https://server.com")
+        content = sc.search_retrieve(SearchClause("fakecontextset", "bib", "=", "Radeon"), validate=False)

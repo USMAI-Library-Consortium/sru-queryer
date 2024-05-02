@@ -98,14 +98,15 @@ class SRUQueryer():
 
         self.sru_configuration = configuration
 
-    def search_retrieve(self, cql_query: SearchClause | CQLBooleanOperatorBase | RawCQL, start_record: int | None = None, maximum_records: int | None = None, record_schema: str | None = None, sort_queries: list[dict] | list[SortKey] | None = None, record_packing: str | None = None) -> bytes:
+    def search_retrieve(self, cql_query: SearchClause | CQLBooleanOperatorBase | RawCQL, start_record: int | None = None, maximum_records: int | None = None, record_schema: str | None = None, sort_queries: list[dict] | list[SortKey] | None = None, record_packing: str | None = None, validate: bool = True) -> bytes:
         """Conducts a searchRetrieve request and returns the response.
 
         This will throw ValueErrors for any incorrect portion of the query. 
         
         This function does not handle any errors in the searchRetrieveResponse."""
         query = SearchRetrieve(self.sru_configuration, cql_query, start_record, maximum_records, record_schema, sort_queries, record_packing)
-        query.validate()
+        if validate:
+            query.validate()
         request = query.construct_request()
         logging.info(f"Querying {request.url}")
         request = request.prepare()
@@ -113,13 +114,14 @@ class SRUQueryer():
         response = s.send(request)
         return response.content
     
-    def construct_search_retrieve_request(self, cql_query: SearchClause | CQLBooleanOperatorBase | RawCQL, start_record: int | None = None, maximum_records: int | None = None, record_schema: str | None = None, sort_queries: list[dict] | list[SortKey] | None = None, record_packing: str | None = None) -> Request:
+    def construct_search_retrieve_request(self, cql_query: SearchClause | CQLBooleanOperatorBase | RawCQL, start_record: int | None = None, maximum_records: int | None = None, record_schema: str | None = None, sort_queries: list[dict] | list[SortKey] | None = None, record_packing: str | None = None, validate: bool = True) -> Request:
         """Construct a requests.Request object, which you can then prepare and use.
         
         This is helpful (as compared to search_retrieve) when you want to create a request, and perhaps modify it
         or use it with your own session mechanism."""
         query = SearchRetrieve(self.sru_configuration, cql_query, start_record, maximum_records, record_schema, sort_queries, record_packing)
-        query.validate()
+        if validate:
+            query.validate()
         return query.construct_request()
     
     def format_available_indexes(self, filename: str | None = None, print_to_console: bool = True, title_filter: str | None = None):
