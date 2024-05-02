@@ -8,31 +8,31 @@ from tests.testData.test_data import get_alma_sru_configuration
 class TestCQLModifiers(unittest.TestCase):
 
     def test_format_cql_modifier_base_only(self):
-        cql_modifier = CQLModifierBase("relevant")
+        cql_modifier = CQLModifierBase(base_name="relevant")
 
         self.assertEqual(cql_modifier.format(), "/relevant")
 
     def test_format_cql_modifier_with_context_set(self):
-        cql_modifier = CQLModifierBase("unit", context_set="alma")
+        cql_modifier = CQLModifierBase("alma", "unit")
 
         self.assertEqual(cql_modifier.format(), "/alma.unit")
 
     def test_format_cql_modifier_with_operator_and_value(self):
-        cql_modifier = CQLModifierBase("unit", "<>", "street")
+        cql_modifier = CQLModifierBase(None, "unit", "<>", "street")
 
         self.assertEqual(cql_modifier.format(), '/unit<>"street"')
 
     def test_initializing_cql_modifier_operator_no_value_throws_error(self):
         with self.assertRaises(ValueError) as ve:
-            cql_modifier = CQLModifierBase("unit", "=")
+            cql_modifier = CQLModifierBase(None, "unit", "=", None)
 
     def test_initializing_cql_modifier_value_no_operator_throws_error(self):
         with self.assertRaises(ValueError) as ve:
-            cql_modifier = CQLModifierBase("unit", value="3")
+            cql_modifier = CQLModifierBase(None, "unit", None, value="3")
 
     def test_initializing_cql_modifier_unsupported_operator(self):
         with self.assertRaises(ValueError) as ve:
-            cql_modifier = CQLModifierBase("unit", "+", "Hippo")
+            cql_modifier = CQLModifierBase(None, "unit", "+", "Hippo")
 
         self.assertEqual(ve.exception.__str__(),
                          "Operator '+' is not supported.")
@@ -105,7 +105,7 @@ class TestCQLModifiers(unittest.TestCase):
         """Integration test"""
         sru_configuration = get_alma_sru_configuration()
         
-        prox_modifier = ProxModifier(
+        prox_modifier = ProxModifier(None,
             "unit", "=", "invalid value")
 
         with self.assertRaises(ValueError) as ve:
@@ -116,13 +116,13 @@ class TestCQLModifiers(unittest.TestCase):
     def test_prox_modifier_restrict_unit_values_in_valid_context_not_specified_no_error(self):
         """Integration test"""
         sru_configuration = get_alma_sru_configuration()
-        prox_modifier = ProxModifier(
-            "unit", "=", "invalid value", "alma")
+        prox_modifier = ProxModifier("alma",
+            "unit", "=", "invalid value")
 
         prox_modifier.validate(sru_configuration)
 
     def test_proper_format_two_simple_modifiers(self):
-        modifiers = [AndOrNotModifier("relevant"), AndOrNotModifier("simple")]
+        modifiers = [AndOrNotModifier(base_name="relevant"), AndOrNotModifier(base_name="simple")]
 
         actual_formatted_operator = CQLModifierBase.format_modifier_array(
             modifiers)
@@ -133,7 +133,7 @@ class TestCQLModifiers(unittest.TestCase):
                          expected_formatted_operator)
 
     def test_proper_format_two_simple_modifier_with_padding(self):
-        modifiers = [AndOrNotModifier("relevant"), AndOrNotModifier("simple")]
+        modifiers = [AndOrNotModifier(base_name="relevant"), AndOrNotModifier(base_name="simple")]
 
         actual_formatted_operator = CQLModifierBase.format_modifier_array(
             modifiers)

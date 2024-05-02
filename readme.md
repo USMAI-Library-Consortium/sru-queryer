@@ -436,7 +436,7 @@ These modifiers differ mainly in validation. The ProxModifier limits the base_na
 This program will NOT validate combinations of modifiers - e.g., even though a 'PROX' boolean operator must have one 'unit' and one 'distance' modifier, this is not enforced through validation. You could extend the CQLBooleanOperatorBase or PROX class to create this custom validation, if desired.
 
 Example prox modifier:
-`ProxModifier('unit', "=", "sentence", context_set="cql")`
+`ProxModifier('cql', 'unit', "=", "sentence")`
 \*Using the keyword for context set here is optional. I'm just showing it to make the order clear - it's rearranged slightly as compared to a SearchClause.
 
 The RelationModifier works in the same way.
@@ -451,12 +451,12 @@ There are no functions here that the general user should need to use.
 
 It is not recommended to change any options manually after initializing a Modifier, as this will bypass some validation. It's easy and not resource intensive to create a new instance of a modifier if you need different options.
 
-| Option            | Data Type      | Mandatory | Description                                                                                                             |
-| ----------------- | -------------- | --------- | ----------------------------------------------------------------------------------------------------------------------- |
-| base_name         | string         | Yes       | The base name of the modifier (e.g, 'relevant' in `/relevant`). Validated against the whitelist 'supported_base_names'. |
-| comparison_symbol | string or None | No        | The comparison symbol used in the modifier condition.                                                                   |
-| value             | string or None | No        | The value used in the modifier condition.                                                                               |
-| context_set       | string or None | No        | The context set that the base_name should be pulled from.                                                               |
+| Option            | Data Type      | Mandatory | Description                                                     |
+| ----------------- | -------------- | --------- | --------------------------------------------------------------- |
+| context_set       | string or None | No        | The context set that the base_name should be pulled from.       |
+| base_name         | string         | Yes       | The base name of the modifier (e.g, 'relevant' in `/relevant`). |
+| comparison_symbol | string or None | No        | The comparison symbol used in the modifier condition.           |
+| value             | string or None | No        | The value used in the modifier condition.                       |
 
 COMBINATIONS OF INITIALIZATION PROPERTIES (implied from LOC standards):<br>
 You MUST include either:
