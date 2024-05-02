@@ -21,7 +21,7 @@ class TestSearchRetrieve(unittest.TestCase):
         constructed_search_retrieve_request = SearchRetrieve(sru_configuration, SearchClause("alma", "bib_holding_count", "==", "10"), record_schema="marcxml").construct_request()
 
         expected_request = Request(
-            "GET", f'https://example.com?version=1.2&operation=searchRetrieve&recordSchema=marcxml&query=alma.bib_holding_count=="10"')
+            "GET", f'https://example.com?version=1.2&operation=searchRetrieve&recordSchema=marcxml&query=alma.bib_holding_count%20==%20"10"')
 
         self.assertEqual(
             constructed_search_retrieve_request.method, expected_request.method)
@@ -43,7 +43,7 @@ class TestSearchRetrieve(unittest.TestCase):
         )).construct_request()
 
         expected_request = Request(
-            "GET", f'https://example.com?version=1.2&operation=searchRetrieve&recordSchema=marcxml&query=alma.bib_holding_count>"15"%20and%20rec.mms_id=="112233"')
+            "GET", f'https://example.com?version=1.2&operation=searchRetrieve&recordSchema=marcxml&query=alma.bib_holding_count%20>%20"15"%20and%20rec.mms_id%20==%20"112233"')
 
         self.assertEqual(
             constructed_search_retrieve_request.method, expected_request.method)
@@ -67,7 +67,7 @@ class TestSearchRetrieve(unittest.TestCase):
 
         credentials_encoded = "dGVzdF91c2VyOnRlc3RfcGFzc3dvcmQ="
         expected_request = Request(
-            "GET", f'https://example.com?version=1.2&operation=searchRetrieve&recordSchema=marcxml&query=alma.bib_holding_count>"15"%20and%20rec.mms_id=="112233"', headers={
+            "GET", f'https://example.com?version=1.2&operation=searchRetrieve&recordSchema=marcxml&query=alma.bib_holding_count%20>%20"15"%20and%20rec.mms_id%20==%20"112233"', headers={
                 "Authorization": f'Basic {credentials_encoded}'
             })
 
@@ -88,7 +88,7 @@ class TestSearchRetrieve(unittest.TestCase):
                                                     SearchClause("alma", "bib_holding_count", "==", '10'), record_schema="marcxml", sort_queries=[{"index_set": "alma", "index_name": "bib_holding_count", "sort_order": "ascending"}, {"index_set": "alma", "index_name": "title", "sort_order": "descending"}]).construct_request()
 
         expected_request = Request(
-            "GET", f'https://example.com?version=1.2&operation=searchRetrieve&recordSchema=marcxml&query=alma.bib_holding_count=="10"%20sortBy%20alma.bib_holding_count/sort.ascending%20alma.title/sort.descending')
+            "GET", f'https://example.com?version=1.2&operation=searchRetrieve&recordSchema=marcxml&query=alma.bib_holding_count%20==%20"10"%20sortBy%20alma.bib_holding_count/sort.ascending%20alma.title/sort.descending')
 
         self.assertEqual(
             constructed_search_retrieve_request.method, expected_request.method)
@@ -148,7 +148,7 @@ class TestQueryWithXMLData(unittest.TestCase):
             constructed_search_retrieve_request = SearchRetrieve(sru_configuration, SearchClause("alma", "bib_holding_count", "==", "10")).construct_request()
 
             expected_request = Request(
-                "GET", f'https://example.com?version=1.1&operation=searchRetrieve&recordSchema=marcxml&maximumRecords=10&query=alma.bib_holding_count=="10"')
+                "GET", f'https://example.com?version=1.1&operation=searchRetrieve&recordSchema=marcxml&maximumRecords=10&query=alma.bib_holding_count%20==%20"10"')
             
             self.assertEqual(
                 constructed_search_retrieve_request.url, expected_request.url)
