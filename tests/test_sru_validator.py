@@ -1,7 +1,7 @@
 import unittest
 
 from src.sru_queryer._base._sru_validator import SRUValidator
-from tests.testData.test_data import get_gapines_sru_configuration, get_alma_sru_configuration, get_test_sru_configuration_no_sort_or_supported_relations_or_config, test_available_record_schemas_one_false
+from tests.testData.test_data import get_gapines_sru_configuration, get_alma_sru_configuration, get_test_sru_configuration_no_sort_or_supported_relations_or_config, test_available_record_schemas_one_false, test_available_record_schemas
 from src.sru_queryer.sru import SortKey
 
 class TestSRUValidator(unittest.TestCase):
@@ -187,6 +187,12 @@ class TestSRUValidator(unittest.TestCase):
             SRUValidator.validate_defaults(sru_configuration)
 
         self.assertIn("invalid_record_schema", ve.exception.__str__())
+
+    def test_validate_record_schema_using_identifier_throws_error(self):
+        with self.assertRaises(ValueError) as ve:
+            SRUValidator._validate_record_schema(test_available_record_schemas, "http://www.loc.gov/standards/iso20775/")
+
+        self.assertIn("http://www.loc.gov/standards/iso20775/", ve.exception.__str__())
 
     def test_validate_configuration_defaults_throws_error_invalid_sort_schema(self):
         sru_configuration = get_alma_sru_configuration()

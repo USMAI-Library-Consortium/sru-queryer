@@ -14,17 +14,17 @@ class SRUValidator():
             SRUValidator.validate_cql(sru_configuration, sru_configuration.default_context_set, sru_configuration.default_index, sru_configuration.default_relation)
 
         # Validate default record schema
-        record_schema_valid = SRUValidator._validate_record_schema(sru_configuration.available_record_schemas, sru_configuration.default_record_schema)
-        if not record_schema_valid:
-            raise ValueError(f"Record schema '{sru_configuration.default_record_schema}' is not available.")
+        if sru_configuration.default_record_schema:
+            record_schema_valid = SRUValidator._validate_record_schema(sru_configuration.available_record_schemas, sru_configuration.default_record_schema)
+            if not record_schema_valid:
+                raise ValueError(f"Record schema '{sru_configuration.default_record_schema}' is not available.")
         
-        # Validate default sort schema
+        # If there is a default sort schema, check that it exists and that it can sort
         default_sort_schema = sru_configuration.default_sort_schema
-        sort_schema_valid = SRUValidator._validate_record_schema(sru_configuration.available_record_schemas, default_sort_schema)
-        if not sort_schema_valid:
-            raise ValueError(f"Sort schema '{default_sort_schema}' is not available.")
-        
         if default_sort_schema:
+            sort_schema_valid = SRUValidator._validate_record_schema(sru_configuration.available_record_schemas, default_sort_schema)
+            if not sort_schema_valid:
+                raise ValueError(f"Sort schema '{default_sort_schema}' is not available.")
             sort_schema_info = sru_configuration.available_record_schemas[default_sort_schema]
             if sort_schema_info["sort"] is False:
                 raise ValueError(f"Schema {default_sort_schema} cannot sort.")
@@ -102,7 +102,7 @@ class SRUValidator():
                 raise ValueError(f"Maximum records returned must be less than {str(sru_configuration.max_records_supported)}.") 
         
         if record_schema:
-            if record_schema not in sru_configuration.available_record_schemas:
+            if SRUValidator._validate_record_schema(sru_configuration.available_record_schemas, record_schema) == False:
                 raise ValueError(f"Record schema '{record_schema}' is not available.")
             
         if record_packing:
@@ -129,10 +129,12 @@ class SRUValidator():
 
     @staticmethod
     def _validate_record_schema(available_record_schemas: dict, schema: str) -> bool:
-        if schema:
-            if schema not in available_record_schemas:
-                return False
-        return True
+        for schema_name in available_record_schemas.keys():
+            if schema == schema_name:
+                return True
+            if schema == available_record_schemas[schema_name]["identifier"]:
+                raise ValueError(f"You cannot use the schema identifier in the schema argument. Please use '{schema_name}' instead of '{available_record_schemas[schema_name]["identifier"]}'.")
+        return False
     
     @staticmethod
     def _validate_relation(relation: str | None, index_info: dict) -> bool:

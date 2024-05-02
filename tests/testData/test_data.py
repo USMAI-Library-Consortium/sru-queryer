@@ -112,40 +112,56 @@ mock_searchable_indexes_and_descriptions_loc_data = {
 
 test_available_record_schemas = {
     "marcxml": {
-       "sort": True
+        "identifier": "http://www.loc.gov/standards/marcxml/schema/MARC21slim.xsd",
+        "sort": True
     }, "dc": {
+       "identifier": "info:srw/schema/1/dc-v1.1",
        "sort": True
     }, "mods": {
+       "identifier": "info:srw/schema/1/mods-v3.5",
        "sort": True
     }, "dcx": {
+       "identifier": "info:srw/schema/1/dcx-v1.0",
        "sort": True
     }, "unimarcxml": {
+       "identifier": "info:srw/schema/8/unimarcxml-v0.1",
        "sort": True
     }, "kormarcxml": {
+       "identifier": "http://www.nl.go.kr/kormarc/",
        "sort": True
     }, "cnmarcxml": {
+       "identifier": "http://www.nlc.cn/",
        "sort": True
     }, "isohold": {
+       "identifier": "http://www.loc.gov/standards/iso20775/",
        "sort": True
     }
 }
 
 test_available_record_schemas_gapines = {
     "marcxml": {
-       "sort": True
+        "identifier": "http://www.loc.gov/standards/marcxml/schema/MARC21slim.xsd",
+        "sort": True
     }, "dc": {
+       "identifier": "info:srw/schema/1/dc-v1.1",
        "sort": True
     }, "mods": {
+       "identifier": "info:srw/schema/1/mods-v3.5",
        "sort": True
     }, "dcx": {
+       "identifier": "info:srw/schema/1/dcx-v1.0",
        "sort": True
     }, "unimarcxml": {
+       "identifier": "info:srw/schema/8/unimarcxml-v0.1",
        "sort": True
     }, "kormarcxml": {
+       "identifier": "http://www.nl.go.kr/kormarc/",
        "sort": True
     }, "cnmarcxml": {
+       "identifier": "http://www.nlc.cn/",
        "sort": True
     }, "isohold": {
+       "identifier": "http://www.loc.gov/standards/iso20775/",
        "sort": True
     }
 }
@@ -207,7 +223,33 @@ mock_searchable_indexes_and_descriptions = {
 }
 
 # test_available_record_schemas = {'marcxml': {'sort': True}, 'dc': {'sort': True}, 'mods': {'sort': True}, 'dcx': {'sort': True}, 'unimarcxml': {'sort': True}, 'kormarcxml': {'sort': True}, 'cnmarcxml': {'sort': True}, 'isohold': {'sort': True}}
-test_available_record_schemas_one_false = {'marcxml': {'sort': True}, 'dc': {'sort': True}, 'mods': {'sort': True}, 'dcx': {'sort': True}, 'unimarcxml': {'sort': True}, 'kormarcxml': {'sort': True}, 'cnmarcxml': {'sort': False}, 'isohold': {'sort': True}}
+test_available_record_schemas_one_false = {
+    "marcxml": {
+        "identifier": "http://www.loc.gov/standards/marcxml/schema/MARC21slim.xsd",
+        "sort": True
+    }, "dc": {
+       "identifier": "info:srw/schema/1/dc-v1.1",
+       "sort": True
+    }, "mods": {
+       "identifier": "info:srw/schema/1/mods-v3.5",
+       "sort": True
+    }, "dcx": {
+       "identifier": "info:srw/schema/1/dcx-v1.0",
+       "sort": True
+    }, "unimarcxml": {
+       "identifier": "info:srw/schema/8/unimarcxml-v0.1",
+       "sort": True
+    }, "kormarcxml": {
+       "identifier": "http://www.nl.go.kr/kormarc/",
+       "sort": True
+    }, "cnmarcxml": {
+       "identifier": "http://www.nlc.cn/",
+       "sort": False
+    }, "isohold": {
+       "identifier": "http://www.loc.gov/standards/iso20775/",
+       "sort": True
+    }
+}
 
 class MockSortKeyOne(SortKey):
   def __init__(*args, **kwargs):

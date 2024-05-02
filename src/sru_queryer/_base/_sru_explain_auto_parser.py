@@ -167,22 +167,12 @@ class SRUExplainAutoParser():
                 sort = False
 
             schema_name = schema["@name"]
-            # The schema identifier can be used in place of the
-            # name in a query
-            alternate_schema_name = None
-            try: 
-                alternate_schema_name = schema["@identifier"]
-            except:
-                pass
+            schema_identifier = schema["@identifier"]
 
             cleaned_record_schema_info[schema_name] = {
-                "sort": sort
+                "sort": sort,
+                "identifier": schema_identifier
             }
-
-            if alternate_schema_name:
-                cleaned_record_schema_info[alternate_schema_name] = {
-                    "sort": sort
-                }
         
         self.sru_config.available_record_schemas = cleaned_record_schema_info
 
