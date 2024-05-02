@@ -88,7 +88,7 @@ class TestSearchClause(unittest.TestCase):
         self.assertIn("relation '?'", ve.exception.__str__().lower())
 
     def test_format_with_simple_modifier(self):
-        search_index_config = SearchClause("alma", "test_attribute", "all", "hello", [RelationModifier("relevant")])
+        search_index_config = SearchClause("alma", "test_attribute", "all", "hello", [RelationModifier(base_name="relevant")])
 
         formatted_search_clause = search_index_config.format()
 
@@ -98,7 +98,7 @@ class TestSearchClause(unittest.TestCase):
         """Integration test."""
         sru_configuration = get_alma_sru_configuration()
 
-        search_index_config = SearchClause("alma", "title", "all", "hello", [RelationModifier("relevant", context_set="alma")])
+        search_index_config = SearchClause("alma", "title", "all", "hello", [RelationModifier("alma", "relevant")])
 
         search_index_config.validate(sru_configuration)
 
@@ -107,7 +107,7 @@ class TestSearchClause(unittest.TestCase):
         sru_configuration = get_alma_sru_configuration()
         with self.assertRaises(ValueError) as ve:
             search_index_config = SearchClause("alma", "title", "all", "hello", [
-                                                RelationModifier("relevant", context_set="invalid_set_on_modifier")])
+                                                RelationModifier("invalid_set_on_modifier", "relevant")])
             search_index_config.validate(sru_configuration)
 
         self.assertIn("'invalid_set_on_modifier'", ve.exception.__str__())

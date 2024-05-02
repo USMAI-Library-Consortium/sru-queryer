@@ -17,7 +17,9 @@ class CQLModifierBase:
     # Will probably be the same for all modifiers. But override if you want.
     default_context_set_for_modifier = "cql"
 
-    def __init__(self, base_name: str, comparison_symbol: str | None = None, value: str | None = None, context_set: str | None = None):
+    def __init__(self, context_set: str | None = None, base_name: str = None, comparison_symbol: str | None = None, value: str | None = None):
+        if not base_name:
+            raise ValueError("You must include a base name.")
         self.base_name = base_name
         self.context_set = context_set
 

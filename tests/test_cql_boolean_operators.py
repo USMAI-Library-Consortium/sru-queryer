@@ -192,7 +192,7 @@ class TestCQLBooleanOperatorClasses(unittest.TestCase):
 
     def test_proper_format_with_simple_modifier(self):
         operator = OR(test_search_clause_1, test_search_clause_2,
-                      modifiers=[AndOrNotModifier("relevant")])
+                      modifiers=[AndOrNotModifier(base_name="relevant")])
 
         actual_formatted_operator = operator.format()
 
@@ -203,7 +203,7 @@ class TestCQLBooleanOperatorClasses(unittest.TestCase):
 
     def test_proper_format_with_full_modifier(self):
         operator = OR(test_search_clause_1, test_search_clause_2,
-                      modifiers=[AndOrNotModifier("unit", "=", "street", "alma")])
+                      modifiers=[AndOrNotModifier("alma", "unit", "=", "street")])
 
         actual_formatted_operator = operator.format()
 
