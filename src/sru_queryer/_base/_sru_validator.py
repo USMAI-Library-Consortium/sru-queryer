@@ -9,9 +9,11 @@ class SRUValidator():
     @staticmethod
     def validate_defaults(sru_configuration: SRUConfiguration):
         # Validate default index, context set, and relation
-        information_exists_for_cql_defaults = sru_configuration.default_context_set != None
-        if not sru_configuration.disable_validation_for_cql_defaults and information_exists_for_cql_defaults:
-            SRUValidator.validate_cql(sru_configuration, sru_configuration.default_context_set, sru_configuration.default_index, sru_configuration.default_relation)
+        if not sru_configuration.disable_validation_for_cql_defaults:
+            if sru_configuration.default_context_set and sru_configuration.default_index:
+                SRUValidator.validate_cql(sru_configuration, sru_configuration.default_context_set, sru_configuration.default_index, sru_configuration.default_relation)
+            elif sru_configuration.default_context_set and not sru_configuration.default_index:
+                SRUValidator.validate_context_set(sru_configuration, sru_configuration.default_context_set)
 
         # Validate default record schema
         if sru_configuration.default_record_schema:
@@ -48,12 +50,11 @@ class SRUValidator():
         no_index_info = no_index and no_default_index
         no_relation_info = no_relation and no_default_relation
 
-        if (no_context_set_info or no_index_info) and validation_for_defaults_enabled:
-            if no_context_set_info:
-                raise ValueError("Cannot validate context set 'None'; ensure you have set a default context set or have disabled validation for cql defaults.")
+        if no_context_set_info and validation_for_defaults_enabled:
+            raise ValueError("Cannot validate context set 'None'; ensure you have set a default context set or have disabled validation for cql defaults.")
             
-            if no_index_info:
-                raise ValueError("Cannot validate index 'None'; ensure you have set a default index or have disabled validation for cql defaults.")
+        if no_index_info and validation_for_defaults_enabled:
+            raise ValueError("Cannot validate index 'None'; ensure you have set a default index or have disabled validation for cql defaults.")
 
         if no_context_set:
             if not validation_for_defaults_enabled:

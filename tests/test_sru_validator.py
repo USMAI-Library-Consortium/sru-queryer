@@ -75,6 +75,18 @@ class TestSRUValidator(unittest.TestCase):
 
         SRUValidator.validate_cql(sru_configuration, index_name="keyword")
 
+    def test_validate_defaults_context_set_only_no_error(self):
+        sru_configuration = get_alma_sru_configuration()
+        sru_configuration.default_context_set = "alma"
+
+        SRUValidator.validate_defaults(sru_configuration)
+
+    def test_validate_defaults_relation_only_no_error(self):
+        sru_configuration = get_alma_sru_configuration()
+        sru_configuration.default_relation = "="
+
+        SRUValidator.validate_defaults(sru_configuration)
+
     def test_validate_invalid_index_with_default_context_set_throws_error(self):
         sru_configuration = get_gapines_sru_configuration()
 
