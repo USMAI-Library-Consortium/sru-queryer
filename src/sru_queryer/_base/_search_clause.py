@@ -51,9 +51,7 @@ class SearchClause:
     def _format_relation(self) -> str:
         """Formats the relational relation
 
-        For non-word relational operators (==, >, <>, etc), there should be no spacing, E.G.:\n
-            ==\n
-        For relational operators that are words (E.G., 'any'), append a space before and AFTER IF THERE'S NO MODIFIERS:\n
+        append a space before and AFTER IF there's no modifiers:\n
             %20any%20 (no modifiers)\n
             %20and    (with modifiers)\n
         """
@@ -61,12 +59,11 @@ class SearchClause:
 
         if self._relation:
             formatted_relation = self._relation
-            if formatted_relation in ["all"]:
-                formatted_relation = f'%20{formatted_relation}'
+            formatted_relation = f'%20{formatted_relation}'
 
-                # add padding for the relations that are words
-                if not self._modifiers:
-                    formatted_relation += "%20"
+            # add padding for the relations that are words
+            if not self._modifiers:
+                formatted_relation += "%20"
 
         return formatted_relation
 

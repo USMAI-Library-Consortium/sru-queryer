@@ -40,6 +40,15 @@ class TestSearchClause(unittest.TestCase):
 
         self.assertEqual(formatted_search_clause,
                          'alma.test_attribute%20all%20"hello*"')
+        
+    def test_format_with_any_keyword(self):
+        search_index_config = SearchClause(
+            context_set="alma", index_name="test_attribute", relation="any", search_term="hello*")
+
+        formatted_search_clause = search_index_config.format()
+
+        self.assertEqual(formatted_search_clause,
+                         'alma.test_attribute%20any%20"hello*"')
 
     def test_format_with_default_context(self):
         search_index_config = SearchClause(
@@ -47,7 +56,7 @@ class TestSearchClause(unittest.TestCase):
 
         formatted_search_clause = search_index_config.format()
 
-        self.assertEqual(formatted_search_clause, 'bib_count=="10"')
+        self.assertEqual(formatted_search_clause, 'bib_count%20==%20"10"')
 
     def test_format_with_only_search_term(self):
         search_index_config = SearchClause(search_term="10")
