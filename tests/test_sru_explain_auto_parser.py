@@ -138,12 +138,11 @@ class TestSRUExplainAutoParser(unittest.TestCase):
             sru_dict_parser = SRUExplainAutoParser(alma_dict)
             sc = sru_dict_parser.get_sru_configuration_from_explain_response()
 
-            parsed_stringified_available_record_schemas = json.dumps(sc.available_record_schemas)
-            for record_schema in test_available_record_schemas:
-                stringified_record_schema = json.dumps(record_schema)
-                self.assertTrue(stringified_record_schema in parsed_stringified_available_record_schemas)
+            for record_schema_name in test_available_record_schemas.keys():
+                self.assertTrue(record_schema_name in sc.available_record_schemas.keys(), "Parsed record schemas are missing an expected record schema.")
+                self.assertDictEqual(test_available_record_schemas[record_schema_name], sc.available_record_schemas[record_schema_name], "An expected record schema does not match an actual record schema.")
 
-            self.assertEqual(len(sc.available_record_schemas), 16)
+            self.assertEqual(len(sc.available_record_schemas), 8)
 
     def test_parse_schema_info_loc(self):
         with open(TestFiles.explain_response_loc, "rb") as f:
@@ -152,7 +151,7 @@ class TestSRUExplainAutoParser(unittest.TestCase):
             sru_dict_parser = SRUExplainAutoParser(loc_dict)
             sc = sru_dict_parser.get_sru_configuration_from_explain_response()
 
-            self.assertEqual(len(sc.available_record_schemas), 8)
+            self.assertEqual(len(sc.available_record_schemas), 4)
 
     def test_bad_explain_response_loc_raises_exception(self):
         with open(TestFiles.loc_bad_explain_response, "rb") as f:
@@ -181,10 +180,9 @@ class TestSRUExplainAutoParser(unittest.TestCase):
             # Check if each record schema is in the parsed record schemas
             # (The test_available_record_schemas are a subset of what's included in 
             # explain_response_alma)
-            parsed_stringified_available_record_schemas = json.dumps(configuration.available_record_schemas)
-            for record_schema in test_available_record_schemas:
-                stringified_record_schema = json.dumps(record_schema)
-                self.assertTrue(stringified_record_schema in parsed_stringified_available_record_schemas)
+            for record_schema_name in test_available_record_schemas.keys():
+                self.assertTrue(record_schema_name in configuration.available_record_schemas.keys(), "Parsed record schemas are missing an expected record schema.")
+                self.assertDictEqual(test_available_record_schemas[record_schema_name], configuration.available_record_schemas[record_schema_name], "An expected record schema does not match an actual record schema.")
 
             self.assertListEqual(configuration.supported_relation_modifiers, [])
             self.assertEqual(configuration.default_context_set, None)
@@ -210,7 +208,7 @@ class TestSRUExplainAutoParser(unittest.TestCase):
                 sru_dict_parser = SRUExplainAutoParser(xml_dict)
                 configuration = sru_dict_parser.get_sru_configuration_from_explain_response()
 
-                self.assertDictEqual({'marcxml': {'sort': True}, 'info:srw/schema/1/marcxml-v1.1': {'sort': True}}, configuration.available_record_schemas)
+                self.assertDictEqual({'marcxml': {'sort': True, "identifier": "info:srw/schema/1/marcxml-v1.1"}}, configuration.available_record_schemas)
                 self.assertDictEqual(configuration.available_context_sets_and_indexes, expected_indexes)
                 self.assertListEqual(configuration.supported_relation_modifiers, ["relevant", "stem", "fuzzy", "word"])
                 self.assertEqual(configuration.default_context_set, "eg")
@@ -228,9 +226,9 @@ class TestSRUExplainAutoParser(unittest.TestCase):
             sru_dict_parser = SRUExplainAutoParser(xml_dict)
             configuration = sru_dict_parser.get_sru_configuration_from_explain_response()
 
-            stringified_available_record_schemas = json.dumps(configuration.available_record_schemas)
-            self.assertTrue(json.dumps({"marcxml": {"sort": False}}).strip("{}") in stringified_available_record_schemas)
-            self.assertTrue(json.dumps({"http://www.loc.gov/MARC21/slim": {"sort": False}}).strip("{}") in stringified_available_record_schemas)
+
+            self.assertTrue("marcxml" in configuration.available_record_schemas.keys(), "Parsed record schemas are missing an expected record schema.")
+            self.assertDictEqual({"sort": False, "identifier": "http://www.loc.gov/MARC21/slim"}, configuration.available_record_schemas["marcxml"], "An expected record schema does not match an actual record schema.")
 
             self.assertListEqual(configuration.supported_relation_modifiers, [])
             self.assertEqual(configuration.default_context_set, None)

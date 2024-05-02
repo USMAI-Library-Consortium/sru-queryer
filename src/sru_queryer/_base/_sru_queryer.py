@@ -57,6 +57,11 @@ class SRUQueryer():
         if not sru_version:
             logging.info(f"Using SRU version {configuration.sru_version}")
 
+        # If there is not a default cql relation returned by the server, set it to '=' (this is the default from the LOC standards)
+        # This will later be overridden if the user chooses a value.
+        if not configuration.default_relation:
+            configuration.default_relation = '='
+
         configuration.server_url = server_url
         configuration.username = username
         configuration.password = password
@@ -64,31 +69,31 @@ class SRUQueryer():
 
         # Override SRUExplain values / set if not provided
         if default_records_returned:
-            if configuration.default_records_returned and (configuration.default_records_returned != default_records_returned): logging.info(f"Overriding default number of records returned (Set {default_records_returned}, server specified {configuration.default_records_returned}).")
+            if configuration.default_records_returned and (configuration.default_records_returned != default_records_returned): logging.info(f"Overriding default number of records returned (Using {default_records_returned}, server specified {configuration.default_records_returned}).")
             configuration.default_records_returned = default_records_returned
 
         if max_records_supported:
-            if configuration.max_records_supported and (configuration.max_records_supported != max_records_supported): logging.warning(f"Overriding max records supported (Set {max_records_supported}, server specified {configuration.max_records_supported}).")
+            if configuration.max_records_supported and (configuration.max_records_supported != max_records_supported): logging.warning(f"Overriding max records supported (Using {max_records_supported}, server specified {configuration.max_records_supported}).")
             configuration.max_records_supported = max_records_supported
 
         if default_cql_context_set:
-            if configuration.default_context_set and (configuration.default_context_set != default_cql_context_set): logging.warning(f"Overriding default context set (Set {default_cql_context_set}, server specified {configuration.default_context_set}).")
+            if configuration.default_context_set and (configuration.default_context_set != default_cql_context_set): logging.warning(f"Overriding default context set (Using {default_cql_context_set}, server specified {configuration.default_context_set}).")
             configuration.default_context_set = default_cql_context_set
 
         if default_cql_index:
-            if configuration.default_index and (configuration.default_index != default_cql_index): logging.warning(f"Overriding default index (Set {default_cql_index}, server specified {configuration.default_index}).")
+            if configuration.default_index and (configuration.default_index != default_cql_index): logging.warning(f"Overriding default index (Using {default_cql_index}, server specified {configuration.default_index}).")
             configuration.default_index = default_cql_index
 
         if default_cql_relation:
-            if configuration.default_relation and (configuration.default_relation != default_cql_relation): logging.warning(f"Overriding default CQL relation (Set {default_cql_relation}, server specified {configuration.default_relation}).")
+            if configuration.default_relation and (configuration.default_relation != default_cql_relation): logging.warning(f"Overriding default CQL relation (Using {default_cql_relation}, server specified {configuration.default_relation}).")
             configuration.default_relation = default_cql_relation
 
         if default_record_schema:
-            if configuration.default_record_schema and (configuration.default_record_schema != default_record_schema): logging.info(f"Overriding default record schema (Set {default_record_schema}, server specified {configuration.default_record_schema}).")
+            if configuration.default_record_schema and (configuration.default_record_schema != default_record_schema): logging.info(f"Overriding server specified record schema (Using {default_record_schema}, server specified {configuration.default_record_schema}).")
             configuration.default_record_schema = default_record_schema
 
         if default_sort_schema:
-            if configuration.default_sort_schema and (configuration.default_sort_schema != default_sort_schema): logging.warning(f"Overriding default sort schema (Set {default_sort_schema}, server specified {configuration.default_sort_schema}).")
+            if configuration.default_sort_schema and (configuration.default_sort_schema != default_sort_schema): logging.warning(f"Overriding default sort schema (Using {default_sort_schema}, server specified {configuration.default_sort_schema}).")
             configuration.default_sort_schema = default_sort_schema
 
         self.sru_configuration = configuration
@@ -102,6 +107,7 @@ class SRUQueryer():
         query = SearchRetrieve(self.sru_configuration, cql_query, start_record, maximum_records, record_schema, sort_queries, record_packing)
         query.validate()
         request = query.construct_request()
+        logging.info(f"Querying {request.url}")
         request = request.prepare()
         s = requests.Session()
         response = s.send(request)

@@ -97,14 +97,27 @@ class TestSearchRetrieve(unittest.TestCase):
         self.assertEqual(
             constructed_search_retrieve_request.headers, expected_request.headers)
 
-    def test_validate_query_with_base_query_error(self):
+    def test_validate_query_with_bad_record_schema_raises_error(self):
         sru_configuration = get_alma_sru_configuration()
         sru_configuration.server_url = "https://example.com"
         sru_configuration.sru_version = "1.2"
         sru_configuration.default_records_returned = None
 
         with self.assertRaises(ValueError) as ve:
-            SearchRetrieve(sru_configuration, SearchClause("alma", "bib_holding_count", "==", "10"), record_schema='fakefake').validate()
+            SearchRetrieve(sru_configuration, SearchClause("alma", "action_note_note", "==", "10"), record_schema='fakefake').validate()
+
+        self.assertIn("'fakefake'", ve.exception.__str__())
+        self.assertIn("not available", ve.exception.__str__())
+
+    def test_validate_query_with_bad_default_record_schema_raises_error(self):
+        sru_configuration = get_alma_sru_configuration()
+        sru_configuration.server_url = "https://example.com"
+        sru_configuration.sru_version = "1.2"
+        sru_configuration.default_records_returned = None
+        sru_configuration.default_record_schema = "fakefake"
+
+        with self.assertRaises(ValueError) as ve:
+            SearchRetrieve(sru_configuration, SearchClause("alma", "action_note_note", "==", "10")).validate()
 
         self.assertIn("'fakefake'", ve.exception.__str__())
         self.assertIn("not available", ve.exception.__str__())
