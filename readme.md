@@ -531,6 +531,7 @@ Below are a few of the issues I've found.
 ### ExLibris Alma SRU server
 
 ❌ PROX boolean operator <br>
+❌ NOT boolean operator <br>
 ❌ Multiple sort queries (only one supported)
 
 ❓ Boolean Operator Modifiers <br>
