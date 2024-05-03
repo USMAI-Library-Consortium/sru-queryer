@@ -25,6 +25,7 @@ Using this utility has a few big benefits, such as:
    5. [Modifiers](#modifiying-operators---modifiers)
    6. [Sorting in v1.2](#sorting-in-12-sortby-clauses)
    7. [Sorting in v1.1](#sorting-in-11-SortKey)
+5. [Known Issuses/Incompatibilities](#known-issues-incompatibilities)
 
 ## Setting Up The Environment
 
@@ -509,3 +510,48 @@ There's nothing here that you would need to use; the built-in functions are used
 | schema         | string    | No        | The record schema you want to search by                                                                |
 | ascending      | boolean   | No        | Whether you want the results to be ascending. Default is True, False will set results to be descending |
 | case_sensitive | boolean   | No        | If case should be important during the search. Default is False.                                       |
+
+<br>
+<br>
+
+---
+
+## Known Issues/Incompatibilities
+
+Different SRU servers have quirks to their default behaviors, and don't all fully implement the Library of Congress standard on SRU.
+
+Additionally, I haven't been able to test some of the more advanced features of this library, including the PROX modifier, relation modifiers, and boolean operator modifiers successfully on an SRU server. I've tried to test with 3 SRU servers, and I've never gotten the queries to work properly, even when trying them by hand in the browser URL bar. Even when I use the exact sample from the Library of Congress SRU documentation on the Library of Congress SRU server, it returns errors. However, all the queries that this library creates meet up to the documentation, so I'm hopeful that these features will work if there's a SRU server that supports them.
+
+If you know of a valid RelationModifier or BooleanOperatorModifier request and have the capability to test it, it would be much appreciated! Part of my issue simply comes from the fact that I don't really know all the use cases for these features, which limits my testing to only one or two.
+
+Below are a few of the issues I've found.
+
+<br>
+
+### ExLibris Alma SRU server
+
+❌ PROX boolean operator
+❌ Multiple sort queries (only one supported)
+
+❓ Boolean Operator Modifiers
+❓ RelationModifiers
+
+### Library of Congress SRU server
+
+❌ PROX boolean operator
+❌ Sorting (in either version 1.1 or 1.2)
+❌ Default context set
+
+⚠️ You must include maximum_records in a searchRetrieve query to get any records in return
+⚠️ This server lists BIBFRAME as an available record schema, but fails when requesting it
+
+❓ RelationModifiers
+❓ Boolean Operator Modifiers
+
+### Georgia Public Library 'Public Information Network for Electronic Services' (GAPINES)
+
+⚠️ PROX boolean operator doesn't return an error, but doesn't seem to affect results
+⚠️ Sorting doesn't return an error, but doesn't seem to affect results
+
+❓ RelationModifiers
+❓ Boolean Operator Modifiers

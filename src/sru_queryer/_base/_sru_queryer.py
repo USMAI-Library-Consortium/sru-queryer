@@ -4,6 +4,7 @@ import logging
 import xmltodict
 import requests
 from requests import Request
+from urllib3.exceptions import NewConnectionError
 
 from ._sru_aux_formatter import SRUAuxiliaryFormatter
 from ._exceptions import NoExplainResponseException, ExplainResponseContentTypeException, ExplainResponseParserException
@@ -29,19 +30,22 @@ class SRUQueryer():
 
         formatted_explain_query = SRUAuxiliaryFormatter.format_base_explain_query(server_url, sru_version_to_use)
 
+        explain_response_xml: bytes = None
         try:
             explain_response_xml = self._retrieve_explain_response_xml(formatted_explain_query, username, password)
             configuration = self._parse_explain_response_configuration(explain_response_xml)
         except NoExplainResponseException as be:
-            logging.exception(be.message)
+            logging.exception(be.__str__())
             raise be
         except PermissionError as pe:
             raise pe
         except ExplainResponseContentTypeException as pf: 
             raise pf
         except Exception as e:
-            logging.exception(e.message)
-            raise ExplainResponseParserException(e.__str__(), xmltodict.parse(explain_response_xml))
+            logging.exception(e.__str__())
+            if explain_response_xml:
+                raise ExplainResponseParserException(e.__str__(), xmltodict.parse(explain_response_xml))
+            else: raise NoExplainResponseException(f"Could not connect to the SRU server: {e.__str__()}", e.__str__())
                 
 
         # If the server has sent back a different SRU version than what the explainResponse requested...
