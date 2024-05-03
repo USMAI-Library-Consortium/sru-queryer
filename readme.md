@@ -520,9 +520,9 @@ There's nothing here that you would need to use; the built-in functions are used
 
 Different SRU servers have quirks to their default behaviors, and don't all fully implement the Library of Congress standard on SRU.
 
-Additionally, I haven't been able to test some of the more advanced features of this library, including the PROX modifier, relation modifiers, and boolean operator modifiers successfully on an SRU server. I've tried to test with 3 SRU servers, and I've never gotten the queries to work properly, even when trying them by hand in the browser URL bar. Even when I use the exact sample from the Library of Congress SRU documentation on the Library of Congress SRU server, it returns errors. However, all the queries that this library creates meet up to the documentation, so I'm hopeful that these features will work if there's a SRU server that supports them.
+Additionally, I haven't been able to test some of the more advanced features of this library, namely the PROX modifier, relation modifiers, and boolean operator modifiers successfully on an SRU server. I've tried to test with 3 SRU servers, and I've never gotten the queries to work properly, even when trying them by hand in the browser URL bar. Even when I use the exact sample from the Library of Congress SRU documentation on the Library of Congress SRU server, it returns errors. However, all the queries that this library creates meet up to the documentation, so I'm hopeful that these features will work if there's a SRU server that supports them. Thankfully, I've been able to test most of the core functionality of the library.
 
-If you know of a valid RelationModifier or BooleanOperatorModifier request and have the capability to test it, it would be much appreciated! Part of my issue simply comes from the fact that I don't really know all the use cases for these features, which limits my testing to only one or two.
+If you know of a valid RelationModifier, BooleanOperatorModifier, or PROX request and have the capability to test it, it would be much appreciated! Part of my issue simply comes from the fact that I don't really know all the use cases for these features, which limits my testing to only one or two. We also need the SRU version 1.1 SortKey functionality to be tested, but again don't have the capability.
 
 Below are a few of the issues I've found.
 
@@ -533,7 +533,7 @@ Below are a few of the issues I've found.
 ❌ PROX boolean operator <br>
 ❌ Multiple sort queries (only one supported)
 
-❓ Boolean Operator Modifiers
+❓ Boolean Operator Modifiers <br>
 ❓ RelationModifiers
 
 ### Library of Congress SRU server
