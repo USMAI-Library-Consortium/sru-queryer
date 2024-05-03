@@ -25,7 +25,7 @@ Using this utility has a few big benefits, such as:
    5. [Modifiers](#modifiying-operators---modifiers)
    6. [Sorting in v1.2](#sorting-in-12-sortby-clauses)
    7. [Sorting in v1.1](#sorting-in-11-SortKey)
-5. [Known Issuses/Incompatibilities](#known-issues-incompatibilities)
+5. [Known Incompatibilities](#known-incompatibilities)
 
 ## Setting Up The Environment
 
@@ -516,7 +516,7 @@ There's nothing here that you would need to use; the built-in functions are used
 
 ---
 
-## Known Issues/Incompatibilities
+## Known Incompatibilities
 
 Different SRU servers have quirks to their default behaviors, and don't all fully implement the Library of Congress standard on SRU.
 
@@ -530,7 +530,7 @@ Below are a few of the issues I've found.
 
 ### ExLibris Alma SRU server
 
-❌ PROX boolean operator
+❌ PROX boolean operator <br>
 ❌ Multiple sort queries (only one supported)
 
 ❓ Boolean Operator Modifiers
@@ -538,20 +538,20 @@ Below are a few of the issues I've found.
 
 ### Library of Congress SRU server
 
-❌ PROX boolean operator
-❌ Sorting (in either version 1.1 or 1.2)
+❌ PROX boolean operator <br>
+❌ Sorting (in either version 1.1 or 1.2) <br>
 ❌ Default context set
 
-⚠️ You must include maximum_records in a searchRetrieve query to get any records in return
+⚠️ You must include maximum_records in a searchRetrieve query to get any records in return <br>
 ⚠️ This server lists BIBFRAME as an available record schema, but fails when requesting it
 
-❓ RelationModifiers
+❓ RelationModifiers <br>
 ❓ Boolean Operator Modifiers
 
 ### Georgia Public Library 'Public Information Network for Electronic Services' (GAPINES)
 
-⚠️ PROX boolean operator doesn't return an error, but doesn't seem to affect results
+⚠️ PROX boolean operator doesn't return an error, but doesn't seem to affect results <br>
 ⚠️ Sorting doesn't return an error, but doesn't seem to affect results
 
-❓ RelationModifiers
+❓ RelationModifiers <br>
 ❓ Boolean Operator Modifiers
