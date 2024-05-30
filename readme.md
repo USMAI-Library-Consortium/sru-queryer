@@ -528,7 +528,7 @@ New in version 2.1.0, this library has been significantly expanded to work with 
 
 This allows your application - particularly a web API - to easily save SRU configurations and use them between requests.
 
-Exporting an SRU Configuration: `sru_configuration_dict = queryer.get_configuration()`
+Exporting an SRU Configuration: `sru_configuration_dict = queryer.get_configuration()`<br>
 Creating a queryer from a saved SRU configuration (Importing): `queryer = SRUQueryer(from_dict=sru_configuration_dict)`
 
 ### Conducting a SearchRetrieve Request with JSON
@@ -540,7 +540,9 @@ Note - Modifiers are not supported with this method of interaction at this time.
 #### Usage
 
 Say you have some JSON, either from a file or coming in from an API. This is an example of a properly-formatted JSON dictionary that can be used by the library (SRU version 1.2):
-`{
+
+```json
+{
   "start_record": 4,
   "maximum_records": 3,
   "record_schema": "dc",
@@ -573,27 +575,32 @@ Say you have some JSON, either from a file or coming in from an API. This is an 
       "sort_order": "ascending"
     }
   ]
-}`
+}
+```
+
 Note that 'type' is the same for each instace of a 'type' of resource. For example, boolean operators will always have 'type' = 'booleanOperator'. Boolean Operators must also have an operator string, which should be 'AND', 'OR', 'NOT', or 'PROX'.
 
 First, if this JSON is not automatically converted into a python dictionary, use json.loads() to get it into a python dictionary.
 
 Next, simply pass this dictionary into either of the SearchRetrieve functions in your queryer!
 
-queryer.search_retrieve(from_dict=parsed_json_dict)
-or
+queryer.search_retrieve(from_dict=parsed_json_dict)<br>
+or <br>
 request = queryer.construct_search_retrieve_request(from_dict=parsed_json_dict)
 
 For version 1.1, the sort_queries will look different due to them being SortKeys instead. SortKey JSON format looks like:
 
-`{
-      "type": "sortKey",
-      "xpath": "cql.author",
-      "schema": "marcxml",
-      "ascending": "false",
-      "case_sensitive": "true",
-      "missing_value": null
-    }`
+```json
+{
+  "type": "sortKey",
+  "xpath": "cql.author",
+  "schema": "marcxml",
+  "ascending": "false",
+  "case_sensitive": "true",
+  "missing_value": null
+}
+```
+
 Any of these values can be null except 'type' and 'xpath'
 <br>
 <br>
@@ -640,3 +647,7 @@ Below are a few of the issues I've found.
 
 ❓ RelationModifiers <br>
 ❓ Boolean Operator Modifiers
+
+```
+
+```
