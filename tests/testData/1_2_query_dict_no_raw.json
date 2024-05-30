@@ -1,0 +1,34 @@
+{
+  "start_record": 4,
+  "maximum_records": 3,
+  "record_schema": "dc",
+  "record_packing": null,
+  "cql_query": {
+    "type": "booleanOperator",
+    "operator": "AND",
+    "conditions": [
+      {
+        "type": "searchClause",
+        "context_set": "alma",
+        "index_name": "title",
+        "relation": "=",
+        "search_term": "Maryland"
+      },
+      {
+        "type": "searchClause",
+        "context_set": "alma",
+        "index_name": "item_createDate",
+        "relation": ">",
+        "search_term": "1950"
+      }
+    ]
+  },
+  "sort_queries": [
+    {
+      "type": "sort",
+      "index_set": "alma",
+      "index_name": "creator",
+      "sort_order": "ascending"
+    }
+  ]
+}

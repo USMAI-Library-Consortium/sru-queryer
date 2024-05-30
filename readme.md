@@ -25,7 +25,8 @@ Using this utility has a few big benefits, such as:
    5. [Modifiers](#modifiying-operators---modifiers)
    6. [Sorting in v1.2](#sorting-in-12-sortby-clauses)
    7. [Sorting in v1.1](#sorting-in-11-SortKey)
-5. [Known Incompatibilities](#known-incompatibilities)
+5. [Integrating with APIs](#integrating-with-apis)
+6. [Known Incompatibilities](#known-incompatibilities)
 
 ## Setting Up The Environment
 
@@ -511,6 +512,89 @@ There's nothing here that you would need to use; the built-in functions are used
 | ascending      | boolean   | No        | Whether you want the results to be ascending. Default is True, False will set results to be descending |
 | case_sensitive | boolean   | No        | If case should be important during the search. Default is False.                                       |
 
+<br>
+<br>
+
+---
+
+## Integrating with APIs
+
+New in version 2.1.0, this library has been significantly expanded to work with APIs. This includes:
+
+1. The capability to import/export SRU configurations from JSON.
+2. The ability for the queryer to accept a dictionary (automatically parsed from JSON with json.loads()) instead of the python objects mentioned above.
+
+### Importing/Exporting SRU Configurations
+
+This allows your application - particularly a web API - to easily save SRU configurations and use them between requests.
+
+Exporting an SRU Configuration: `sru_configuration_dict = queryer.get_configuration()`
+Creating a queryer from a saved SRU configuration (Importing): `queryer = SRUQueryer(from_dict=sru_configuration_dict)`
+
+### Conducting a SearchRetrieve Request with JSON
+
+This makes creating dynamic queries a lot easier, particularly if you are using this library on a backend API. Just pass it the properly-formatted JSON dictionary, and it will validate the query just as if you have created it with the python objects mentioned above.
+
+Note - Modifiers are not supported with this method of interaction at this time.
+
+#### Usage
+
+Say you have some JSON, either from a file or coming in from an API. This is an example of a properly-formatted JSON dictionary that can be used by the library (SRU version 1.2):
+`{
+  "start_record": 4,
+  "maximum_records": 3,
+  "record_schema": "dc",
+  "record_packing": null,
+  "cql_query": {
+    "type": "booleanOperator",
+    "operator": "AND",
+    "conditions": [
+      {
+        "type": "searchClause",
+        "context_set": "alma",
+        "index_name": "title",
+        "relation": "=",
+        "search_term": "Maryland"
+      },
+      {
+        "type": "searchClause",
+        "context_set": "alma",
+        "index_name": "item_createDate",
+        "relation": ">",
+        "search_term": "1950"
+      }
+    ]
+  },
+  "sort_queries": [
+    {
+      "type": "sort",
+      "index_set": "alma",
+      "index_name": "creator",
+      "sort_order": "ascending"
+    }
+  ]
+}`
+Note that 'type' is the same for each instace of a 'type' of resource. For example, boolean operators will always have 'type' = 'booleanOperator'. Boolean Operators must also have an operator string, which should be 'AND', 'OR', 'NOT', or 'PROX'.
+
+First, if this JSON is not automatically converted into a python dictionary, use json.loads() to get it into a python dictionary.
+
+Next, simply pass this dictionary into either of the SearchRetrieve functions in your queryer!
+
+queryer.search_retrieve(from_dict=parsed_json_dict)
+or
+request = queryer.construct_search_retrieve_request(from_dict=parsed_json_dict)
+
+For version 1.1, the sort_queries will look different due to them being SortKeys instead. SortKey JSON format looks like:
+
+`{
+      "type": "sortKey",
+      "xpath": "cql.author",
+      "schema": "marcxml",
+      "ascending": "false",
+      "case_sensitive": "true",
+      "missing_value": null
+    }`
+Any of these values can be null except 'type' and 'xpath'
 <br>
 <br>
 

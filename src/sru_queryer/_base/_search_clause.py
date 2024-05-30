@@ -18,24 +18,35 @@ class SearchClause:
     Modifiers will only be included if there's an relation.
         """
 
-    def __init__(self, context_set: str | None = None, index_name: str | None = None, relation: str | None = None, search_term: str | None = None, modifiers: list[RelationModifier] | None = None):
+    def __init__(self, context_set: str | None = None, index_name: str | None = None, relation: str | None = None, search_term: str | None = None, modifiers: list[RelationModifier] | None = None, from_dict: dict | None = None):
         self._context_set: str = context_set
         self._index_name: str = index_name
         self._relation: str = relation
         self._search_term: str = search_term
         self._modifiers = modifiers
 
-        search_term_exists = search_term != None
+        if from_dict:
+            try:
+                if from_dict["type"] != "searchClause":
+                    raise KeyError()
+                self._context_set: str = from_dict["context_set"]
+                self._index_name: str = from_dict["index_name"]
+                self._relation: str = from_dict["relation"]
+                self._search_term: str = from_dict["search_term"]
+            except KeyError:
+                raise ValueError(f"Invalid dictionary for creating a search clause: '{from_dict.__str__()}'")
+
+        search_term_exists = self._search_term != None
         if not search_term_exists:
             raise ValueError("You must provide a search term (search_term)")
 
-        if index_name and not relation:
+        if self._index_name and not self._relation:
             raise ValueError(
                 "If you include an index, you must include an relation")
-        if relation and not index_name:
+        if self._relation and not self._index_name:
             raise ValueError(
                 "If you include an relation, you must include an index")
-        if context_set and not index_name:
+        if self._context_set and not self._index_name:
             raise ValueError(
                 "If you have a context set, you must include an index.")
 

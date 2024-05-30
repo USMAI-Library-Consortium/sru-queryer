@@ -9,10 +9,31 @@ class CQLBooleanOperatorBase:
     operator = None
     unary_operator_error = "Error during formatting: Operator cannot have one argument AND the first condition of a parent operator (including if it's used by itself). No operators are unary, even NOT."
 
-    def __init__(self, *args, modifiers: list[AndOrNotModifier] = None):
+    def __init__(self, *args, modifiers: list[AndOrNotModifier] = None, from_dict: dict | None = None):
         self.conditions = []
 
-        for condition in args:
+        conditions_to_loop_through = []
+        if from_dict:
+            try:
+                self.operator = from_dict["operator"]
+            except KeyError:
+                ValueError(f"Operator dict is invalid: {from_dict.__str__()}")
+            for condition in from_dict["conditions"]:
+                try:
+                    if condition["type"] == "searchClause":
+                        conditions_to_loop_through.append(SearchClause(from_dict=condition))
+                    elif condition["type"] == "booleanOperator":
+                        conditions_to_loop_through.append(CQLBooleanOperatorBase(from_dict=condition))
+                    elif condition["type"] == "rawCQL":
+                        conditions_to_loop_through.append(RawCQL(from_dict=condition))
+                    else:
+                        raise KeyError()
+                except KeyError:
+                    ValueError(f"Condition is invalid: {condition.__str__()}")
+        else:
+            conditions_to_loop_through = args
+
+        for condition in conditions_to_loop_through:
             if isinstance(condition, SearchClause) or isinstance(condition, CQLBooleanOperatorBase) or isinstance(condition, RawCQL):
                 self.conditions.append(condition)
             else:
@@ -40,9 +61,8 @@ class CQLBooleanOperatorBase:
 
             parent_is_first_condition_of_parent = is_first_condition_of_parent
             # For clarity, I've set this variable name here. This means,
-            # "the parent of this condition (which is 'self', the object
-            # that this function is in) is the first condition in its
-            # parent operator (or, its the first level operator)"
+            # "the parent of this condition is the first condition in its
+            # parent operator."
 
             parent_is_unary_operator = is_unary_operator
             # Same deal as above. Now referring to the parent of this conditional in
@@ -108,6 +128,8 @@ class CQLBooleanOperatorBase:
         if self.modifiers:
             for modifier in self.modifiers:
                 modifier.validate(sru_configuration)
+
+    
 
 
 class AND(CQLBooleanOperatorBase):

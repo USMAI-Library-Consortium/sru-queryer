@@ -1,10 +1,12 @@
 import unittest
 from unittest.mock import patch
+import json
+from requests import Request
 
 from src.sru_queryer import SRUQueryer
 from src.sru_queryer._base._exceptions import ExplainResponseContentTypeException
 from src.sru_queryer.cql import SearchClause
-from tests.testData.test_data import get_alma_sru_configuration, get_gapines_sru_configuration, mock_searchable_indexes_and_descriptions, TestFiles
+from tests.testData.test_data import get_alma_sru_configuration, get_gapines_sru_configuration, mock_searchable_indexes_and_descriptions, TestFiles, get_test_gapines_saved_sru_configuration
 
 @patch("src.sru_queryer.SRUQueryer._retrieve_explain_response_xml")
 @patch("src.sru_queryer.SRUQueryer._parse_explain_response_configuration")
@@ -79,6 +81,20 @@ class TestSRUQueryerInitialization(unittest.TestCase):
         self.assertEqual(updated_config.default_records_returned, 10)
         self.assertEqual(updated_config.max_records_supported, 50)
         self.assertEqual(updated_config.sru_version, "1.1")
+
+    def test_initialize_from_dict(self, *args):
+        saved_dict = get_test_gapines_saved_sru_configuration()
+
+        sru_queryer = SRUQueryer(from_dict=saved_dict)
+
+        self.assertDictEqual(saved_dict, sru_queryer.sru_configuration.__dict__)
+
+    def test_get_configuration_information(self, *args):
+        saved_dict = get_test_gapines_saved_sru_configuration()
+
+        sru_queryer = SRUQueryer(from_dict=saved_dict)
+
+        self.assertDictEqual(saved_dict, sru_queryer.get_configuration())
 
     @staticmethod
     def create_index_info(title, id, sort, supported_relations, empty_term_supported) -> dict:
@@ -165,7 +181,6 @@ class TestSRUQUeryerExplainResponseXMLParse(unittest.TestCase):
         with self.assertRaises(ExplainResponseContentTypeException) as pe:
             SRUQueryer._retrieve_explain_response_xml("blahblah", None, None)
         
-        print(pe.exception)
 
 class TestInitializeSRUQueryerIntegration(unittest.TestCase):
     @patch("src.sru_queryer.SRUQueryer._get_request_contents")
@@ -184,3 +199,41 @@ class TestInitializeSRUQueryerIntegration(unittest.TestCase):
 
         sc = SRUQueryer("https://server.com")
         content = sc.search_retrieve(SearchClause("fakecontextset", "bib", "=", "Radeon"), validate=False)
+
+    @patch("src.sru_queryer._base._sru_queryer.requests.Session.send")
+    @patch("src.sru_queryer.SRUQueryer._get_request_contents")
+    def test_search_retrieve_with_dict(self, mock_request_contents, *args):
+        with open(TestFiles.explain_response_alma, "rb") as f:
+            mock_request_contents.return_value = f.read()
+
+        with open("tests/testData/1_2_query_dict.json", "r") as f:
+            query_dict = json.loads(f.read()) 
+
+        sc = SRUQueryer("https://server.com")
+        content = sc.search_retrieve(from_dict=query_dict)
+
+    @patch("src.sru_queryer._base._sru_queryer.requests.Session.send")
+    @patch("src.sru_queryer.SRUQueryer._get_request_contents")
+    def test_search_retrieve_with_dict_invalid_value_fails(self, mock_request_contents, *args):
+        with open(TestFiles.explain_response_alma, "rb") as f:
+            mock_request_contents.return_value = f.read()
+
+        with open("tests/testData/1_2_query_dict.json", "r") as f:
+            query_dict = json.loads(f.read()) 
+            query_dict["cql_query"]["conditions"][0]["index_name"] = "fake"
+
+        sc = SRUQueryer("https://server.com")
+        with self.assertRaises(ValueError):
+            sc.search_retrieve(from_dict=query_dict)
+
+    @patch("src.sru_queryer.SRUQueryer._get_request_contents")
+    def test_construct_search_retrieve_request_with_dict(self, mock_request_contents):
+        with open(TestFiles.explain_response_alma, "rb") as f:
+            mock_request_contents.return_value = f.read()
+
+        with open("tests/testData/1_2_query_dict.json", "r") as f:
+            query_dict = json.loads(f.read()) 
+
+        sc = SRUQueryer("https://server.com")
+        request: Request = sc.construct_search_retrieve_request(from_dict=query_dict)
+        self.assertIn("Frog", request.url)

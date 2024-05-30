@@ -89,3 +89,39 @@ class TestSortKey(unittest.TestCase):
 
         self.assertEqual(formatted_sort_keys, "title,dc,0%20name,bath,,,abort")
 
+    def test_sort_key_from_dict(self):
+        sort_key = SortKey(from_dict = {
+            "type": "sortKey",
+            "xpath": "World",
+            "schema": "marcxml",
+            "ascending": "true",
+            "case_sensitive": "false",
+            "missing_value": "abort"
+        })
+
+        self.assertEqual(sort_key._xpath, "World")
+        self.assertEqual(sort_key._schema, "marcxml")
+        self.assertEqual(sort_key._ascending, True)
+        self.assertEqual(sort_key._case_sensitive, False)
+        self.assertEqual(sort_key._missing_value, "abort")
+
+    def test_sort_key_from_dict_minimal_values(self):
+        sort_key = SortKey(from_dict = {
+            "type": "sortKey",
+            "xpath": "World",
+            "schema": None,
+            "ascending": None,
+            "case_sensitive": None,
+            "missing_value": None
+        })
+
+        self.assertEqual(sort_key._xpath, "World")
+        self.assertEqual(sort_key._schema, None)
+        self.assertEqual(sort_key._ascending, None)
+        self.assertEqual(sort_key._case_sensitive, None)
+        self.assertEqual(sort_key._missing_value, None)
+
+
+
+
+

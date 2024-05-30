@@ -11,21 +11,57 @@ from ._sort_key import SortKey
 
 class SearchRetrieve:
 
-    def __init__(self, sru_configuration: SRUConfiguration, cql_query: SearchClause | CQLBooleanOperatorBase | RawCQL, start_record: int | None = None, maximum_records: int | None = None, record_schema: str | None = None, sort_queries: list[dict] | list[SortKey] | None = None, record_packing: str | None = None):
+    def __init__(self, sru_configuration: SRUConfiguration, cql_query: SearchClause | CQLBooleanOperatorBase | RawCQL | None = None, start_record: int | None = None, maximum_records: int | None = None, record_schema: str | None = None, sort_queries: list[dict] | list[SortKey] | None = None, record_packing: str | None = None, from_dict: dict | None = None):
         self.sru_configuration = sru_configuration
         self.cql_query = cql_query
         self.start_record = start_record
         self.maximum_records = maximum_records
         self.record_schema = record_schema
         self.record_packing = record_packing
+        self.sort_queries = sort_queries
+
+        if not cql_query and not from_dict:
+            raise ValueError("You must provide a CQL query or a query dictionary.")
+
+        if from_dict:
+            try:
+                # Set base values
+                self.start_record = from_dict["start_record"]
+                self.maximum_records = from_dict["maximum_records"]
+                self.record_schema = from_dict["record_schema"]
+                self.record_packing = from_dict["record_packing"]
+
+                # Deal with the cql query
+                if from_dict["cql_query"]["type"] == "booleanOperator":
+                    self.cql_query = CQLBooleanOperatorBase(from_dict=from_dict["cql_query"])
+                elif from_dict["cql_query"]["type"] == "rawCQL":
+                    self.cql_query = RawCQL(from_dict=from_dict["cql_query"])
+                elif from_dict["cql_query"]["type"] == "searchClause":
+                    self.cql_query = SearchClause(from_dict=from_dict["cql_query"])
+                else:
+                    raise ValueError(f"Invalid query type: {from_dict["cql_query"]["type"]}")
+                
+                # Deal with sort queries
+                if from_dict["sort_queries"]:
+                    self.sort_queries = []
+                    for sort_query in from_dict["sort_queries"]:
+                        if sort_query["type"] == "sort":
+                            del sort_query["type"]
+                            self.sort_queries.append(sort_query)
+                        elif sort_query["type"] == "sortKey":
+                            self.sort_queries.append(SortKey(from_dict=sort_query))
+                        else: 
+                            raise ValueError(f"Sort type {sort_query["type"]} not supported.")
+
+            except KeyError as ke:
+                raise ValueError(f"Invalid value for Search Retrieve: {ke.__str__()}")
 
         if sru_configuration.sru_version == "1.2":
-            if sort_queries and isinstance(sort_queries[0], SortKey):
+            if self.sort_queries and isinstance(self.sort_queries[0], SortKey):
                 raise ValueError("You cannot use SortKeys with SRU version 1.2. Please see documentation on constructing a SortBy request.")
         if sru_configuration.sru_version == "1.1":
-            if sort_queries and not isinstance(sort_queries[0], SortKey):
+            if self.sort_queries and not isinstance(self.sort_queries[0], SortKey):
                 raise ValueError("You must use SortKeys for sorting with SRU version 1.1. Please see documentation on SortKey objects.")
-        self.sort_queries = sort_queries
 
     def validate(self):
         """Validates the searchRetrieve request. 
