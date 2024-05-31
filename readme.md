@@ -186,8 +186,9 @@ You MUST include either:
 
 #### JSON / Dict representation
 
-As part of the 'Integrating with APIs' functionality (The second-to-last section), this class has a corresponding dict representation. Internally, the library will use this dict to create a SearchClause object. Keep in mind that these are validated the same as the SearchClause class, so the requirements are all the same.
-You MUST include 'type' for this to be recognized as a SearchClause.
+As part of the 'Integrating with APIs' functionality (The second-to-last section), this class has a corresponding dict representation. Internally, the library will use this dict to create a SearchClause object. Keep in mind that these are validated the same as the SearchClause class.
+
+You MUST include 'type' for this to be recognized as a SearchClause. The same 'COMBINATIONS OF INITIALIZATION PROPERTIES' exist for this dict, and you don't need to include keys that you aren't specifying.
 
 The format is as follows:
 
@@ -299,7 +300,7 @@ If the SRU server returns a different SRU version than you the one you specify, 
 `from_dict`
 | Mandatory | Data Type | Description |
 | ---------- | --------- | ------------------------------------------------------------------------------------------------------------------------------- |
-| No | dict | A python dictionary representing an SRU Configuration, which will be used INSTEAD of the above options + contacting the SRU server. Do not create this dictionary yourself; it is meant to re-load a saved configuration which is created with the get_configuration() function. |
+| No | dict | A python dictionary representing an SRU Configuration, which will be used INSTEAD of the above options + contacting the SRU server. Do not create this dictionary yourself; it is meant to re-load a saved configuration which is created with the get_configuration() function.|
 
 #### AVAILABLE FUNCTIONS:
 
@@ -320,16 +321,16 @@ This will validate and send the request. You will receive whatever content the S
 
 ##### INPUT PARAMETERS
 
-| Option          | Data Type                                                       | Mandatory | Description                                                                                                                                                                                                                                                           |
-| --------------- | --------------------------------------------------------------- | --------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| cql_query       | SearchClause, class extending CQLBooleanOperatorBase, or RawCQL | Yes       | The CQL query you wish to execute.                                                                                                                                                                                                                                    |
-| start_record    | int                                                             | No        | An offset - Every search produces a set on the server, but not all will be returned. This determines the first record in that set that will be returned (offset).                                                                                                     |
-| maximum_records | int                                                             | No        | Set maximum amount of records that will be returned. The default for this, if not included, can be set through SRUQueryer initialization.create_configuration_for_server, by the explainResponse, or is set to 5.                                                     |
-| record_schema   | string                                                          | No        | The format in which the searchRetrieveRessponse will return records. Default is 'marcxml.' Any value set here will be validated against the available record schemas listed in the explainResponse. REQUIRED if the default is not returned with the explainResponse. |
-| sort_queries    | list[dict] or list[SortKey]                                     | No        | A list of sortBy dictionaries, which add sort clauses to the dictionary. See below for more information.                                                                                                                                                              |
-| record_packing  | string                                                          | No        | The record packing that the record will be returned in (either xml or string)                                                                                                                                                                                         |
-| validate        | boolean (default True)                                          | No        | Whether or not to validate the query before sending it. You can disable validation if you think the library is falsely failing a query.                                                                                                                               |
-| from_dict       | dict                                                            | No        | Use a dict representation of the query instead of the built-in CQL classes. This is useful for APIs in particular. See the 'Integrating with APIs' section for more info.                                                                                             |
+| Option          | Data Type                                                       | Mandatory | Description                                                                                                                                                                                                                                                                                                                      |
+| --------------- | --------------------------------------------------------------- | --------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| cql_query       | SearchClause, class extending CQLBooleanOperatorBase, or RawCQL | Yes       | The CQL query you wish to execute.                                                                                                                                                                                                                                                                                               |
+| start_record    | int                                                             | No        | An offset - Every search produces a set on the server, but not all will be returned. This determines the first record in that set that will be returned (offset).                                                                                                                                                                |
+| maximum_records | int                                                             | No        | Set maximum amount of records that will be returned. The default for this, if not included, can be set through SRUQueryer initialization.create_configuration_for_server, by the explainResponse, or is set to 5.                                                                                                                |
+| record_schema   | string                                                          | No        | The format in which the searchRetrieveRessponse will return records. Default is 'marcxml.' Any value set here will be validated against the available record schemas listed in the explainResponse. REQUIRED if the default is not returned with the explainResponse.                                                            |
+| sort_queries    | list[dict] or list[SortKey]                                     | No        | A list of sortBy dictionaries, which add sort clauses to the dictionary. See below for more information.                                                                                                                                                                                                                         |
+| record_packing  | string                                                          | No        | The record packing that the record will be returned in (either xml or string)                                                                                                                                                                                                                                                    |
+| validate        | boolean (default True)                                          | No        | Whether or not to validate the query before sending it. You can disable validation if you think the library is falsely failing a query.                                                                                                                                                                                          |
+| from_dict       | dict                                                            | No        | Use a dict representation of the query instead of the built-in CQL classes. This is useful for APIs in particular. See the 'Integrating with APIs' section for more info. You can still include any of the previous parameters aside from cql_query - they will apply but be overwritten by any values in the dict (if included) |
 
 <br>
 
@@ -346,16 +347,16 @@ This will validate the request and return a requests.Request object.
 
 ##### INPUT PARAMETERS
 
-| Option          | Data Type                                                       | Mandatory | Description                                                                                                                                                                                                                                                           |
-| --------------- | --------------------------------------------------------------- | --------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| cql_query       | SearchClause, class extending CQLBooleanOperatorBase, or RawCQL | Yes       | The CQL query you wish to execute.                                                                                                                                                                                                                                    |
-| start_record    | int                                                             | No        | An offset - Every search produces a set on the server, but not all will be returned. This determines the first record in that set that will be returned (offset).                                                                                                     |
-| maximum_records | int                                                             | No        | Set maximum amount of records that will be returned. The default for this, if not included, can be set through SRUQueryer initialization.create_configuration_for_server, by the explainResponse, or is set to 5.                                                     |
-| record_schema   | string                                                          | No        | The format in which the searchRetrieveRessponse will return records. Default is 'marcxml.' Any value set here will be validated against the available record schemas listed in the explainResponse. REQUIRED if the default is not returned with the explainResponse. |
-| sort_queries    | list[dict] or list[SortKey]                                     | No        | A list of sortBy dictionaries, which add sort clauses to the dictionary. See below for more information.                                                                                                                                                              |
-| record_packing  | string                                                          | No        | The record packing that the record will be returned in (either xml or string)                                                                                                                                                                                         |
-| validate        | boolean (default True)                                          | No        | Whether or not to validate the query before returning the requests.Request object. You can disable validation if you think the library is falsely failing a query.                                                                                                    |
-| from_dict       | dict                                                            | No        | Use a dict representation of the query instead of the built-in CQL classes. This is useful for APIs in particular. See the 'Integrating with APIs' section for more info.                                                                                             |
+| Option          | Data Type                                                       | Mandatory | Description                                                                                                                                                                                                                                                                                                                      |
+| --------------- | --------------------------------------------------------------- | --------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| cql_query       | SearchClause, class extending CQLBooleanOperatorBase, or RawCQL | Yes       | The CQL query you wish to execute.                                                                                                                                                                                                                                                                                               |
+| start_record    | int                                                             | No        | An offset - Every search produces a set on the server, but not all will be returned. This determines the first record in that set that will be returned (offset).                                                                                                                                                                |
+| maximum_records | int                                                             | No        | Set maximum amount of records that will be returned. The default for this, if not included, can be set through SRUQueryer initialization.create_configuration_for_server, by the explainResponse, or is set to 5.                                                                                                                |
+| record_schema   | string                                                          | No        | The format in which the searchRetrieveRessponse will return records. Default is 'marcxml.' Any value set here will be validated against the available record schemas listed in the explainResponse. REQUIRED if the default is not returned with the explainResponse.                                                            |
+| sort_queries    | list[dict] or list[SortKey]                                     | No        | A list of sortBy dictionaries, which add sort clauses to the dictionary. See below for more information.                                                                                                                                                                                                                         |
+| record_packing  | string                                                          | No        | The record packing that the record will be returned in (either xml or string)                                                                                                                                                                                                                                                    |
+| validate        | boolean (default True)                                          | No        | Whether or not to validate the query before returning the requests.Request object. You can disable validation if you think the library is falsely failing a query.                                                                                                                                                               |
+| from_dict       | dict                                                            | No        | Use a dict representation of the query instead of the built-in CQL classes. This is useful for APIs in particular. See the 'Integrating with APIs' section for more info. You can still include any of the previous parameters aside from cql_query - they will apply but be overwritten by any values in the dict (if included) |
 
 ##### `format_available_indexes`
 
@@ -490,7 +491,7 @@ There's nothing here that you would want to use. This class is essentially a wra
 
 As part of the 'Integrating with APIs' functionality (The second-to-last section), this class has a corresponding dict representation. Internally, the library will use this dict to create a RawCQL object. Keep in mind that this works the same as the above object EXCEPT that padding is automatically added.
 
-You MUST include 'type' for this dict to be recognized as RawCQL.
+You MUST include 'type' for this dict to be recognized as RawCQL. Both keys are required.
 
 The format is as follows:
 
@@ -584,7 +585,7 @@ You should add all desired sortBy clauses to the SRUQueryer.search_retrieve or S
 
 As part of the 'Integrating with APIs' functionality (The second-to-last section), this class has a unique dict representation for use with the from_dict option for searches. It's the same as the above, but with the addition of a 'type' key which tells the library what this dict should be treated as.
 
-You MUST include 'type' for this dict to be recognized as a sortBy clause.
+You MUST include 'type' for this dict to be recognized as a sortBy clause. As with the SortBy dict, all keys are required.
 
 The format is as follows:
 
@@ -642,7 +643,7 @@ There's nothing here that you would need to use; the built-in functions are used
 
 As part of the 'Integrating with APIs' functionality (The second-to-last section), this class has a corresponding dict representation. Internally, the library will use this dict to create a SortKey object, so this dict will be used and validated in the same way as the SortKey object.
 
-You MUST include 'type' for this dict to be recognized as a SortKey. The other options are the same as the SortKey class (only xpath is required).
+You MUST include 'type' for this dict to be recognized as a SortKey. The other options are the same as the SortKey class (only xpath is required). You don't need to include the keys you aren't specifying.
 
 The format is as follows:
 
@@ -693,7 +694,7 @@ Creating a queryer from a saved SRU configuration (Importing): `queryer = SRUQue
 
 ### Conducting a SearchRetrieve Request with JSON
 
-This makes creating dynamic queries a lot easier, particularly if you are using this library on a backend API. Just pass it the properly-formatted JSON dictionary, and it will validate the query just as if you have created it with the python objects mentioned above.
+This makes creating dynamic queries a lot easier, particularly if you are using this library on a backend API. Just pass it the properly-formatted JSON dictionary, and it will validate the query just as if you have created it with the python objects mentioned above. Note that the required keys are the same for the dicts as the objects, so you can safely omit the ones you don't need.
 
 Note - Modifiers are not supported with this method of interaction at this time.
 
