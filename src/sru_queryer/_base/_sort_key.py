@@ -11,10 +11,10 @@ class SortKey:
     }
     
     def __init__(self, xpath:str | None = None, schema:str | None = None, ascending:bool = None, case_sensitive:bool = None, missing_value: str = None, from_dict: dict | None = None):
-        self._xpath = xpath
-        self._schema = schema
-        self._ascending = ascending
-        self._case_sensitive = case_sensitive
+        self._xpath = xpath if not from_dict else None
+        self._schema = schema if not from_dict else None
+        self._ascending = ascending if not from_dict else None
+        self._case_sensitive = case_sensitive if not from_dict else None
 
         if not xpath and not from_dict:
             raise ValueError("You must include an xpath or a dictionary when instantiating SortKeys.")
@@ -22,22 +22,28 @@ class SortKey:
         if from_dict:
             try:
                 self._xpath = from_dict["xpath"]
-                self._schema = from_dict["schema"]
 
-                ascending_value = None
-                if from_dict["ascending"] == "true" or from_dict["ascending"] == True:
-                    ascending_value = True
-                elif from_dict["ascending"] == "false" or from_dict["ascending"] == False:
-                    ascending_value = False
-                self._ascending = ascending_value
+                if "schema" in from_dict.keys():
+                    self._schema = from_dict["schema"]
 
-                case_sensitive_value = None
-                if from_dict["case_sensitive"] == "true" or from_dict["case_sensitive"] == True:
-                    case_sensitive_value = True
-                elif from_dict["case_sensitive"] == "false" or from_dict["case_sensitive"] == False:
-                    case_sensitive_value = False
-                self._case_sensitive = case_sensitive_value
-                missing_value = from_dict["missing_value"]
+                if "missing_value" in from_dict.keys():
+                    missing_value = from_dict["missing_value"]
+
+                if "ascending" in from_dict.keys():
+                    ascending_value = None
+                    if from_dict["ascending"] == "true" or from_dict["ascending"] == True:
+                        ascending_value = True
+                    elif from_dict["ascending"] == "false" or from_dict["ascending"] == False:
+                        ascending_value = False
+                    self._ascending = ascending_value
+
+                if "case_sensitive" in from_dict.keys():
+                    case_sensitive_value = None
+                    if from_dict["case_sensitive"] == "true" or from_dict["case_sensitive"] == True:
+                        case_sensitive_value = True
+                    elif from_dict["case_sensitive"] == "false" or from_dict["case_sensitive"] == False:
+                        case_sensitive_value = False
+                    self._case_sensitive = case_sensitive_value
             except KeyError:
                 raise ValueError(f"Invalid dictionary for creating a sort key: {from_dict.__str__()}")
 

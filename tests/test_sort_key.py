@@ -145,3 +145,15 @@ class TestSortKey(unittest.TestCase):
         self.assertEqual(sort_key._ascending, None)
         self.assertEqual(sort_key._case_sensitive, None)
         self.assertEqual(sort_key._missing_value, None)
+
+    def test_sort_key_from_dict_required_values_only(self):
+        sort_key = SortKey(from_dict = {
+            "type": "sortKey",
+            "xpath": "World",
+        })
+
+        self.assertEqual(sort_key._xpath, "World")
+        self.assertEqual(sort_key._schema, None)
+        self.assertEqual(sort_key._ascending, None)
+        self.assertEqual(sort_key._case_sensitive, None)
+        self.assertEqual(sort_key._missing_value, None)
