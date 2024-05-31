@@ -486,9 +486,6 @@ There's nothing here that you would want to use. This class is essentially a wra
 | raw_cql_string | string (should be CQL) | Yes       | A CQL query as a string. Again, you don't have to provide it in a url-exact format, spaces and other special characters will be replaced by their compability characters later on if you're using the provided tools. |
 | add_padding    | boolean                | No        | Whether or not to add a space (%20) before and after the string upon formatting. Set to false by default.                                                                                                             |
 
-<br>
-<br>
-
 #### JSON / Dict representation
 
 As part of the 'Integrating with APIs' functionality (The second-to-last section), this class has a corresponding dict representation. Internally, the library will use this dict to create a RawCQL object. Keep in mind that this works the same as the above object EXCEPT that padding is automatically added.
@@ -514,6 +511,9 @@ In Python
    "cql": "alma.title=Maryland"
 }
 ```
+
+<br>
+<br>
 
 ### Modifiying operators - Modifiers
 
@@ -640,7 +640,7 @@ There's nothing here that you would need to use; the built-in functions are used
 
 #### JSON / Dict representation
 
-As part of the 'Integrating with APIs' functionality (The second-to-last section), this class has a corresponding dict representation. Internally, the library will use this dict to create a SortKey object, so this dict will be used and validated in the same way as the SortKey class.
+As part of the 'Integrating with APIs' functionality (The second-to-last section), this class has a corresponding dict representation. Internally, the library will use this dict to create a SortKey object, so this dict will be used and validated in the same way as the SortKey object.
 
 You MUST include 'type' for this dict to be recognized as a SortKey. The other options are the same as the SortKey class (only xpath is required).
 
