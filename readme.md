@@ -363,12 +363,12 @@ This function nicely formats all the indexes availabe for an SRU server, as well
 
 `format_available_indexes(sru_configuration, filename: str | None = None, print_to_console: bool = True, title_filter: str | None = None)`
 
-<br>
-<br>
-
 ##### `get_configuration`
 
 Gets a python dict representing the SRUQueryer. This allows saving the SRU queryer and allows you to re-create it without contacting the SRU server or setting the options again.
+
+<br>
+<br>
 
 ### Boolean Operators
 
