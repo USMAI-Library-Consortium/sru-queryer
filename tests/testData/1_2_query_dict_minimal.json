@@ -1,0 +1,20 @@
+{
+  "cql_query": {
+    "type": "booleanOperator",
+    "operator": "AND",
+    "conditions": [
+      {
+        "type": "searchClause",
+        "search_term": "Frog"
+      },
+      {
+        "type": "searchClause",
+        "search_term": "Henry"
+      },
+      {
+        "type": "rawCQL",
+        "cql": "Potato"
+      }
+    ]
+  }
+}

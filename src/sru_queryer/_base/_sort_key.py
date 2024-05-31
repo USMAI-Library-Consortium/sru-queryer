@@ -44,8 +44,8 @@ class SortKey:
                     elif from_dict["case_sensitive"] == "false" or from_dict["case_sensitive"] == False:
                         case_sensitive_value = False
                     self._case_sensitive = case_sensitive_value
-            except KeyError:
-                raise ValueError(f"Invalid dictionary for creating a sort key: {from_dict.__str__()}")
+            except KeyError as ke:
+                raise ValueError(f"Invalid dictionary for creating a sort key: {from_dict.__str__()}. You're missing {ke.__str__()}.")
 
         if missing_value:
             missing_value_starts_and_ends_with_double_quotes = (missing_value.startswith('"') and missing_value.endswith('"'))
