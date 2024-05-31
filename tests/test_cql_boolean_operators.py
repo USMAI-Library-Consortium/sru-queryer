@@ -5,6 +5,7 @@ from src.sru_queryer.cql import AND, OR, NOT
 from src.sru_queryer.cql import CQLBooleanOperatorBase
 from src.sru_queryer.cql import SearchClause
 from src.sru_queryer.cql import AndOrNotModifier
+from src.sru_queryer.cql import RawCQL
 from tests.testData.test_data import get_alma_sru_configuration
 
 def mock_search_clause_format(self, **kwargs):
@@ -27,6 +28,48 @@ test_search_clause_4_formatted = 'alma.item_pid<"12"'
 test_search_clause_5 = SearchClause("alma", "issueYear", "<=", "1998")
 test_search_clause_5_formatted = 'alma.issueYear<="1998"'
 
+test_search_clause_dicts = [
+    {
+        "type": "searchClause",
+        "context_set": "alma",
+        "index_name": "title",
+        "relation": "=",
+        "search_term": "Frog",
+        "modifiers": None
+    },
+    {
+        "type": "searchClause",
+        "context_set": "alma",
+        "index_name": "author",
+        "relation": "=",
+        "search_term": "Hemingway",
+        "modifiers": None
+    }
+]
+
+test_conditions_dict_mixed = [
+    {
+        "type": "searchClause",
+        "context_set": "alma",
+        "index_name": "title",
+        "relation": "=",
+        "search_term": "Frog",
+        "modifiers": None
+    },
+    {
+        "type": "booleanOperator",
+        "operator": "OR",
+        "conditions": [{
+            "type": "searchClause",
+            "context_set": "alma",
+            "index_name": "author",
+            "relation": "=",
+            "search_term": "Hemingway",
+            "modifiers": None
+        }]
+    }
+]
+
 unary_operator_error = CQLBooleanOperatorBase.unary_operator_error
 
 
@@ -35,10 +78,135 @@ class TestCQLBooleanOperatorClasses(unittest.TestCase):
 
     def test_invalid_condition_throws_error(self):
         with self.assertRaises(ValueError) as e:
-            operator = AND(test_search_clause_1, "fake_data")
+            AND(test_search_clause_1, "fake_data")
 
         self.assertEqual(
             e.exception.__str__(), "Condition 'fake_data' is not valid")
+        
+    def test_create_from_dict_two_search_clauses_conditions_length_2(self):
+        test_search_clause_dicts = [
+            {
+                "type": "searchClause",
+                "context_set": "alma",
+                "index_name": "title",
+                "relation": "=",
+                "search_term": "Frog",
+                "modifiers": None
+            },
+            {
+                "type": "searchClause",
+                "context_set": "alma",
+                "index_name": "author",
+                "relation": "=",
+                "search_term": "Hemingway",
+                "modifiers": None
+            }
+        ]
+
+        boolean_operator_dict = {
+            "type": "booleanOperator",
+            "operator": "AND",
+            "conditions": test_search_clause_dicts
+        }
+
+        boolean_operator = CQLBooleanOperatorBase(from_dict=boolean_operator_dict)
+
+        self.assertEqual(len(boolean_operator.conditions), 2)
+
+
+    def test_create_from_dict_two_search_clauses_conditions_correct_search_clauses(self):
+        boolean_operator_dict = {
+            "type": "booleanOperator",
+            "operator": "AND",
+            "conditions": test_search_clause_dicts
+        }
+
+        boolean_operator = CQLBooleanOperatorBase(from_dict=boolean_operator_dict)
+
+        for i, condition in enumerate(boolean_operator.conditions):
+            self.assertEqual(condition._context_set, test_search_clause_dicts[i]["context_set"])
+            self.assertEqual(condition._index_name, test_search_clause_dicts[i]["index_name"])
+            self.assertEqual(condition._relation, test_search_clause_dicts[i]["relation"])
+            self.assertEqual(condition._search_term, test_search_clause_dicts[i]["search_term"])
+
+    def test_create_from_dict_correct_operator_name(self):
+        boolean_operator_dict = {
+            "type": "booleanOperator",
+            "operator": "AND",
+            "conditions": test_search_clause_dicts
+        }
+
+        boolean_operator = CQLBooleanOperatorBase(from_dict=boolean_operator_dict)
+
+        self.assertEqual(boolean_operator.operator, "AND")
+
+    def test_create_from_dict_with_nested_boolean_operator_correct_name(self):
+        boolean_operator_dict = {
+            "type": "booleanOperator",
+            "operator": "AND",
+            "conditions": test_conditions_dict_mixed
+        }
+
+        boolean_operator = CQLBooleanOperatorBase(from_dict=boolean_operator_dict)
+
+        self.assertEqual(boolean_operator.conditions[1].operator, "OR")
+
+    def test_create_from_dict_with_nested_boolean_operator_correct_search_clause(self):
+        boolean_operator_dict = {
+            "type": "booleanOperator",
+            "operator": "AND",
+            "conditions": test_conditions_dict_mixed
+        }
+
+        boolean_operator = CQLBooleanOperatorBase(from_dict=boolean_operator_dict)
+
+        self.assertEqual(boolean_operator.conditions[0]._context_set, test_conditions_dict_mixed[0]["context_set"])
+        self.assertEqual(boolean_operator.conditions[0]._index_name, test_conditions_dict_mixed[0]["index_name"])
+        self.assertEqual(boolean_operator.conditions[0]._relation, test_conditions_dict_mixed[0]["relation"])
+        self.assertEqual(boolean_operator.conditions[0]._search_term, test_conditions_dict_mixed[0]["search_term"])
+
+    def test_create_from_dict_with_raw_cql_creates_raw_cql(self):
+        boolean_operator_dict = {
+            "type": "booleanOperator",
+            "operator": "AND",
+            "conditions": [
+                {
+                    "type": "rawCQL",
+                    "cql": "alma.bib_count=2/combine=sum"
+                },
+                {
+                    "type": "rawCQL",
+                    "cql": "alma.author=Harry"
+                }
+            ]
+        }
+
+        boolean_operator = CQLBooleanOperatorBase(from_dict=boolean_operator_dict)
+
+        self.assertIsInstance(boolean_operator.conditions[0], RawCQL)
+        self.assertIsInstance(boolean_operator.conditions[1], RawCQL)
+
+    def test_create_from_dict_with_raw_cql_value_correct(self):
+        # Integration
+        boolean_operator_dict = {
+            "type": "booleanOperator",
+            "operator": "AND",
+            "conditions": [
+                {
+                    "type": "rawCQL",
+                    "cql": "alma.bib_count=2/combine=sum"
+                },
+                {
+                    "type": "rawCQL",
+                    "cql": "alma.author=Harry"
+                }
+            ]
+        }
+
+        boolean_operator = CQLBooleanOperatorBase(from_dict=boolean_operator_dict)
+
+        self.assertEqual(boolean_operator.conditions[0].raw_cql_string, boolean_operator_dict["conditions"][0]["cql"])
+        self.assertEqual(boolean_operator.conditions[1].raw_cql_string, boolean_operator_dict["conditions"][1]["cql"])
 
     def test_simple_format_and(self):
         and_operator_condition = AND(

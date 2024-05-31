@@ -1,0 +1,18 @@
+{
+  "start_record": null,
+  "maximum_records": 12,
+  "record_schema": "mods",
+  "record_packing": null,
+  "cql_query": {
+    "type": "rawCQL",
+    "cql": "Potato"
+  },
+  "sort_queries": [
+    {
+      "type": "sort",
+      "index_set": "alma",
+      "index_name": "creator",
+      "sort_order": "ascending"
+    }
+  ]
+}

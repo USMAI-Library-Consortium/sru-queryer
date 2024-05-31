@@ -1,4 +1,5 @@
 import unittest
+import json
 
 from src.sru_queryer.sru import SortKey
 from tests.testData.test_data import MockSortKeyOne, MockSortKeyTwo
@@ -89,3 +90,58 @@ class TestSortKey(unittest.TestCase):
 
         self.assertEqual(formatted_sort_keys, "title,dc,0%20name,bath,,,abort")
 
+    def test_sort_key_from_dict(self):
+        sort_key = SortKey(from_dict = {
+            "type": "sortKey",
+            "xpath": "World",
+            "schema": "marcxml",
+            "ascending": "true",
+            "case_sensitive": "false",
+            "missing_value": "abort"
+        })
+
+        self.assertEqual(sort_key._xpath, "World")
+        self.assertEqual(sort_key._schema, "marcxml")
+        self.assertEqual(sort_key._ascending, True)
+        self.assertEqual(sort_key._case_sensitive, False)
+        self.assertEqual(sort_key._missing_value, "abort")
+
+    def test_sort_key_from_json(self):
+        with open("tests/testData/1_1_query_dict.json", "r") as f:
+            sort_key_dict = json.loads(f.read())["sort_queries"][1]
+
+        sort_key = SortKey(from_dict=sort_key_dict)
+
+        self.assertEqual(sort_key._xpath, "cql.author")
+        self.assertEqual(sort_key._schema, "marcxml")
+        self.assertEqual(sort_key._ascending, False)
+        self.assertEqual(sort_key._case_sensitive, True)
+        self.assertEqual(sort_key._missing_value, None)
+
+    def test_sort_key_from_json_string_bool_values(self):
+        with open("tests/testData/1_1_query_dict.json", "r") as f:
+            sort_key_dict = json.loads(f.read())["sort_queries"][0]
+
+        sort_key = SortKey(from_dict=sort_key_dict)
+
+        self.assertEqual(sort_key._xpath, "World")
+        self.assertEqual(sort_key._schema, "marcxml")
+        self.assertEqual(sort_key._ascending, True)
+        self.assertEqual(sort_key._case_sensitive, False)
+        self.assertEqual(sort_key._missing_value, "abort")
+
+    def test_sort_key_from_dict_minimal_values(self):
+        sort_key = SortKey(from_dict = {
+            "type": "sortKey",
+            "xpath": "World",
+            "schema": None,
+            "ascending": None,
+            "case_sensitive": None,
+            "missing_value": None
+        })
+
+        self.assertEqual(sort_key._xpath, "World")
+        self.assertEqual(sort_key._schema, None)
+        self.assertEqual(sort_key._ascending, None)
+        self.assertEqual(sort_key._case_sensitive, None)
+        self.assertEqual(sort_key._missing_value, None)

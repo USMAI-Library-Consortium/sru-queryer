@@ -4,7 +4,6 @@ import logging
 import xmltodict
 import requests
 from requests import Request
-from urllib3.exceptions import NewConnectionError
 
 from ._sru_aux_formatter import SRUAuxiliaryFormatter
 from ._exceptions import NoExplainResponseException, ExplainResponseContentTypeException, ExplainResponseParserException
@@ -19,8 +18,13 @@ from ._search_retrieve import SearchRetrieve
 class SRUQueryer():
     supported_sru_versions = ["1.2", "1.1"]
     
-    def __init__(self, server_url: str, sru_version: str = None, username: str | None = None, password: str | None = None, default_cql_context_set: str | None = None, default_cql_index: str | None = None, default_cql_relation: str | None = None, disable_validation_for_cql_defaults: bool = False, max_records_supported: int | None = None, default_records_returned: int | None = None , default_record_schema: str | None = None, default_sort_schema: str | None = None):
+    def __init__(self, server_url: str = None, sru_version: str = None, username: str | None = None, password: str | None = None, default_cql_context_set: str | None = None, default_cql_index: str | None = None, default_cql_relation: str | None = None, disable_validation_for_cql_defaults: bool = False, max_records_supported: int | None = None, default_records_returned: int | None = None , default_record_schema: str | None = None, default_sort_schema: str | None = None, from_dict: dict | None = None):
         """Raises ExplainResponseContentTypeException, NoExplainResponseException, ExplainResponseParserException, or PermissionError"""
+        # Ability to load from saved configuration. DO NOT CREATE MANUALLY.
+        if from_dict:
+            self.sru_configuration = SRUConfiguration(from_dict)
+            return
+        
         sru_version_to_use = sru_version
         if not sru_version_to_use:
             sru_version_to_use = "1.2"
@@ -102,13 +106,13 @@ class SRUQueryer():
 
         self.sru_configuration = configuration
 
-    def search_retrieve(self, cql_query: SearchClause | CQLBooleanOperatorBase | RawCQL, start_record: int | None = None, maximum_records: int | None = None, record_schema: str | None = None, sort_queries: list[dict] | list[SortKey] | None = None, record_packing: str | None = None, validate: bool = True) -> bytes:
+    def search_retrieve(self, cql_query: SearchClause | CQLBooleanOperatorBase | RawCQL | None = None, start_record: int | None = None, maximum_records: int | None = None, record_schema: str | None = None, sort_queries: list[dict] | list[SortKey] | None = None, record_packing: str | None = None, validate: bool = True, from_dict: dict | None = None) -> bytes:
         """Conducts a searchRetrieve request and returns the response.
 
         This will throw ValueErrors for any incorrect portion of the query. 
         
         This function does not handle any errors in the searchRetrieveResponse."""
-        query = SearchRetrieve(self.sru_configuration, cql_query, start_record, maximum_records, record_schema, sort_queries, record_packing)
+        query = SearchRetrieve(self.sru_configuration, cql_query, start_record, maximum_records, record_schema, sort_queries, record_packing, from_dict)
         if validate:
             query.validate()
         request = query.construct_request()
@@ -118,12 +122,12 @@ class SRUQueryer():
         response = s.send(request)
         return response.content
     
-    def construct_search_retrieve_request(self, cql_query: SearchClause | CQLBooleanOperatorBase | RawCQL, start_record: int | None = None, maximum_records: int | None = None, record_schema: str | None = None, sort_queries: list[dict] | list[SortKey] | None = None, record_packing: str | None = None, validate: bool = True) -> Request:
+    def construct_search_retrieve_request(self, cql_query: SearchClause | CQLBooleanOperatorBase | RawCQL | None = None, start_record: int | None = None, maximum_records: int | None = None, record_schema: str | None = None, sort_queries: list[dict] | list[SortKey] | None = None, record_packing: str | None = None, validate: bool = True, from_dict: dict | None = None) -> Request:
         """Construct a requests.Request object, which you can then prepare and use.
         
         This is helpful (as compared to search_retrieve) when you want to create a request, and perhaps modify it
         or use it with your own session mechanism."""
-        query = SearchRetrieve(self.sru_configuration, cql_query, start_record, maximum_records, record_schema, sort_queries, record_packing)
+        query = SearchRetrieve(self.sru_configuration, cql_query, start_record, maximum_records, record_schema, sort_queries, record_packing, from_dict)
         if validate:
             query.validate()
         return query.construct_request()
@@ -139,6 +143,9 @@ class SRUQueryer():
                 available_context_sets_and_indexes, title_filter)
 
         SRUAuxiliaryFormatter.format_available_indexes(available_context_sets_and_indexes, filename, print_to_console)
+
+    def get_configuration(self):
+        return self.sru_configuration.__dict__
 
     @staticmethod
     def _filter_available_context_sets_and_indexes(available_context_sets_and_indexes: dict, title: str = None) -> dict:

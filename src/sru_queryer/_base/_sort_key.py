@@ -10,11 +10,36 @@ class SortKey:
         False: 0
     }
     
-    def __init__(self, xpath:str, schema:str | None = None, ascending:bool = None, case_sensitive:bool = None, missing_value: str = None):
+    def __init__(self, xpath:str | None = None, schema:str | None = None, ascending:bool = None, case_sensitive:bool = None, missing_value: str = None, from_dict: dict | None = None):
         self._xpath = xpath
         self._schema = schema
         self._ascending = ascending
         self._case_sensitive = case_sensitive
+
+        if not xpath and not from_dict:
+            raise ValueError("You must include an xpath or a dictionary when instantiating SortKeys.")
+        
+        if from_dict:
+            try:
+                self._xpath = from_dict["xpath"]
+                self._schema = from_dict["schema"]
+
+                ascending_value = None
+                if from_dict["ascending"] == "true" or from_dict["ascending"] == True:
+                    ascending_value = True
+                elif from_dict["ascending"] == "false" or from_dict["ascending"] == False:
+                    ascending_value = False
+                self._ascending = ascending_value
+
+                case_sensitive_value = None
+                if from_dict["case_sensitive"] == "true" or from_dict["case_sensitive"] == True:
+                    case_sensitive_value = True
+                elif from_dict["case_sensitive"] == "false" or from_dict["case_sensitive"] == False:
+                    case_sensitive_value = False
+                self._case_sensitive = case_sensitive_value
+                missing_value = from_dict["missing_value"]
+            except KeyError:
+                raise ValueError(f"Invalid dictionary for creating a sort key: {from_dict.__str__()}")
 
         if missing_value:
             missing_value_starts_and_ends_with_double_quotes = (missing_value.startswith('"') and missing_value.endswith('"'))

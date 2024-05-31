@@ -239,7 +239,7 @@ class TestSRUValidator(unittest.TestCase):
         sru_configuration.available_record_schemas = test_available_record_schemas_one_false
 
         with self.assertRaises(ValueError) as ve:
-            SRUValidator.validate_sort(sru_configuration, [SortKey("", schema="cnmarcxml")])
+            SRUValidator.validate_sort(sru_configuration, [SortKey("Moop", schema="cnmarcxml")])
 
         self.assertIn("'cnmarcxml'", ve.exception.__str__())
         self.assertIn("not available", ve.exception.__str__())

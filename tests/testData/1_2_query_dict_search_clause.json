@@ -1,0 +1,21 @@
+{
+  "start_record": null,
+  "maximum_records": 12,
+  "record_schema": "mods",
+  "record_packing": null,
+  "cql_query": {
+    "type": "searchClause",
+    "context_set": "alma",
+    "index_name": "creator",
+    "relation": "=",
+    "search_term": "Henry"
+  },
+  "sort_queries": [
+    {
+      "type": "sort",
+      "index_set": "alma",
+      "index_name": "creator",
+      "sort_order": "ascending"
+    }
+  ]
+}

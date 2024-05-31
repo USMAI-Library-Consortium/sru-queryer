@@ -1,0 +1,48 @@
+{
+  "start_record": 5,
+  "maximum_records": 12,
+  "record_schema": "marcxml",
+  "record_packing": null,
+  "cql_query": {
+    "type": "booleanOperator",
+    "operator": "AND",
+    "conditions": [
+      {
+        "type": "searchClause",
+        "context_set": "alma",
+        "index_name": "title",
+        "relation": "=",
+        "search_term": "Frog"
+      },
+      {
+        "type": "searchClause",
+        "context_set": "alma",
+        "index_name": "creator",
+        "relation": "=",
+        "search_term": "Henry"
+      },
+      {
+        "type": "rawCQL",
+        "cql": "Potato"
+      }
+    ]
+  },
+  "sort_queries": [
+    {
+      "type": "sortKey",
+      "xpath": "World",
+      "schema": "marcxml",
+      "ascending": "true",
+      "case_sensitive": "false",
+      "missing_value": "abort"
+    },
+    {
+      "type": "sortKey",
+      "xpath": "cql.author",
+      "schema": "marcxml",
+      "ascending": false,
+      "case_sensitive": true,
+      "missing_value": null
+    }
+  ]
+}
