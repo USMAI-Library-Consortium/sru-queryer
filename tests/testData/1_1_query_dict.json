@@ -40,8 +40,8 @@
       "type": "sortKey",
       "xpath": "cql.author",
       "schema": "marcxml",
-      "ascending": "false",
-      "case_sensitive": "true",
+      "ascending": false,
+      "case_sensitive": true,
       "missing_value": null
     }
   ]

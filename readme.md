@@ -184,6 +184,37 @@ You MUST include either:
 
 - RelationModifiers can be set for all combinations, but will only added to the final query on combinations with an relation.
 
+#### JSON / Dict representation
+
+As part of the 'Integrating with APIs' functionality (The second-to-last section), this class has a corresponding dict representation. Internally, the library will use this dict to create a SearchClause object. Keep in mind that these are validated the same as the SearchClause class, so the requirements are all the same.
+You MUST include 'type' for this to be recognized as a SearchClause.
+
+The format is as follows:
+
+In JSON
+
+```json
+{
+  "type": "searchClause",
+  "context_set": "alma",
+  "index_name": "title",
+  "relation": "=",
+  "search_term": "Maryland"
+}
+```
+
+In Python
+
+```python
+{
+  "type": "searchClause",
+  "context_set": "alma",
+  "index_name": "title",
+  "relation": "=",
+  "search_term": "Maryland"
+}
+```
+
 <br>
 <br>
 
@@ -265,9 +296,14 @@ If the SRU server returns a different SRU version than you the one you specify, 
 | ---------- | --------- | ------------------------------------------------------------------------------------------------------------------------------- |
 | No | string | The default schema that sort operations are run on. I don't know too much about this. I use it for validating sortKeys, which are only for version 1.1. If the sort schema is not included in a sort key, this value will be used to validate the sort key (not all schemas can sort).|
 
+`from_dict`
+| Mandatory | Data Type | Description |
+| ---------- | --------- | ------------------------------------------------------------------------------------------------------------------------------- |
+| No | dict | A python dictionary representing an SRU Configuration, which will be used INSTEAD of the above options + contacting the SRU server. Do not create this dictionary yourself; it is meant to re-load a saved configuration which is created with the get_configuration() function. |
+
 #### AVAILABLE FUNCTIONS:
 
-There are three functions that the general user would want to use:
+There are four functions that the general user would want to use:
 
 ##### `search_retrieve`
 
@@ -293,6 +329,7 @@ This will validate and send the request. You will receive whatever content the S
 | sort_queries    | list[dict] or list[SortKey]                                     | No        | A list of sortBy dictionaries, which add sort clauses to the dictionary. See below for more information.                                                                                                                                                              |
 | record_packing  | string                                                          | No        | The record packing that the record will be returned in (either xml or string)                                                                                                                                                                                         |
 | validate        | boolean (default True)                                          | No        | Whether or not to validate the query before sending it. You can disable validation if you think the library is falsely failing a query.                                                                                                                               |
+| from_dict       | dict                                                            | No        | Use a dict representation of the query instead of the built-in CQL classes. This is useful for APIs in particular. See the 'Integrating with APIs' section for more info.                                                                                             |
 
 <br>
 
@@ -318,6 +355,7 @@ This will validate the request and return a requests.Request object.
 | sort_queries    | list[dict] or list[SortKey]                                     | No        | A list of sortBy dictionaries, which add sort clauses to the dictionary. See below for more information.                                                                                                                                                              |
 | record_packing  | string                                                          | No        | The record packing that the record will be returned in (either xml or string)                                                                                                                                                                                         |
 | validate        | boolean (default True)                                          | No        | Whether or not to validate the query before returning the requests.Request object. You can disable validation if you think the library is falsely failing a query.                                                                                                    |
+| from_dict       | dict                                                            | No        | Use a dict representation of the query instead of the built-in CQL classes. This is useful for APIs in particular. See the 'Integrating with APIs' section for more info.                                                                                             |
 
 ##### `format_available_indexes`
 
@@ -327,6 +365,10 @@ This function nicely formats all the indexes availabe for an SRU server, as well
 
 <br>
 <br>
+
+##### `get_configuration`
+
+Gets a python dict representing the SRUQueryer. This allows saving the SRU queryer and allows you to re-create it without contacting the SRU server or setting the options again.
 
 ### Boolean Operators
 
@@ -374,6 +416,34 @@ Any options not marked as MANDATORY are optional. It is not recommended to chang
 
 Note: RawCQL classes may work in place of modifiers, however, this has not been tested.
 
+#### JSON / Dict representation
+
+As part of the 'Integrating with APIs' functionality (The second-to-last section), this class has a corresponding dict representation. Internally, the library will use this dict to create a boolean operator object. Keep in mind that these are validated the same as the Boolean Operator class, so the requirements are all the same. This will NOT work with a custom boolean operator that extends the functionality of CQLBooleanOperatorBase.
+
+You MUST include 'type' and 'operator' for a dict to be recognized as a Boolean Operator. The 'conditions' array, just like above, is required can contain SearchClause dicts, Boolean Operator dicts, or RawCQL dicts.
+
+The format is as follows:
+
+In JSON
+
+```json
+{
+  "type": "booleanOperator",
+  "operator": "AND",
+  "conditions": []
+}
+```
+
+In Python
+
+```python
+{
+  "type": "booleanOperator",
+  "operator": "AND",
+  "conditions": []
+}
+```
+
 <br>
 <br>
 
@@ -418,6 +488,32 @@ There's nothing here that you would want to use. This class is essentially a wra
 
 <br>
 <br>
+
+#### JSON / Dict representation
+
+As part of the 'Integrating with APIs' functionality (The second-to-last section), this class has a corresponding dict representation. Internally, the library will use this dict to create a RawCQL object. Keep in mind that this works the same as the above object EXCEPT that padding is automatically added.
+
+You MUST include 'type' for this dict to be recognized as RawCQL.
+
+The format is as follows:
+
+In JSON
+
+```json
+{
+  "type": "rawCQL",
+  "cql": "alma.title=Maryland"
+}
+```
+
+In Python
+
+```python
+{
+   "type": "rawCQL",
+   "cql": "alma.title=Maryland"
+}
+```
 
 ### Modifiying operators - Modifiers
 
@@ -484,6 +580,36 @@ All values are required. The sort_order can either be "ascending" or "descending
 
 You should add all desired sortBy clauses to the SRUQueryer.search_retrieve or SRUQueryer.construct_search_retrieve_request in an array with the keyword argument 'sort_queries='
 
+#### JSON / Dict representation
+
+As part of the 'Integrating with APIs' functionality (The second-to-last section), this class has a unique dict representation for use with the from_dict option for searches. It's the same as the above, but with the addition of a 'type' key which tells the library what this dict should be treated as.
+
+You MUST include 'type' for this dict to be recognized as a sortBy clause.
+
+The format is as follows:
+
+In JSON
+
+```json
+{
+  "type": "sort",
+  "index_set": "alma",
+  "index_name": "creator",
+  "sort_order": "ascending"
+}
+```
+
+In Python
+
+```python
+{
+   "type": "sort",
+   "index_set": "alma",
+   "index_name": "creator",
+   "sort_order": "ascending"
+}
+```
+
 <br>
 <br>
 
@@ -512,6 +638,40 @@ There's nothing here that you would need to use; the built-in functions are used
 | ascending      | boolean   | No        | Whether you want the results to be ascending. Default is True, False will set results to be descending |
 | case_sensitive | boolean   | No        | If case should be important during the search. Default is False.                                       |
 
+#### JSON / Dict representation
+
+As part of the 'Integrating with APIs' functionality (The second-to-last section), this class has a corresponding dict representation. Internally, the library will use this dict to create a SortKey object, so this dict will be used and validated in the same way as the SortKey class.
+
+You MUST include 'type' for this dict to be recognized as a SortKey. The other options are the same as the SortKey class (only xpath is required).
+
+The format is as follows:
+
+In JSON
+
+```json
+{
+  "type": "sortKey",
+  "xpath": "cql.author",
+  "schema": "marcxml",
+  "ascending": false,
+  "case_sensitive": true,
+  "missing_value": null
+}
+```
+
+In Python
+
+```python
+{
+   "type": "sortKey",
+   "xpath": "cql.author",
+   "schema": "marcxml",
+   "ascending": False,
+   "case_sensitive": True,
+   "missing_value": None
+}
+```
+
 <br>
 <br>
 
@@ -522,7 +682,7 @@ There's nothing here that you would need to use; the built-in functions are used
 New in version 2.1.0, this library has been significantly expanded to work with APIs. This includes:
 
 1. The capability to import/export SRU configurations from JSON.
-2. The ability for the queryer to accept a dictionary (automatically parsed from JSON with json.loads()) instead of the python objects mentioned above.
+2. The ability for the queryer to accept a dictionary (parsed from JSON with json.loads() or created directly in Python) instead of the python objects mentioned above.
 
 ### Importing/Exporting SRU Configurations
 
@@ -595,8 +755,8 @@ For version 1.1, the sort_queries will look different due to them being SortKeys
   "type": "sortKey",
   "xpath": "cql.author",
   "schema": "marcxml",
-  "ascending": "false",
-  "case_sensitive": "true",
+  "ascending": false,
+  "case_sensitive": true,
   "missing_value": null
 }
 ```
@@ -647,7 +807,3 @@ Below are a few of the issues I've found.
 
 ❓ RelationModifiers <br>
 ❓ Boolean Operator Modifiers
-
-```
-
-```
