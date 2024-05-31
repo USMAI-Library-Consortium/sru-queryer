@@ -79,8 +79,23 @@ class TestSearchClause(unittest.TestCase):
           "context_set": "alma",
           "index_name": "title",
           "relation": "=",
+          "search_term": "Frog"
+        })
+
+        self.assertEqual(search_clause.__dict__, search_clause_dict)
+
+    def test_create_from_dict_required_values_only(self):
+        search_clause_dict = {
+          "_context_set": None,
+          "_index_name": None,
+          "_relation": None,
+          "_search_term": "Frog",
+          "_modifiers": None
+        }
+
+        search_clause = SearchClause(from_dict={
+          "type": "searchClause",
           "search_term": "Frog",
-          "modifiers": None
         })
 
         self.assertEqual(search_clause.__dict__, search_clause_dict)

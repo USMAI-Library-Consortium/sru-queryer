@@ -24,14 +24,21 @@ class SearchRetrieve:
             raise ValueError("You must provide a CQL query or a query dictionary.")
 
         if from_dict:
-            try:
-                # Set base values
+            # Set base values
+            if "start_record" in from_dict.keys():
                 self.start_record = from_dict["start_record"]
+
+            if "maximum_records" in from_dict.keys():
                 self.maximum_records = from_dict["maximum_records"]
+
+            if "record_schema" in from_dict.keys():
                 self.record_schema = from_dict["record_schema"]
+
+            if "record_packing" in from_dict.keys():
                 self.record_packing = from_dict["record_packing"]
 
-                # Deal with the cql query
+            # Deal with the cql query
+            try:
                 if from_dict["cql_query"]["type"] == "booleanOperator":
                     self.cql_query = CQLBooleanOperatorBase(from_dict=from_dict["cql_query"])
                 elif from_dict["cql_query"]["type"] == "rawCQL":
@@ -40,21 +47,20 @@ class SearchRetrieve:
                     self.cql_query = SearchClause(from_dict=from_dict["cql_query"])
                 else:
                     raise ValueError(f"Invalid query type: {from_dict["cql_query"]["type"]}")
-                
-                # Deal with sort queries
-                if from_dict["sort_queries"]:
-                    self.sort_queries = []
-                    for sort_query in from_dict["sort_queries"]:
-                        if sort_query["type"] == "sort":
-                            del sort_query["type"]
-                            self.sort_queries.append(sort_query)
-                        elif sort_query["type"] == "sortKey":
-                            self.sort_queries.append(SortKey(from_dict=sort_query))
-                        else: 
-                            raise ValueError(f"Sort type {sort_query["type"]} not supported.")
-
             except KeyError as ke:
-                raise ValueError(f"Invalid value for Search Retrieve: {ke.__str__()}")
+                raise ValueError(f"Missing key in CQL Query: {ke.__str__()}")
+            
+            # Deal with sort queries
+            if "sort_queries" in from_dict.keys() and from_dict["sort_queries"]:
+                self.sort_queries = []
+                for sort_query in from_dict["sort_queries"]:
+                    if sort_query["type"] == "sort":
+                        del sort_query["type"]
+                        self.sort_queries.append(sort_query)
+                    elif sort_query["type"] == "sortKey":
+                        self.sort_queries.append(SortKey(from_dict=sort_query))
+                    else: 
+                        raise ValueError(f"Sort type {sort_query["type"]} not supported.")
 
         if sru_configuration.sru_version == "1.2":
             if self.sort_queries and isinstance(self.sort_queries[0], SortKey):

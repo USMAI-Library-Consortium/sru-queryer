@@ -19,22 +19,29 @@ class SearchClause:
         """
 
     def __init__(self, context_set: str | None = None, index_name: str | None = None, relation: str | None = None, search_term: str | None = None, modifiers: list[RelationModifier] | None = None, from_dict: dict | None = None):
-        self._context_set: str = context_set
-        self._index_name: str = index_name
-        self._relation: str = relation
-        self._search_term: str = search_term
-        self._modifiers = modifiers
+        self._context_set: str = context_set if not from_dict else None
+        self._index_name: str = index_name if not from_dict else None
+        self._relation: str = relation if not from_dict else None
+        self._search_term: str = search_term if not from_dict else None
+        self._modifiers = modifiers if not from_dict else None
 
         if from_dict:
             try:
                 if from_dict["type"] != "searchClause":
-                    raise KeyError()
-                self._context_set: str = from_dict["context_set"]
-                self._index_name: str = from_dict["index_name"]
-                self._relation: str = from_dict["relation"]
+                    raise ValueError(f"Search Clause type '{from_dict["type"]}' is not valid")
+                
+                if "context_set" in from_dict.keys():
+                    self._context_set: str = from_dict["context_set"]
+
+                if "index_name" in from_dict.keys():
+                    self._index_name: str = from_dict["index_name"]
+
+                if "relation" in from_dict.keys():
+                    self._relation: str = from_dict["relation"]
+                    
                 self._search_term: str = from_dict["search_term"]
-            except KeyError:
-                raise ValueError(f"Invalid dictionary for creating a search clause: '{from_dict.__str__()}'")
+            except KeyError as ke:
+                raise ValueError(f"Invalid dictionary for creating a search clause: '{from_dict.__str__()}'. You're missing {ke.__str__()}.")
 
         search_term_exists = self._search_term != None
         if not search_term_exists:

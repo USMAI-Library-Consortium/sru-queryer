@@ -123,6 +123,23 @@ class TestSearchRetrieve(unittest.TestCase):
         self.assertEqual(query.record_packing, query_dict["record_packing"])
 
     def test_initialize_with_dict_initializes_boolean_operator(self):
+        with open("tests/testData/1_2_query_dict_minimal.json", "r") as f:
+            query_dict = json.loads(f.read())
+
+        query = SearchRetrieve(get_alma_sru_configuration(), from_dict=query_dict)
+
+        self.assertEqual(query.record_schema, None)
+        self.assertEqual(query.maximum_records, None)
+        self.assertEqual(query.start_record, None)
+        self.assertEqual(query.record_packing, None)
+
+        self.assertIsInstance(query.cql_query, CQLBooleanOperatorBase)
+        self.assertEqual(len(query.cql_query.conditions), 3)
+        self.assertEqual(query.cql_query.conditions[0]._search_term, "Frog")
+        self.assertEqual(query.cql_query.conditions[1]._search_term, "Henry")
+        self.assertEqual(query.cql_query.conditions[2].raw_cql_string, "Potato")
+
+    def test_initialize_with_dict_initializes_minimal_options(self):
         with open("tests/testData/1_2_query_dict.json", "r") as f:
             query_dict = json.loads(f.read())
 
