@@ -421,7 +421,7 @@ Note: RawCQL classes may work in place of modifiers, however, this has not been 
 
 As part of the 'Integrating with APIs' functionality (The second-to-last section), this class has a corresponding dict representation. Internally, the library will use this dict to create a boolean operator object. Keep in mind that these are validated the same as the Boolean Operator class, so the requirements are all the same. This will NOT work with a custom boolean operator that extends the functionality of CQLBooleanOperatorBase.
 
-You MUST include 'type' and 'operator' for a dict to be recognized as a Boolean Operator. The 'conditions' array, just like above, is required can contain SearchClause dicts, Boolean Operator dicts, or RawCQL dicts.
+You MUST include 'type' and 'operator' for a dict to be recognized as a Boolean Operator. The 'conditions' array, just like above, is required and can contain SearchClause dicts, Boolean Operator dicts, or RawCQL dicts.
 
 The format is as follows:
 
