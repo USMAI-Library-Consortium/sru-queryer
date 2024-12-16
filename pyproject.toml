@@ -1,6 +1,6 @@
 [project]
 name = "sru-queryer"
-version = "2.1.1"
+version = "2.1.2"
 description = "A utility for integrating SRU queries into your applications."
 readme = "readme.md"
 requires-python = ">=3.7"
@@ -16,4 +16,4 @@ maintainers = [
 
 classifiers = ["Programming Language :: Python :: 3", "Development Status :: 5 - Production/Stable", "License :: OSI Approved :: Apache Software License"]
 
-dependencies = ["requests>=2.27.1,<3.0", "xmltodict>=0.13.0,<0.14"]
+dependencies = ["requests>=2.27.1,<3.0", "xmltodict>=0.14.0,<0.15"]
