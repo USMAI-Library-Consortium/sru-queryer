@@ -2,6 +2,7 @@ from unittest.mock import patch
 import unittest
 from requests import Request
 import json
+import os
 
 from src.sru_queryer._base._search_retrieve import SearchRetrieve
 from src.sru_queryer import SRUQueryer
@@ -121,7 +122,7 @@ class TestSearchRetrieve(unittest.TestCase):
         SearchRetrieve(sru_configuration, SearchClause("alma", "action_note_note", "==", "10"), record_schema='fakefake').validate()
 
     def test_initialize_with_dict_correct_settings(self):
-        with open("tests/testData/1_2_query_dict.json", "r") as f:
+        with open(os.path.join("tests", "testData", "1_2_query_dict.json"), "r") as f:
             query_dict = json.loads(f.read())
 
         query = SearchRetrieve(get_alma_sru_configuration(), from_dict=query_dict)
@@ -132,7 +133,7 @@ class TestSearchRetrieve(unittest.TestCase):
         self.assertEqual(query.record_packing, query_dict["record_packing"])
 
     def test_initialize_with_dict_initializes_boolean_operator(self):
-        with open("tests/testData/1_2_query_dict_minimal.json", "r") as f:
+        with open(os.path.join("tests", "testData", "1_2_query_dict_minimal.json"), "r") as f:
             query_dict = json.loads(f.read())
 
         query = SearchRetrieve(get_alma_sru_configuration(), from_dict=query_dict)
@@ -149,7 +150,7 @@ class TestSearchRetrieve(unittest.TestCase):
         self.assertEqual(query.cql_query.conditions[2].raw_cql_string, "Potato")
 
     def test_initialize_with_dict_initializes_minimal_options(self):
-        with open("tests/testData/1_2_query_dict.json", "r") as f:
+        with open(os.path.join("tests", "testData", "1_2_query_dict.json"), "r") as f:
             query_dict = json.loads(f.read())
 
         query = SearchRetrieve(get_alma_sru_configuration(), from_dict=query_dict)
@@ -161,7 +162,7 @@ class TestSearchRetrieve(unittest.TestCase):
         self.assertEqual(query.cql_query.conditions[2].raw_cql_string, "Potato")
 
     def test_initialize_with_dict_initializes_raw_cql(self):
-        with open("tests/testData/1_2_query_dict_raw_cql.json", "r") as f:
+        with open(os.path.join("tests", "testData", "1_2_query_dict_raw_cql.json")) as f:
             query_dict = json.loads(f.read())
 
         query = SearchRetrieve(get_alma_sru_configuration(), from_dict=query_dict)
@@ -170,7 +171,7 @@ class TestSearchRetrieve(unittest.TestCase):
         self.assertEqual(query.cql_query.raw_cql_string, "Potato")
 
     def test_initialize_with_dict_initializes_search_clause(self):
-        with open("tests/testData/1_2_query_dict_search_clause.json", "r") as f:
+        with open(os.path.join("tests", 'testData', "1_2_query_dict_search_clause.json"), "r") as f:
             query_dict = json.loads(f.read())
 
         query = SearchRetrieve(get_alma_sru_configuration(), from_dict=query_dict)
@@ -182,7 +183,7 @@ class TestSearchRetrieve(unittest.TestCase):
         self.assertEqual(query.cql_query._search_term, "Henry")
 
     def test_initialize_with_dict_initializes_1_2_sort_query(self):
-        with open("tests/testData/1_2_query_dict.json", "r") as f:
+        with open(os.path.join("tests", "testData", "1_2_query_dict.json"), "r") as f:
             query_dict = json.loads(f.read())
 
         query = SearchRetrieve(get_alma_sru_configuration(), from_dict=query_dict)
@@ -191,7 +192,7 @@ class TestSearchRetrieve(unittest.TestCase):
         self.assertEqual(len(query.sort_queries), 1)
 
     def test_initialize_with_dict_initializes_1_2_sort_query_correct_values(self):
-        with open("tests/testData/1_2_query_dict.json", "r") as f:
+        with open(os.path.join("tests", "testData", "1_2_query_dict.json"), "r") as f:
             query_dict = json.loads(f.read())
 
         query = SearchRetrieve(get_alma_sru_configuration(), from_dict=query_dict)
@@ -201,7 +202,7 @@ class TestSearchRetrieve(unittest.TestCase):
         self.assertEqual(query.sort_queries[0]["sort_order"], "ascending")
 
     def test_initialize_with_dict_initializes_1_1_sort_query(self):
-        with open("tests/testData/1_1_query_dict.json", "r") as f:
+        with open(os.path.join("tests", "testData", "1_1_query_dict.json"), "r") as f:
             query_dict = json.loads(f.read())
 
         sru_config = get_gapines_sru_configuration()
@@ -213,7 +214,7 @@ class TestSearchRetrieve(unittest.TestCase):
         self.assertEqual(len(query.sort_queries), 2)
 
     def test_initialize_with_dict_initializes_1_1_sort_query_correct_values(self):
-        with open("tests/testData/1_1_query_dict.json", "r") as f:
+        with open(os.path.join("tests", "testData", "1_1_query_dict.json"), "r") as f:
             query_dict = json.loads(f.read())
 
         query = SearchRetrieve(get_gapines_sru_configuration(), from_dict=query_dict)

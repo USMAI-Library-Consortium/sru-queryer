@@ -2,6 +2,7 @@ import unittest
 from unittest.mock import patch
 import json
 from requests import Request
+import os
 
 from src.sru_queryer import SRUQueryer
 from src.sru_queryer._base._exceptions import ExplainResponseContentTypeException
@@ -206,7 +207,7 @@ class TestInitializeSRUQueryerIntegration(unittest.TestCase):
         with open(TestFiles.explain_response_alma, "rb") as f:
             mock_request_contents.return_value = f.read()
 
-        with open("tests/testData/1_2_query_dict.json", "r") as f:
+        with open(os.path.join("tests", 'testData', "1_2_query_dict.json"), "r") as f:
             query_dict = json.loads(f.read()) 
 
         sc = SRUQueryer("https://server.com")
@@ -218,7 +219,7 @@ class TestInitializeSRUQueryerIntegration(unittest.TestCase):
         with open(TestFiles.explain_response_alma, "rb") as f:
             mock_request_contents.return_value = f.read()
 
-        with open("tests/testData/1_2_query_dict.json", "r") as f:
+        with open(os.path.join("tests", "testData", "1_2_query_dict.json"), "r") as f:
             query_dict = json.loads(f.read()) 
             query_dict["cql_query"]["conditions"][0]["index_name"] = "fake"
 
@@ -231,7 +232,7 @@ class TestInitializeSRUQueryerIntegration(unittest.TestCase):
         with open(TestFiles.explain_response_alma, "rb") as f:
             mock_request_contents.return_value = f.read()
 
-        with open("tests/testData/1_2_query_dict.json", "r") as f:
+        with open(os.path.join("tests", "testData", "1_2_query_dict.json"), "r") as f:
             query_dict = json.loads(f.read()) 
 
         sc = SRUQueryer("https://server.com")

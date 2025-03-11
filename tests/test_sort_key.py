@@ -1,5 +1,6 @@
 import unittest
 import json
+import os
 
 from src.sru_queryer.sru import SortKey
 from tests.testData.test_data import MockSortKeyOne, MockSortKeyTwo
@@ -107,7 +108,7 @@ class TestSortKey(unittest.TestCase):
         self.assertEqual(sort_key._missing_value, "abort")
 
     def test_sort_key_from_json(self):
-        with open("tests/testData/1_1_query_dict.json", "r") as f:
+        with open(os.path.join("tests", "testData", "1_1_query_dict.json"), "r") as f:
             sort_key_dict = json.loads(f.read())["sort_queries"][1]
 
         sort_key = SortKey(from_dict=sort_key_dict)
@@ -119,7 +120,7 @@ class TestSortKey(unittest.TestCase):
         self.assertEqual(sort_key._missing_value, None)
 
     def test_sort_key_from_json_string_bool_values(self):
-        with open("tests/testData/1_1_query_dict.json", "r") as f:
+        with open(os.path.join("tests", "testData", "1_1_query_dict.json"), "r") as f:
             sort_key_dict = json.loads(f.read())["sort_queries"][0]
 
         sort_key = SortKey(from_dict=sort_key_dict)
