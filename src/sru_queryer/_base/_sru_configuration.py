@@ -9,7 +9,7 @@ class SRUConfiguration():
                 # Values (possibly) pulled from SRU ExplainResponse (some can be overridden by user settings):
                 # Availability
                 self.available_context_sets_and_indexes: dict = from_dict["available_context_sets_and_indexes"]
-                self.available_record_schemas: dict = from_dict["available_record_schemas"]
+                self.available_record_schemas: dict | None = from_dict["available_record_schemas"]
                 self.supported_relation_modifiers: list[str] = from_dict["supported_relation_modifiers"]
                 # Default CQL
                 self.default_context_set: str | None = from_dict["default_context_set"]
@@ -38,7 +38,7 @@ class SRUConfiguration():
         # Values (possibly) pulled from SRU ExplainResponse (some can be overridden by user settings):
         # Availability
         self.available_context_sets_and_indexes: dict = {}
-        self.available_record_schemas: dict = {}
+        self.available_record_schemas: dict | None = None
         self.supported_relation_modifiers: list[str] = []
         # Default CQL
         self.default_context_set: str | None = None

@@ -152,8 +152,13 @@ class SRUExplainAutoParser():
         While this is technically duplication, they're both valid ways to write a schema in an SRU query.
         I didn't know this until I had already defined the available_record_schemas as a simple list, and
         didn't want to rip my program apart to fix this. So, for now, the record schemas are all duplicated
-        if they have identifiers so that validation will work with those identifier names."""
+        if they have identifiers so that validation will work with those identifier names.
+        
+        This information is optional to include in an SRU response, so we are setting it to None if the
+        information cannot be found."""
         schema_information = self._find_property_value(self.sru_explain_dict, generic_driver["schema"]["location"])
+        if not schema_information: return
+        
         cleaned_record_schema_info: dict = {}
         
         # Turn dict to list so we can interate through it 

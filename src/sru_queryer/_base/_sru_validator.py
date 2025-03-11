@@ -1,4 +1,5 @@
 from __future__ import annotations
+import logging
 
 from ._sru_configuration import SRUConfiguration
 from ._sort_key import SortKey
@@ -17,19 +18,21 @@ class SRUValidator():
 
         # Validate default record schema
         if sru_configuration.default_record_schema:
-            record_schema_valid = SRUValidator._validate_record_schema(sru_configuration.available_record_schemas, sru_configuration.default_record_schema)
-            if not record_schema_valid:
-                raise ValueError(f"Record schema '{sru_configuration.default_record_schema}' is not available.")
+            if sru_configuration.available_record_schemas:
+                record_schema_valid = SRUValidator._validate_record_schema(sru_configuration.available_record_schemas, sru_configuration.default_record_schema)
+                if not record_schema_valid:
+                    raise ValueError(f"Record schema '{sru_configuration.default_record_schema}' is not available.")
         
         # If there is a default sort schema, check that it exists and that it can sort
         default_sort_schema = sru_configuration.default_sort_schema
         if default_sort_schema:
-            sort_schema_valid = SRUValidator._validate_record_schema(sru_configuration.available_record_schemas, default_sort_schema)
-            if not sort_schema_valid:
-                raise ValueError(f"Sort schema '{default_sort_schema}' is not available.")
-            sort_schema_info = sru_configuration.available_record_schemas[default_sort_schema]
-            if sort_schema_info["sort"] is False:
-                raise ValueError(f"Schema {default_sort_schema} cannot sort.")
+            if sru_configuration.available_record_schemas:
+                sort_schema_valid = SRUValidator._validate_record_schema(sru_configuration.available_record_schemas, default_sort_schema)
+                if not sort_schema_valid:
+                    raise ValueError(f"Sort schema '{default_sort_schema}' is not available.")
+                sort_schema_info = sru_configuration.available_record_schemas[default_sort_schema]
+                if sort_schema_info["sort"] is False:
+                    raise ValueError(f"Schema {default_sort_schema} cannot sort.")
 
     
     @staticmethod
@@ -103,8 +106,11 @@ class SRUValidator():
                 raise ValueError(f"Maximum records returned must be less than {str(sru_configuration.max_records_supported)}.") 
         
         if record_schema:
-            if SRUValidator._validate_record_schema(sru_configuration.available_record_schemas, record_schema) == False:
-                raise ValueError(f"Record schema '{record_schema}' is not available.")
+            if sru_configuration.available_record_schemas:
+                if SRUValidator._validate_record_schema(sru_configuration.available_record_schemas, record_schema) == False:
+                    raise ValueError(f"Record schema '{record_schema}' is not available.")
+            else:
+                logging.warning("Record schema cannot be validated because the SRU Explain Response does not contain this information.")
             
         if record_packing:
             if record_packing not in sru_configuration.available_record_packing_values:

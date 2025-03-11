@@ -1,4 +1,5 @@
 import json
+import os
 
 from src.sru_queryer.sru import SortKey
 from src.sru_queryer.sru import SRUConfiguration
@@ -344,21 +345,23 @@ def get_test_gapines_saved_sru_configuration():
     return saved_dict
 
 class TestFiles:
-  explain_response_alma = "./tests/testData/alma_explain_response.xml"
-  alma_bad_explain_response = "tests/testData/alma_bad_explain_response.xml"
-  alma_raw_indexes = "./tests/testData/alma_raw_indexes.json"
-  alma_raw_schemas = "./tests/testData/alma_raw_schemas.json"
-  alma_raw_config_info = "./tests/testData/alma_raw_config_info.json"
-  alma_available_context_sets_and_indexes = "./tests/testData/alma_available_context_sets_and_indexes.json"
+  explain_response_alma = os.path.join("tests", "testData", "alma_explain_response.xml")
+  alma_bad_explain_response = os.path.join("tests", "testData", "alma_bad_explain_response.xml")
+  alma_raw_indexes = os.path.join("tests", "testData", "alma_raw_indexes.json")
+  alma_raw_schemas = os.path.join("tests", "testData", "alma_raw_schemas.json")
+  alma_raw_config_info = os.path.join("tests", "testData", "alma_raw_config_info.json")
+  alma_available_context_sets_and_indexes = os.path.join("tests", "testData", "alma_available_context_sets_and_indexes.json")
 
-  explain_response_loc = "./tests/testData/loc_explain_response.xml"
-  loc_bad_explain_response = "tests/testData/loc_bad_explain_response.xml"
-  loc_raw_indexes = "./tests/testData/loc_raw_indexes.json"
-  loc_raw_schemas = "./tests/testData/loc_raw_schemas.json"
-  loc_available_context_sets_and_indexes = "./tests/testData/loc_available_context_sets_and_indexes.json"
+  explain_response_loc = os.path.join("tests", "testData", "loc_explain_response.xml")
+  loc_bad_explain_response = os.path.join("tests", "testData", "loc_bad_explain_response.xml")
+  loc_raw_indexes = os.path.join("tests", "testData", "loc_raw_indexes.json")
+  loc_raw_schemas = os.path.join("tests", "testData", "loc_raw_schemas.json")
+  loc_available_context_sets_and_indexes = os.path.join("tests", "testData", "loc_available_context_sets_and_indexes.json")
 
-  explain_response_gapines = "./tests/testData/gapines_explain_response.xml"
-  gapines_html_response = "./tests/testData/gapines_html_response.html"
-  gapines_raw_indexes = "./tests/testData/gapines_raw_indexes.json"
-  gapines_raw_config_info = "./tests/testData/gapines_raw_config_info.json"
-  gapines_available_context_sets_and_indexes= "./tests/testData/gapines_available_context_sets_and_indexes.json"
+  explain_response_gapines = os.path.join("tests", "testData", "gapines_explain_response.xml")
+  gapines_html_response = os.path.join("tests", "testData", "gapines_html_response.html")
+  gapines_raw_indexes = os.path.join("tests", "testData", "gapines_raw_indexes.json")
+  gapines_raw_config_info = os.path.join("tests", "testData", "gapines_raw_config_info.json")
+  gapines_available_context_sets_and_indexes = os.path.join("tests", "testData", "gapines_available_context_sets_and_indexes.json")
+
+  sru_no_schema = os.path.join("tests", "testData", "sru_no_schema.xml")

@@ -111,6 +111,15 @@ class TestSearchRetrieve(unittest.TestCase):
         self.assertIn("'fakefake'", ve.exception.__str__())
         self.assertIn("not available", ve.exception.__str__())
 
+    def test_validate_query_that_has_no_available_record_schemas(self):
+        """Validation for record schemas should pass regardless when the explainResponse
+        doesn't contain sru information."""
+        sru_configuration = get_alma_sru_configuration()
+        sru_configuration.server_url = "https://example.com"
+        sru_configuration.sru_version = "1.2"
+        sru_configuration.available_record_schemas = None
+        SearchRetrieve(sru_configuration, SearchClause("alma", "action_note_note", "==", "10"), record_schema='fakefake').validate()
+
     def test_initialize_with_dict_correct_settings(self):
         with open("tests/testData/1_2_query_dict.json", "r") as f:
             query_dict = json.loads(f.read())
