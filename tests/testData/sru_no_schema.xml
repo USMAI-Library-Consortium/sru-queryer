@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<zs:explainResponse xmlns:zs="http://www.loc.gov/zing/srw/"><zs:version>1.1</zs:version><zs:record><zs:recordSchema>http://explain.z3950.org/dtd/2.0/</zs:recordSchema><zs:recordPacking>xml</zs:recordPacking><zs:recordData><explain xmlns="http://explain.z3950.org/dtd/2.0/">
+      <serverInfo>
+        <host>example.url</host>
+        <port>2362</port>
+      </serverInfo>
+      <indexInfo>
+        <set identifier="info:srw/cql-context-set/1/cql-v1.1" name="cql"/>
+        <set identifier="info:srw/cql-context-set/1/dc-v1.1" name="dc"/>
+        <set identifier="http://zing.z3950.org/cql/bath/2.0/" name="bath"/>
+        <set identifier="info:srw/schema/1/marcxml-1.1" name="marcxml"/>
+        <index id="4">
+          <title>Titel</title>
+          <map><name set="marcxml">marcxml.title</name></map>
+        </index>
+        <index id="1003">
+          <title>Autor</title>
+          <map><name set="marcxml">marcxml.creator</name></map>
+        </index>
+        <index id="2007">
+          <title>GND-ID</title>
+          <map><name set="marcxml">marcxml.gndid</name></map>
+        </index>
+        <index id="21">
+          <title>Schlagwort</title>
+          <map><name set="marcxml">marcxml.subject</name></map>
+        </index>
+        <index id="7">
+          <title>ISBN</title>
+          <map><name set="marcxml">marcxml.isbn</name></map>
+        </index>
+        <index id="8">
+          <title>ISSN</title>
+          <map><name set="marcxml">marcxml.issn</name></map>
+        </index>
+        <index id="12">
+          <title>System-Nr.</title>
+          <map><name set="marcxml">rec.id</name></map>
+        </index>
+        <index id="53">
+          <title>BV-Nr.</title>
+          <map><name set="marcxml">marcxml.idn</name></map>
+        </index>
+        <index id="1052">
+          <title>ZDB-Nr.</title>
+          <map><name set="marcxml">marcxml.zdbid</name></map>
+        </index>
+        <index id="20">
+          <title>Notation</title>
+          <map><name set="marcxml">marcxml.ntn</name></map>
+        </index>
+        <index id="31">
+          <title>Erscheinungsjahr</title>
+          <map><name set="marcxml">marcxml.date</name></map>
+        </index>
+        </indexInfo>  
+    </explain></zs:recordData></zs:record></zs:explainResponse>

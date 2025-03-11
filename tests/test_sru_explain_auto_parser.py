@@ -245,4 +245,16 @@ class TestSRUExplainAutoParser(unittest.TestCase):
 
                 self.assertEqual(configuration.available_context_sets_and_indexes, expected_indexes)
 
+    def test_construct_sru_configuration_no_schema_info(self):
+        """Not all SRU responses contain schema info. Here, we are verifying that responses without schema info can be
+        parsed properly."""
+        with open(TestFiles.sru_no_schema, "rb") as f:
+            response_dict = xmltodict.parse(f.read())
+
+            sru_dict_parser = SRUExplainAutoParser(response_dict)
+
+            sru_configuration = sru_dict_parser.get_sru_configuration_from_explain_response()
+
+            self.assertIsNone(sru_configuration.available_record_schemas)
+
 
