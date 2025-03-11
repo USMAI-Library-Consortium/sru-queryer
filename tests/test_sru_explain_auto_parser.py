@@ -70,6 +70,12 @@ class TestSRUExplainAutoParser(unittest.TestCase):
 
             self.assertDictEqual(sru_configuration.available_context_sets_and_indexes["eg"]["author"], expected_dict["eg"]["author"])
             self.assertDictEqual(sru_configuration.available_context_sets_and_indexes, expected_dict)
+    
+    def test_parse_namespaced_response(self):
+        with open (TestFiles.explain_response_namespaced, "rb") as f:
+            xml_unprocessed_dict = xmltodict.parse(f.read())
+            sru_dict_parser = SRUExplainAutoParser(xml_unprocessed_dict)
+            sru_configuration = sru_dict_parser.get_sru_configuration_from_explain_response()
 
     def test_parse_sru_version_from_dict_alma(self):
         with open (TestFiles.explain_response_alma, "rb") as f:

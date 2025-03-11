@@ -76,8 +76,7 @@ class SRUExplainAutoParser():
                 else:
                     sortable = False
 
-
-            context_sets_that_include_this_index = index["map"]
+            context_sets_that_include_this_index = self._find_property_value(index, ["map"])
             if isinstance(context_sets_that_include_this_index, dict):
                 # A few indexes are part of multiple context sets, so
                 # I'll just loop over them. This means turning dicts into
@@ -85,8 +84,8 @@ class SRUExplainAutoParser():
                 context_sets_that_include_this_index = [context_sets_that_include_this_index]
 
             for context_set in context_sets_that_include_this_index:
-                name = self._remove_set_from_index_name(context_set["name"]["#text"])
-                set = context_set["name"]["@set"]
+                name = self._remove_set_from_index_name(self._find_property_value(context_set, ["name", "#text"]))
+                set = self._find_property_value(context_set, ["name", "@set"])
 
                 # If the set is not in the index and config info, add it
                 if set not in self.sru_config.available_context_sets_and_indexes:
@@ -105,8 +104,8 @@ class SRUExplainAutoParser():
                 default_information = [default_information]
 
             for default in default_information:
-                def_type = default["@type"]
-                value = default["#text"]
+                def_type = self._find_property_value(default, ["@type"])
+                value = self._find_property_value(default, ["#text"])
                 if def_type == "numberOfRecords":
                     self.sru_config.default_records_returned = int(value)
                 elif def_type == "contextSet":
@@ -126,8 +125,8 @@ class SRUExplainAutoParser():
                 settings_information = [settings_information]
 
             for setting in settings_information:
-                setting_name = setting["@type"]
-                value = setting["#text"]
+                setting_name = self._find_property_value(setting, ["@type"])
+                value = self._find_property_value(setting, ["#text"])
 
                 if setting_name == "maximumRecords":
                     self.sru_config.max_records_supported = int(value)
@@ -139,8 +138,8 @@ class SRUExplainAutoParser():
                 supports_information = [supports_information]
 
             for support_setting in supports_information:
-                if support_setting["@type"] == "relationModifier":
-                    self.sru_config.supported_relation_modifiers.append(support_setting["#text"])
+                if self._find_property_value(support_setting, ["@type"]) == "relationModifier":
+                    self.sru_config.supported_relation_modifiers.append(self._find_property_value(support_setting, ["#text"]))
 
 
     def _parse_schema_info(self):
@@ -168,11 +167,11 @@ class SRUExplainAutoParser():
 
         for schema in schema_information:
             sort = True
-            if schema["@sort"] == "false":
+            if self._find_property_value(schema, ["@sort"]) == "false":
                 sort = False
 
-            schema_name = schema["@name"]
-            schema_identifier = schema["@identifier"]
+            schema_name = self._find_property_value(schema, ["@name"])
+            schema_identifier = self._find_property_value(schema, ["@identifier"])
 
             cleaned_record_schema_info[schema_name] = {
                 "sort": sort,
@@ -234,10 +233,10 @@ class SRUExplainAutoParser():
         supported_relations: dict = []
         empty_term_supported = False
         for relation in raw_supported_relations:
-            if relation["@type"] == "emptyTerm":
+            if self._find_property_value(relation, ["@type"]) == "emptyTerm":
                 empty_term_supported = True
-            elif relation["@type"] == "relation":
-                supported_relations.append(relation["#text"])
+            elif self._find_property_value(relation, ["@type"]) == "relation":
+                supported_relations.append(self._find_property_value(relation, ["#text"]))
 
         return empty_term_supported, supported_relations
     
