@@ -365,3 +365,4 @@ class TestFiles:
   gapines_available_context_sets_and_indexes = os.path.join("tests", "testData", "gapines_available_context_sets_and_indexes.json")
 
   sru_no_schema = os.path.join("tests", "testData", "sru_no_schema.xml")
+  explain_response_namespaced = os.path.join("tests", "testData", "explain_response_namespaced.xml")
